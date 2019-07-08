@@ -35,7 +35,6 @@
   preFixedIncome: '#38BFA0',
   treasureDirect: '#86B2DE',
   currency: '#B9B42C',
-  custom: '#FFD880',
 
   ```
 
