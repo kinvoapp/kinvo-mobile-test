@@ -5,7 +5,7 @@
 ## Instruções:
 
 1. Faça um fork deste repositório;
-2. Implemente o layout disponível utilizando `React Native`;
+2. Implemente o layout disponível;
 3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
 4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
 
@@ -46,7 +46,6 @@
 * Deve ser possível filtrar os produtos listados;
 * Testes unitários;
 * Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-* Utilizar ECMAScript 6+;
 
 
 * **Importante:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :-)
@@ -54,6 +53,8 @@
 ### Ganhe pontos extras por:
 
 * Componentizar sua interface;
+* Desenvolver o app utilizando `React Native`
+* Utilizar ECMAScript 6+;
 
 ## Material:
 
