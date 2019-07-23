@@ -1,21 +1,21 @@
 #### Execução do projeto:
-**Obs.1:** É necessário ter o **react-native** instalado na máquina, antes de executar o projeto ([mais informações](https://facebook.github.io/react-native/docs/getting-started.html)).
+**Obs.1:** É necessário ter o **react-native** instalado na computador, antes de executar o projeto ([mais informações](https://facebook.github.io/react-native/docs/getting-started.html)).
 
-Após fazer o clone, fork ou download, navegue até a pasta do projeto `$ cd /.../kinvo/` e instale os pacotes/dependências básicas do node: `npm install`.
+Inicialmente instalar os pacotes/dependências básicas do node: `npm install`, dentro da pasta do projeto "kinvo".
 
-Para o projeto, necessitou-se instalar dependências externas do **react-native**, que estão listadas abaixo:
+E como o projeto utiliza depências externas do React Native, deve-se instalar conforme as orientações a seguir:
 
-* **Instalar o axios:**
+* **axios:**
     `$ npm install axios`
 
-* **Instalar o Toast:**
+* **Toast:**
     `$ npm install react-native-whc-toast`
 
-* **Instalar o lodash:**
+* **lodash:**
     `$ npm install lodash`
 
-* **Instalar o react-navigation:**
-    Este projeto utilizou o **createStackNavigator**, então com base nas orientações do [React Navigation 3.x](https://reactnavigation.org/docs/pt-BR/getting-started.html), para utilizar esse layout deve-se adicionar a dependência: `$ npm install react-navigation`. 
+* **react-navigation:**
+    Este projeto utilizou o **createStackNavigator**, então com base nas orientações do [React Navigation 3.x](https://reactnavigation.org/docs/pt-BR/getting-started.html), para utilizar esse tipo de layout deve-se adicionar a dependência: `$ npm install react-navigation`. 
 
     E, uma outra dependência: `$ npm install react-native-gesture-handler`
 
