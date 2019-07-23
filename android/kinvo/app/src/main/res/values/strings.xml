@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Kinvo</string>
+    <string name="tab_text_1">Carteira</string>
+    <string name="tab_text_2">Produtos</string>
+    <string name="tab_text_3">Extrato</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

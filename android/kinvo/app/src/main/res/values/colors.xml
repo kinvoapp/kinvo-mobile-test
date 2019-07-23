@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#008577</color> -->
+    <color name="colorPrimaryDark">#BDBEBD</color>
+    <!--<color name="colorAccent">#D3D3D3</color> -->
+    <color name="colorAccent">#E9E9E9</color>
+
+
+    <color name="color_unselected">#FFFFFF</color>
+    <color name="color_selected">#E9E9E9</color>
+
+    <color name="stock">#4C309B</color>
+    <color name="fii">#4141D5</color>
+    <color name="bdr">#9390E5</color>
+    <color name="bitcoin">#3E71B9</color>
+    <color name="debentures">#86B2DE</color>
+    <color name="funds">#008DCB</color>
+    <color name="savings">#5AAAD5</color>
+    <color name="pension">#D5A82C</color>
+    <color name="postFixedIncome">#94E5D2</color>
+    <color name="preFixedIncome">#38BFA0</color>
+    <color name="treasureDirect">#86B2DE</color>
+    <color name="currency">#B9B42C</color>
+
+</resources>
