@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image } from 'react-native'
-import App from '../components/App'
+import Products from '../components/Products'
 
 
 
@@ -18,7 +18,7 @@ const CarteiraRoute =  createMaterialTopTabNavigator({
         
       },
       Produtos: {
-        screen: () => null,   
+        screen: Products,   
         
       }, 
       Extrato: {
@@ -28,10 +28,12 @@ const CarteiraRoute =  createMaterialTopTabNavigator({
   },{
     initialRouteName:'Produtos',
     tabBarOptions:{
+      upperCaseLabel:false,
         style:{backgroundColor:'#FFFFFF',elevation:0},
+        labelStyle:{fontSize:16},
         activeTintColor: '#707070',
         inactiveTintColor: '#707070',
-        indicatorStyle:{backgroundColor:'#F5F8FA',height: 50 },
+        indicatorStyle:{backgroundColor:'#F5F8FA',height: 50,borderTopEndRadius:15,borderTopStartRadius:15 },
     }
   }
   )

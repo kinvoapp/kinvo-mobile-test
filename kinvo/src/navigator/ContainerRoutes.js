@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
-import App from '../components/App'
 import { Image } from 'react-native'
 import CarteiraRoute from './CarteiraRoute'
 
@@ -27,7 +26,7 @@ const ContainerRoutes = createAppContainer(
       }
     },
     Plus: {
-      screen: App,
+      screen: () => null,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/plus.png')} />
       }
@@ -52,7 +51,7 @@ const ContainerRoutes = createAppContainer(
       initialRouteName: 'Carteira',
       tabBarPosition: 'top',
       tabBarOptions:{
-        style:{height:60 },
+        style:{height:70,paddingBottom:5},
       }
     },
     
