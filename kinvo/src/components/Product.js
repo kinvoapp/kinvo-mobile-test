@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View ,StatusBar} from 'react-native'
 
 export default class Product extends Component {
     constructor(props) {
@@ -53,11 +53,12 @@ export default class Product extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar backgroundColor="white" barStyle="dark-content" />
                 <View style={styles.header}>
                     <Text style={{fontWeight: 'bold', fontSize: 10, color: this.state.color}}> {this.state.financialInstitutionName} </Text>
                 </View>
 
-                <View style={styles.body}>
+                <View style={{ flex:1,borderTopStartRadius:3,borderBottomStartRadius:3,borderRadius:5,borderLeftWidth:5,borderLeftColor:this.state.color}}>
                     <Text style={styles.bodyTextStyle} >{this.state.productName}</Text>
                 </View>
 
@@ -91,12 +92,14 @@ const styles = StyleSheet.create({
     },
 
     header: {
-
-    },
+        flex:1, 
+        },
     body: {
-
+       
     },
     footer: {
+        flex:1,
+
         flexDirection:'row',
         justifyContent:'space-between'
     },
@@ -106,7 +109,8 @@ const styles = StyleSheet.create({
     bodyTextStyle: {
         fontWeight: 'bold',
         fontSize: 14,
-        color: '#CCCFD1'
+        color: '#CCCFD1',
+        paddingLeft:5
     }
 
 })

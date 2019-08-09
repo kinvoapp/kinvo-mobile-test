@@ -20,19 +20,20 @@ export default class Products extends Component {
 
     }
 
+
     async  getPools() {
         this.setState({ isFetching: true });
         let response
         try {
-            response = await api.get();
+            response = await api.get(); 
 
         } catch (error) {
             // Tratamento do erro
         }
         dataApi = response.data.data;
         var data = [];
-        dataApi.map((item) => {
-            data.push({ key: item.portfolioProductId.toString(), productTypeId: item.productTypeId, productName: item.productName, financialInstitutionName: item.financialInstitutionName, equity: item.equity, profitability: item.profitability })
+        dataApi.map((item) => { 
+            data.push({ key: item.portfolioProductId.toString(), productTypeId: item.productTypeId, productName: item.productName, financialInstitutionName: item.financialInstitutionName, equity: this.numberToReal(item.equity), profitability: item.profitability.toFixed(2).toString().replace(".", ",") })
         })
 
         await this.setState({ data: data,datasource:data, isFetching: false })
@@ -54,6 +55,12 @@ export default class Products extends Component {
 
         this.setState({ datasource: newData,text });
     };
+
+     numberToReal(numero) {
+        var numero = numero.toFixed(2).split('.');
+        numero[0] =  numero[0].split(/(?=(?:...)*$)/).join('.');
+        return numero.join(',');
+    }
 
 
     render() {
