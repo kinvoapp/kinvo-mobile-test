@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
     headerTextStyle: {
         
     },
-    bodyTextStyle: {
-        fontWeight: 'bold',
+    bodyTextStyle: {  
+        fontWeight: '900',
         fontSize: 14,
-        color: '#CCCFD1',
+        color: '#707B81',
         paddingLeft:5
     }
 

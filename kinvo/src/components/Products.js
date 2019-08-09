@@ -77,7 +77,7 @@ export default class Products extends Component {
                         round
                         autoCorrect={false}
                         clearIcon={false}
-                        cancelIcon={<Icon name='search' color='#9DA5AC' />} 
+                        cancelIcon={<Icon name='search' color='#9DA5AC' size={22} />} 
                         searchIcon= {<Icon name='search' color='#9DA5AC' size={22}/>} 
                     />
                 </View>
