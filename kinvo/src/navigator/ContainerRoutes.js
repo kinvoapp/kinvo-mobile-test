@@ -3,6 +3,7 @@ import React from 'react';
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import { Image } from 'react-native'
 import CarteiraRoute from './CarteiraRoute'
+import Working from '../components/Working'
 
 
 
@@ -14,7 +15,7 @@ import CarteiraRoute from './CarteiraRoute'
 const ContainerRoutes = createAppContainer(
   createBottomTabNavigator({
     Resumo: {
-      screen: () => null,
+      screen: Working,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/resumo.png')} />
       }
@@ -26,19 +27,19 @@ const ContainerRoutes = createAppContainer(
       }
     },
     Plus: {
-      screen: () => null,
+      screen: Working,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/plus.png')} />
       }
     },
     Premium: {
-      screen: () => null,
+      screen: Working,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/premium.png')} />
       }
     },
     Conta: {
-      screen: () => null,
+      screen: Working,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/conta.png')} />
       }
