@@ -1,15 +1,15 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
-
 import Products from '../components/Products'
+import { createMaterialTopTabNavigator } from 'react-navigation';
+import TabBar from '../components/TabBar';
 
 
 const WidthTab = (Dimensions.get('screen').width / 3) * 0.85
 
 
 
-import { createMaterialTopTabNavigator, MaterialTopTabBar } from 'react-navigation';
-import TabBar from '../components/TabBar';
+
 
 const CarteiraRoute = createMaterialTopTabNavigator({
   Carteira: {
