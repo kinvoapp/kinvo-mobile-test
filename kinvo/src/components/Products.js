@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, FlatList } from 'react-native'
+import {  StyleSheet, View, FlatList } from 'react-native'
 import Product from './Product'
 import api from '../service/api'
 import { SearchBar } from 'react-native-elements';
@@ -12,36 +12,37 @@ export default class Products extends Component {
         super(props);
         datasource = [];
 
-        this.state = { data: '', isFetching: false, datasource, text:'' }
+        this.state = { data: '', isFetching: false, datasource, text: '' }
     }
 
     async componentDidMount() {
-        await this.getPools();
+        await this.getProducts();
 
     }
 
 
-    async  getPools() {
+    async  getProducts() {
         this.setState({ isFetching: true });
         let response
         try {
-            response = await api.get(); 
+            response = await api.get();
 
         } catch (error) {
             // Tratamento do erro
         }
         dataApi = response.data.data;
         var data = [];
-        dataApi.map((item) => { 
+        dataApi.map((item) => {
             data.push({ key: item.portfolioProductId.toString(), productTypeId: item.productTypeId, productName: item.productName, financialInstitutionName: item.financialInstitutionName, equity: this.numberToReal(item.equity), profitability: item.profitability.toFixed(2).toString().replace(".", ",") })
         })
 
-        await this.setState({ data: data,datasource:data, isFetching: false })
+        await this.setState({ data: data, datasource: data, isFetching: false })
 
     }
 
     onRefresh() {
-        this.getPools();
+        this.setState({ text: '' })
+        this.getProducts();
     }
 
     searchFilterFunction = text => {
@@ -53,12 +54,12 @@ export default class Products extends Component {
             return itemData.indexOf(textData) > -1;
         });
 
-        this.setState({ datasource: newData,text });
+        this.setState({ datasource: newData, text });
     };
 
-     numberToReal(numero) {
+    numberToReal(numero) {
         var numero = numero.toFixed(2).split('.');
-        numero[0] =  numero[0].split(/(?=(?:...)*$)/).join('.');
+        numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
         return numero.join(',');
     }
 
@@ -77,8 +78,8 @@ export default class Products extends Component {
                         round
                         autoCorrect={false}
                         clearIcon={false}
-                        cancelIcon={<Icon name='search' color='#9DA5AC' size={22} />} 
-                        searchIcon= {<Icon name='search' color='#9DA5AC' size={22}/>} 
+                        cancelIcon={<Icon name='search' color='#9DA5AC' size={22} />}
+                        searchIcon={<Icon name='search' color='#9DA5AC' size={22} />}
                     />
                 </View>
 

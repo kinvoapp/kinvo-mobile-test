@@ -13,7 +13,7 @@ import CarteiraRoute from './CarteiraRoute'
 
 const ContainerRoutes = createAppContainer(
   createBottomTabNavigator({
-    Resumo: { 
+    Resumo: {
       screen: () => null,
       navigationOptions: {
         tabBarLabel: <Image source={require('../imagens/resumo.png')} />
@@ -48,13 +48,12 @@ const ContainerRoutes = createAppContainer(
 
   },
     {
-      initialRouteName: 'Carteira',
-      tabBarPosition: 'top',
-      tabBarOptions:{
-        style:{height:70,paddingBottom:5},
+      initialRouteName: 'Carteira', 
+      tabBarOptions: {
+        style: { height: 70, paddingBottom: 5 },
       }
     },
-    
+
 
   )
 );
