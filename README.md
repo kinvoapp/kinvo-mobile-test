@@ -15,8 +15,8 @@ Click in image for watch video...
 ```shell
 - Enviroment Android SDK working properly
 - git clone this repository
-- change branch -> bruno96Araujo
 - cd repository/kinvoapp/KinvoApp
+- change branch -> bruno96Araujo
 - npm install
 - react-native link -> (RN < 0.60)
 - npm start
