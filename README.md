@@ -5,6 +5,7 @@
 
 A app for get financial products of an api.
 
+### FIRST READ ALL!!!
 
 Click in image for watch video...
 
