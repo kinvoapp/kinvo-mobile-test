@@ -1,70 +1,94 @@
-> ![Logo Kinvo](https://github.com/kinvoapp/kinvo-mobile-test/blob/master/logo.svg)
+![image](https://github.com/arjdev69/kinvoapp/blob/master/KinvoApp/src/icons/logo.svg)
 
-# Teste para candidatos à vaga de Desenvolvedor(a) Mobile 
+# KinvoApp &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-BSD-red.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+> KinvoApp Test Mobile
 
-## Instruções:
+A app for get financial products of an api.
 
-1. Faça um fork deste repositório;
-2. Implemente o layout disponível;
-3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
-4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
+
+Click in image for watch video...
+
+[![Watch the video](https://github.com/arjdev69/kinvoapp/blob/master/KinvoApp/src/icons/kinvoScreenShot.jpeg)](https://youtu.be/pTopqPiiINA)
+
+## Installing / Getting started
+
+```shell
+- Enviroment Android SDK working properly
+- git clone this repository
+- change branch -> bruno96Araujo
+- cd repository/kinvoapp/KinvoApp
+- npm install
+- react-native link -> (RN < 0.60)
+- npm start
+- react-native run-android
+```
+
+### Libs necessary links
+```
+- react-native-config
+- react-native-gesture-handler
+- react-native-reanimated
+- react-native-tab-view
+```
+
+### if you have not Android Emulator
 
 ```
-   FUNDS = 1;
-   PENSION = 2;
-   POST_FIXED_INCOME = 3;
-   TREASURY_DIRECT = 4;
-   SAVINGS = 5;
-   PRE_FIXED_INCOME = 6;
-   BITCOIN = 7;
-   STOCK = 8;
-   DEBENTURES = 9;
-   CURRENCY = 10;
-   FII = 11;
-   BDR = 12;
+- Connect usb cabe in smartphone and in your PC.
 
-  stock: '#4C309B',
-  fii: '#4141D5',
-  bdr: '#9390E5',
-  bitcoin: '#3E71B9',
-  debentures: '#86B2DE',
-  funds: '#008DCB',
-  savings: '#5AAAD5',
-  pension: '#D5A82C',
-  postFixedIncome: '#94E5D2',
-  preFixedIncome: '#38BFA0',
-  treasureDirect: '#86B2DE',
-  currency: '#B9B42C',
+- Open Terminal in your project directory
+- /home/android/platform-tools/./adb reverse tcp:8081 tcp:8081
+- react-native run-android
 
-  ```
+# Changes in Code. Use: 
+- /home/android/platform-tools/./adb shell input keyevent 46 46
+```
 
-5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+## Developing
 
+### Built With
+* NodeJS LTS
+* React Native 0.60
 
-### Pré-requisitos:
+### Setting up Dev
+##### Dependencie
+* react-native-config
 
-* Deve ser possível filtrar os produtos listados;
-* Testes unitários;
-* Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
+Create the file *.env* in your root directory project.
 
+Example File: 
 
-* **Importante:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :-)
+```shell
+REACT_APP_API_URL=https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io
 
-### Ganhe pontos extras por:
+REACT_APP_API_KEY=AIzasfghBdscVsddZsBv1EwvZsdscC2G8DpvzC7H83Fw
 
-* Componentizar sua interface;
-* Desenvolver o app utilizando `React Native`
-* Utilizar ECMAScript 6+;
+...
+REACT_APP...`like this successively`
+```
 
-## Material:
+### Deploying / Publishing
 
-* O layout em formato Adobe XD consta no repositório em [/material](/material);
-* Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
+Follow steps -> https://facebook.github.io/react-native/docs/signed-apk-android
 
+or use Android Studio.
 
-## Submissão
+## Tests
 
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
+Running Tests
 
-**Sucesso!**
+```shell
+npm run test
+```
+
+## Api Reference
+
+Following steps *Setting up Dev*
+
+### API:  https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts 
+
+## Licensing
+
+Lincense BSD
+
+https://pt.wikipedia.org/wiki/Licen%C3%A7a_BSD
