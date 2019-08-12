@@ -15,7 +15,7 @@ Click in image for watch video...
 
 ```shell
 - Enviroment Android SDK working properly
-- git clone this repository
+- git clone this repository or git clone https://github.com/arjdev69/kinvoapp.git
 - cd repository/kinvoapp/KinvoApp
 - change branch -> bruno96Araujo
 - npm install
