@@ -25,7 +25,7 @@ Click in image for watch video...
 
 ### Libs necessary links
 ```
-- react-native-config -> https://github.com/luggit/react-native-config -> Step Android and IOS
+- react-native-config -> Important follow step lib on github. LINK: https://github.com/luggit/react-native-config
 - react-native-gesture-handler
 - react-native-reanimated
 - react-native-tab-view
