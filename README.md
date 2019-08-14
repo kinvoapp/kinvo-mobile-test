@@ -24,6 +24,7 @@ Click in image for watch video...
 - npm install
 - react-native link -> (RN < 0.60)
 - npm start
+- Setup local.properties in folder android. (Path SDK Android in your machine)
 - react-native run-android
 ```
 
@@ -65,10 +66,6 @@ Example File:
 ```shell
 REACT_APP_API_URL=https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io
 
-REACT_APP_API_KEY=AIzasfghBdscVsddZsBv1EwvZsdscC2G8DpvzC7H83Fw
-
-...
-REACT_APP...`like this successively`
 ```
 
 ### Deploying / Publishing
