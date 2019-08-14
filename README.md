@@ -7,7 +7,7 @@ A app for get financial products of an api.
 
 ### Install APK
 
-https://github.com/arjdev69/kinvoapp/blob/master/kinvoapp.apk
+https://github.com/arjdev69/kinvoapp/blob/master/kinvo.apk
 
 ### FIRST READ ALL!!!
 
