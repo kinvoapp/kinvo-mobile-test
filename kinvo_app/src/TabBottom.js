@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet, View, Alert,
 } from 'react-native';
@@ -12,6 +12,8 @@ import Resumo from './Tab/Resumo';
 import Conta from './Tab/Conta';
 import Pages from './Tab/Pages';
 import BottomIcon from './Components/BottomIcon';
+import InputModal from './Components/InputModal';
+import { firebaseDatabase } from '../utils/firebase';
 
 const styles = StyleSheet.create({
   container: {
@@ -54,14 +56,34 @@ const bottomList = [
 
 const TabBottom = () => {
   const [selected, setSelected] = useState(1);
-
+  const [modalAddVisible, setModalAddVisible] = useState(false);
   const onPageSelect = (id) => {
     setSelected(id);
   };
 
   const onButtonClicked = () => {
-    Alert.alert('Add', 'Add a  product');
+    setModalAddVisible(true);
   };
+
+  const onBtnAddPressed = (newProduct, productTypeId) => {
+    setModalAddVisible(false);
+    const {
+      productName, financialInstitutionName, equity, profitability,
+    } = newProduct;
+    firebaseDatabase.ref('data').push(
+      {
+        productName,
+        financialInstitutionName,
+        equity,
+        profitability,
+        productTypeId,
+        portfolioProductId: Math.random(),
+      },
+    ).catch((erro) => {
+      Alert.alert('Erro', `${erro}`);
+    });
+  };
+
   const Tabs = [{
     id: 0,
     page: <Resumo />,
@@ -84,13 +106,15 @@ const TabBottom = () => {
   },
   ];
 
-  useEffect(() => {
-
-  }, []);
-
-
   return (
     <View style={styles.container}>
+      <InputModal
+        title="Novo Produto"
+        visible={modalAddVisible}
+        onClose={() => setModalAddVisible(false)}
+        textBtn="ADICIONAR PRODUTO"
+        onBtnPress={(newProduct, id) => onBtnAddPressed(newProduct, id)}
+      />
       <View style={styles.pageView}>
         {Tabs[selected].page}
       </View>

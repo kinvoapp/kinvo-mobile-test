@@ -35,7 +35,7 @@ const Produtos = () => {
   const isMounted = React.useRef(true);
   const [mySaldo, setMySaldo] = useState(0);
   const updateList = () => {
-    firebaseDatabase.ref('data').once('value', (dataSnapshot) => {
+    firebaseDatabase.ref('data').on('value', (dataSnapshot) => {
       const items = [];
       dataSnapshot.forEach((childSnapshot) => {
         const item = childSnapshot.val();
@@ -49,7 +49,7 @@ const Produtos = () => {
   };
 
   const getSaldo = () => {
-    firebaseDatabase.ref('user').once('value', (dataSnapshot) => {
+    firebaseDatabase.ref('user').on('value', (dataSnapshot) => {
       const { saldo } = dataSnapshot.val();
       setMySaldo(saldo);
     });
