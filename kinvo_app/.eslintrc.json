@@ -1,0 +1,29 @@
+{
+  "env": {
+      "es6": true
+  },
+  "extends": [
+      "prettier",
+      "airbnb"
+  ],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "fetch": false,
+      "it": false
+  },
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react"
+  ],
+  "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts"] }],
+      "react/prop-types": [0, {}]
+  }
+}
