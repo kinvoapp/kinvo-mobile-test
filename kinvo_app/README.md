@@ -18,7 +18,7 @@ https://codeburst.io/setting-up-development-environment-using-react-native-on-wi
 - react-native link (if you are using React Native < 0.6)
 - react-native run-android
 ```
-If you got this erro: app:validateSigningDebug FAILED
+If you got this error: app:validateSigningDebug FAILED
 Do this on "repository/kinvo_app/android/app
 ```
 keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000
