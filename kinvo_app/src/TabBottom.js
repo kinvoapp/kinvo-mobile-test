@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, View, Alert, Text,
+  StyleSheet, View, Alert,
 } from 'react-native';
 import ViewPager from '@react-native-community/viewpager';
 import ResumoImg from '../assets/Icons/resumo_icon.png';
@@ -97,7 +97,7 @@ const TabBottom = () => {
   },
   {
     id: 1,
-    page: <Pages backPage={() => setSelected(0)} />,
+    page: <Pages backPage={() => onPageSelect(0)} />,
     title: 'Carteira',
   },
   {

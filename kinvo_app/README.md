@@ -1,8 +1,10 @@
 ![Logo of the project](./assets/logo.png)
 
-# Name of the project &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+# Name of the project &middot; [![Kinvo Test App](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
 A test for Kinvo App
+Check this video to see a preview:
+https://drive.google.com/file/d/1-FTvEcOK3a4mM6FKiLV0YGFhqQlHWNx7/view?usp=sharing
 
 ## Installing / Getting started
 
@@ -18,6 +20,8 @@ https://codeburst.io/setting-up-development-environment-using-react-native-on-wi
 ```
 
 Remeber you need an Android emulator or a smartphone with Android to run.
+
+*If you are using a smartphone, remember to turn on the Debugging mode.
 
 ## Developing
 

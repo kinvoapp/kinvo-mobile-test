@@ -32,10 +32,9 @@ const Produtos = () => {
   const [productList, setProductList] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const isMounted = React.useRef(true);
   const [mySaldo, setMySaldo] = useState(0);
   const updateList = () => {
-    firebaseDatabase.ref('data').on('value', (dataSnapshot) => {
+    firebaseDatabase.ref('data').once('value', (dataSnapshot) => {
       const items = [];
       dataSnapshot.forEach((childSnapshot) => {
         const item = childSnapshot.val();
@@ -49,7 +48,7 @@ const Produtos = () => {
   };
 
   const getSaldo = () => {
-    firebaseDatabase.ref('user').on('value', (dataSnapshot) => {
+    firebaseDatabase.ref('user').once('value', (dataSnapshot) => {
       const { saldo } = dataSnapshot.val();
       setMySaldo(saldo);
     });
@@ -71,7 +70,7 @@ const Produtos = () => {
   }, []);
 
   useEffect(() => () => {
-    isMounted.current = false;
+
   }, []);
 
 
