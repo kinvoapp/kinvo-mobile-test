@@ -30,6 +30,8 @@ target 'kinvo_app' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNCViewpager', :path => '../node_modules/@react-native-community/viewpager'
+
   target 'kinvo_appTests' do
     inherit! :search_paths
     # Pods for testing

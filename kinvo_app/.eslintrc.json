@@ -1,6 +1,7 @@
 {
   "env": {
-      "es6": true
+      "es6": true,
+      "jest":true
   },
   "extends": [
       "prettier",
@@ -10,7 +11,10 @@
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly",
       "fetch": false,
-      "it": false
+      "it": false,
+      "expect":false,
+      "describe":false,
+      "shallow":false
   },
   "parserOptions": {
       "ecmaFeatures": {

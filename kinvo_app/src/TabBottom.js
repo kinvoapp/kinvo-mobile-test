@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, View, Alert,
+  StyleSheet, View, Alert, Text,
 } from 'react-native';
+import ViewPager from '@react-native-community/viewpager';
 import ResumoImg from '../assets/Icons/resumo_icon.png';
 import CarteiraImg from '../assets/Icons/carteira_icon.png';
 import ContaImg from '../assets/Icons/conta_icon.png';
@@ -57,8 +58,12 @@ const bottomList = [
 const TabBottom = () => {
   const [selected, setSelected] = useState(1);
   const [modalAddVisible, setModalAddVisible] = useState(false);
+  const [MyViewPager, setMyViewPager] = useState(React.createRef());
   const onPageSelect = (id) => {
     setSelected(id);
+    if (MyViewPager !== null) {
+      MyViewPager.current.setPage(id);
+    }
   };
 
   const onButtonClicked = () => {
@@ -83,6 +88,7 @@ const TabBottom = () => {
       Alert.alert('Erro', `${erro}`);
     });
   };
+
 
   const Tabs = [{
     id: 0,
@@ -115,9 +121,27 @@ const TabBottom = () => {
         textBtn="ADICIONAR PRODUTO"
         onBtnPress={(newProduct, id) => onBtnAddPressed(newProduct, id)}
       />
-      <View style={styles.pageView}>
-        {Tabs[selected].page}
-      </View>
+      {/*  <View style={styles.pageView}>
+      </View> */}
+      <ViewPager
+        style={{ flex: 1 }}
+        initialPage={selected}
+        ref={MyViewPager}
+        onPageSelected={event => setSelected(event.nativeEvent.position)}
+      >
+        <View key="0">
+          {Tabs[0].page}
+        </View>
+        <View key="1">
+          {Tabs[1].page}
+        </View>
+        <View key="2">
+          {Tabs[2].page}
+        </View>
+        <View key="3">
+          {Tabs[3].page}
+        </View>
+      </ViewPager>
       <View style={styles.bottomBar}>
         {
             bottomList.map((item, index) => {

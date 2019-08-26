@@ -1,0 +1,1011 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0,0,0,0.7)",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#F5F8FA",
+            "borderRadius": 2,
+            "elevation": 3,
+            "marginHorizontal": 70,
+            "padding": 10,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            NOVO PRODUTO
+          </Text>
+          <View
+            accessible={true}
+            clickable={true}
+            isTVSelectable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "elevation": 5,
+                "marginBottom": 10,
+                "marginRight": 5,
+                "opacity": 1,
+              }
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "#900",
+                    "fontSize": 25,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "FontAwesome",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "white",
+              "borderColor": "#BBB",
+              "borderRadius": 2,
+              "borderWidth": 1,
+              "width": "100%",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "padding": 5,
+              }
+            }
+          >
+            <RCTPicker
+              items={
+                Array [
+                  Object {
+                    "label": "FUNDS",
+                    "textColor": undefined,
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "PENSION",
+                    "textColor": undefined,
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "POST FIXED INCOME",
+                    "textColor": undefined,
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "TREASURY DIRECT",
+                    "textColor": undefined,
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "SAVING",
+                    "textColor": undefined,
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "PRE FIXED INCOME",
+                    "textColor": undefined,
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "BITCOIN",
+                    "textColor": undefined,
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "STOCK",
+                    "textColor": undefined,
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "DEBENTURES",
+                    "textColor": undefined,
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "CURRENCY",
+                    "textColor": undefined,
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "FII",
+                    "textColor": undefined,
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "BDR",
+                    "textColor": undefined,
+                    "value": 12,
+                  },
+                ]
+              }
+              onChange={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              selectedIndex={0}
+              style={
+                Array [
+                  Object {
+                    "height": 216,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "padding": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 12,
+              }
+            }
+          >
+            Nome
+          </Text>
+          <TextInput
+            allowFontScaling={true}
+            maxLength={60}
+            onChangeText={[Function]}
+            rejectResponderTermination={true}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 1,
+                "height": 40,
+                "paddingHorizontal": 5,
+                "width": "100%",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "padding": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 12,
+              }
+            }
+          >
+            Instituição financeira
+          </Text>
+          <TextInput
+            allowFontScaling={true}
+            maxLength={60}
+            onChangeText={[Function]}
+            rejectResponderTermination={true}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 1,
+                "height": 40,
+                "paddingHorizontal": 5,
+                "width": "100%",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "padding": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 12,
+              }
+            }
+          >
+            Equity
+          </Text>
+          <TextInput
+            allowFontScaling={true}
+            keyboardType="number-pad"
+            maxLength={60}
+            onChangeText={[Function]}
+            rejectResponderTermination={true}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 1,
+                "height": 40,
+                "paddingHorizontal": 5,
+                "width": "100%",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "padding": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 12,
+              }
+            }
+          >
+            Rentabilidade
+          </Text>
+          <TextInput
+            allowFontScaling={true}
+            keyboardType="number-pad"
+            maxLength={60}
+            onChangeText={[Function]}
+            rejectResponderTermination={true}
+            style={
+              Object {
+                "backgroundColor": "white",
+                "borderRadius": 1,
+                "height": 40,
+                "paddingHorizontal": 5,
+                "width": "100%",
+              }
+            }
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0DD1E3",
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "width": "100%",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 14,
+              }
+            }
+          >
+            ADICIONAR PRODUTO
+          </Text>
+        </View>
+      </View>
+    </View>
+  </Modal>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "flex": 1,
+          "marginTop": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "height": 50,
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 50,
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "#707B81",
+                  "fontSize": 13,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "FontAwesome",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "height": 50,
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 233.33333333333334,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 16,
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Carteira
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#F5F8FA",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "height": 50,
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 233.33333333333334,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 16,
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Produtos
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "white",
+              "height": 50,
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 233.33333333333334,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#707B81",
+                "fontFamily": "SF-Pro-Display-Semibold",
+                "fontSize": 16,
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Extrato
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#F5F8FA",
+              "flex": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "padding": 20,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <TextInput
+                allowFontScaling={true}
+                onChangeText={[Function]}
+                rejectResponderTermination={true}
+                style={
+                  Object {
+                    "backgroundColor": "white",
+                    "borderRadius": 29,
+                    "fontFamily": "SF-Pro-Display-Medium",
+                    "fontSize": 14,
+                    "height": 35,
+                    "paddingLeft": 50,
+                    "paddingRight": 20,
+                    "textAlignVertical": "center",
+                  }
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#9DA5AC",
+                      "fontSize": 18,
+                    },
+                    Object {
+                      "position": "absolute",
+                      "transform": Array [
+                        Object {
+                          "translateX": 16,
+                        },
+                        Object {
+                          "translateY": 8,
+                        },
+                      ],
+                    },
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <RCTScrollView
+              ItemSeparatorComponent={[Function]}
+              ListEmptyComponent={
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "marginTop": 10,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "fontFamily": "SF-Pro-Display-Medium",
+                      }
+                    }
+                  >
+                    Nada encontrado!
+                  </Text>
+                </View>
+              }
+              data={Array []}
+              disableVirtualization={false}
+              getItem={[Function]}
+              getItemCount={[Function]}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              numColumns={1}
+              onContentSizeChange={[Function]}
+              onEndReachedThreshold={2}
+              onLayout={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onRefresh={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              refreshControl={
+                <RefreshControlMock
+                  onRefresh={[Function]}
+                  refreshing={true}
+                />
+              }
+              refreshing={true}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              stickyHeaderIndices={Array []}
+              updateCellsBatchingPeriod={50}
+              viewabilityConfigCallbackPairs={Array []}
+              windowSize={21}
+            >
+              <RCTRefreshControl />
+              <View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "justifyContent": "center",
+                      "marginTop": 10,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      Object {
+                        "fontFamily": "SF-Pro-Display-Medium",
+                      }
+                    }
+                  >
+                    Nada encontrado!
+                  </Text>
+                </View>
+              </View>
+            </RCTScrollView>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "borderColor": "#DAE0E3",
+        "borderTopWidth": 1,
+        "flexDirection": "row",
+        "height": 65,
+        "width": "100%",
+      }
+    }
+  >
+    <View>
+      <View
+        accessible={true}
+        clickable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 150,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../assets/Icons/resumo_icon.png",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "width": 25,
+              },
+              Object {},
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#707B81",
+                "fontSize": 10,
+              },
+              Object {},
+            ]
+          }
+        >
+          Resumo
+        </Text>
+      </View>
+    </View>
+    <View>
+      <View
+        accessible={true}
+        clickable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 150,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../assets/Icons/carteira_icon.png",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "width": 25,
+              },
+              Object {
+                "tintColor": "#0DD1E3",
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#707B81",
+                "fontSize": 10,
+              },
+              Object {
+                "color": "#0DD1E3",
+              },
+            ]
+          }
+        >
+          Carteira
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "height": "100%",
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 150,
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../assets/Icons/add_icon.png",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 25,
+                  "width": 25,
+                },
+                Object {
+                  "height": 50,
+                  "width": 50,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View>
+        <View
+          accessible={true}
+          clickable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "height": "100%",
+              "justifyContent": "center",
+              "opacity": 1,
+              "width": 150,
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../assets/Icons/premium_icon.png",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 25,
+                  "width": 25,
+                },
+                Object {},
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#707B81",
+                  "fontSize": 10,
+                },
+                Object {},
+              ]
+            }
+          >
+            Premium
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View>
+      <View
+        accessible={true}
+        clickable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 150,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../assets/Icons/conta_icon.png",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "height": 25,
+                "width": 25,
+              },
+              Object {},
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#707B81",
+                "fontSize": 10,
+              },
+              Object {},
+            ]
+          }
+        >
+          Conta
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
