@@ -1,4 +1,4 @@
-![Logo of the project](./images/logo.sample.png)
+![Logo of the project](./assets/logo.png)
 
 # Name of the project &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
@@ -54,7 +54,8 @@ The initial state of the DB was based on:
 https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io
 
 Firebase Realtime Database was used.
-*Beacuse the app can put new values on database.*
+-The app reads the values of RTDB
+-The app puts new values on RTFB
 
 ## Licensing
 
