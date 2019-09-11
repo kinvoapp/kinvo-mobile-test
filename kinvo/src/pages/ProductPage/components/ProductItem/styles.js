@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     margin: 1
   },
   header: {
-    flex: 1
+    flex: 1,
+    marginLeft: 2
   },
   body: {
     flex: 1,

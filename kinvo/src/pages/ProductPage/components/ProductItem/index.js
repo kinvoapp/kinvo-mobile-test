@@ -1,80 +1,35 @@
-import React, { Component } from "react";
-import { Text, View } from "react-native";
+import React from "react";
 import ProductType from "../../../../util/productType";
-import styles from "./styles";
 import { formatMoney, formatProfitability } from "../../../../util/formatter";
+import Presentational from "./presentational";
 
-export default class Product extends Component {
-  constructor(props) {
-    super(props);
-    const { item } = this.props;
+formatItem = item => {
+  productTypeId = item.productTypeId;
+  productName = item.productName;
+  financialInstitutionName = item.financialInstitutionName;
+  equity = formatMoney(item.equity);
+  profitability = formatProfitability(item.profitability);
+  color = ProductType.getColor(item.productTypeId);
 
-    productTypeId = item.productTypeId;
-    productName = item.productName;
-    financialInstitutionName = item.financialInstitutionName;
-    equity = formatMoney(item.equity);
-    profitability = formatProfitability(item.profitability);
-    color = ProductType.getColor(item.productTypeId);
-
-    this.state = {
-      productName,
-      financialInstitutionName,
-      equity,
-      profitability,
-      color
-    };
-  }
-
-  renderFooter = () => {
-    return (
-      <View style={styles.footer}>
-        <View style={styles.equityContainerStyle}>
-          <Text style={styles.equityTextStyle}>SALDO ATUAL</Text>
-          <Text style={[styles.valueTextStyle, { color: this.state.color }]}>
-            R${this.state.equity}
-          </Text>
-        </View>
-
-        <View style={styles.profitabilityContainerStyle}>
-          <Text style={styles.profitabilityTextStyle}>RENTABILIDADE</Text>
-          <Text style={[styles.valueTextStyle, { color: this.state.color }]}>
-            {this.state.profitability}%
-          </Text>
-        </View>
-      </View>
-    );
+  const formattedItem = {
+    productTypeId,
+    productName,
+    financialInstitutionName,
+    equity,
+    profitability,
+    color
   };
 
-  renderHeader = () => {
-    return (
-      <View style={styles.header}>
-        <Text style={[styles.textHeaderstyle, { color: this.state.color }]}>
-          {" "}
-          {this.state.financialInstitutionName}{" "}
-        </Text>
-      </View>
-    );
-  };
+  return formattedItem;
+};
 
-  renderBody = () => {
-    return (
-      <View style={[styles.body, { borderLeftColor: this.state.color }]}>
-        <Text style={styles.bodyTextStyle}>{this.state.productName}</Text>
-      </View>
-    );
-  };
+listProductItem = props => {
+  const { item } = props;
 
-  render() {
-    const footer = this.renderFooter();
-    const header = this.renderHeader();
-    const body = this.renderBody();
+  const formattedItem = formatItem(item);
+  return React.createElement(Presentational, {
+    formattedItem
+  });
+};
 
-    return (
-      <View style={styles.container}>
-        {header}
-        {body}
-        {footer}
-      </View>
-    );
-  }
-}
+export default listProductItem;
