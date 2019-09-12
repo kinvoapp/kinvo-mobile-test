@@ -9,7 +9,7 @@ export default class Products extends Component {
     super(props);
     searchedProducts = [];
     this.state = {
-      formattedProducts: "",
+      formattedProducts: [],
       isFetching: false,
       searchedProducts,
       searchText: "",
