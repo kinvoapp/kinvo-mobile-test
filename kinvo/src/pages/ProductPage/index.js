@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import ProductApi from "../../service/products/ProductApi";
 import Presentational from "./presentational";
+import { formatMoney, formatProfitability } from "../../util/formatter";
+import ProductType from "../../util/productType";
 
 export default class Products extends Component {
   constructor(props) {
     super(props);
-    datasource = [];
-    this.state = { data: "", isFetching: false, datasource, searchText: "" };
+    searchedProducts = [];
+    this.state = {
+      formattedProducts: "",
+      isFetching: false,
+      searchedProducts,
+      searchText: "",
+      error: false
+    };
   }
 
   async componentDidMount() {
@@ -14,58 +22,92 @@ export default class Products extends Component {
   }
 
   getProducts = async () => {
-    this.setState({ isFetching: true });
-    let response;
+    this.setState(prevState => ({
+      ...prevState,
+      isFetching: true
+    }));
     try {
-      response = await ProductApi.getProducts();
+      const response = await ProductApi.getProducts();
+      const httpResponse = response.data;
+      const products = httpResponse.data;
+
+      const formattedProducts = this.formatProducts(products);
+
+      await this.setState({
+        formattedProducts: formattedProducts,
+        searchedProducts: formattedProducts,
+        isFetching: false,
+        searchText: ""
+      });
     } catch (error) {
-      // Tratamento do erro
+      this.handleError();
     }
-    let dataApi = response.data.data;
-    var data = [];
-    dataApi.map(item => {
-      data.push({
-        key: item.portfolioProductId.toString(),
-        productTypeId: item.productTypeId,
-        productName: item.productName,
-        financialInstitutionName: item.financialInstitutionName,
-        equity: item.equity,
-        profitability: item.profitability
+  };
+
+  handleError = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      error: true
+    }));
+  };
+
+  formatProducts = products => {
+    let formattedProducts = [];
+    products.map(product => {
+      formattedProducts.push({
+        key: product.portfolioProductId.toString(),
+        productTypeId: product.productTypeId,
+        productName: product.productName,
+        financialInstitutionName: product.financialInstitutionName,
+        equity: formatMoney(product.equity),
+        profitability: formatProfitability(product.profitability),
+        colorOfProduct: ProductType.getColor(product.productTypeId)
       });
     });
 
-    await this.setState({
-      data: data,
-      datasource: data,
-      isFetching: false,
-      text: ""
-    });
+    return formattedProducts;
   };
 
-  onRefresh = () => {
-    this.setState({ searchText: "" });
+  onRefreshProductsList = () => {
+    this.clearSearchText();
     this.getProducts();
   };
 
-  searchFilterFunction = searchText => {
-    const newData = this.state.data.filter(item => {
-      const itemData = item.productName.toUpperCase();
+  clearSearchText = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      searchText: ""
+    }));
+  };
 
-      const textData = searchText.toUpperCase();
+  filterProducts = searchText => {
+    const { formattedProducts } = this.state;
 
-      return itemData.indexOf(textData) > -1;
-    });
+    matchesSearch = product => {
+      const productName = product.productName.toUpperCase();
 
-    this.setState({ datasource: newData, searchText });
+      const searchedText = searchText.toUpperCase();
+
+      const productMatch = productName.indexOf(searchedText) > -1;
+      return productMatch;
+    };
+
+    const searchedProducts = formattedProducts.filter(matchesSearch);
+
+    this.setState(prevState => ({
+      ...prevState,
+      searchedProducts,
+      searchText
+    }));
   };
 
   render() {
-    const { searchFilterFunction, onRefresh } = this;
+    const { filterProducts, onRefreshProductsList } = this;
 
     return React.createElement(Presentational, {
       ...this.state,
-      searchFilterFunction,
-      onRefresh
+      filterProducts,
+      onRefreshProductsList
     });
   }
 }

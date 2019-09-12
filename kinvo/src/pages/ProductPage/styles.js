@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     height: 43,
     borderRadius: 20,
     backgroundColor: "#FFFFFF"
+  },
+  containerTextEmptyProductList: {
+    alignSelf:'center'
+  },
+  containerTextError: {
+    alignSelf:'center'
   }
 });
 

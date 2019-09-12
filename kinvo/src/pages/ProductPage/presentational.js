@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, FlatList, ActivityIndicator } from "react-native";
+import { View, FlatList, ActivityIndicator, Text } from "react-native";
 import Product from "./components/ProductItem";
 import { SearchBar } from "react-native-elements";
 import Icon from "react-native-vector-icons/Feather";
@@ -9,23 +9,26 @@ import styles from "./styles";
 export default function Presentational(props) {
   const {
     isFetching,
-    datasource,
-    searchFilterFunction,
-    onRefresh,
-    searchText
+    searchedProducts,
+    filterProducts,
+    onRefreshProductsList,
+    searchText,
+    error
   } = props;
 
   renderLoading = () => <ActivityIndicator size="large" color={"black"} />;
 
   renderFilteredProductsList = () => (
     <FlatList
-      data={datasource}
-      onRefresh={() => onRefresh()}
+      data={searchedProducts}
+      onRefresh={() => onRefreshProductsList()}
       refreshing={isFetching}
-      renderItem={({ item }) => <Product item={item} />}
+      renderItem={renderProduct}
       showsVerticalScrollIndicator={false}
     />
   );
+
+  renderProduct = ({ item }) => <Product formattedItem={item} />;
 
   renderSearchBar = () => {
     return (
@@ -35,7 +38,7 @@ export default function Presentational(props) {
           containerStyle={styles.searchBarContainerStyle}
           inputContainerStyle={styles.searchBarInputContainerStyle}
           value={searchText}
-          onChangeText={searchText => searchFilterFunction(searchText)}
+          onChangeText={searchText => filterProducts(searchText)}
           lightTheme
           round
           autoCorrect={false}
@@ -47,11 +50,32 @@ export default function Presentational(props) {
     );
   };
 
+  renderWhenFilteredProductsIsEmpty = () => (
+    <View style={styles.containerTextEmptyProductList}>
+      <Text>Nenhum Produto Encontrado</Text>
+    </View>
+  );
+
+  renderError = () => (
+    <View style={styles.containerTextError}>
+      <Text>Parece que temos alguns gatos bagunçando o sistema</Text>
+    </View>
+  );
+
   const renderContent = () => {
-    if (isFetching) {
-      return renderLoading();
+    if (error) {
+      return renderError();
+    } else {
+      if (isFetching) {
+        return renderLoading();
+      } else {
+        const isEmptyFilterProducts = searchedProducts.length === 0;
+        if (isEmptyFilterProducts) {
+          return renderWhenFilteredProductsIsEmpty();
+        }
+        return renderFilteredProductsList();
+      }
     }
-    return renderFilteredProductsList();
   };
 
   const content = renderContent();
@@ -67,14 +91,14 @@ export default function Presentational(props) {
 
 Presentational.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  datasource: PropTypes.array,
-  searchFilterFunction: PropTypes.func.isRequired,
-  onRefresh: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  searchedProducts: PropTypes.array,
+  filterProducts: PropTypes.func.isRequired,
+  onRefreshProductsList: PropTypes.func.isRequired,
+  searchText: PropTypes.string,
+  error: PropTypes.bool.isRequired
 };
 
 Presentational.defaultProps = {
-  text: "",
-  datasource: [],
-  isFetching: true
+  searchText: "",
+  searchedProducts: []
 };

@@ -14,78 +14,79 @@ export default class ProductType {
   static FII = 11;
   static BDR = 12;
 
-  static styles = {
-    1: {
+  static list = [
+    {
+      id: ProductType.FUNDS,
       name: "Fundo",
       color: colors.funds
     },
-    2: {
+     {
+      id: ProductType.PENSION,
       name: "Previdência",
       color: colors.pension
     },
-    3: {
+    {
+      id: ProductType.POST_FIXED_INCOME,
       name: "Renda Pós-fixada",
       color: colors.postFixedIncome
     },
-    4: {
+    {
+      id: ProductType.TREASURY_DIRECT,
       name: "Tesouro Direto",
       color: colors.treasureDirect
     },
-    5: {
+    {
+      id: ProductType.SAVINGS,
       name: "Poupança",
       color: colors.savings
     },
-    6: {
+    {
+      id: ProductType.PRE_FIXED_INCOME,
       name: "Renda Pré-fixada",
       color: colors.preFixedIncome
     },
-    7: {
+    {
+      id: ProductType.BITCOIN,
       name: "Bitcoin",
       color: colors.bitcoin
     },
-    8: {
+    {
+      id: ProductType.STOCK,
       name: "Ações",
       color: colors.stock
     },
-    9: {
+    {
+      id: ProductType.DEBENTURES,
       name: "Debêntures",
       color: colors.debentures
     },
-    10: {
+    {
+      id: ProductType.CURRENCY,
       name: "Moeda",
       color: colors.currency
     },
-    11: {
+    {
+      id: ProductType.FII,
       name: "FII",
       color: colors.fii
     },
-    12: {
+    {
+      id: ProductType.BDR,
       name: "BDR",
       color: colors.bdr
     }
-  };
-
-  static PRODUCT_TYPES_SUBJECT_TO_APPLICATION = [
-    ProductType.FUNDS,
-    ProductType.TREASURY_DIRECT,
-    ProductType.PENSION,
-    ProductType.SAVINGS,
-    ProductType.BITCOIN,
-    ProductType.STOCK,
-    ProductType.FII,
-    ProductType.BDR,
-    ProductType.DEBENTURES,
-    ProductType.CURRENCY,
-    ProductType.CUSTOM
   ];
 
-  static getColor(productTypeId) {
-    const { color } = this.styles[productTypeId];
-    return color;
+
+  static get(id) { 
+
+    const productObj = ProductType.list.find(product => product.id === id);
+    return productObj;
   }
 
-  static getName(productTypeId) {
-    const { name } = this.styles[productTypeId];
-    return name;
+  static getColor(id) { 
+    productObj = this.get(id)
+    return productObj.color;
   }
+ 
 }
