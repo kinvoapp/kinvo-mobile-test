@@ -7,11 +7,10 @@ import ProductType from "../../util/productType";
 export default class Products extends Component {
   constructor(props) {
     super(props);
-    searchedProducts = [];
     this.state = {
-      formattedProducts: [],
+      products: [],
       isFetching: false,
-      searchedProducts,
+      filteredProducts: [],
       searchText: "",
       error: false
     };
@@ -27,15 +26,16 @@ export default class Products extends Component {
       isFetching: true
     }));
     try {
-      const response = await ProductApi.getProducts();
-      const httpResponse = response.data;
-      const products = httpResponse.data;
+      const httpResponse = await ProductApi.getProducts();
+      const apiResponse = httpResponse.data;
+      const rawProducts = apiResponse.data;
 
-      const formattedProducts = this.formatProducts(products);
+      const products = this.formatProducts(rawProducts);
 
       await this.setState({
-        formattedProducts: formattedProducts,
-        searchedProducts: formattedProducts,
+        //  mudar para products
+        products: products,
+        filteredProducts: products,
         isFetching: false,
         searchText: ""
       });
@@ -53,20 +53,24 @@ export default class Products extends Component {
 
   formatProducts = products => {
     let formattedProducts = [];
+
     products.map(product => {
-      formattedProducts.push({
-        key: product.portfolioProductId.toString(),
-        productTypeId: product.productTypeId,
-        productName: product.productName,
-        financialInstitutionName: product.financialInstitutionName,
-        equity: formatMoney(product.equity),
-        profitability: formatProfitability(product.profitability),
-        colorOfProduct: ProductType.getColor(product.productTypeId)
-      });
+      const formattedProduct = this.formatProduct(product);
+      formattedProducts.push(formattedProduct);
     });
 
     return formattedProducts;
   };
+
+  formatProduct = product => ({
+    key: product.portfolioProductId.toString(),
+    productTypeId: product.productTypeId,
+    productName: product.productName,
+    financialInstitutionName: product.financialInstitutionName,
+    equity: formatMoney(product.equity),
+    profitability: formatProfitability(product.profitability),
+    colorOfProduct: ProductType.getColor(product.productTypeId)
+  });
 
   onRefreshProductsList = () => {
     this.clearSearchText();
@@ -81,7 +85,7 @@ export default class Products extends Component {
   };
 
   filterProducts = searchText => {
-    const { formattedProducts } = this.state;
+    const { products } = this.state;
 
     matchesSearch = product => {
       const productName = product.productName.toUpperCase();
@@ -92,11 +96,11 @@ export default class Products extends Component {
       return productMatch;
     };
 
-    const searchedProducts = formattedProducts.filter(matchesSearch);
+    const filteredProducts = products.filter(matchesSearch);
 
     this.setState(prevState => ({
       ...prevState,
-      searchedProducts,
+      filteredProducts,
       searchText
     }));
   };

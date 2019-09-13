@@ -9,7 +9,7 @@ import styles from "./styles";
 export default function Presentational(props) {
   const {
     isFetching,
-    searchedProducts,
+    filteredProducts,
     filterProducts,
     onRefreshProductsList,
     searchText,
@@ -20,7 +20,7 @@ export default function Presentational(props) {
 
   renderFilteredProductsList = () => (
     <FlatList
-      data={searchedProducts}
+      data={filteredProducts}
       onRefresh={() => onRefreshProductsList()}
       refreshing={isFetching}
       renderItem={renderProduct}
@@ -35,8 +35,8 @@ export default function Presentational(props) {
       <View style={styles.searchBarContainer}>
         <SearchBar
           platform={"android"}
-          containerStyle={styles.searchBarContainerStyle}
-          inputContainerStyle={styles.searchBarInputContainerStyle}
+          containerStyle={styles.searchBarContainer}
+          inputContainerStyle={styles.searchBarInputContainer}
           value={searchText}
           onChangeText={searchText => filterProducts(searchText)}
           lightTheme
@@ -50,32 +50,29 @@ export default function Presentational(props) {
     );
   };
 
-  renderWhenFilteredProductsIsEmpty = () => (
-    <View style={styles.containerTextEmptyProductList}>
-      <Text>Nenhum Produto Encontrado</Text>
-    </View>
+  renderEmptyList = () => (
+    <Text style={styles.textEmptyProductList}>Nenhum Produto Encontrado</Text>
   );
 
   renderError = () => (
-    <View style={styles.containerTextError}>
-      <Text>Parece que temos alguns gatos bagunçando o sistema</Text>
-    </View>
+    <Text style={styles.textError}>
+      Parece que temos alguns gatos bagunçando o sistema
+    </Text>
   );
 
   const renderContent = () => {
+    const isEmptyFilterProducts = filteredProducts.length === 0;
+
     if (error) {
       return renderError();
-    } else {
-      if (isFetching) {
-        return renderLoading();
-      } else {
-        const isEmptyFilterProducts = searchedProducts.length === 0;
-        if (isEmptyFilterProducts) {
-          return renderWhenFilteredProductsIsEmpty();
-        }
-        return renderFilteredProductsList();
-      }
     }
+    if (isFetching) {
+      return renderLoading();
+    }
+    if (isEmptyFilterProducts) {
+      return renderEmptyList();
+    }
+    return renderFilteredProductsList();
   };
 
   const content = renderContent();
@@ -91,7 +88,7 @@ export default function Presentational(props) {
 
 Presentational.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  searchedProducts: PropTypes.array,
+  filteredProducts: PropTypes.array,
   filterProducts: PropTypes.func.isRequired,
   onRefreshProductsList: PropTypes.func.isRequired,
   searchText: PropTypes.string,
@@ -100,5 +97,5 @@ Presentational.propTypes = {
 
 Presentational.defaultProps = {
   searchText: "",
-  searchedProducts: []
+  filteredProducts: []
 };

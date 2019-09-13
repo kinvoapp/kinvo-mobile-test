@@ -14,7 +14,7 @@ export default class ProductType {
   static FII = 11;
   static BDR = 12;
 
-  static list = [
+  static LIST = [
     {
       id: ProductType.FUNDS,
       name: "Fundo",
@@ -80,7 +80,7 @@ export default class ProductType {
 
   static get(id) { 
 
-    const productObj = ProductType.list.find(product => product.id === id);
+    const productObj = ProductType.LIST.find(product => product.id === id);
     return productObj;
   }
 
