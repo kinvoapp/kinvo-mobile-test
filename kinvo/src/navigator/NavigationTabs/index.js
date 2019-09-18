@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "react-navigation";
 import { Image } from "react-native";
 import CarteiraTabs from "../CarteiraTabs";
 import Working from "../../pages/WorkingPage";
+import RegisterPage from "../../pages/RegisterPage";
+
 import styles from "./styles";
 
 const ContainerRoutes = createBottomTabNavigator(
@@ -21,7 +23,7 @@ const ContainerRoutes = createBottomTabNavigator(
       }
     },
     Plus: {
-      screen: Working,
+      screen: RegisterPage,
       navigationOptions: {
         tabBarLabel: <Image source={require("../../imagens/plus.png")} />
       }
@@ -40,7 +42,7 @@ const ContainerRoutes = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Carteira",
+    initialRouteName: "Plus",   
     tabBarOptions: {
       style: styles.tabBarStyle
     }

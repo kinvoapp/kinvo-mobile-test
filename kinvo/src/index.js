@@ -10,7 +10,7 @@ const AppContainer = createAppContainer(AppNavigator);
 const App = () => (
   <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
     <StatusBar backgroundColor="white" barStyle="dark-content" />
-    <AppContainer />
+    <AppContainer/>
   </SafeAreaView>
 );
 

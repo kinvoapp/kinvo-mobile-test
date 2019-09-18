@@ -10,5 +10,18 @@ export default {
   postFixedIncome: "#94E5D2",
   preFixedIncome: "#38BFA0",
   treasureDirect: "#86B2DE",
-  currency: "#B9B42C"
+  currency: "#B9B42C",
+
+
+
+application:"#A4D36D",
+withdrawn : "#FF9B52",
+newProduct: "#36C4D6",
+connect: "#A138C7"
+
+
+
 };
+
+
+
