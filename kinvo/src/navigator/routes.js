@@ -1,4 +1,4 @@
-import CarteiraTabs from "./CarteiraTabs";
+import WalletTabs from "./WalletTabs";
 import NavigationTabs from "./NavigationTabs";
 import React from "react";
 
@@ -13,7 +13,7 @@ const Pages = createBottomTabNavigator(
     
     },
     Wallet: {
-      screen: CarteiraTabs,
+      screen: WalletTabs,
    
     },
    

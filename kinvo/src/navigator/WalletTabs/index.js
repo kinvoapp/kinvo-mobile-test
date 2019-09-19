@@ -4,7 +4,7 @@ import { createMaterialTopTabNavigator } from "react-navigation";
 import TabBar from "./components/TabBar";
 import styles from "./styles";
 
-const CarteiraRoute = createMaterialTopTabNavigator(
+const WalletRoute = createMaterialTopTabNavigator(
   {
     Carteira: {
       screen: () => null
@@ -31,4 +31,4 @@ const CarteiraRoute = createMaterialTopTabNavigator(
   }
 );
 
-export default CarteiraRoute;
+export default WalletRoute;
