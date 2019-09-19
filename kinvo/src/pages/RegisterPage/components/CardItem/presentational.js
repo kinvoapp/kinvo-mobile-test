@@ -4,10 +4,10 @@ import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 export default function Presentational(props) {
-  const { key, color, message } = props.cardItem;
+  const { title, color, message } = props.cardItem;
 
   renderCardName = () => (    
-      <Text style={styles.cardName}>{key}</Text>   
+      <Text style={styles.cardName}>{title}</Text>   
   );
 
   renderIconCard = () => (
@@ -88,13 +88,13 @@ export default function Presentational(props) {
 
 // props com isrequired dando erro
 Presentational.propTypes = {
-    key: PropTypes.string,
+    title: PropTypes.string,
     color: PropTypes.string,
     message: PropTypes.string,  
   };
   
   Presentational.defaultProps = {
-    key: '',
+    title: '',
     color: '',
     message: '', 
   };

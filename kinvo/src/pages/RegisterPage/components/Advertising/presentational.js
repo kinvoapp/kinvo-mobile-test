@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 export default function Presentational(props) {
@@ -53,20 +53,19 @@ export default function Presentational(props) {
     const titleAndMessage = this.renderTitleAndMessage();
 
     return (
-      <View style={styles.advertisingArea}>
+      <TouchableOpacity style={styles.advertisingArea}>
         {bannerImage}
         {titleAndMessage}
-      </View>
+      </TouchableOpacity>
     );
   };
 
   renderContent = () => {
     const IsEmptyAdvertising= title === ''
-    const advertising = renderAdvertising();
     if(IsEmptyAdvertising)
     return null
 
-    return advertising;
+    return renderAdvertising();
   };
 
   const content = renderContent();

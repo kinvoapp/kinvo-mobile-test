@@ -11,7 +11,7 @@ export default class ProductType {
   static STOCK = 8;
   static DEBENTURES = 9;
   static CURRENCY = 10;
-  static FII = 11;
+  static  FII = 11;
   static BDR = 12;
 
   static LIST = [

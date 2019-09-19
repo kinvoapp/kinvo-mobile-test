@@ -8,7 +8,7 @@ export default class Products extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      products: [],  
       isFetching: false,
       filteredProducts: [],
       searchText: "",

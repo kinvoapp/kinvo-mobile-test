@@ -5,22 +5,22 @@ export default class Registers extends Component {
 
 
     cardItens = [{
-        key: 'Aplicação',
+        title: 'Aplicação',
         color: '#A4D36D',
         message: 'Cadastre uma nova aplicação em um produtos da carteira.'       
       },
       {
-        key: 'Retirada',
+        title: 'Retirada',
         color: '#FF9B52',   
         message: 'Cadastre uma nova retira em um produtos da carteira.' 
     },
     {
-        key: 'Novo Produto',
+        title: 'Novo Produto',
         color: '#36C4D6',   
         message: 'Cadastre um novo produtos de qualquer instituição.' 
     },
     {
-        key: 'Conectar',
+        title: 'Conectar',
         color: '#A138C7',   
         message: 'Importe seus produtos de uma instituição parceira.'  
     },   
@@ -31,8 +31,10 @@ export default class Registers extends Component {
     render() {
 
         const {cardItens} = this
+        const {navigation} = this.props
         return React.createElement(Presentational, {
-            cardItens
+            cardItens,
+            navigation
         });
     }
 }

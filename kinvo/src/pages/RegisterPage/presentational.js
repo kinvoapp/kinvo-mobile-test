@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import PropTypes from "prop-types";
 
 import styles from "./styles";
@@ -15,19 +14,23 @@ import Advertising from "./components/Advertising";
 import LastRegisters from "./components/LastRegisters";
 
 export default function Presentational(props) {
-  const { cardItens } = props;
+  const { cardItens,navigation } = props;
 
   renderRegisters = () => {
     return (
       <FlatList
         data={cardItens}
         renderItem={renderCardItem}
+        keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={renderAdvertising}
         ListFooterComponent={renderLastRegisters}
       />
     );
   };
+
+  keyExtractor = item => item.title;
+
 
   renderCardItem = ({ item }) => <CardItem cardItem={item} />;
 
@@ -41,19 +44,17 @@ export default function Presentational(props) {
     </View>
   );
 
-  // separar funções do exit da area
-  renderExitButton = () => (
-    <TouchableOpacity>
-      <View style={styles.exitButton}>
-        {/* perguntar sobre nome do style do X */}
-        <Text style={{ color: "white" }}>X</Text>
-      </View>
+  renderCloseButton = () => (
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <View style={styles.closeButton}>
+        <Text style={{ color: "white",fontSize:20 }}>X</Text>
+      </View> 
     </TouchableOpacity>
   );
 
-  renderExitArea = () => {
-    const exitButton = renderExitButton();
-    return <View style={styles.exitArea}>{exitButton}</View>;
+  renderCloseArea = () => {
+    const closeButton = renderCloseButton();
+    return <View style={styles.closeArea}>{closeButton}</View>;
   };
 
   renderContent = () => {
@@ -64,14 +65,14 @@ export default function Presentational(props) {
 
   renderRegisterScreen = () => {
     const title = renderTitleRegister();
-    const exitArea = renderExitArea();
+    const closeArea = renderCloseArea();
     const registers = renderRegisters();
 
     return (
       <View style={styles.registerScreen}>
         {title}
         {registers}
-        {exitArea}
+        {closeArea}
       </View>
     );
   };
@@ -82,5 +83,6 @@ export default function Presentational(props) {
 
 Presentational.propTypes = {
   cardItens: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 

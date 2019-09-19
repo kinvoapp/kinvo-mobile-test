@@ -1,38 +1,39 @@
 import { StyleSheet } from "react-native";
+import metrics from '../../../../styles/metrics'
 
 const styles = StyleSheet.create({
   container: {
     borderColor: "#DAE0E3",
-    borderWidth: 1,
+    borderWidth: metrics.border,
     flex: 1,
-    marginTop: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    borderRadius: 20
+    marginTop: metrics.spaceX,
+    marginLeft: metrics.space2X,
+    marginRight: metrics.space2X,
+    borderRadius: metrics.radius2X
   },
   divider: {
     height: 1,
     backgroundColor: "#DAE0E3",
     width: "90%",
     alignSelf: "center",
-    marginBottom: 15,
-    marginTop: 10
+    marginBottom: metrics.space15X,
+    marginTop: metrics.space15X
   },
    message: {
-    marginLeft: 15,
-    marginBottom: 15,
+    marginLeft: metrics.space15X,
+    marginBottom: metrics.space15X,
     fontSize: 11
   },
   titleAndIconAndPlusButtonArea: {
     flex: 1,
     flexDirection: "row",
     alignContent: "space-around",
-    marginBottom: 10
+    marginTop: metrics.space15X
+
   },
   titleAndIconArea: {
     flex: 1,
     flexDirection: "row",
-    marginTop: 15
   },
   iconCard: {
     height: 30,
@@ -40,17 +41,17 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: "center",
     alignSelf: "center",
-    marginLeft: 15
+    marginLeft: metrics.space15X
   },
   plusButton: {
     color: "#DAE0E3",
     fontSize: 30,
-    marginRight: 15,
+    marginRight: metrics.space15X,
     justifyContent: "center"
   },
   cardName: {
     alignSelf: "center",
-    marginLeft: 10
+    marginLeft: metrics.spaceX
   }
 });
 

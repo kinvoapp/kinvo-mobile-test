@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import metrics from '../../styles/metrics'
 
 const styles = StyleSheet.create({
   container: {
@@ -7,21 +8,22 @@ const styles = StyleSheet.create({
   registerScreen:{
     flex:1
   },
-  exitArea: {
+  closeArea: {
     justifyContent: "center",
     alignItems: "center",
     borderBottomColor: "#DAE0E3",
-    borderBottomWidth: 1,
+    borderBottomWidth: metrics.border,
     borderTopColor: "#DAE0E3",
-    borderTopWidth: 1
+    borderTopWidth: metrics.border,
+    height:metrics.bottomNavigationBarHeight
   },
-  exitButton: {
+  closeButton: {
     backgroundColor: "#DAE0E3",
-    height: 30,
-    width: 30,
+    height: 35,
+    width: 35,
     borderRadius: 50,
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: metrics.spaceX,
+    marginBottom: metrics.space2X,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -29,10 +31,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderBottomColor: "#DAE0E3",
-    borderBottomWidth: 1
+    borderBottomWidth: metrics.border
   },
   titleText: {
-    margin: 20,
+    margin: metrics.space2X,
     color: "#627179",
     fontWeight: "bold"
   }
