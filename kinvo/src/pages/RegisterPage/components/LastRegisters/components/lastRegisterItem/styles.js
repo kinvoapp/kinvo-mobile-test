@@ -1,29 +1,34 @@
 import { StyleSheet } from "react-native";
+import metrics from "../../../../../../styles/metrics";
 
 const styles = StyleSheet.create({
   container: {
     borderColor: "#DAE0E3",
-    borderWidth: 1,
+    borderWidth: metrics.border,
     flex: 1,
-    marginTop: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    borderRadius: 30 
+    marginTop: metrics.spaceX,
+    marginLeft: metrics.space2X,
+    marginRight: metrics.space2X,
+    borderRadius: metrics.radius3X
   },
-message: {
-    alignSelf: "center", marginLeft: 10, fontSize: 11
-},
-icon: {
+  message: {
+    alignSelf: "center",
+    marginLeft: metrics.spaceX,
+    fontSize: 11
+  },
+  icon: {
     height: 30,
     width: 30,
-    borderRadius: 30,
+    borderRadius: metrics.space3X,
     justifyContent: "center",
     alignSelf: "center",
-    marginLeft: 15
-},
-lastRegister:{
-    flexDirection: "row", marginTop: 10, marginBottom: 10 
-}
+    marginLeft: metrics.spaceX
+  },
+  lastRegister: {
+    flexDirection: "row",
+    marginTop: metrics.spaceX,
+    marginBottom: metrics.spaceX
+  }
 });
 
 export default styles;
