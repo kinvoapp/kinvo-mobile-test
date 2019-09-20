@@ -1,7 +1,6 @@
 import React from "react";
 import {
-  Text,
-  SafeAreaView,
+  Text,  
   FlatList,
   View,
   TouchableOpacity
@@ -14,12 +13,14 @@ import Advertising from "./components/Advertising";
 import LastRegisters from "./components/LastRegisters";
 
 export default function Presentational(props) {
-  const { cardItens,navigation } = props;
+  const { cardItems,onPressCloseButton } = props;
 
   renderRegisters = () => {
+  keyExtractor = item => item.title;
+
     return (
       <FlatList
-        data={cardItens}
+        data={cardItems}
         renderItem={renderCardItem}
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
@@ -29,7 +30,6 @@ export default function Presentational(props) {
     );
   };
 
-  keyExtractor = item => item.title;
 
 
   renderCardItem = ({ item }) => <CardItem cardItem={item} />;
@@ -45,10 +45,8 @@ export default function Presentational(props) {
   );
 
   renderCloseButton = () => (
-    <TouchableOpacity onPress={() => navigation.goBack()}>
-      <View style={styles.closeButton}>
-        <Text style={{ color: "white",fontSize:20 }}>X</Text>
-      </View> 
+    <TouchableOpacity  style={styles.closeButton} onPress={onPressCloseButton}>
+        <Text style={styles.closeIcon}>X</Text>
     </TouchableOpacity>
   );
 
@@ -57,11 +55,7 @@ export default function Presentational(props) {
     return <View style={styles.closeArea}>{closeButton}</View>;
   };
 
-  renderContent = () => {
-    const registerScreen = renderRegisterScreen();
 
-    return registerScreen;
-  };
 
   renderRegisterScreen = () => {
     const title = renderTitleRegister();
@@ -77,12 +71,12 @@ export default function Presentational(props) {
     );
   };
 
-  const content = renderContent();
-  return <SafeAreaView style={styles.container}>{content}</SafeAreaView>;
+  const registerScreen = renderRegisterScreen();
+  return <View style={styles.container}>{registerScreen}</View>;
 }
 
 Presentational.propTypes = {
-  cardItens: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  cardItems: PropTypes.array.isRequired,
+  onPressCloseButton: PropTypes.func.isRequired
 };
 

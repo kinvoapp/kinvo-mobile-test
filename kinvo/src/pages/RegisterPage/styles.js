@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
-import metrics from '../../styles/metrics'
+import metrics from "../../styles/metrics";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,   
+    flex: 1
   },
-  registerScreen:{
-    flex:1
+  registerScreen: {
+    flex: 1
   },
   closeArea: {
     justifyContent: "center",
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: metrics.border,
     borderTopColor: "#DAE0E3",
     borderTopWidth: metrics.border,
-    height:metrics.bottomNavigationBarHeight
+    height: metrics.bottomNavigationBarHeight
   },
   closeButton: {
     backgroundColor: "#DAE0E3",
@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
     margin: metrics.space2X,
     color: "#627179",
     fontWeight: "bold"
+  },
+  closeIcon: {
+    color: "white",
+    fontSize: 20
   }
 });
 

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export default class Registers extends Component {
 
 
-    cardItens = [{
+    cardItems = [{
         title: 'Aplicação',
         color: '#A4D36D',
         message: 'Cadastre uma nova aplicação em um produtos da carteira.'       
@@ -27,14 +27,19 @@ export default class Registers extends Component {
 
 ]; 
 
+onPressCloseButton = () => {
+    const {navigation} = this.props
+    return navigation.goBack()
+}
+
 
     render() {
 
-        const {cardItens} = this
-        const {navigation} = this.props
+        const {cardItems,onPressCloseButton} = this
+       
         return React.createElement(Presentational, {
-            cardItens,
-            navigation
+            cardItems,            
+            onPressCloseButton
         });
     }
 }

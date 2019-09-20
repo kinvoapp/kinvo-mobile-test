@@ -76,17 +76,13 @@ export default function Presentational(props) {
     );
   };
 
-  renderContent = () => {
-    const card = renderCard();
-    return card;
-  };
 
-  const content = renderContent();
 
-  return <View style={styles.container}>{content}</View>;
+  const card = renderCard();
+
+  return <View style={styles.container}>{card}</View>;
 }
 
-// props com isrequired dando erro
 Presentational.propTypes = {
     title: PropTypes.string,
     color: PropTypes.string,
