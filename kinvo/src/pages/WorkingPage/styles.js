@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: "#0DD1E2",
-    fontSize: 55,
+    fontSize: 25,
     fontWeight: "bold"
   },
   maintenanceContainerStyle: {
