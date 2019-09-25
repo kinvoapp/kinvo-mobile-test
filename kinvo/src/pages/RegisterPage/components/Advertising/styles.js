@@ -2,10 +2,13 @@ import { StyleSheet } from "react-native";
 import metrics from '../../../../styles/metrics'
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    padding:metrics.space2X,
+    paddingBottom:metrics.spaceX
+  },
   titleAndMessageArea: {
     marginLeft: metrics.space2X,
-    flex: 1
+    flex: 1,
   },
   title: {
     fontSize: 16,
@@ -13,18 +16,27 @@ const styles = StyleSheet.create({
     marginBottom: metrics.spaceX
   },
   advertisingArea: {
+    zIndex:1,
     flexDirection: "row",
+    backgroundColor:'#FFFFFF',
     borderWidth: metrics.border,
     borderColor: "#DAE0E3",
-    borderRadius: metrics.radius2X,
-    marginTop: metrics.space2X,
-    marginBottom: metrics.spaceX,
-    marginLeft: metrics.space2X,
-    marginRight: metrics.space2X,
-    padding: metrics.space15X
+    borderRadius: metrics.radius2X,    
+    padding: metrics.space15X,
   },
   message: {
     fontSize: 11
+  },
+  closeAdvertisingArea: {
+    zIndex:0,
+    flexDirection: "row",    
+    width:'100%',
+    backgroundColor:'#FF9B52',
+    borderRadius: metrics.radius2X, 
+    padding: metrics.space3X,
+    justifyContent:'flex-end',
+    marginLeft:'-80%'
+
   }
 });
 

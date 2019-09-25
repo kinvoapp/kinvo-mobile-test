@@ -1,0 +1,32 @@
+{
+  "name": "kinvo-mobile-test",
+  "version": "1.0.0",
+  "description": "> ![Logo Kinvo](https://github.com/kinvoapp/kinvo-mobile-test/blob/master/logo.svg)",
+  "main": "index.js",
+  "dependencies": {
+    "commitizen": "^4.0.3"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
+    "cz-customizable": "^6.2.0",
+    "git-cz": "^3.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rorlf/kinvo-mobile-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rorlf/kinvo-mobile-test/issues"
+  },
+  "homepage": "https://github.com/rorlf/kinvo-mobile-test#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}

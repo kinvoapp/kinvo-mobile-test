@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   closeIcon: {
     color: "white",
     fontSize: 20
-  }
+  },
 });
 
 export default styles;

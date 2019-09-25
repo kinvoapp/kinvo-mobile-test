@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: metrics.spaceX,
     marginBottom: metrics.spaceX
-  }
+  },
+
 });
 
 export default styles;

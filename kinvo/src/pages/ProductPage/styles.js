@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     width: "95%",
     borderRadius: 0,
-    elevation: 0
+    elevation: 0,
+    alignSelf:'center'
   },
   searchBarInputContainer: {
     height: 43,
