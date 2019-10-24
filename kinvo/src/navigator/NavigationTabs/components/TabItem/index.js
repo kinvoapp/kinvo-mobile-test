@@ -34,15 +34,15 @@ export default class index extends Component {
       // ARMENGUE por não usar icon
      
      if(nameImage == 'Wallet')
-     return  <Image source={require("../../../../imagens/Wallet.png")} />
+     return  <Image source={require("../../../../imagens/wallet.png")} />
      if(nameImage == 'Account')
-     return  <Image source={require("../../../../imagens/Account.png")} />  
+     return  <Image source={require("../../../../imagens/account.png")} />  
      if(nameImage == 'Plus')
-     return  <Image source={require("../../../../imagens/Plus.png")} />
+     return  <Image source={require("../../../../imagens/plus.png")} />
      if(nameImage == 'Premium')
-     return  <Image source={require("../../../../imagens/Premium.png")} />
+     return  <Image source={require("../../../../imagens/premium.png")} />
      if(nameImage == 'Summary')
-     return  <Image source={require("../../../../imagens/Summary.png")} />
+     return  <Image source={require("../../../../imagens/summary.png")} />
     }
 
     const icon = renderImageIcon()
