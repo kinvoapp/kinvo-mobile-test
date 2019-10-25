@@ -4,7 +4,7 @@ import React from "react";
 
 import { createBottomTabNavigator, createStackNavigator } from "react-navigation";
 import Working from "../pages/WorkingPage";
-import RegisterPage from "../pages/RegisterPage";
+import RegisterPage from "../pages/RegisterHooksPage";
 
 const Pages = createBottomTabNavigator(
   {

@@ -1,6 +1,7 @@
 import Presentational from "./presentational";
-import React, { Component } from "react";
 import { Animated,Easing } from "react-native";
+
+import React, { Component } from "react";
 
 export default class Advertising extends Component {
   constructor(props) {
