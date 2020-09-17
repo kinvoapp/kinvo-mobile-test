@@ -1,6 +1,6 @@
-> ![Logo Kinvo](https://github.com/kinvoapp/kinvo-mobile-test/blob/master/logo.svg)
+> ![Logo Kinvo](https://kinvo.com.br/static/media/logo--light.da931bee.svg)
 
-# Teste para candidatos à vaga de Desenvolvedor(a) Mobile 
+# React Native Code Challenge
 
 ## Instruções:
 
