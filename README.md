@@ -44,17 +44,22 @@
 ### Pré-requisitos:
 
 * Deve ser possível filtrar os produtos listados;
-* Testes unitários;
 * Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-
-
-* **Importante:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :-)
-
-### Ganhe pontos extras por:
-
-* Componentizar sua interface;
 * Desenvolver o app utilizando `React Native`
-* Utilizar ECMAScript 6+;
+
+
+### O que iremos avaliar
+
+* Simplicidade da solução
+* Componentização
+* Princípio da reutilização
+* Clean Code
+
+### O que vai te diferenciar
+
+* Utilizar TypeScript
+* Realizar testes unitários
+
 
 ## Material:
 
