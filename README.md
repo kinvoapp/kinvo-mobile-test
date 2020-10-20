@@ -1,4 +1,3 @@
-> ![Logo Kinvo](https://kinvo.com.br/static/media/logo--light.da931bee.svg)
 
 # React Native Code Challenge
 
@@ -12,6 +11,8 @@ Para rodar o app é necessário instalar algumas depedências:
 
 * expo cli (terminal)
 
+* yarn (mais prático já que o projeto possui um arquivo yarn.lock, mas não necessário)
+
 1. Faça instalação do Expo com o seguinte comando
 ```
 npm install --global expo-cli
@@ -19,6 +20,14 @@ npm install --global expo-cli
  ```
 
 2. Após a instalação do Expo é necessário instalar as dependências do projeto:
+
+Caso esteja utilizando yarn, basta rodar o seguinte comando:
+
+```
+$ yarn install
+
+ ```
+
 
 Axios:
 ```
