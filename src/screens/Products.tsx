@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, FlatList } from 'react-native';
 
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 import  { colorScheme } from '../styles/ColorScheme';
 import api from '../services/api';
 

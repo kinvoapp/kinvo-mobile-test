@@ -12,7 +12,7 @@ export default function Footer() {
     <View style={styles.footer}>
         <View style={styles.footerIcons}><Image source={abstractIcon}/><Text style={styles.footerText}>Resumo</Text></View>
         <View style={styles.footerIcons}><Image source={walletIcon}/><Text style={styles.footerText}>Carteira</Text></View>
-        <View style={styles.footerIcons}><Image source={addButton}/></View>
+        <View style={styles.footerIcons}><Image style={styles.addButton}source={addButton}/></View>
         <View style={styles.footerIcons}><Image source={premiumIcon}/><Text style={styles.footerText}>Premium</Text></View>
         <View style={styles.footerIcons}><Image source={profileIcon}/><Text style={styles.footerText}>Conta</Text></View>
       </View>
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     height: 80,
     borderTopWidth: 1,
-    borderTopColor: '#CCCFD1'
+    borderTopColor: '#CCCFD1',
+    
   },
 
   footerIcons: {
@@ -43,4 +44,8 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 12,
   },
+
+  addButton: {
+    
+  }
 })

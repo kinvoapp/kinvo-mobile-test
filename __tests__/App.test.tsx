@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import Products from '../src/screens/Product'
+import Products from '../src/screens/Products'
 
 it('Products Rendered', () => {
   renderer.create(<Products />);
