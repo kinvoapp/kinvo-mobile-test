@@ -39,6 +39,12 @@ react-native-elements:
 $ npm install react-native-elements
 
  ```
+jest e react-test-renderer (Para testes)
+ 
+```
+ $ npm install jest-expo @types/jest react-test-renderer @types/react-test-renderer
+ 
+```
  
 3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
 ```
