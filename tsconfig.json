@@ -9,5 +9,9 @@
     "resolveJsonModule": true,
     "strict": true,
     "target": "ES6",
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx", "__tests__/Products.test.js"
+  ],
 }
