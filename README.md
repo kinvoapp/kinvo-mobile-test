@@ -41,7 +41,7 @@ expo start
 
 
 
-Se preferir pode rodar o app em um emulador. Caso esteja configurado, é só escolher a opção no terminal (## Run on Android device/emulator). Se não estiver configurado pode checar esse [link](https://react-native.rocketseat.dev/android/emulador) para fazer a configuração.
+Se preferir pode rodar o app em um emulador. Caso esteja configurado, é só escolher a opção no terminal (Run on Android device/emulator). Se não estiver configurado pode checar esse [link](https://react-native.rocketseat.dev/android/emulador) para fazer a configuração.
 
 
 ###  Observação:
