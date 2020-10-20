@@ -4,72 +4,47 @@
 
 ## Instruções:
 
-1. Faça um fork deste repositório;
-2. Implemente o layout disponível;
-3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
-4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
-
-```
-   FUNDS = 1;
-   PENSION = 2;
-   POST_FIXED_INCOME = 3;
-   TREASURY_DIRECT = 4;
-   SAVINGS = 5;
-   PRE_FIXED_INCOME = 6;
-   BITCOIN = 7;
-   STOCK = 8;
-   DEBENTURES = 9;
-   CURRENCY = 10;
-   FII = 11;
-   BDR = 12;
-
-  stock: '#4C309B',
-  fii: '#4141D5',
-  bdr: '#9390E5',
-  bitcoin: '#3E71B9',
-  debentures: '#86B2DE',
-  funds: '#008DCB',
-  savings: '#5AAAD5',
-  pension: '#D5A82C',
-  postFixedIncome: '#94E5D2',
-  preFixedIncome: '#38BFA0',
-  treasureDirect: '#86B2DE',
-  currency: '#B9B42C',
-
-  ```
-
-5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
-
+Para rodar o app é necessário instalar algumas depedências:
 
 ### Pré-requisitos:
 
-* Deve ser possível filtrar os produtos listados;
-* Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-* Desenvolver o app utilizando `React Native`
+* node.js
+
+* expo cli (terminal)
+
+1. Faça instalação do Expo com o seguinte comando
+```
+npm install --global expo-cli
+
+ ```
+
+2. Após a instalação do Expo é necessário instalar as dependências do projeto:
+
+Axios:
+```
+$ npm install axios
+
+ ```
+react-native-elements:
+```
+$ npm install react-native-elements
+
+ ```
+ 
+3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
+```
+expo start
+
+ ```
+ 
+4. Ao abrir o terminal do Expo, sugiro baixar o app do Expo no seu mobile e scanear o QR code fornecido. 
 
 
-### O que iremos avaliar
 
-* Simplicidade da solução
-* Componentização
-* Princípio da reutilização
-* Clean Code
-
-### O que vai te diferenciar
-
-* Utilizar TypeScript
-* Realizar testes unitários
+Se preferir pode rodar o app em um emulador. Caso esteja configurado, é só escolher a opção no terminal (## Run on Android device/emulator). Se não estiver configurado pode checar esse [link](https://react-native.rocketseat.dev/android/emulador) para fazer a configuração.
 
 
-## Material:
+###  Observação:
 
-* O layout em formato Adobe XD consta no repositório em [/material](/material);
-* Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
+Para rodar pelo Expo é preciso que a máquina e o mobile estejam conectado à mesma rede. A depender da sua conexão, o modo LAN não irá funcionar, então preciso mudar pro modo 'Tunnel'
 
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
