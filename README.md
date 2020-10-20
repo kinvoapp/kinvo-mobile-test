@@ -51,6 +51,14 @@ jest e react-test-renderer (Para testes)
 expo start
 
  ```
+ Para testar:
+ 
+ ```
+npm test
+
+yarn test
+ ```
+ 
  
 4. Ao abrir o terminal do Expo, sugiro baixar o app do Expo no seu mobile e scanear o QR code fornecido. 
 
