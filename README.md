@@ -46,5 +46,5 @@ Se preferir pode rodar o app em um emulador. Caso esteja configurado, é só esc
 
 ###  Observação:
 
-Para rodar pelo Expo é preciso que a máquina e o mobile estejam conectado à mesma rede. A depender da sua conexão, o modo LAN não irá funcionar, então preciso mudar pro modo 'Tunnel'
+Para rodar pelo Expo é preciso que a máquina e o mobile estejam conectado à mesma rede. A depender da sua conexão, o modo LAN não irá funcionar, então preciso mudar pro modo 'Tunnel'.
 
