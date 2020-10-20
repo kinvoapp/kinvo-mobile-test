@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Dimensions, FlatList } from 'react-native';
 
 import { SearchBar } from 'react-native-elements';
 import  { colorScheme } from '../styles/ColorScheme';
@@ -21,23 +21,32 @@ export default function Products() {
   }
 
   //Declarando estados com React Hooks
+  const isCancelled = useRef(false);
   const [products, setProducts] = useState<Products[]>([]); 
   const [searchResults, setSearchResults] = useState<Products[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   
   
+//Buscando dados na API
+const getData = async () => {
+  await api.get('').then(response =>{ 
+    const res = response.data;
+    if(!isCancelled.current) {
+
+    setProducts(res.data);  
+    
+    }
+  });
+}
+
 
 
   useEffect(() => {
-
-    //Buscando dados na API
-    api.get('').then(response =>{ 
-      const res = response.data;
-
-      setProducts(res.data);  
+    
       
-    });
-       
+    getData();
+    
+    
     //Filtro de produtos
     if (searchTerm === ('')) {
       setSearchResults(products)
@@ -50,6 +59,10 @@ export default function Products() {
       
       setSearchResults(results);
     }
+
+    return () => {
+      isCancelled.current = true;
+    };
            
   }, [searchTerm]);
   
@@ -57,7 +70,7 @@ export default function Products() {
   
   return (
 
-    <> 
+    <>
       <SearchBar 
           searchIcon={{size: 40}}
           inputContainerStyle={styles.searchInput}
@@ -70,25 +83,25 @@ export default function Products() {
       </SearchBar>
       
         
-      <ScrollView style={styles.scrollView}>
+      <FlatList 
+        data={searchResults}
+        keyExtractor={(item, index) => index.toString()}
+        style={styles.flatList}
+        renderItem={({ item }) => (
 
-        {/* Listando produtos em tela */}
-        {searchResults.map(product => {   
-          return (
-
-            <View  
-              key={product.portfolioProductId} 
+          <View  
+              key={item.portfolioProductId} 
               style={styles.productsContainer}
             >
-              <Text>{product.financialInstitutionName}</Text>
+              <Text>{item.financialInstitutionName}</Text>
               <View style={styles.productNameContainer}>             
                 <View style={{ backgroundColor: 
-                  colorScheme(product.productTypeId), 
+                  colorScheme(item.productTypeId), 
                   width: 8, 
                   borderRadius: 20, 
                   marginRight: 10}}
                 />
-                <Text style={styles.productName}>{product.productName}</Text>
+                <Text style={styles.productName}>{item.productName}</Text>
               </View>
               <View style={styles.dataTitleContainer}>
                 <Text>SALDO ATUAL</Text>
@@ -98,27 +111,24 @@ export default function Products() {
                 <Text style={{ 
                   fontSize: 20, 
                   fontWeight: 'bold', 
-                  color: colorScheme(product.productTypeId) }}>R${product.equity.toLocaleString('pt-BR')}
+                  color: colorScheme(item.productTypeId) }}>R${item.equity.toLocaleString('pt-BR')}
                 </Text>
                 <Text style={{ 
                   fontSize: 20,
                   fontWeight: 'bold',
-                  color: colorScheme(product.productTypeId) }}>{product.profitability.toLocaleString('pt-BR')}%
+                  color: colorScheme(item.productTypeId) }}>{item.profitability.toLocaleString('pt-BR')}%
                 </Text>
               </View>
             </View>
-          )
-        })}
-      
-      </ScrollView>
-    
+        )}
+      />       
     </>
   )
 }
 
 const styles = StyleSheet.create({
 
-  scrollView: {
+  flatList: {
     height:Dimensions.get('window').height,
     
   },
