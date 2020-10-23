@@ -1,1 +1,88 @@
-node_modules
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@ianfelix
+Rocketseat /
+react-native-template-rocketseat-advanced
+
+40
+442
+
+    139
+
+Code
+Issues 2
+Pull requests 3
+Actions
+Projects
+Wiki
+Security
+
+    Insights
+
+react-native-template-rocketseat-advanced/.gitignore
+@csorlandi
+csorlandi Commit Inicial com Template Finalizado na versão 2.0.0
+Latest commit 4bff19d on 1 Apr 2019
+History
+1 contributor
+56 lines (49 sloc) 793 Bytes
+# OSX
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+
+
