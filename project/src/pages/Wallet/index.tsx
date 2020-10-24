@@ -1,26 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import ProductList from '../../components/ProductList';
+import Search from '../../components/Search';
+import TopBar from '../../components/TopBar';
+
+import { Container } from './styles';
 
 const Wallet: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Wallet</Text>
-    </View>
+    <Container>
+      <TopBar />
+      <Search />
+      <ProductList />
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#312e38',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 22,
-    color: '#fff',
-  },
-});
 
 export default Wallet;

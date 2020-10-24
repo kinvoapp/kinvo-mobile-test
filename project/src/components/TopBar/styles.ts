@@ -15,15 +15,15 @@ export const Container = styled.View`
 `;
 
 export const TextTopBar = styled.Text<hasActive>`
-  color: #788083;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  color: #677075;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   font-weight: bold;
 
   ${props =>
     props.hasActive &&
     css`
-      background-color: rgb(204, 204, 204);
+      background-color: #f4f8fb;
       margin-top: 10px;
       padding: 12px;
     `}

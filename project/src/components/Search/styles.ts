@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   background-color: #ccc;
-  height: 100px;
-  padding: 20px;
+  height: 80px;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
 `;

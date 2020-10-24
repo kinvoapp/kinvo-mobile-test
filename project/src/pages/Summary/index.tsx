@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const AccountStatement: React.FC = () => {
+const Summary: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>AccountStatement</Text>
+      <Text style={styles.title}>Resumo</Text>
     </View>
   );
 };
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#312e38',
+    backgroundColor: '#fff',
   },
   title: {
     fontWeight: 'bold',
     fontSize: 22,
-    color: '#fff',
+    color: '#000',
   },
 });
 
-export default AccountStatement;
+export default Summary;
