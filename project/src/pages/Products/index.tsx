@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import ProductList from '../../components/ProductList';
 
 import { Container } from './styles';
 
 const Products: React.FC = () => {
   return (
     <Container>
-      <Text>Products</Text>
+      <ProductList />
     </Container>
   );
 };
