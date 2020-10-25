@@ -1,7 +1,14 @@
 import React from 'react';
 import { SearchBar } from 'react-native-elements';
 
-const Search: React.FC = ({ searchFilter, setSearchFilter }) => {
+interface SearchProps extends React.ComponentState {
+  searchFilter: string;
+}
+
+const Search = ({
+  searchFilter,
+  setSearchFilter,
+}: SearchProps): JSX.Element => {
   return (
     <SearchBar
       placeholder="Buscar por nome..."

@@ -24,7 +24,11 @@ const ProductList: React.FC = () => {
   const filteredProducts = products.products?.filter(product => {
     return product.productName
       .toLowerCase()
-      .includes(searchFilter.toLowerCase());
+      .includes(searchFilter.toLowerCase())
+      ? product.productName.toLowerCase().includes(searchFilter.toLowerCase())
+      : product.financialInstitutionName
+          .toLowerCase()
+          .includes(searchFilter.toLowerCase());
   });
 
   if (products.isLoading) return <LoadingList />;
