@@ -3,6 +3,8 @@ import { FlatList } from 'react-native-gesture-handler';
 import NumberFormat from 'react-number-format';
 
 import api from '../../services/api';
+import ErrorList from './ErrorList';
+import LoadingList from './LoadingList';
 import {
   List,
   ProductName,
@@ -11,6 +13,7 @@ import {
   TextBalance,
   Equity,
   Profitability,
+  Container,
 } from './styles';
 
 interface ProductProsp {
@@ -23,17 +26,30 @@ interface ProductProsp {
 }
 
 const ProductList: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<ProductProsp[] | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     api
       .get('getProducts')
-      .then(response => setProducts(response.data.data))
-      .catch(erro => console.log(erro));
+      .then(response => {
+        setProducts(response.data.data);
+        setIsLoading(false);
+        setError(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setError(true);
+      });
   }, []);
 
+  if (isLoading) return <LoadingList />;
+  if (error) return <ErrorList />;
   return (
-    <>
+    <Container>
       <FlatList
         data={products}
         keyExtractor={product => product.portfolioProductId.toString()}
@@ -67,7 +83,7 @@ const ProductList: React.FC = () => {
           </List>
         )}
       />
-    </>
+    </Container>
   );
 };
 

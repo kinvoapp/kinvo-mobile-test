@@ -6,11 +6,16 @@ export const TextBalance = styled.Text``;
 export const Equity = styled.Text``;
 export const Profitability = styled.Text``;
 
+export const Container = styled.View`
+  align-items: center;
+`;
+
 export const List = styled.View`
-  flex: 1;
-  padding: 10px;
-  border-top-width: 1px;
-  border-top-color: #eeeeee;
+  border-bottom-width: 1px;
+  border-bottom-color: #eeeeee;
+
+  margin-top: 5px;
+  padding: 20px;
 `;
 
 export const Balance = styled.View`
