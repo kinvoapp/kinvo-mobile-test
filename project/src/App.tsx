@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { registerRootComponent } from 'expo';
-
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';

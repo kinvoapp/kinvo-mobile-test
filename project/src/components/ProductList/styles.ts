@@ -1,10 +1,25 @@
 import styled from 'styled-components/native';
 
-export const ProductName = styled.Text``;
-export const InstitutionName = styled.Text``;
-export const TextBalance = styled.Text``;
-export const Equity = styled.Text``;
-export const Profitability = styled.Text``;
+export const ProductName = styled.Text`
+  font-size: 16px;
+  font-family: 'SFProDisplay-Black';
+`;
+export const InstitutionName = styled.Text`
+  font-size: 10px;
+  font-family: 'SFProDisplay-Black';
+`;
+export const TextBalance = styled.Text`
+  font-size: 10px;
+  font-family: 'SFProDisplay-Semibold';
+`;
+export const Equity = styled.Text`
+  font-size: 20px;
+  font-family: 'SFProDisplay-Black';
+`;
+export const Profitability = styled.Text`
+  font-size: 20px;
+  font-family: 'SFProDisplay-Black';
+`;
 
 export const Container = styled.View``;
 
