@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Account: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Account</Text>
+      <Text style={styles.title}>Conta</Text>
     </View>
   );
 };

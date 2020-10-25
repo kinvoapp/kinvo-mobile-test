@@ -2,14 +2,18 @@ import React, { createContext, useEffect, useState } from 'react';
 import api from '../services/api';
 
 export type ProductProps = {
-  portfolioProductId?: number;
-  productName?: string;
-  productTypeId?: number;
-  financialInstitutionName?: string;
-  equity?: number;
-  profitability?: number;
-  isLoading?: boolean;
   error?: boolean;
+  isLoading?: boolean;
+  products?: [
+    {
+      equity: number;
+      financialInstitutionName: string;
+      portfolioProductId: number;
+      productName: string;
+      productTypeId: number;
+      profitability: number;
+    },
+  ];
 };
 
 export const ProductContext = createContext({});

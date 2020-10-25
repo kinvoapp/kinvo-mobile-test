@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import NumberFormat from 'react-number-format';
+import { ProductContext, ProductProps } from '../../hooks/ProductContext';
 
-import api from '../../services/api';
 import ErrorList from './ErrorList';
 import LoadingList from './LoadingList';
 import {
@@ -16,42 +16,15 @@ import {
   Container,
 } from './styles';
 
-interface ProductProsp {
-  portfolioProductId: number;
-  productName: string;
-  productTypeId: number;
-  financialInstitutionName: string;
-  equity: number;
-  profitability: number;
-}
-
 const ProductList: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<ProductProsp[] | null>(null);
-  const [error, setError] = useState(false);
+  const products: ProductProps = useContext(ProductContext);
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    api
-      .get('getProducts')
-      .then(response => {
-        setProducts(response.data.data);
-        setIsLoading(false);
-        setError(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setError(true);
-      });
-  }, []);
-
-  if (isLoading) return <LoadingList />;
-  if (error) return <ErrorList />;
+  if (products.isLoading) return <LoadingList />;
+  if (products.error) return <ErrorList />;
   return (
     <Container>
       <FlatList
-        data={products}
+        data={products.products}
         keyExtractor={product => product.portfolioProductId.toString()}
         renderItem={({ item: product }) => (
           <List>
