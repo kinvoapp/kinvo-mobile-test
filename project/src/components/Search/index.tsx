@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SearchBar } from 'react-native-elements';
-import { ProductContext, ProductProps } from '../../hooks/ProductContext';
 
-const Search: React.FC = () => {
-  const products: ProductProps = useContext(ProductContext);
-
+const Search: React.FC = ({ searchFilter, setSearchFilter }) => {
   return (
     <SearchBar
       placeholder="Buscar por nome..."
       round
+      onChangeText={text => setSearchFilter(text)}
+      value={searchFilter}
       containerStyle={{
         borderBottomWidth: 0,
         borderTopWidth: 0,

@@ -6,9 +6,7 @@ export const TextBalance = styled.Text``;
 export const Equity = styled.Text``;
 export const Profitability = styled.Text``;
 
-export const Container = styled.View`
-  align-items: center;
-`;
+export const Container = styled.View``;
 
 export const List = styled.View`
   border-bottom-width: 1px;

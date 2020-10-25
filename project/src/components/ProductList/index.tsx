@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import NumberFormat from 'react-number-format';
 import { ProductContext, ProductProps } from '../../hooks/ProductContext';
+import Search from '../Search';
 
 import ErrorList from './ErrorList';
 import LoadingList from './LoadingList';
@@ -18,13 +19,22 @@ import {
 
 const ProductList: React.FC = () => {
   const products: ProductProps = useContext(ProductContext);
+  const [searchFilter, setSearchFilter] = useState('');
+
+  const filteredProducts = products.products?.filter(product => {
+    return product.productName
+      .toLowerCase()
+      .includes(searchFilter.toLowerCase());
+  });
 
   if (products.isLoading) return <LoadingList />;
   if (products.error) return <ErrorList />;
   return (
     <Container>
+      <Search searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
+
       <FlatList
-        data={products.products}
+        data={filteredProducts}
         keyExtractor={product => product.portfolioProductId.toString()}
         renderItem={({ item: product }) => (
           <List>
