@@ -3,6 +3,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
+import AccountIcon from '../../assets/accountIcon.svg';
+
+import PremiumIcon from '../../assets/premiumIcon.svg';
+import SummaryIcon from '../../assets/summaryIcon.svg';
+import WalletIcon from '../../assets/walletIcon.svg';
 import Wallet from '../pages/Wallet';
 import Summary from '../pages/Summary';
 import Premium from '../pages/Premium';
@@ -16,14 +21,13 @@ const TabBottom: React.FC = () => {
       initialRouteName="Carteira"
       tabBarOptions={{
         style: {
-          height: 60,
-          padding: 8,
+          height: 65,
+          padding: 5,
         },
         tabStyle: {
           backgroundColor: '#fff',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          margin: 0,
         },
         activeTintColor: '#0fd0e2',
       }}
@@ -33,8 +37,8 @@ const TabBottom: React.FC = () => {
         name="Resumo"
         options={{
           tabBarLabel: 'Resumo',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="upcircle" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <SummaryIcon fill={color} width={size} focusable={focused} />
           ),
         }}
       />
@@ -43,8 +47,8 @@ const TabBottom: React.FC = () => {
         component={Wallet}
         options={{
           tabBarLabel: 'Carteira',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="upcircle" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <WalletIcon fill={color} width={size} focusable={focused} />
           ),
         }}
       />
@@ -55,7 +59,7 @@ const TabBottom: React.FC = () => {
           tabBarLabel: '',
           tabBarButton: () => (
             <TouchableWithoutFeedback>
-              <AntDesign name="upcircle" size={40} color="#0fd0e2" />
+              <AntDesign name="pluscircle" size={45} color="#0fd0e2" />
             </TouchableWithoutFeedback>
           ),
         }}
@@ -65,8 +69,8 @@ const TabBottom: React.FC = () => {
         component={Premium}
         options={{
           tabBarLabel: 'Premium',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="upcircle" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <PremiumIcon fill={color} width={size} focusable={focused} />
           ),
         }}
       />
@@ -75,8 +79,8 @@ const TabBottom: React.FC = () => {
         component={Account}
         options={{
           tabBarLabel: 'Conta',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="upcircle" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <AccountIcon fill={color} width={size} focusable={focused} />
           ),
         }}
       />

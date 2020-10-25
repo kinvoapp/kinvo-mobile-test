@@ -1,5 +1,23 @@
 {
   "expo": {
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "expo.ts",
+        "expo.tsx",
+        "expo.js",
+        "expo.jsx",
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "wasm",
+        "svg",
+        "svgx"
+      ],
+      "transformer": "node_modules/react-native-svg-transformer/index.js"
+    },
     "entryPoint": "./src/App.tsx",
     "name": "project-kinvo",
     "slug": "project-kinvo",
