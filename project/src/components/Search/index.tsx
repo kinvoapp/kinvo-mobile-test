@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SearchBar } from 'react-native-elements';
+import { ProductContext, ProductProps } from '../../hooks/ProductContext';
 
 const Search: React.FC = () => {
+  const products: ProductProps = useContext(ProductContext);
+
   return (
     <SearchBar
       placeholder="Buscar por nome..."

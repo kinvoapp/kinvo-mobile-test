@@ -1,5 +1,6 @@
 {
   "expo": {
+    "entryPoint": "./src/App.tsx",
     "name": "project-kinvo",
     "slug": "project-kinvo",
     "version": "1.0.0",
