@@ -19,7 +19,6 @@ export const TextTopBar = styled.Text<hasActive>`
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   font-size: 16px;
-  font-family: 'SFProDisplay-Semibold';
 
   ${props =>
     props.hasActive &&

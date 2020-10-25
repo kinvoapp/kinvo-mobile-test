@@ -3,14 +3,13 @@ import styled from 'styled-components/native';
 export const ProductName = styled.Text`
   font-size: 16px;
   font-family: 'SFProDisplay-Black';
+  color: #737479;
 `;
 export const InstitutionName = styled.Text`
   font-size: 10px;
-  font-family: 'SFProDisplay-Black';
 `;
 export const TextBalance = styled.Text`
   font-size: 10px;
-  font-family: 'SFProDisplay-Semibold';
 `;
 export const Equity = styled.Text`
   font-size: 20px;
