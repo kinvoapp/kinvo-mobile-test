@@ -7,16 +7,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import * as Font from 'expo-font';
 
+import { ThemeProvider } from 'styled-components';
 import Routes from './routes';
 import { ProductStorage } from './hooks/ProductContext';
-
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//     'roboto-bold': require('../assets/fonts/SFProDisplay-Black.ttf'),
-//     'roboto-italic': require('../assets/fonts/SFProDisplay-Bold.ttf'),
-//     'roboto-regular': require('../assets/fonts/SFProDisplay-Semibold.ttf'),
-//   });
-// };
+import { theme } from './styles/global';
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -30,8 +24,10 @@ export const App: React.FC = () => {
     <NavigationContainer>
       <SafeAreaView style={{ flex: 1 }}>
         <ProductStorage>
-          <StatusBar style="auto" animated />
-          <Routes />
+          <ThemeProvider theme={theme}>
+            <StatusBar style="auto" animated />
+            <Routes />
+          </ThemeProvider>
         </ProductStorage>
       </SafeAreaView>
     </NavigationContainer>

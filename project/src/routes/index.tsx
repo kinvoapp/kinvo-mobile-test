@@ -4,7 +4,6 @@ import { AntDesign } from '@expo/vector-icons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import AccountIcon from '../../assets/accountIcon.svg';
-
 import PremiumIcon from '../../assets/premiumIcon.svg';
 import SummaryIcon from '../../assets/summaryIcon.svg';
 import WalletIcon from '../../assets/walletIcon.svg';
