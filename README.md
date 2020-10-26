@@ -1,4 +1,7 @@
 <h1 align="center">Welcome to Kinvo Code Challenge React Native - Ian Felix</h1>
+<p align="center">
+ <img src="https://github.com/ianfelix/kinvo-mobile-test/blob/ian-felix/logo.svg" />
+<p/>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/ianfelix/kinvo-mobile-test/blob/ian-felix/LICENSE" target="_blank">
