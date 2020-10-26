@@ -109,7 +109,7 @@ export default function Products({
       fontWeight: "900",
       height: 12,
     },
-    profitabilidade: {
+    lucratividdade: {
       color: color,
       fontSize: 20,
       fontWeight: "bold",
@@ -139,7 +139,7 @@ export default function Products({
         </View>
         <View>
           <Text style={styles.rentabilidade}>RENTABILIDADE</Text>
-          <Text style={styles.profitabilidade}>{profitability}%</Text>
+          <Text style={styles.lucratividdade}>{profitability}%</Text>
         </View>
       </View>
     </View>
