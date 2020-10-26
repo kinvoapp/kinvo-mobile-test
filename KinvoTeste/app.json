@@ -1,0 +1,12 @@
+{
+  "name": "KinvoTeste",
+  "displayName": "KinvoTeste",
+  "expo": {
+    "name": "KinvoTeste",
+    "slug": "KinvoTeste",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
