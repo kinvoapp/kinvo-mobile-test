@@ -2,7 +2,7 @@
 
 # React Native Code Challenge
 
-## Instruções:
+## Instruções
 
 1. Faça um fork deste repositório;
 2. Implemente o layout disponível;
@@ -36,36 +36,32 @@
   treasureDirect: '#86B2DE',
   currency: '#B9B42C',
 
-  ```
+```
 
 5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
-
 ### Pré-requisitos:
 
-* Deve ser possível filtrar os produtos listados;
-* Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-* Desenvolver o app utilizando `React Native`
-
+- Deve ser possível filtrar os produtos listados;
+- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
+- Desenvolver o app utilizando `React Native`
 
 ### O que iremos avaliar
 
-* Simplicidade da solução
-* Componentização
-* Princípio da reutilização
-* Clean Code
+- Simplicidade da solução
+- Componentização
+- Princípio da reutilização
+- Clean Code
 
 ### O que vai te diferenciar
 
-* Utilizar TypeScript
-* Realizar testes unitários
-
+- Utilizar TypeScript
+- Realizar testes unitários
 
 ## Material:
 
-* O layout em formato Adobe XD consta no repositório em [/material](/material);
-* Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
+- O layout em formato Adobe XD consta no repositório em [/material](/material);
+- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
 
 ## Submissão
 
