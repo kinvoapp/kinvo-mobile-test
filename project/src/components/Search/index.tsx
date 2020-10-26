@@ -20,13 +20,11 @@ const Search = ({
         borderTopWidth: 0,
         backgroundColor: '#f4f8fb',
         borderColor: '#f4f8fb',
-        height: 85,
         justifyContent: 'center',
       }}
       inputStyle={{ backgroundColor: '#fff' }}
       inputContainerStyle={{
         backgroundColor: '#fff',
-        height: 40,
         alignItems: 'center',
         borderColor: '#ccc',
       }}

@@ -20,7 +20,7 @@ const TabBottom: React.FC = () => {
       initialRouteName="Carteira"
       tabBarOptions={{
         style: {
-          height: 65,
+          height: 60,
           padding: 5,
         },
         tabStyle: {

@@ -72,7 +72,6 @@ export const InstitutionName = styled.Text<productTypeIdProps>`
 export const ProductName = styled.Text`
   font-size: 16px;
   color: #737479;
-  line-height: 15px;
 `;
 export const TextBalance = styled.Text`
   font-size: 10px;
@@ -143,12 +142,11 @@ export const Equity = styled.Text<productTypeIdProps>`
     `}
 `;
 
-export const Container = styled.View``;
+// export const Container = styled.View``;
 
 export const BarColor = styled.View<productTypeIdProps>`
   border-left-width: 5px;
   padding-left: 5px;
-  justify-content: center;
 
   ${({ productTypeId }) =>
     productTypeId === 1 &&
@@ -212,11 +210,11 @@ export const BarColor = styled.View<productTypeIdProps>`
     `}
 `;
 
-export const List = styled.View`
+export const List = styled.ScrollView`
   border-bottom-width: 1px;
   border-bottom-color: #eeeeee;
 
-  padding: 14px;
+  padding: 17px;
 `;
 
 export const Balance = styled.View`

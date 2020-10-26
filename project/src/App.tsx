@@ -20,12 +20,12 @@ export const App: React.FC = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <ProductStorage>
-          <StatusBar style="auto" animated />
+      <StatusBar style="auto" animated />
+      <ProductStorage>
+        <NavigationContainer>
           <Routes />
-        </ProductStorage>
-      </NavigationContainer>
+        </NavigationContainer>
+      </ProductStorage>
     </SafeAreaView>
   );
 };

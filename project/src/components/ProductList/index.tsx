@@ -13,7 +13,6 @@ import {
   InstitutionName,
   TextBalance,
   Equity,
-  Container,
   BarColor,
 } from './styles';
 
@@ -34,7 +33,7 @@ const ProductList: React.FC = () => {
   if (products.isLoading) return <LoadingList />;
   if (products.error) return <ErrorList />;
   return (
-    <Container>
+    <>
       <Search searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
 
       <FlatList
@@ -76,7 +75,7 @@ const ProductList: React.FC = () => {
           </List>
         )}
       />
-    </Container>
+    </>
   );
 };
 
