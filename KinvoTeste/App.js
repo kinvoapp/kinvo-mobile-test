@@ -14,10 +14,42 @@ import HeaderFlattButton from "./scr/components/HeaderButton";
 import Products from "./scr/components/Products";
 
 export default function App() {
+  const isCancelled = useRef(false);
   const [query, setQuery] = useState("");
+  const [data, setData] = useState([]);
   const [queryResults, setQueryResults] = useState([]);
 
   function onPressTeste() {}
+
+  function getData() {
+    fetch(
+      "https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts"
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (!isCancelled.current) {
+          setData(res.data);
+          setQueryResults(res.data);
+        }
+      });
+  }
+
+  useEffect(() => {
+    getData();
+
+    if (query === "") {
+      setQueryResults(data);
+    } else {
+      const results = data.filter((searchValue) =>
+        searchValue.productName.toLowerCase().includes(query.toLowerCase())
+      );
+      setQueryResults(results);
+    }
+
+    return () => {
+      isCancelled.current = true;
+    };
+  }, [query]);
 
   return (
     <View style={styles.container}>
