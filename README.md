@@ -1,75 +1,44 @@
-> ![Logo Kinvo](https://kinvo.com.br/static/media/logo--light.da931bee.svg)
+# Kinvo Mobile Teste - React Native
 
-# React Native Code Challenge
+## Pré Requisitos
 
-## Instruções:
+* React Native
 
-1. Faça um fork deste repositório;
-2. Implemente o layout disponível;
-3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
-4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
+* Node.js
+
+* expo-cli
+
+* react-native-elements
+
+## Procedimentos
+
+1. Baixe o __Node.js__ de acordo com o sistema operacional do seu computador atráves do [link oficial](https://nodejs.org/pt-br/download/). Caso tenha alguma dúvida, é possível consultar a [documentação oficial](https://nodejs.org/pt-br/docs/)
+
+2. Baixe o __React Native__ seguindo o [tutorial](https://reactnative.dev/docs/0.61/getting-started) da documentação oficial
+
+3. Baixe o __expo-cli__ com o comando atráves do terminal:
 
 ```
-   FUNDS = 1;
-   PENSION = 2;
-   POST_FIXED_INCOME = 3;
-   TREASURY_DIRECT = 4;
-   SAVINGS = 5;
-   PRE_FIXED_INCOME = 6;
-   BITCOIN = 7;
-   STOCK = 8;
-   DEBENTURES = 9;
-   CURRENCY = 10;
-   FII = 11;
-   BDR = 12;
+npm install --global expo-cli
+```
 
-  stock: '#4C309B',
-  fii: '#4141D5',
-  bdr: '#9390E5',
-  bitcoin: '#3E71B9',
-  debentures: '#86B2DE',
-  funds: '#008DCB',
-  savings: '#5AAAD5',
-  pension: '#D5A82C',
-  postFixedIncome: '#94E5D2',
-  preFixedIncome: '#38BFA0',
-  treasureDirect: '#86B2DE',
-  currency: '#B9B42C',
+Caso haja alguma dúvida, é possível consultar a  [documentação oficial](https://docs.expo.io/get-started/installation/)
 
-  ```
+4. Para baixar o __react-native-elements__ utilize o seguinte comando no terminal dentro do diretório ```KinvoTeste```
 
-5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+```
+npm install react-native-elements
+```
+
+## Funcionamento
+
+1. Após toda a instalação de todos os programas, utilize o seguinte comando:
+```
+expo start
+```
+
+Ele irá criar um build e mostrar um QR Code
+
+2. Em seu celular, baixe o aplicativo Expo e leia o QR Code dado no terminal com o aplicativo
 
 
-### Pré-requisitos:
-
-* Deve ser possível filtrar os produtos listados;
-* Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-* Desenvolver o app utilizando `React Native`
-
-
-### O que iremos avaliar
-
-* Simplicidade da solução
-* Componentização
-* Princípio da reutilização
-* Clean Code
-
-### O que vai te diferenciar
-
-* Utilizar TypeScript
-* Realizar testes unitários
-
-
-## Material:
-
-* O layout em formato Adobe XD consta no repositório em [/material](/material);
-* Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
