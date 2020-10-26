@@ -1,71 +1,88 @@
-> ![Logo Kinvo](https://kinvo.com.br/static/media/logo--light.da931bee.svg)
+<h1 align="center">Welcome to Kinvo Code Challenge React Native - Ian Felix</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/ianfelix/kinvo-mobile-test/blob/ian-felix/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/\_ianfelix" target="_blank">
+    <img alt="Twitter: \_ianfelix" src="https://img.shields.io/twitter/follow/_ianfelix.svg?style=social" />
+  </a>
+</p>
 
-# React Native Code Challenge
+> Projeto feito com react native utilizando o expo
 
-## Instruções
+# Instruções
 
-1. Faça um fork deste repositório;
-2. Implemente o layout disponível;
-3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
-4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
+## Clone
 
-```
-   FUNDS = 1;
-   PENSION = 2;
-   POST_FIXED_INCOME = 3;
-   TREASURY_DIRECT = 4;
-   SAVINGS = 5;
-   PRE_FIXED_INCOME = 6;
-   BITCOIN = 7;
-   STOCK = 8;
-   DEBENTURES = 9;
-   CURRENCY = 10;
-   FII = 11;
-   BDR = 12;
+Faça o clone deste repositório
 
-  stock: '#4C309B',
-  fii: '#4141D5',
-  bdr: '#9390E5',
-  bitcoin: '#3E71B9',
-  debentures: '#86B2DE',
-  funds: '#008DCB',
-  savings: '#5AAAD5',
-  pension: '#D5A82C',
-  postFixedIncome: '#94E5D2',
-  preFixedIncome: '#38BFA0',
-  treasureDirect: '#86B2DE',
-  currency: '#B9B42C',
-
+```sh
+git clone
 ```
 
-5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+Entre na pasta clonada
 
-### Pré-requisitos:
+```sh
+cd kinvo-mobile-test
+```
 
-- Deve ser possível filtrar os produtos listados;
-- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-- Desenvolver o app utilizando `React Native`
+Mude a branch
 
-### O que iremos avaliar
+```sh
+git checkout ian-felix
+```
 
-- Simplicidade da solução
-- Componentização
-- Princípio da reutilização
-- Clean Code
+Entre na pasta do Projeto
 
-### O que vai te diferenciar
+```sh
+cd project
+```
 
-- Utilizar TypeScript
-- Realizar testes unitários
+## Install
 
-## Material:
+Dentro da pasta <strong>project</strong> faça a instalação dos pacotes utilizando algum dos comandos abaixo.
 
-- O layout em formato Adobe XD consta no repositório em [/material](/material);
-- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
+```sh
+yarn ou  npm install
+```
 
-## Submissão
+Instale o CLI do expo para rodar o projeto
+<a href="https://docs.expo.io/" target="_blank">
+Clique para saber mais.
+</a>
 
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
+```sh
+npm install expo-cli --global
+```
 
-**Sucesso!**
+## Usage
+
+Para rodar o projeto expo diretamento do seu smartphone utilize o comando abaixo e instale o expo na loja de aplicativos do seu celular.
+
+```sh
+yarn start
+```
+
+Para rodar no seu emulador android/ios utilize o comando abaixo.
+
+```sh
+yarn android ou yarn ios
+```
+
+<a href='https://docs.expo.io/get-started/installation/'>Leia mais sobre o uso do Expo aqui<a/>
+
+## Author
+
+👤 **Ian Felix**
+
+- Twitter: [@\_ianfelix](https://twitter.com/\_ianfelix)
+- Github: [@ianfelix](https://github.com/ianfelix)
+- LinkedIn: [@ian-felix](https://linkedin.com/in/ian-felix)
+
+## 📝 License
+
+Copyright © 2020 [Ian Felix](https://github.com/ianfelix).<br />
+This project is [MIT](https://github.com/ianfelix/kinvo-mobile-test/blob/ian-felix/LICENSE) licensed.
+
+---
