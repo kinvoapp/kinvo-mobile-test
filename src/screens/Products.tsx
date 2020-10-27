@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, FlatList } from 'react-native';
+import { formatCurrency } from '../utils/formatCurrency';
 
-import { SearchBar, Icon } from 'react-native-elements';
+import { SearchBar } from 'react-native-elements';
 import  { colorScheme } from '../styles/ColorScheme';
 import api from '../services/api';
 
@@ -111,12 +112,12 @@ const getData = async () => {
                 <Text style={{ 
                   fontSize: 20, 
                   fontWeight: 'bold', 
-                  color: colorScheme(item.productTypeId) }}>R${item.equity.toLocaleString('pt-BR')}
+                  color: colorScheme(item.productTypeId) }}>R${formatCurrency(item.equity)}
                 </Text>
                 <Text style={{ 
                   fontSize: 20,
                   fontWeight: 'bold',
-                  color: colorScheme(item.productTypeId) }}>{item.profitability.toLocaleString('pt-BR')}%
+                  color: colorScheme(item.productTypeId) }}>{formatCurrency(item.profitability)}%
                 </Text>
               </View>
             </View>
