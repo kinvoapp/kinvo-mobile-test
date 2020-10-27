@@ -39,12 +39,26 @@ react-native-elements:
 $ npm install react-native-elements
 
  ```
+jest e react-test-renderer (Para testes)
+ 
+```
+ $ npm install jest-expo @types/jest react-test-renderer @types/react-test-renderer
+ 
+```
  
 3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
 ```
 expo start
 
  ```
+ Para testar:
+ 
+ ```
+npm test
+
+yarn test
+ ```
+ 
  
 4. Ao abrir o terminal do Expo, sugiro baixar o app do Expo no seu mobile e scanear o QR code fornecido. 
 
