@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Dimensions, FlatList } from 'react-native';
-import { formatCurrency } from '../utils/formatCurrency';
+
 
 import { SearchBar } from 'react-native-elements';
-import  { colorScheme } from '../styles/ColorScheme';
-import api from '../services/api';
+import  { colorScheme } from '../../../styles/ColorScheme';
+import api from '../../../services/api';
 
 
 export default function Products() {
@@ -78,11 +78,8 @@ const getData = async () => {
           maxLength={20}
           value={searchTerm}
           onChangeText={text => setSearchTerm(text)} 
-        >
+        />
   
-      </SearchBar>
-      
-        
       <FlatList 
         data={searchResults}
         keyExtractor={(item, index) => index.toString()}
@@ -136,7 +133,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingTop: 24,
     justifyContent: 'center',
-    marginBottom: 20,
     backgroundColor: '#F5F8FA',
     borderWidth: 0,
     borderBottomColor: 'transparent',
