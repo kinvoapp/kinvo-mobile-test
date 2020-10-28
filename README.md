@@ -39,6 +39,20 @@ react-native-elements:
 $ npm install react-native-elements
 
  ```
+ React Navigation e depnedências:
+ ```
+$ npm install @react-navigation/native
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+ ```
+ 
+ react-navigation/bottom-tabs:
+ 
+ ```
+$ npm install @react-navigation/bottom-tabs
+
+ ```
+ 
 jest e react-test-renderer (Para testes)
  
 ```
