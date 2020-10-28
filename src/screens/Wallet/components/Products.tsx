@@ -94,7 +94,8 @@ const getData = async () => {
               <View style={styles.productNameContainer}>             
                 <View style={{ backgroundColor: 
                   colorScheme(item.productTypeId), 
-                  width: 8, 
+                  width: 5,
+                  height: 30, 
                   borderRadius: 20, 
                   marginRight: 10}}
                 />
@@ -164,20 +165,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 4,
     paddingRight: 20,
-    height: 60,
+    height: 50,
+    alignItems: 'center',
   },
 
   productName: {
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'left',
+
   },
 
-  colorIndicator: {
-    width: 8,
-    borderRadius: 20,
-    marginRight: 10,
-  },
 
   dataTitleContainer: {
     flexDirection: 'row',
