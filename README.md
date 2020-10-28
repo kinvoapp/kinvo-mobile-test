@@ -3,7 +3,7 @@
 
 ## Instruções:
 
-Para rodar o app é necessário instalar algumas depedências:
+Para rodar o app é necessário instalar algumas dependências:
 
 ### Pré-requisitos:
 
@@ -39,7 +39,7 @@ react-native-elements:
 $ npm install react-native-elements
 
  ```
- React Navigation e depnedências:
+ React Navigation e dependências:
  ```
 $ npm install @react-navigation/native
 expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
