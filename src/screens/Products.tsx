@@ -41,7 +41,6 @@ const getData = async () => {
 }
 
 
-
   useEffect(() => {
     
       
@@ -112,12 +111,12 @@ const getData = async () => {
                 <Text style={{ 
                   fontSize: 20, 
                   fontWeight: 'bold', 
-                  color: colorScheme(item.productTypeId) }}>R${formatCurrency(item.equity)}
+                  color: colorScheme(item.productTypeId) }}>R${item.equity}
                 </Text>
                 <Text style={{ 
                   fontSize: 20,
                   fontWeight: 'bold',
-                  color: colorScheme(item.productTypeId) }}>{formatCurrency(item.profitability)}%
+                  color: colorScheme(item.productTypeId) }}>{item.profitability}%
                 </Text>
               </View>
             </View>
