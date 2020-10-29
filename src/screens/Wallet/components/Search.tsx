@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import api from '../../../services/api';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Products } from '../../../store/modules/search/types';
 import { searchInputValue } from '../../../store/modules/search/actions';
+import { isLoading } from '../../../store/modules/loading/actions';
 
 export default function Search() {
 
-  // const [isLoading, setIsLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [fullData, setFullData] = useState<Products[]>([]); 
@@ -16,21 +17,20 @@ export default function Search() {
   const dispatch = useDispatch();
 
 
-  const getData = async () => {
+  useEffect(()=>{
+    
+    api.get('').then(response =>{ 
 
-    await api.get('').then(response =>{ 
       const res = response.data;
     
-
-      setFullData(res.data);  
       
+      setFullData(res.data);  
+      dispatch(isLoading(false));
       dispatch(searchInputValue(fullData));
-   
-    });
-  }
+      
+    }).catch(err =>{
 
-  useEffect(()=>{
-    getData();
+    });
 
     const filteredData = fullData.filter(searchValue =>
       searchValue.productName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -38,6 +38,7 @@ export default function Search() {
        
     setSearchResults(filteredData);
     dispatch(searchInputValue(searchResults));
+    
   }, [fullData, searchTerm])
 
  
