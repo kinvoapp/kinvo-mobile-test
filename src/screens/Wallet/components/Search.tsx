@@ -16,9 +16,9 @@ export default function Search() {
   const dispatch = useDispatch();
 
 
-  const getData =  () => {
+  const getData = async () => {
 
-     api.get('').then(response =>{ 
+    await api.get('').then(response =>{ 
       const res = response.data;
     
 
