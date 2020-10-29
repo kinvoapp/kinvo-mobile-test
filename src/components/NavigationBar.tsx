@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
+
 import AbstractIcon from '../assets/images/abstractIcon.png';
 import AddButton from '../assets/images/addButton.png';
 import PremiumIcon from '../assets/images/premiumIcon.png';
@@ -20,7 +21,7 @@ import Add from '../screens/Add/Add';
 
 export default function NavigationBar() {
   return (
-    <Navigator 
+    <Navigator
         initialRouteName="Carteira"
         tabBarOptions={{
           keyboardHidesTabBar: true,
