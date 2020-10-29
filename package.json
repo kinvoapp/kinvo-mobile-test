@@ -11,9 +11,11 @@
   "dependencies": {
     "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
+    "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.10.0",
     "@react-navigation/native": "^5.8.0",
     "@types/jest": "^26.0.15",
+    "@types/react-redux": "^7.1.9",
     "@types/react-test-renderer": "^16.9.3",
     "axios": "^0.20.0",
     "expo": "~39.0.2",
@@ -22,13 +24,17 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-native-elements": "^3.0.0-alpha.1",
-    "react-native-gesture-handler": "^1.8.0",
-    "react-native-reanimated": "^1.13.1",
-    "react-native-screens": "^2.12.0",
+    "react-native-gesture-handler": "~1.7.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.4",
+    "react-native-screens": "~2.10.1",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.3",
     "react-navigation-tabs": "^2.10.0",
-    "react-test-renderer": "^16.14.0"
+    "react-number-format": "^4.4.1",
+    "react-redux": "^7.2.2",
+    "react-test-renderer": "^16.14.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

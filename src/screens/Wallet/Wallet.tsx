@@ -1,10 +1,14 @@
 import React from 'react'
 
 
-import Products from './components/Products';
+import ProductsList from './components/ProductsList';
+import Search from './components/Search';
 
 export default function Wallet() {
-  return <Products/>
-   
-  
-}
+  return ( 
+  <>
+    <Search/>
+    <ProductsList/>
+  </>
+  );  
+};

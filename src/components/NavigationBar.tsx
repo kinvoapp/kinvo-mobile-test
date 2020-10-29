@@ -5,11 +5,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
-import AbstractIcon from '../assets/abstractIcon.png';
-import AddButton from '../assets/addButton.png';
-import PremiumIcon from '../assets/premiumIcon.png';
-import ProfileIcon from '../assets/profileIcon.png';
-import WalletIcon from '../assets/walletIcon.png';
+import AbstractIcon from '../assets/images/abstractIcon.png';
+import AddButton from '../assets/images/addButton.png';
+import PremiumIcon from '../assets/images/premiumIcon.png';
+import ProfileIcon from '../assets/images/profileIcon.png';
+import WalletIcon from '../assets/images/walletIcon.png';
 
 import Premium from '../screens/Premium/Premium';
 import Profile from '../screens/Profile/Profile';

@@ -10,7 +10,7 @@ export default function Header() {
     <View style={styles.container}>
       <TouchableOpacity>
       <Image 
-          source={require('../assets/backButton.png')} 
+          source={require('../assets/images/backButton.png')} 
       />
       </TouchableOpacity>
       <TouchableOpacity>
