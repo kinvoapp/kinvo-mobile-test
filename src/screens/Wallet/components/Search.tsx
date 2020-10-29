@@ -25,8 +25,8 @@ export default function Search() {
     
       
       setFullData(res.data);  
-      dispatch(isLoading(false));
       dispatch(searchInputValue(fullData));
+      dispatch(isLoading(false));
       
     }).catch(err =>{
 
