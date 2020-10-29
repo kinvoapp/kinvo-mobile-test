@@ -1,17 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import Products from '../src/screens/Products'
+import NavigationBar from '../src/components/NavigationBar';
+import Header from '../src/screens/Wallet/components/Header';
+import LoadingIndicator from '../src/screens/Wallet/components/Header';
+import ProductsList from '../src/screens/Wallet/components/Header';
 
-it('Products Rendered', () => {
-  renderer.create(<Products />);
+it('ProductsList Rendered', () => {
+  renderer.create(<ProductsList />);
 });
 
-it('Footer Rendered', () => {
-  renderer.create(<Footer />);
+it('NavigationBar Rendered', () => {
+  renderer.create(<NavigationBar />);
 });
 
 it('Header Rendered', () => {
   renderer.create(<Header />);
+});
+
+it('LoadingIndicator Rendered', () => {
+  renderer.create(<LoadingIndicator />);
 });
