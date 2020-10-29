@@ -23,7 +23,9 @@ Para rodar o app é necessário instalar algumas dependências:
 
 ```
 npm install
+ ```
 ou
+```
 yarn 
 
  ```
@@ -32,14 +34,18 @@ yarn
 3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
 ```
 expo start
+ ```
 ou
+```
 yarn start
  ```
  Para testar:
  
  ```
 npm test
+ ```
 ou
+ ```
 yarn test
  ```
  
