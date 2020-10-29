@@ -25,8 +25,10 @@ export default function NavigationBar() {
         initialRouteName="Carteira"
         tabBarOptions={{
           keyboardHidesTabBar: true,
-          labelStyle: { fontFamily: 'SFProDisplay'},
-          style:{ 
+          labelStyle: { 
+            fontFamily: 'SFProDisplay'
+          },
+          style: { 
             height: 70,
             paddingTop: 15,
             paddingBottom: 10,
