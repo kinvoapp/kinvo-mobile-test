@@ -14,7 +14,7 @@ Para rodar o app é necessário instalar algumas dependências:
 
 1. Faça instalação do Expo com o seguinte comando
 ```
-npm install --global expo-cli
+$ npm install --global expo-cli
 
  ```
 
@@ -31,16 +31,16 @@ $ yarn
  
 3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
 ```
-expo start
+$ expo start
 ou
-yarn start
+$ yarn start
  ```
  Para testar:
  
  ```
-npm test
+$ npm test
 ou
-yarn test
+$ yarn test
  ```
  
  
