@@ -26,7 +26,7 @@ export default function ProductsList() {
         >
           <Text 
             style={{ color: 
-            colorScheme(item.productTypeId), fontWeight: 'bold'}}>
+            colorScheme(item.productTypeId), fontFamily: 'SFProDisplayBold'}}>
               {item.financialInstitutionName}
           </Text>
           <View style={styles.productNameContainer}>             
@@ -40,8 +40,8 @@ export default function ProductsList() {
             <Text style={styles.productName}>{item.productName}</Text>
           </View>
           <View style={styles.dataTitleContainer}>
-            <Text>SALDO ATUAL</Text>
-            <Text>RENTABILIDADE</Text>
+            <Text style={{ fontFamily: 'SFProDisplay'}}>SALDO ATUAL</Text>
+            <Text style={{ fontFamily: 'SFProDisplay'}}>RENTABILIDADE</Text>
           </View>
           <View style={styles.dataContainer}>
           <NumberFormat 
@@ -52,8 +52,8 @@ export default function ProductsList() {
             prefix={'R$'} 
             renderText={value => <Text style={{ 
               fontSize: 20, 
-              fontWeight: 'bold', 
-              color: colorScheme(item.productTypeId) }}>{value}
+              color: colorScheme(item.productTypeId),
+              fontFamily: 'SFProDisplayBold' }}>{value}
               </Text>}
           />
           <NumberFormat 
@@ -62,9 +62,9 @@ export default function ProductsList() {
             decimalSeparator=','
             suffix={'%'} 
             renderText={value => <Text style={{ 
-              fontSize: 20, 
-              fontWeight: 'bold', 
-              color: colorScheme(item.productTypeId) }}>{value}
+              fontSize: 20,  
+              color: colorScheme(item.productTypeId),
+              fontFamily: 'SFProDisplayBold' }}>{value}
               </Text>}
           />               
            </View>
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
      borderBottomColor: '#CCCFD1',
      borderBottomWidth: 2,
      padding: 10,
+     
    },
 
    productNameContainer: {
@@ -100,9 +101,8 @@ const styles = StyleSheet.create({
 
    productName: {
      fontSize: 16,
-     fontWeight: 'bold',
      textAlign: 'left',
-
+     fontFamily: 'SFProDisplayBold'
    },
 
 
@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
    numbers: {
      fontSize: 20,
      fontWeight: 'bold',
-     color: '#5D41AC',
    },
 
    footer: {
