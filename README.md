@@ -11,65 +11,41 @@ Para rodar o app é necessário instalar algumas dependências:
 
 * expo cli (terminal)
 
-* yarn (mais prático já que o projeto possui um arquivo yarn.lock, mas não necessário)
 
 1. Faça instalação do Expo com o seguinte comando
 ```
-npm install --global expo-cli
+* npm install --global expo-cli
 
  ```
 
-2. Após a instalação do Expo é necessário instalar as dependências do projeto:
+2. Após a instalação do Expo é necessário instalar os pacotes de dependências do projeto:
 
-Caso esteja utilizando yarn, basta rodar o seguinte comando:
 
 ```
-$ yarn install
-
+npm install
  ```
-
-
-Axios:
+ou
 ```
-$ npm install axios
+yarn 
 
  ```
-react-native-elements:
-```
-$ npm install react-native-elements
 
- ```
- React Navigation e dependências:
- ```
-$ npm install @react-navigation/native
-expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
-
- ```
- 
- react-navigation/bottom-tabs:
- 
- ```
-$ npm install @react-navigation/bottom-tabs
-
- ```
- 
-jest e react-test-renderer (Para testes)
- 
-```
- $ npm install jest-expo @types/jest react-test-renderer @types/react-test-renderer
- 
-```
  
 3. Após a instalação das depedências listadas acima é só executar o seguinte comando:
 ```
 expo start
-
+ ```
+ou
+```
+yarn start
  ```
  Para testar:
  
  ```
 npm test
-
+ ```
+ou
+ ```
 yarn test
  ```
  
