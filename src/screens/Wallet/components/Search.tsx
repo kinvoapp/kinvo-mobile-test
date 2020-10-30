@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 import { Products } from '../../../store/modules/search/types';
 import { searchInputValue } from '../../../store/modules/search/actions';
 import { isLoading } from '../../../store/modules/loading/actions';
+import { gotError } from '../../../store/modules/error/actions';
 
 export default function Search() {
 
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [fullData, setFullData] = useState<Products[]>([]); 
   const [searchResults, setSearchResults] = useState<Products[]>([]);
@@ -30,6 +30,9 @@ export default function Search() {
       
     }).catch(err =>{
 
+      dispatch(isLoading(false));
+      dispatch(gotError(true));
+      console.log(err);
     });
 
     const filteredData = fullData.filter(searchValue =>
