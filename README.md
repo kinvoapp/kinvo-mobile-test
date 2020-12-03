@@ -5,67 +5,76 @@
 ## Instruções:
 
 1. Faça um fork deste repositório;
-2. Implemente o layout disponível;
-3. Utilize a api https://e9a02505-3276-4fee-aede-c7023dfb9034.mock.pstmn.io/getProducts para obter o estado inicial da tela;
-4. Cada produto possui um `productTypeId`, que deverá ser utilizado para identificar a cor de cada tipo de produto como especificado a seguir:
+2. Siga as especificações;
+3. Implemente o layout disponível;
+4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
-```
-   FUNDS = 1;
-   PENSION = 2;
-   POST_FIXED_INCOME = 3;
-   TREASURY_DIRECT = 4;
-   SAVINGS = 5;
-   PRE_FIXED_INCOME = 6;
-   BITCOIN = 7;
-   STOCK = 8;
-   DEBENTURES = 9;
-   CURRENCY = 10;
-   FII = 11;
-   BDR = 12;
+## Especificações:
 
-  stock: '#4C309B',
-  fii: '#4141D5',
-  bdr: '#9390E5',
-  bitcoin: '#3E71B9',
-  debentures: '#86B2DE',
-  funds: '#008DCB',
-  savings: '#5AAAD5',
-  pension: '#D5A82C',
-  postFixedIncome: '#94E5D2',
-  preFixedIncome: '#38BFA0',
-  treasureDirect: '#86B2DE',
-  currency: '#B9B42C',
+O desafio consiste em desenvolver um aplicativo de quatro telas descritas abaixo. 
 
-  ```
+As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
 
-5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).
 
+### Tela "Desafio"
+
+- A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
+
+### Tela "Ações"
+
+- A lista de "ações" deve ser carregada através de uma chamada a api.
+  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
+- A lista de "ações" deve obedecer a seguinte prioridade:
+   - Favoritadas deve aparecer primeiro
+   - Ordem alfabética
+- O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
+- A lista de "ações" inicia com todos as "ações" desfavoritadas.
+
+### Tela "Fundos"
+
+- A lista de "fundos" deve ser carregada através de uma chamada a api.
+  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
+- A lista de "fundos" deve estar em ordem alfabética.
+- Os estados do fundo são:
+  - 0: Comum
+  - 1: Novo
+  - 2: Fechado
+- Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
+- Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
+- Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
+
+### Tela "Previdências"
+
+- A lista de "previdências" deve ser carregada através de uma chamada a api.
+  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
+- A lista de "previdências" deve estar em ordem alfabética.
+- A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
+   - "SEM TAXA": inclui as previdências com taxa igual a zero.
+   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
+   - "D+1": inclui as previdências com resgate igual a um.
 
 ### Pré-requisitos:
 
-* Deve ser possível filtrar os produtos listados;
-* Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-* Desenvolver o app utilizando `React Native`
-
+- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
+- Desenvolver o app utilizando `React Native`
 
 ### O que iremos avaliar
 
-* Simplicidade da solução
-* Componentização
-* Princípio da reutilização
-* Clean Code
+- Simplicidade da solução
+- Componentização
+- Princípio da reutilização
+- Clean Code
 
 ### O que vai te diferenciar
 
-* Utilizar TypeScript
-* Realizar testes unitários
-
+- Utilizar TypeScript
+- Realizar testes unitários
 
 ## Material:
 
-* O layout em formato Adobe XD consta no repositório em [/material](/material);
-* Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
+- O layout em formato Adobe XD consta no repositório em [/material](/material);
+- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
 
 ## Submissão
 
