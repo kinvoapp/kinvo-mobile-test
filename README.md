@@ -1,4 +1,3 @@
-> ![Logo Kinvo](https://kinvo.com.br/static/media/logo--light.da931bee.svg)
 
 # React Native Code Challenge
 
