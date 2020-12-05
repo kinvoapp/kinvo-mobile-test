@@ -1,6 +1,16 @@
 import React, { ReactNode } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, TextStyle, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  StyleSheet,
+  TextStyle,
+  Image,
+} from 'react-native';
+
+import colors from '../assets/colors';
+import typography from '../assets/fonts';
 import icons from '../assets/icons';
 
 interface IContainer {
@@ -42,17 +52,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   statusBar: {
-    backgroundColor: '#FFF',
+    backgroundColor: colors.white,
     height: 50,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     height: 100,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
   },
   backBtn: {
-    backgroundColor: '#6F4DBF',
+    backgroundColor: colors.primary,
     height: 24,
     width: 24,
     borderRadius: 12,
@@ -62,8 +72,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: 'bold',
-    color: '#6F4DBF',
-    fontSize: 20,
+    color: colors.primary,
+    ...typography.largeTitle,
     marginLeft: 20,
   } as TextStyle,
 });
