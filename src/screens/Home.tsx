@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
+import Container from '../components/Container';
 
 const Home = () => {
   return (
-    <SafeAreaView>
+    <Container screenName="Desafio">
       <Text>Home</Text>
-    </SafeAreaView>
+    </Container>
   );
 };
 
