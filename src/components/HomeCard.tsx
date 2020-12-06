@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 import colors from '../assets/colors';
 import typography from '../assets/fonts';
 import { IHomeSection } from '../constants/types';
+import LabelChip from './LabelChip';
 
 interface IHomeCard {
   item: IHomeSection;
@@ -32,11 +33,7 @@ const HomeCard: React.FC<IHomeCardProps> = ({ item }) => {
       <View>
         {/* Label */}
 
-        {item.label && (
-          <View style={styles.labelContainer}>
-            <Text style={styles.label}>{item.label}</Text>
-          </View>
-        )}
+        {item.label && <LabelChip label={item.label} bgColor={colors.aqua} />}
       </View>
     </TouchableOpacity>
   );
@@ -77,16 +74,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     ...typography.caption,
     color: colors.textGrey,
-  } as TextStyle,
-  labelContainer: {
-    backgroundColor: colors.aqua,
-    paddingHorizontal: 15,
-    paddingVertical: 4,
-    borderRadius: 50,
-  },
-  label: {
-    ...typography.caption,
-    color: colors.white,
   } as TextStyle,
 });
 

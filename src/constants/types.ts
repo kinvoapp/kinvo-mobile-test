@@ -7,3 +7,15 @@ export interface IHomeSection {
   route: string;
   label?: string;
 }
+
+// FUNDS
+
+export interface IFund {
+  id: number;
+  name: string;
+  type: string;
+  minimumValue: number;
+  rating: number;
+  profitability: number;
+  status: number;
+}

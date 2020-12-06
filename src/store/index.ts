@@ -1,4 +1,4 @@
-import { init } from '@rematch/core';
+import { init, RematchDispatch, RematchRootState } from '@rematch/core';
 
 import stocks from './stocks';
 import funds from './funds';
@@ -15,3 +15,6 @@ const store = init({
 });
 
 export default store;
+
+export type RootState = RematchRootState<typeof models>;
+export type RootDispatch = RematchDispatch<typeof models>;
