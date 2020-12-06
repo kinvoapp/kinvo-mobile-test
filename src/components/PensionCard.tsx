@@ -3,63 +3,14 @@ import { View, Text, StyleSheet, TextStyle, Image } from 'react-native';
 import colors from '../assets/colors';
 import typography from '../assets/fonts';
 import icons from '../assets/icons';
-import { IFund } from '../constants/types';
-import LabelChip from './LabelChip';
+import { IPension } from '../constants/types';
+import Separator from './Separator';
 
-interface IFundCard {
-  item: IFund;
+interface IPensionCard {
+  item: IPension;
 }
 
-const FundCard: React.FC<IFundCard> = ({ item }) => {
-  const disabled: boolean = item.status === 2;
-  const hasLabel: boolean = item.status === 1 || item.status === 2;
-
-  const renderStatus = (status: number): ReactNode => {
-    switch (status) {
-      case 0:
-        return <View />;
-        break;
-      case 1:
-        return <LabelChip label="Novo" bgColor={colors.aqua} />;
-      case 2:
-        return <LabelChip label="Fechado" bgColor={colors.darkGrey} />;
-      default:
-        break;
-    }
-  };
-
-  const renderRating = (rating: number): ReactNode => {
-    let stars = [];
-
-    if (rating % 1 === 0 && rating <= 5) {
-      for (let i = 1; i <= rating; i++) {
-        stars.push(
-          <Image
-            key={i}
-            source={disabled ? icons.star_disabled : icons.star}
-            style={disabled && { opacity: 0.5 }}
-          />,
-        );
-      }
-
-      const difference = (rating - 5) * -1;
-
-      if (difference > 0) {
-        for (let i = 1; i <= difference; i++) {
-          stars.push(
-            <Image
-              key={Math.random() + i}
-              source={disabled ? icons.star_disabled_empty : icons.star_empty}
-              style={disabled && { opacity: 0.5 }}
-            />,
-          );
-        }
-      }
-    }
-
-    return stars;
-  };
-
+const PensionCard: React.FC<IPensionCard> = ({ item }) => {
   const renderProfitability = (profit: number): ReactNode => {
     if (profit < 0) {
       return (
@@ -92,36 +43,42 @@ const FundCard: React.FC<IFundCard> = ({ item }) => {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
   };
 
+  const renderTax = (value: number): string => {
+    return `${value.toFixed(2)}%`;
+  };
+
+  const renderRedemptionTerm = (value: number): string => {
+    return `D+ ${value}`;
+  };
+
   return (
-    <View style={[styles.card, disabled && { backgroundColor: colors.disabledGrey }]}>
+    <View style={styles.card}>
       {/* Card Hader */}
       <View style={styles.headerContainer}>
-        <View style={[styles.nameContainer, !hasLabel && { width: '100%' }]}>
-          <Text style={[styles.name, disabled && { opacity: 0.5 }]}>{item.name}</Text>
-          <Text style={[styles.type, disabled && { opacity: 0.5 }]}>{item.type.toUpperCase()}</Text>
-        </View>
-
         <View>
-          <Text>{renderStatus(item.status)}</Text>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.type}>{item.type.toUpperCase()}</Text>
         </View>
       </View>
 
       {/* Item separator */}
-      <View style={styles.border} />
+      <Separator />
 
       {/* Info Rows */}
       <View style={styles.row}>
-        <Text style={[styles.rowText, disabled && { opacity: 0.5 }]}>Classificação:</Text>
-        <Text>{renderRating(item.rating)}</Text>
+        <Text style={styles.rowText}>Valor mínimo:</Text>
+        <Text style={styles.rowTextContent}>{renderMinValue(item.minimumValue)}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={[styles.rowText, disabled && { opacity: 0.5 }]}>Valor mínimo:</Text>
-        <Text style={[styles.rowTextContent, disabled && { opacity: 0.5 }]}>
-          {renderMinValue(item.minimumValue)}
-        </Text>
+        <Text style={styles.rowText}>Taxa:</Text>
+        <Text style={styles.rowTextContent}>{renderTax(item.tax)}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={[styles.rowText, disabled && { opacity: 0.5 }]}>Rentabilidade:</Text>
+        <Text style={styles.rowText}>Resgate:</Text>
+        <Text style={styles.rowTextContent}>{renderRedemptionTerm(item.redemptionTerm)}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.rowText}>Rentabilidade:</Text>
         <Text>{renderProfitability(item.profitability)}</Text>
       </View>
     </View>
@@ -136,19 +93,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: 17,
     paddingVertical: 15,
-  },
-  border: {
-    height: 1,
-    backgroundColor: colors.grey,
-    marginVertical: 15,
+    borderWidth: 0.5,
+    borderColor: colors.borderColor,
   },
   headerContainer: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  nameContainer: {
-    width: '70%',
   },
   name: {
     fontWeight: 'bold',
@@ -181,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FundCard;
+export default PensionCard;

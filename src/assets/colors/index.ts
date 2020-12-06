@@ -8,6 +8,7 @@ const colors = {
   green: '#AED335',
   aqua: '#36C4D6',
   darkGrey: '#818181',
+  borderColor: '#DAE0E3',
 };
 
 export default colors;

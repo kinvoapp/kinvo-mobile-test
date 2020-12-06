@@ -29,7 +29,7 @@ const Container = ({
   return (
     <>
       <View style={styles.statusBar} />
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         {/* Back Header Button */}
         <View style={styles.header}>
           {hasBackBtn && (
@@ -42,7 +42,7 @@ const Container = ({
           <Text style={[styles.label, hasBackBtn && { marginLeft: 13 }]}>{screenName}</Text>
         </View>
         {children}
-      </SafeAreaView>
+      </View>
     </>
   );
 };
