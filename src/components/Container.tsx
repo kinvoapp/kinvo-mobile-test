@@ -1,13 +1,5 @@
 import React, { ReactNode } from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
-  TextStyle,
-  Image,
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextStyle, Image } from 'react-native';
 
 import colors from '../assets/colors';
 import typography from '../assets/fonts';

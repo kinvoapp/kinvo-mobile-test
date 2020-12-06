@@ -1,9 +1,8 @@
-import { getCorrectPensionFilter } from './../helpers/pension';
+import { getCorrectPensionFilter, sortPensions } from './../helpers/pension';
 import { Filter, IPension } from './../constants/types';
-import { api } from './../services/api';
 import { RematchDispatch } from '@rematch/core';
 import { PensionSections } from '../constants/pension';
-import { IFund, Item } from '../constants/types';
+import { Item } from '../constants/types';
 
 interface IPensionState {
   loading: boolean;
@@ -44,14 +43,11 @@ const pension = {
     },
   },
   effects: (dispatch: RematchDispatch) => ({
+    // load sorted data to pensions state
     async load() {
       dispatch.pension.setLoadingTrue();
 
-      const sortedPensions = PensionSections.sort(function (a, b) {
-        if (a.name > b.name) return 1;
-        if (a.name < b.name) return -1;
-        return 0;
-      });
+      const sortedPensions = sortPensions(PensionSections);
 
       setTimeout(() => {
         dispatch.pension.loadedPensions(sortedPensions);

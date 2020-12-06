@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, SafeAreaView, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Container from '../components/Container';
 import { IFund } from '../constants/types';
@@ -33,7 +33,7 @@ const Funds = () => {
             renderItem={({ item }) => renderItem(item)}
             keyExtractor={(item, index) => `${item.name} + ${index}`}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{ paddingBottom: 40 }}
             style={styles.list}
           />
         </View>

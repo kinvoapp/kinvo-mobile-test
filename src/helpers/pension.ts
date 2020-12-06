@@ -1,4 +1,13 @@
+import pension from '../store/pension';
 import { Filter, IPension } from './../constants/types';
+
+export const sortPensions = (pensions: IPension[]) => {
+  return pensions.sort(function (a, b) {
+    if (a.name > b.name) return 1;
+    if (a.name < b.name) return -1;
+    return 0;
+  });
+};
 
 export const getCorrectPensionFilter = (pension: IPension, filters: Filter) => {
   const hasTax: boolean = Object.keys(filters).includes('tax');

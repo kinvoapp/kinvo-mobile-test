@@ -18,6 +18,7 @@ const Home: React.FC<IHomeProps> = () => {
           data={HomeSections}
           renderItem={({ item }) => renderItem(item)}
           keyExtractor={(item, index) => `${item.title} + ${index}`}
+          showsVerticalScrollIndicator={false}
           style={styles.list}
         />
       </View>

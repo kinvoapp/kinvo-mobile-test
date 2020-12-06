@@ -1,8 +1,7 @@
-import { api } from './../services/api';
 import { RematchDispatch } from '@rematch/core';
 import { IFund } from '../constants/types';
-import { loadFunds } from '../services/api';
 import { FundsSections } from '../constants/funds';
+import { sortFunds } from '../helpers/funds';
 
 interface IFundsState {
   loading: boolean;
@@ -27,13 +26,10 @@ const funds = {
     },
   },
   effects: (dispatch: RematchDispatch) => ({
+    // load funds data into funds state
     load() {
       dispatch.funds.setLoadingTrue();
-      const sortedFunds = FundsSections.sort(function (a, b) {
-        if (a.name > b.name) return 1;
-        if (a.name < b.name) return -1;
-        return 0;
-      });
+      const sortedFunds = sortFunds(FundsSections);
 
       setTimeout(() => {
         dispatch.funds.loadedFunds(sortedFunds);
