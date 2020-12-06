@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextStyle, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextStyle, Image, Platform } from 'react-native';
 
 import colors from '../assets/colors';
 import typography from '../assets/fonts';
@@ -20,7 +20,7 @@ const Container = ({
 }: IContainer) => {
   return (
     <>
-      <View style={styles.statusBar} />
+      {Platform.OS === 'ios' && <View style={styles.statusBar} />}
       <View style={styles.container}>
         {/* Back Header Button */}
         <View style={styles.header}>

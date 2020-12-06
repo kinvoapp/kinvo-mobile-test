@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Text, StyleSheet, TextStyle, Image } from 'react-native';
+import { View, Text, StyleSheet, TextStyle, Image, Platform } from 'react-native';
 import colors from '../assets/colors';
 import typography from '../assets/fonts';
 import icons from '../assets/icons';
@@ -89,6 +89,9 @@ const FundCard: React.FC<IFundCard> = ({ item }) => {
   };
 
   const renderMinValue = (value: number): string => {
+    if (Platform.OS === 'android') {
+      return `R$ ${value}`;
+    }
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
   };
 
@@ -163,6 +166,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 15,
   },
   rowText: {

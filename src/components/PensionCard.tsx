@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Text, StyleSheet, TextStyle, Image } from 'react-native';
+import { View, Text, StyleSheet, TextStyle, Image, Platform } from 'react-native';
 import colors from '../assets/colors';
 import typography from '../assets/fonts';
 import icons from '../assets/icons';
@@ -40,6 +40,9 @@ const PensionCard: React.FC<IPensionCard> = ({ item }) => {
   };
 
   const renderMinValue = (value: number): string => {
+    if (Platform.OS === 'android') {
+      return `R$ ${value}`;
+    }
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
   };
 

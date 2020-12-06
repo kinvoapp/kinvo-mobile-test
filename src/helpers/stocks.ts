@@ -17,13 +17,13 @@ export const getNormalizedSortedStocks = (stocks: IBeforeStock[]): IStock[] => {
 };
 
 export const getSortedAddedStocks = (stocks: IStock[]) => {
-  stocks.sort(function (a, b) {
+  return stocks.sort(function (a, b) {
     return a.isFavorite === b.isFavorite ? 0 : a.isFavorite ? -1 : 1;
   });
 };
 
 export const getSortedRemovedStocks = (stocks: IStock[]) => {
-  stocks.sort(function (a, b) {
+  return stocks.sort(function (a, b) {
     if (a.isFavorite === b.isFavorite) {
       return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     } else {
