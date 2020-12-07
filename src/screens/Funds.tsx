@@ -7,6 +7,7 @@ import colors from '../assets/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootDispatch, RootState } from '../store';
 import FundCard from '../components/FundCard';
+import ListEmpty from '../components/ListEmpty';
 
 const Funds = () => {
   const navigation = useNavigation();
@@ -34,6 +35,7 @@ const Funds = () => {
             keyExtractor={(item, index) => `${item.name} + ${index}`}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 40 }}
+            ListEmptyComponent={<ListEmpty />}
             style={styles.list}
           />
         </View>
