@@ -1,83 +1,68 @@
+# Kinvo Mobile App Test
 
-# React Native Code Challenge
+My attempt to build a mobile app with React Native using Kinvo instructions and designs.
 
-## Instruções:
 
-1. Faça um fork deste repositório;
-2. Siga as especificações;
-3. Implemente o layout disponível;
-4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
-## Especificações:
+## Installation
 
-O desafio consiste em desenvolver um aplicativo de quatro telas descritas abaixo. 
+Clone the repository, then:
 
-As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
+install the dependencies:
 
-Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).
+```bash
+yarn
+```
 
-### Tela "Desafio"
+Install iOS pods (If you're going to run on a macOS):
 
-- A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
+```bash
+cd ios
+```
 
-### Tela "Ações"
+```bash
+pod install
+```
 
-- A lista de "ações" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
-- A lista de "ações" deve obedecer a seguinte prioridade:
-   - Favoritadas deve aparecer primeiro
-   - Ordem alfabética
-- O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
-- A lista de "ações" inicia com todos as "ações" desfavoritadas.
+Run the app:
 
-### Tela "Fundos"
+```bash
+yarn android
+```
+or 
 
-- A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
-- A lista de "fundos" deve estar em ordem alfabética.
-- Os estados do fundo são:
-  - 0: Comum
-  - 1: Novo
-  - 2: Fechado
-- Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
-- Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
-- Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
+```bash
+yarn ios 
+```
 
-### Tela "Previdências"
+## Developing
 
-- A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
-- A lista de "previdências" deve estar em ordem alfabética.
-- A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-   - "SEM TAXA": inclui as previdências com taxa igual a zero.
-   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-   - "D+1": inclui as previdências com resgate igual a um.
+### Built with
+- React Native CLI
+- Redux (using Rematch framework)
+- Typescript
+- React Navigation v5
+- Eslint
+- Prettier
 
-### Pré-requisitos:
+### Prerequisites
 
-- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-- Desenvolver o app utilizando `React Native`
+To run this project, you will need the following packages installed:
 
-### O que iremos avaliar
+- [NodeJS v10.16 or higher](https://nodejs.org/en/)
+- [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) or [Android Studio](https:/P/developer.android.com/studio)
+- [Cocoapods](https://cocoapods.org/)
+- [Yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
 
-- Simplicidade da solução
-- Componentização
-- Princípio da reutilização
-- Clean Code
+## Comments
+- I couldn't use the API requests or use JSON.parse() on the data, so I end it up using mock data.
+- Because I use mock data, I wasn't able to use the `request error` screen.
+- The design for the pension screen shows a `novo` label, but this status isn't coming from the response on `/pension` API endpoint.
+- The response from /stocks has a typo on `ticket`.
 
-### O que vai te diferenciar
+### Problems?
 
-- Utilizar TypeScript
-- Realizar testes unitários
+You can contact [me](https://www.linkedin.com/in/enrickdaltro/) or you can also check [React Native environment setup](https://reactnative.dev/docs/environment-setup) page.
 
-## Material:
-
-- O layout em formato Adobe XD consta no repositório em [/material](/material);
-- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
+Made with ❤️ by [Enrick Daltro](https://www.linkedin.com/in/enrickdaltro/) 🤙
