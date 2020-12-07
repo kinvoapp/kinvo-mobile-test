@@ -2,6 +2,11 @@
 
 My attempt to build a mobile app with React Native using Kinvo instructions and designs.
 
+<div align="center" >
+<img src="https://user-images.githubusercontent.com/49761746/101297699-19952d00-3809-11eb-9dd4-1a71409e8858.gif" width="30%">
+<img src="https://user-images.githubusercontent.com/49761746/101297711-26198580-3809-11eb-85a3-290ecd452aaf.gif" width="30%">
+<img src="https://user-images.githubusercontent.com/49761746/101297877-e901c300-3809-11eb-8ad1-7ddecfcfbc23.gif" width="30%">
+</div>
 
 
 ## Installation
