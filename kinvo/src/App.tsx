@@ -8,9 +8,7 @@ import Routes from './routes';
 const App = () => (
   <NavigationContainer>
     <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-    <View style={{ flex: 1, backgroundColor: '#ECF0F2' }}>
-      <Routes />
-    </View>
+    <Routes />
   </NavigationContainer>
 );
 
