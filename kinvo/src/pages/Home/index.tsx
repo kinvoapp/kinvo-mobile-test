@@ -23,6 +23,7 @@ const Home: React.FC = () => {
       <CardHome
         title="Fundos"
         subtitle="De investimento"
+        tag
         Icon={() => <Funds />}
       />
 

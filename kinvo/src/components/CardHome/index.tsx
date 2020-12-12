@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image } from 'react-native';
 
 import { Container, Title, SubTitle, Column, Content } from './styles';
@@ -11,11 +11,17 @@ interface ICardHome {
   title: string;
   subtitle: string;
   onPress(): void;
-  Icon: keyof JSX.In;
-  IconNew: keyof JSX.Element;
+  Icon: keyof JSX.IntrinsicElements;
+  tag: boolean;
 }
 
-const CardHome: React.FC<ICardHome> = ({ onPress, title, subtitle, Icon }) => {
+const CardHome: React.FC<ICardHome> = ({
+  onPress,
+  title,
+  subtitle,
+  Icon,
+  tag,
+}) => {
   return (
     <Container onPress={onPress}>
       <Icon />
@@ -25,9 +31,7 @@ const CardHome: React.FC<ICardHome> = ({ onPress, title, subtitle, Icon }) => {
         <SubTitle>{subtitle}</SubTitle>
       </Column>
 
-      <Content>
-        <NewTag />
-      </Content>
+      <Content>{tag && <NewTag />}</Content>
     </Container>
   );
 };

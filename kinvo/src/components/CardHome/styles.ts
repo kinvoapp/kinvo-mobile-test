@@ -34,6 +34,6 @@ export const Column = styled.View`
 export const Content = styled.View`
   height: 10px;
   width: 10px;
-  margin-left: 14%;
-  margin-top: -5px;
+  margin-left: 10%;
+  justify-content: center;
 `;
