@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, SafeAreaView, View, Text } from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  View,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 
 import api from '../../services/api';
 
 import { CardActions } from '../../components';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 interface IData {
   id: number;
@@ -15,35 +21,17 @@ interface IData {
   profitability: number;
 }
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
-
-const Item = ({ title }) => (
-  <View>
-    <Text>{title}</Text>
-  </View>
-);
-
 const Actions: React.FC = () => {
   const [actions, setActions] = useState<Array<IData>>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getActions = async () => {
+      setLoading(true);
       const response = await api.get('/stocks');
 
       setActions(response.data);
+      setLoading(false);
     };
 
     getActions();
@@ -61,13 +49,21 @@ const Actions: React.FC = () => {
   );
 
   return (
-    <Container>
-      <FlatList
-        data={actions.data}
-        renderItem={renderActions}
-        keyExtractor={item => item.id}
-      />
-    </Container>
+    <>
+      <Container>
+        {loading ? (
+          <Content>
+            <ActivityIndicator size="large" color="#6F4DBF" />
+          </Content>
+        ) : (
+          <FlatList
+            data={actions.data}
+            renderItem={renderActions}
+            keyExtractor={item => item.id}
+          />
+        )}
+      </Container>
+    </>
   );
 };
 
