@@ -75,7 +75,13 @@ const CardActions: React.FC<ICardActions> = ({
             R$
             {minValue}
           </Price>
-          <ProfitabilityNumber>{profitability}</ProfitabilityNumber>
+          {profitability > 0 ? (
+            <ProfitabilityNumber>{profitability}</ProfitabilityNumber>
+          ) : (
+            <ProfitabilityNumber colors="#E85D1F">
+              {profitability}
+            </ProfitabilityNumber>
+          )}
         </ContentPrices>
       </ContainerValues>
     </Container>
