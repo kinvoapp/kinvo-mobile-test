@@ -15,6 +15,12 @@ export const Container = styled.View`
   padding: 17px;
 `;
 
+export const Row = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const Header = styled.View`
   display: flex;
   flex-direction: row;

@@ -4,6 +4,8 @@ import { View, TouchableOpacity } from 'react-native';
 
 import Like from '../../assets/svgs/like.svg';
 import LikeOutline from '../../assets/svgs/like-outline.svg';
+import ArrowUp from '../../assets/svgs/arrow-up.svg';
+import ArrowDown from '../../assets/svgs/arrow-down.svg';
 
 import {
   Container,
@@ -18,6 +20,7 @@ import {
   ContainerValues,
   Price,
   ProfitabilityNumber,
+  Row,
 } from './styles';
 
 interface ICardActions {
@@ -76,11 +79,20 @@ const CardActions: React.FC<ICardActions> = ({
             {minValue}
           </Price>
           {profitability > 0 ? (
-            <ProfitabilityNumber>{profitability}</ProfitabilityNumber>
+            <Row>
+              <ArrowUp />
+              <ProfitabilityNumber>
+{' '}
+{profitability}%</ProfitabilityNumber>
+            </Row>
           ) : (
-            <ProfitabilityNumber colors="#E85D1F">
-              {profitability}
-            </ProfitabilityNumber>
+            <Row>
+              <ArrowDown />
+              <ProfitabilityNumber colors="#E85D1F">
+                {profitability}
+%
+</ProfitabilityNumber>
+            </Row>
           )}
         </ContentPrices>
       </ContainerValues>
