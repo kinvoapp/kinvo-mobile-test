@@ -5,7 +5,20 @@ import { View, TouchableOpacity } from 'react-native';
 import Like from '../../assets/svgs/like.svg';
 import LikeOutline from '../../assets/svgs/like-outline.svg';
 
-import { Container, Header, Title, Ticker } from './styles';
+import {
+  Container,
+  Header,
+  Title,
+  Ticker,
+  Divider,
+  Body,
+  ContentPrices,
+  Profitability,
+  ValueMin,
+  ContainerValues,
+  Price,
+  ProfitabilityNumber,
+} from './styles';
 
 const CardActions: React.FC = () => {
   const [like, setLike] = useState<boolean>(false);
@@ -34,6 +47,22 @@ const CardActions: React.FC = () => {
           )}
         </TouchableOpacity>
       </Header>
+
+      <Body>
+        <Divider />
+      </Body>
+
+      <ContainerValues>
+        <ContentPrices>
+          <ValueMin>Valor mínimo:</ValueMin>
+          <Profitability>Rentabilidade:</Profitability>
+        </ContentPrices>
+
+        <ContentPrices>
+          <Price>R$ 24,14</Price>
+          <ProfitabilityNumber>- 27%</ProfitabilityNumber>
+        </ContentPrices>
+      </ContainerValues>
     </Container>
   );
 };
