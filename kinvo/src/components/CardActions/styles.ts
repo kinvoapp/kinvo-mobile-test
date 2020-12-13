@@ -5,8 +5,8 @@ interface IColors {
 }
 
 export const Container = styled.View`
-  width: 90%;
-  height: 25%;
+  width: 317px;
+  height: 147px;
   margin-top: 20px;
   border-radius: 10px;
   background-color: #fff;
