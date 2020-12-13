@@ -1,4 +1,8 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+
+interface IColors {
+  colors?: string;
+}
 
 export const Container = styled.View`
   width: 90%;
@@ -66,8 +70,8 @@ export const ContainerValues = styled.View`
   justify-content: space-between;
 `;
 
-export const ProfitabilityNumber = styled.Text`
-  color: #e85d1f;
+export const ProfitabilityNumber = styled.Text<IColors>`
+  color: ${props => props.colors || '#aed335'};
   font-size: 15px;
   font-weight: bold;
   font-family: 'Montserrat';

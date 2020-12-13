@@ -20,7 +20,19 @@ import {
   ProfitabilityNumber,
 } from './styles';
 
-const CardActions: React.FC = () => {
+interface ICardActions {
+  title: string;
+  ticker: string;
+  minValue: number;
+  profitability: number;
+}
+
+const CardActions: React.FC<ICardActions> = ({
+  title,
+  ticker,
+  minValue,
+  profitability,
+}) => {
   const [like, setLike] = useState<boolean>(false);
 
   const handleLike = () => {
@@ -35,8 +47,8 @@ const CardActions: React.FC = () => {
     <Container>
       <Header>
         <View>
-          <Title>Maganize Luiza</Title>
-          <Ticker>MGLU3</Ticker>
+          <Title>{title}</Title>
+          <Ticker>{ticker}</Ticker>
         </View>
 
         <TouchableOpacity onPress={handleLike}>
@@ -59,8 +71,11 @@ const CardActions: React.FC = () => {
         </ContentPrices>
 
         <ContentPrices>
-          <Price>R$ 24,14</Price>
-          <ProfitabilityNumber>- 27%</ProfitabilityNumber>
+          <Price>
+            R$
+            {minValue}
+          </Price>
+          <ProfitabilityNumber>{profitability}</ProfitabilityNumber>
         </ContentPrices>
       </ContainerValues>
     </Container>
