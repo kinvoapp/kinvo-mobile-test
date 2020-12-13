@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Actions, Home } from '../pages';
@@ -39,7 +40,11 @@ const ChallangeRoutes: React.FC = () => (
           marginBottom: 30,
           marginLeft: 15,
         },
-        headerLeft: () => <Left onPress={() => navigation.goBack()} />,
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Left />
+          </TouchableOpacity>
+        ),
       })}
       name="Ações"
       component={Actions}
