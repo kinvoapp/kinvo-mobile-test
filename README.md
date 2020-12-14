@@ -12,7 +12,7 @@
 **Installing dependencies**
 
 ```
-$ cd mobile 
+$ cd kinvo 
 $ yarn 
 ```
 
@@ -25,6 +25,6 @@ $ yarn
 Android
 
 ```
-$ cd mobile 
+$ cd kinvo 
 $ yarn android 
 ```
