@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import ArrowUp from '../../assets/svgs/arrow-up.svg';
 import NewTag from '../../assets/svgs/new.svg';
+import ArrowDown from '../../assets/svgs/arrow-down.svg';
 
 import {
   Container,
@@ -20,6 +21,7 @@ import {
   Row,
   ContentTitles,
   ContentTag,
+  ContentHeader,
 } from './styles';
 
 interface IData {
@@ -43,12 +45,12 @@ const CardForecasts: React.FC<IData> = ({
   return (
     <Container>
       <Header>
-        <View>
+        <ContentHeader>
           <Title numberOfLines={1} ellipsizeMode="tail">
             {name}
           </Title>
           <Ticker>{type}</Ticker>
-        </View>
+        </ContentHeader>
       </Header>
 
       <Body>
@@ -69,17 +71,29 @@ const CardForecasts: React.FC<IData> = ({
             {minimumValue}
           </Price>
           <Price>
+{' '}
 {tax}%</Price>
           <Price>
             D+
             {redemptionTerm}
           </Price>
 
-          <Row>
-            <ArrowUp />
-            <ProfitabilityNumber>
+          {profitability > 0 ? (
+            <Row>
+              <ArrowUp />
+              <ProfitabilityNumber>
+{' '}
 {profitability}%</ProfitabilityNumber>
-          </Row>
+            </Row>
+          ) : (
+            <Row>
+              <ArrowDown />
+              <ProfitabilityNumber colors="#E85D1F">
+                {profitability}
+%
+</ProfitabilityNumber>
+            </Row>
+          )}
         </ContentTitles>
       </ContainerValues>
     </Container>

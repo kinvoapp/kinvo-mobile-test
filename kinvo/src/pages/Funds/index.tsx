@@ -39,9 +39,15 @@ const Funds: React.FC = () => {
       setLoading(true);
       const response = await api.get('funds');
 
+      const orderAlphabetical = response.data.data;
+
+      const newOrder: Array<IData> = orderAlphabetical.sort((a, b) =>
+        a.name > b.name ? 1 : -1,
+      );
+
       console.log(response.data.data);
 
-      setData(response.data.data);
+      setData(newOrder);
       setLoading(false);
     };
     getFunds();

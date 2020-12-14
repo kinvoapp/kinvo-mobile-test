@@ -27,6 +27,10 @@ export const Header = styled.View`
   justify-content: space-between;
 `;
 
+export const ContentHeader = styled.View`
+  width: 165px;
+`;
+
 export const Title = styled.Text`
   color: #627179;
   font-size: 18px;
