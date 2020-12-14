@@ -40,7 +40,7 @@ const Fundos: React.FC = () => {
           data={funds}
           keyExtractor={(item, index) => String(index)}
           renderItem={({item}: any) => (
-            <Card>
+            <Card closed={item.status === 2}>
               <Header>
                 <Info>
                   <Title>{item.name}</Title>

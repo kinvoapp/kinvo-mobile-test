@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
@@ -9,13 +9,23 @@ export const List = styled.FlatList`
   padding: 20px;
 `;
 
-export const Card = styled.View`
+interface CardProps {
+  closed?: boolean;
+}
+
+export const Card = styled.View<CardProps>`
   border-radius: 10px;
   border-width: 1px;
   border-color: ${({theme}) => theme.colors.grayBorder};
   padding: 20px 20px 5px 20px;
   margin-bottom: 20px;
   background-color: ${({theme}) => theme.colors.white};
+  ${({closed = false}) =>
+    closed
+      ? css`
+          opacity: 0.5;
+        `
+      : null}
 `;
 
 export const Header = styled.View`
