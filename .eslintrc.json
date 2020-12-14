@@ -52,7 +52,10 @@
     "no-use-before-define": "off",
     "prettier/prettier": "error",
     "@typescript-eslint/no-unused-vars": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/jsx-closing-bracket-location": "off"
   },
   "settings": {
     "import/resolver": {
