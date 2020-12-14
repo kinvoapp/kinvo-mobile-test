@@ -29,6 +29,7 @@ import {
 import NewTag from '../../assets/svgs/new.svg';
 import Close from '../../assets/svgs/close.svg';
 import StarsClose from '../../assets/svgs/stars-close.svg';
+import Star from '../../assets/svgs/one-star.svg';
 
 interface ICardActions {
   name: string;
@@ -127,12 +128,21 @@ const CardFunds: React.FC<ICardActions> = ({
                 {minValue}
               </Price>
 
-              <Row>
-                <ArrowUp />
-                <ProfitabilityNumber>
+              {profitability > 0 ? (
+                <Row>
+                  <ArrowUp />
+                  <ProfitabilityNumber>
 {' '}
 {profitability}%</ProfitabilityNumber>
-              </Row>
+                </Row>
+              ) : (
+                <Row>
+                  <ArrowDown />
+                  <ProfitabilityNumber colors="#E85D1F">
+                    {profitability}%
+                  </ProfitabilityNumber>
+                </Row>
+              )}
             </ContentPrices>
           </ContainerValues>
         </Container>
@@ -161,18 +171,30 @@ const CardFunds: React.FC<ICardActions> = ({
             </ContentTitles>
 
             <ContentPrices>
-              <Stars />
+              <Row>
+                <Stars />
+              </Row>
               <Price>
                 R$
                 {minValue}
               </Price>
 
-              <Row>
-                <ArrowUp />
-                <ProfitabilityNumber>
+              {profitability > 0 ? (
+                <Row>
+                  <ArrowUp />
+                  <ProfitabilityNumber>
 {' '}
 {profitability}%</ProfitabilityNumber>
-              </Row>
+                </Row>
+              ) : (
+                <Row>
+                  <ArrowDown />
+                  <ProfitabilityNumber colors="#E85D1F">
+                    {profitability}
+%
+</ProfitabilityNumber>
+                </Row>
+              )}
             </ContentPrices>
           </ContainerValues>
         </Container>

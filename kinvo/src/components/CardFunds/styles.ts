@@ -17,7 +17,7 @@ export const Container = styled.View<IClose>`
   border-width: 1px;
   border-color: #dae0e3;
   padding: 17px;
-  opacity: ${props => props.close || '1px'};
+  opacity: ${props => props.close || '1'};
 `;
 
 export const Header = styled.View`

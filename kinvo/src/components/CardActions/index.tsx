@@ -89,6 +89,7 @@ const CardActions: React.FC<ICardActions> = ({
             R$
             {minValue}
           </Price>
+
           {profitability > 0 ? (
             <Row>
               <ArrowUp />
@@ -100,9 +101,8 @@ const CardActions: React.FC<ICardActions> = ({
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {profitability}
-%
-</ProfitabilityNumber>
+                {profitability}%
+              </ProfitabilityNumber>
             </Row>
           )}
         </ContentPrices>

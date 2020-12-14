@@ -22,6 +22,17 @@ interface IData {
   like: boolean;
 }
 
+interface ItemList {
+  item: {
+    id: number;
+    name: string;
+    ticker: string;
+    minimumValue: number;
+    profitability: number;
+    like: boolean;
+  };
+}
+
 const Actions: React.FC = () => {
   const [actions, setActions] = useState<Array<IData>>([]);
   const [loading, setLoading] = useState(false);
@@ -70,7 +81,7 @@ const Actions: React.FC = () => {
 
   console.log(favorites);
 
-  const renderActions = ({ item }) => (
+  const renderActions = ({ item }: ItemList) => (
     <>
       <CardActions
         id={item.id}
