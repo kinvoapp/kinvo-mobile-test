@@ -1,5 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useCallback } from 'react';
+import React, {
+  useState,
+  useImperativeHandle,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
 import Like from '../../assets/svgs/like.svg';
@@ -24,25 +29,31 @@ import {
 } from './styles';
 
 interface ICardActions {
+  id: number;
   title: string;
   ticker: string;
   minValue: number;
   profitability: number;
+  favorites(favorite: number): boolean;
 }
 
 const CardActions: React.FC<ICardActions> = ({
+  id,
   title,
   ticker,
   minValue,
   profitability,
+  favorites,
 }) => {
   const [like, setLike] = useState<boolean>(false);
 
   const handleLike = () => {
     if (like === false) {
       setLike(true);
+      favorites(id);
     } else {
       setLike(false);
+      favorites(id);
     }
   };
 
@@ -89,9 +100,8 @@ const CardActions: React.FC<ICardActions> = ({
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {profitability}
-%
-</ProfitabilityNumber>
+                {profitability}%
+              </ProfitabilityNumber>
             </Row>
           )}
         </ContentPrices>

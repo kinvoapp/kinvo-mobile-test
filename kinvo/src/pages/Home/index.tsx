@@ -21,6 +21,7 @@ const Home: React.FC = () => {
       />
 
       <CardHome
+        onPress={() => navigation.navigate('Fundos')}
         title="Fundos"
         subtitle="De investimento"
         tag

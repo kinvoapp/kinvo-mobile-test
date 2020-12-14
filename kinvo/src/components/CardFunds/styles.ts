@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 interface IColors {
   colors?: string;
@@ -6,19 +6,13 @@ interface IColors {
 
 export const Container = styled.View`
   width: 320px;
-  height: 147px;
+  height: 180px;
   margin-top: 20px;
   border-radius: 10px;
   background-color: #fff;
   border-width: 1px;
   border-color: #dae0e3;
   padding: 17px;
-`;
-
-export const Row = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const Header = styled.View`
@@ -34,10 +28,19 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
-export const Ticker = styled.Text`
+export const SubTitle = styled.Text`
   color: #627179;
   font-size: 14px;
   font-family: 'Montserrat';
+`;
+
+export const ContentTag = styled.View`
+  margin-top: -12px;
+`;
+
+export const Body = styled.View`
+  align-items: center;
+  margin-top: 16px;
 `;
 
 export const Divider = styled.View`
@@ -47,14 +50,18 @@ export const Divider = styled.View`
   opacity: 0.5;
 `;
 
-export const Body = styled.View`
-  align-items: center;
-  margin-top: 15px;
+export const ContentTitles = styled.View`
+  margin-top: 10px;
+  height: 70px;
+
+  justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export const ContentPrices = styled.View`
   margin-top: 10px;
-  height: 50%;
+  height: 75px;
+  margin-top: 5px
   justify-content: space-between;
   align-items: flex-end;
 `;
@@ -89,4 +96,10 @@ export const Price = styled.Text`
   font-weight: bold;
   font-family: 'Montserrat';
   letter-spacing: 0.7px;
+`;
+
+export const Row = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
