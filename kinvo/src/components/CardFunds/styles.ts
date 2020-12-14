@@ -4,7 +4,11 @@ interface IColors {
   colors?: string;
 }
 
-export const Container = styled.View`
+interface IClose {
+  close?: string;
+}
+
+export const Container = styled.View<IClose>`
   width: 320px;
   height: 180px;
   margin-top: 20px;
@@ -13,12 +17,17 @@ export const Container = styled.View`
   border-width: 1px;
   border-color: #dae0e3;
   padding: 17px;
+  opacity: ${props => props.close || '1px'};
 `;
 
 export const Header = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const ContentHeader = styled.View`
+  width: 180px;
 `;
 
 export const Title = styled.Text`
@@ -36,6 +45,10 @@ export const SubTitle = styled.Text`
 
 export const ContentTag = styled.View`
   margin-top: -12px;
+`;
+
+export const CloseTag = styled.View`
+  margin-top: 5px;
 `;
 
 export const Body = styled.View`
@@ -85,6 +98,13 @@ export const ContainerValues = styled.View`
 
 export const ProfitabilityNumber = styled.Text<IColors>`
   color: ${props => props.colors || '#aed335'};
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Montserrat';
+`;
+
+export const ProfitabilityNumberClose = styled.Text<IColors>`
+  color: ${props => props.colors || '#627179'};
   font-size: 15px;
   font-weight: bold;
   font-family: 'Montserrat';
