@@ -10,7 +10,7 @@
 
 ## Especificações:
 
-O desafio consiste em desenvolver um aplicativo de quatro telas descritas abaixo. 
+O desafio consiste em desenvolver um aplicativo de quatro telas descritas abaixo.
 
 As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
 
@@ -81,3 +81,22 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
 
 **Sucesso!**
+
+---
+## Passo a passo
+
+Para iniciar o passo a passo, clone este respositório e acesse a pasta do projeto.
+
+**Siga os passos abaixo:**
+
+```bash
+# Install the dependencies
+$ yarn
+
+# If you are going to emulate with android, run this command
+# Be sure to have the emulator open
+$ yarn android
+
+# If you are going to emulate with ios, run this command
+$ yarn ios
+```
