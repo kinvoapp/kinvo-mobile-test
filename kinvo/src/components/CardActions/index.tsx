@@ -61,7 +61,9 @@ const CardActions: React.FC<ICardActions> = ({
     <Container>
       <Header>
         <View>
-          <Title>{title}</Title>
+          <Title numberOfLines={1} ellipsizeMode="tail">
+            {title}
+          </Title>
           <Ticker>{ticker}</Ticker>
         </View>
 
@@ -101,8 +103,9 @@ const CardActions: React.FC<ICardActions> = ({
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {profitability}%
-              </ProfitabilityNumber>
+                {profitability}
+%
+</ProfitabilityNumber>
             </Row>
           )}
         </ContentPrices>

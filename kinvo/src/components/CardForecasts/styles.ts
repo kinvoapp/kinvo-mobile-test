@@ -98,3 +98,7 @@ export const Price = styled.Text`
   font-family: 'Montserrat';
   letter-spacing: 0.7px;
 `;
+
+export const ContentTag = styled.View`
+  margin-top: -10px;
+`;
