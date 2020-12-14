@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native';
 
 /*
-* this is the header componemt for all the application
+* using prop drilling this header serves to all the application.
 */
 
 export default function Header({ propText, backButton, navigation }) {

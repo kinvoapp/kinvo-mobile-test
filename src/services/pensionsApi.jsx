@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 /*
-* Single responsibility principle the get method is almost the same, but 
+* Single responsibility principle the get method is the same, but 
 * each feature has a function of making requests for only one endpoint
 */
 

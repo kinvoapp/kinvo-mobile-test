@@ -17,6 +17,7 @@ function Pension({ navigation, addPensionAction, listPensionReducer }) {
         apiGet={getPension}
         valueAdd={addPensionAction}
         valueState={listPensionReducer}
+        order={true}
       />
     </View>
   );
@@ -24,7 +25,7 @@ function Pension({ navigation, addPensionAction, listPensionReducer }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    height: '85%',
     backgroundColor: '#ECF0F2',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',

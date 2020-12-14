@@ -17,6 +17,7 @@ function Stocks({ navigation, addStockAction, listStockReducer }) {
         apiGet={getStocks}
         valueAdd={addStockAction}
         valueState={listStockReducer}
+        order={true}
       />
     </View>
   );
@@ -24,7 +25,7 @@ function Stocks({ navigation, addStockAction, listStockReducer }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    height: '85%',
     backgroundColor: '#ECF0F2',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',

@@ -8,6 +8,8 @@ import stockIcon from '../../assets/Icons/stockIcon.png';
 import fundsIcon from '../../assets/Icons/fundsIcon.png';
 import foresigthtsIcon from '../../assets/Icons/foresigthtsIcon.png';
 
+
+
 const displayOptions = (optionTitle, optionsSubTitle, imagePath, newOption, navigation) => 
   <OptionsList
     optionTitle={optionTitle}

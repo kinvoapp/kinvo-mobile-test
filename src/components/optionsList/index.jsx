@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   newRectangle: {
-    left:"240%"
+    left: '240%'
   },
 });

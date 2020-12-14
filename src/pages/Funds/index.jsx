@@ -23,8 +23,8 @@ function Funds({ navigation, addFundAction, listFundReducer }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: '100%',
+  container: {    
+    height: '85%',
     backgroundColor: '#ECF0F2',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
