@@ -1,5 +1,5 @@
 # KINVO
-![home](https://github.com/ItsJuniorDias/kinvo-mobile-test/blob/alexandre/screens/actions.jpg)
+![home](https://github.com/ItsJuniorDias/kinvo-mobile-test/blob/alexandre/screens/desafio-horz.jpg)
 
 **Tools**
 - **Axios** were used for consumption by Api;
