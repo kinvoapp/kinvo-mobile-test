@@ -29,6 +29,7 @@ const Home: React.FC = () => {
       />
 
       <CardHome
+        onPress={() => navigation.navigate('Previdências')}
         title="Previdências"
         subtitle="Privada"
         Icon={() => <Pensions />}
