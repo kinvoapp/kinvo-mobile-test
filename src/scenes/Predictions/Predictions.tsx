@@ -1,17 +1,43 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { Header } from '~/components';
-import { Container } from './styles';
+import { 
+  Wrapper, 
+  WrapperCards, 
+  CardStyled, 
+  WrapperSearch,
+  ButtonSearch,
+  Text
+} from './styles';
 
 type Props = {
   goBack?: () => void;
+  handleOptionSearch: (name: string) => void;
+  optionsSearch?: any;
 }
-const Predictions: React.FC<Props> = ({goBack}) => {
+
+const Predictions: React.FC<Props> = ({goBack, handleOptionSearch, optionsSearch}) => {
   return (
-    <Container>
+    <Wrapper>
       <Header title="Previdências" showIcon goBack={goBack} />
-      <Text>Predictions</Text>
-    </Container>
+
+      <WrapperCards>
+      <WrapperSearch>
+        {optionsSearch.items.map(item => (
+            <ButtonSearch
+              onPress={() => handleOptionSearch(item)}
+              key={item}
+              active={optionsSearch.active === item}
+            >
+              <Text active={optionsSearch.active === item}>{item}</Text>
+            </ButtonSearch>
+          ))}
+      </WrapperSearch>
+
+      {/* <ScrollView> */}
+        <CardStyled showPredictions showButtonState />
+      {/* </ScrollView> */}
+      </WrapperCards>
+    </Wrapper>
   );
 };
 

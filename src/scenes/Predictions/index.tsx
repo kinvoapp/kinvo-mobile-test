@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {routing} from '~/routes'
-import { Container } from './styles';
 import Predictions from './Predictions'
 
 const PredictionsContainer: React.FC = () => {
+  const [optionsSearch, setOptionsSearch] = useState({
+    active: 'SEM TAXA',
+    items: ['SEM TAXA', 'R$ 100,00', 'D+1'],
+  });
+
+  const handleOptionSearch = (name: string) => {
+    setOptionsSearch({ ...optionsSearch, active: name });
+  };
+
   const goBack = () => routing.goBack()
   return (
-    <Container>
-      <Predictions goBack={goBack} />
-    </Container>
+    <Predictions goBack={goBack} handleOptionSearch={handleOptionSearch} optionsSearch={optionsSearch} />
   );
 };
 
