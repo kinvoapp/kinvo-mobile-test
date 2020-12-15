@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {RoutesPublic, routing} from '~/routes'
-import { Container } from './styles';
 import Actions from './Actions'
 
 const ActionsContainer: React.FC = () => {
+  const [iconHeartState, setIconHeartState] = useState(false)
+
   const goBack = () => routing.goBack()
+
+  const handleIconHeartState = () => {
+    setIconHeartState(!iconHeartState)
+  }
   return (
-    <Container>
-      <Actions goBack={goBack} />
-    </Container>
+    <Actions goBack={goBack} handleIconHeartState={handleIconHeartState} />
   );
 };
 

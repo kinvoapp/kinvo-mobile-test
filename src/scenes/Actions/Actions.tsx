@@ -1,17 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { Header } from '~/components';
-import { Container } from './styles';
+import { Wrapper, WrapperCards, CardStyled } from './styles';
 
 type Props = {
   goBack?: () => void;
+  handleIconHeartState: () => void;
 }
-const Actions: React.FC<Props> = ({goBack}) => {
+
+const Actions: React.FC<Props> = ({goBack, handleIconHeartState}) => {
   return (
-    <Container>
+    <Wrapper>
       <Header title="Ações" showIcon goBack={goBack} />
-      <Text>Actions</Text>
-    </Container>
+      <WrapperCards>
+        <CardStyled  iconHeartState={handleIconHeartState} />
+      </WrapperCards>
+    </Wrapper>
   );
 };
 
