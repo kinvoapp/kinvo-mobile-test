@@ -2,12 +2,48 @@ import React from 'react';
 
 import { Text } from 'react-native';
 
-import { Wrapper } from './styles';
+import { 
+  Wrapper,
+  WrapperHeader, 
+  ContentHeader,
+  IconHeart, 
+  Title, 
+  Description,
+  DescriptionValue,
+  Profitability,
+  Content,
+  WrapperLine,
+  TextCard,
+  IconLikeStyled
+} from './styles';
 
-const Card: React.FC = () => {
+type Props = {
+  iconHeartState?: any;
+  handleIconHeartState?: () => void;
+}
+
+const Card: React.FC<Props> = ({iconHeartState, handleIconHeartState}) => {
   return (
     <Wrapper>
-      <Text>Card</Text>
+      <WrapperHeader>
+        <ContentHeader>
+          <Title>Magazine Luiza</Title>
+          <Description>MGLU3</Description>
+        </ContentHeader>
+        <IconLikeStyled showIconHeart={iconHeartState} />
+      </WrapperHeader>
+
+      <Content>
+        <WrapperLine>
+          <TextCard>Valor mínimo:</TextCard>
+          <DescriptionValue>R$ 24,17</DescriptionValue>
+        </WrapperLine>
+
+        <WrapperLine>
+          <TextCard>Rentabilidade:</TextCard>
+          <Profitability>-27%</Profitability>
+        </WrapperLine>
+      </Content>
     </Wrapper>
   );
 };
