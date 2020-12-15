@@ -8,8 +8,8 @@ import PredictionsIcon from '~/assets/predictions.png'
 
 const HomeContainer: React.FC = () => {
   const goToActions = () => routing.to(RoutesPublic.ACTIONS)
-  const goToFunds = () => routing.to(RoutesPublic.PREDICTIONS)
-  const goToPredictions = () => routing.to(RoutesPublic.FUNDS)
+  const goToFunds = () => routing.to(RoutesPublic.FUNDS)
+  const goToPredictions = () => routing.to(RoutesPublic.PREDICTIONS)
   
   const options = [
     {
