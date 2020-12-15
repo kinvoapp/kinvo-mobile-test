@@ -1,100 +1,90 @@
 <img src="./images/logo.sample.png" alt="Logo of the project" align="right">
 
-# Name of the project &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+# Kinvo app - Teste &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 > Additional information or tag line
 
-A brief description of your project, what it is used for.
+Um Aplicativo com a finalidade de listar Ações, Fundos e Previdências.
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+Para rodar o app é necessário ter instalado o react-native-cli em sua maquina.
 
+Comando para baixar o projeto.
 ```shell
-commands here
+git clone https://github.com/hiagopsilva/kinvo-mobile-test.git && cd kinvo-app
 ```
 
-Here you should say what actually happens when you execute the code above.
+
+Comando para instalar as dependencias do projeto.
+```shell
+yarn
+```
+Ou
+```shell
+npm install
+```
+
+Comando para rodar o projeto.
+
+Ambiente Android
+```shell
+  yarn android
+```
+
+Ambiente IOS
+```shell
+  yarn ios
+```
 
 ## Developing
 
 ### Built With
-List main libraries, frameworks used including versions (React, Angular etc...)
-
-### Prerequisites
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
-
+- React
+- React native
+- Styled Components
+- PlatformBuilders Helpers
+- React Navigation
+- React Native Vector Icons
+- React Native Typography
 
 ### Setting up Dev
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
-
+Para utilizar o projeto abra o cmd e execute o comando abaixo.
 ```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
+git clone https://github.com/hiagopsilva/kinvo-mobile-test.git
+cd kinvo-app
 ```
 
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here.
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
-
+Após isso execute:
 ```shell
-./configure
-make
-make install
+  yarn
+```
+Ou
+```shell
+  npm install
 ```
 
-Here again you should state what actually happens when the code above gets
-executed.
-
-### Deploying / Publishing
-give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy your-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
-
-## Versioning
-
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
-
-
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when using the project.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-Explain what these tests test and why.
-
-```shell
-Give an example
-```
-
-## Style guide
-
-Explain your code style and show how to check it.
+O código acima realiza uma copia do projeto no seu ambiente local, entra na pasta e instala as dependencias.
 
 ## Api Reference
 
-If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
+Para este projeto foi utilizado uma api externa e abaixo está a explicação de cada rota.
 
+Link da api 
+```shell
+  https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
+```
+A primeira rota "/stocks", lista todas as ações e voce pode encontrar a chamada da api dentro projeto através do caminho:
+```shell
+  src/scenes/Actions/index.ts
+```
 
-## Database
+A primeira rota "/funds", lista todas os Fundos e você pode encontra a chamada da api dentro através do caminho:
+```shell
+  src/scenes/Funds/index.ts
+```
 
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc... 
-
-## Licensing
-
-State what the license is and how to find the text version of the license.
+A primeira rota "/pension", lista todas as Previdências e você pode encontrar a chamada da api dentro através do caminho:
+```shell
+  src/scenes/Predictions/index.ts
+```
