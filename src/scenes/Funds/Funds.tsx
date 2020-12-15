@@ -12,7 +12,7 @@ const Funds: React.FC<Props> = ({goBack}) => {
       <Header title="Fundos" showIcon goBack={goBack} />
       <WrapperCards>
       {/* <ScrollView> */}
-        <CardStyled showClassification />
+        <CardStyled showClassification  valueStar={4} />
       {/* </ScrollView> */}
       </WrapperCards>
     </Wrapper>

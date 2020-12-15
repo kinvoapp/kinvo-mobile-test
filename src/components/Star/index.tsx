@@ -1,17 +1,21 @@
 import React from 'react';
 
-import { Text } from 'react-native';
 
 import { Wrapper, IconStar} from './styles';
 
-const Star: React.FC = () => {
+type Props = {
+  valueStar?: number | undefined;
+}
+const Star: React.FC<Props> = ({valueStar = 0}) => {
+
   return (
     <Wrapper>
-      <IconStar />
-      <IconStar />
-      <IconStar />
-      <IconStar />
-      <IconStar />
+      {[...Array(5)].map((star, i) => {
+        const countingValue = i + 1;
+        return (
+            <IconStar name={countingValue <= valueStar ? 'star' : 'staro'} />
+        )
+      })}
     </Wrapper>
   );
 };

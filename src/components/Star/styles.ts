@@ -9,7 +9,6 @@ export const Wrapper = styled.View`
 `;
 
 export const IconStar = styled(AntDesign).attrs(props => ({
-  name: 'star',
   size: 20,
   color: tertiaryLight(props)
 }))``;
