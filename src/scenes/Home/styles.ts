@@ -1,10 +1,43 @@
 import styled from 'styled-components/native';
 import {getTheme} from '~/utils/helpers'
+import {moderateScale} from '~/theme'
+import { Header, WrapperCard } from '~/components';
 
+// Colors
 const primaryContrast = getTheme('primary.contrast');
-export const Container = styled.View`
 
+//Spacings
+const mediumSpacing = getTheme('mediumSpacing');
+
+export const Wrapper = styled.View`
+  height: ${moderateScale(550)};
+  background: ${primaryContrast};
+`;
+
+export const HeaderStyled = styled(Header)``;
+
+export const WrapperCardStyled = styled(WrapperCard)``;
+
+export const WrapperCards = styled.View`
   flex: 1;
 
-  background: ${primaryContrast}
+  align-items: center;
+  padding-top: ${moderateScale(20)};
+`;
+
+export const IconActions = styled.Image`
+  width: 30px;
+  height: 30px;
+
+`;
+
+export const IconFunds = styled.Image`
+  width: 30px;
+  height: 30px;
+
+`;
+export const IconPredictions = styled.Image`
+  width: 30px;
+  height: 30px;
+
 `;

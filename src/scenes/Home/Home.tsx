@@ -1,29 +1,35 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { Header } from '~/components';
-import { Container } from './styles';
+import { Wrapper, IconActions, HeaderStyled, WrapperCards, WrapperCardStyled } from './styles';
+import ButtonState from '~/components/ButtonState'
+
+type PropsOptions = {
+  title: string;
+  description: string;
+  icon: string;
+  onPress: () => void;
+}
 
 type Props = {
-  goToActions?: () => void;
-  goToPredictions?: () => void;
-  goToFunds?: () => void;
+  options: PropsOptions[]
 }
-const Home: React.FC<Props> = ({goToActions, goToPredictions, goToFunds}) => {
-  return (
-    <Container>
-      <Header title="Desafio" />
-      <Text>Home</Text>
 
-      <TouchableOpacity onPress={goToActions}>
-        <Text>Button goToActions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={goToPredictions}>
-        <Text>Button goToPredictions</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={goToFunds}>
-        <Text>Button goToFunds</Text>
-      </TouchableOpacity>
-    </Container>
+const Home: React.FC<Props> = ({options}) => {
+  return (
+    <Wrapper>
+      <HeaderStyled title="Desafio" />
+      {options.map((item) => (
+        <WrapperCards>
+          <WrapperCardStyled 
+            goTo={item.onPress} 
+            showButtonState 
+            // source={item.icon} 
+            title={item.title} 
+            description={item.description}
+          />
+        </WrapperCards>
+      ))}
+    </Wrapper>
   );
 };
 
