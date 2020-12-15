@@ -1,8 +1,14 @@
 import styled from 'styled-components/native';
-import {getTheme} from '~/utils/helpers'
+import {getTheme, ifStyle} from '~/utils/helpers'
 import Typography from '../Typography'
+import ButtonState from '../ButtonState'
+import Star from '../Star'
 import LikeIcon from '../IconLike'
 import {moderateScale} from '~/theme'
+
+type ItemProps = {
+  typeButton?: boolean;
+}
 
 // Colors
 const primaryLight = getTheme('primary.light');
@@ -17,11 +23,13 @@ const mediumSpacing = getTheme('mediumSpacing');
 
 // Radius
 const mediumRadius = getTheme('mediumRadius');
-const giantSpacing = getTheme('giantSpacing');
 
-export const Wrapper = styled.View`
+// Ifs
+const isClassification = ifStyle('showClassification');
+
+export const Wrapper = styled.View<ItemProps>`
   width: 90%;
-  height: ${moderateScale(180)};
+  height: ${isClassification(moderateScale(200), moderateScale(180))};
   border-radius: ${mediumRadius};
   padding: ${mediumSpacing};
   background: ${primaryLight};
@@ -41,6 +49,8 @@ export const WrapperHeader = styled.View`
 export const ContentHeader = styled.View``;
 
 export const IconLikeStyled = styled(LikeIcon)``;
+
+export const ButtonStateStyled = styled(ButtonState)``;
 
 export const Content = styled.View`
   flex: 1;
@@ -87,3 +97,5 @@ export const Profitability = styled(Typography).attrs({
   font-weight: bold;
   color: ${secondaryContrast};
 `;
+
+export const StarStyled = styled(Star)``;

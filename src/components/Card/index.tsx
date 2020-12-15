@@ -1,4 +1,5 @@
 import React from 'react';
+import {If} from '~/components'
 
 import { Text } from 'react-native';
 
@@ -7,6 +8,8 @@ import {
   WrapperHeader, 
   ContentHeader,
   IconHeart, 
+  ButtonStateStyled,
+  StarStyled,
   Title, 
   Description,
   DescriptionValue,
@@ -20,20 +23,32 @@ import {
 type Props = {
   iconHeartState?: any;
   handleIconHeartState?: () => void;
+  showClassification?: boolean;
 }
 
-const Card: React.FC<Props> = ({iconHeartState, handleIconHeartState}) => {
+const Card: React.FC<Props> = ({iconHeartState, handleIconHeartState, showClassification}) => {
   return (
-    <Wrapper>
+    <Wrapper typeButton={showClassification} >
       <WrapperHeader>
         <ContentHeader>
           <Title>Magazine Luiza</Title>
           <Description>MGLU3</Description>
         </ContentHeader>
-        <IconLikeStyled showIconHeart={iconHeartState} />
+        {showClassification 
+          ? <ButtonStateStyled  buttonPrimary />
+          : <IconLikeStyled showIconHeart={iconHeartState} />
+        }
+        
       </WrapperHeader>
 
       <Content>
+        <If condition={showClassification || false}>
+          <WrapperLine>
+            <TextCard>Cassificação:</TextCard>
+            <StarStyled />
+          </WrapperLine>
+        </If>
+
         <WrapperLine>
           <TextCard>Valor mínimo:</TextCard>
           <DescriptionValue>R$ 24,17</DescriptionValue>
