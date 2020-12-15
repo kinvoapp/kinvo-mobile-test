@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {RoutesPublic, routing} from '~/routes'
-import {TouchableOpacity, Text} from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
-import { Wrapper } from './styles';
 import {If, MessageTryAgain} from '~/components'
 import Home from './Home'
 import ActionIcon from '~/assets/actions.png'
