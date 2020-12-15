@@ -16,7 +16,10 @@ export const Wrapper = styled.View`
 
 export const HeaderStyled = styled(Header)``;
 
-export const WrapperCardStyled = styled(WrapperCard)``;
+export const WrapperCardStyled = styled(WrapperCard)`
+  flex-direction: row;
+  align-items: center;
+`;
 
 export const WrapperCards = styled.View`
   flex: 1;
