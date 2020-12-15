@@ -6,6 +6,7 @@ export {default as Header} from './Header';
 export {default as WrapperCard} from './WrapperCard';
 export {default as ButtonState} from './ButtonState';
 export {default as Card} from './Card';
+export {default as IconLike} from './IconLike';
 // export { default as TextInput } from './TextInput';
 // export { default as Header } from './Header';
 // export { default as SceneWrapper } from './SceneWrapper';
