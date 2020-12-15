@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {RoutesPublic, routing} from '~/routes'
+import {TouchableOpacity, Text} from 'react-native';
+import NetInfo from "@react-native-community/netinfo";
 import { Wrapper } from './styles';
+import {If, MessageTryAgain} from '~/components'
 import Home from './Home'
 import ActionIcon from '~/assets/actions.png'
 import FundsIcon from '~/assets/funds.png'
@@ -10,6 +13,17 @@ const HomeContainer: React.FC = () => {
   const goToActions = () => routing.to(RoutesPublic.ACTIONS)
   const goToFunds = () => routing.to(RoutesPublic.FUNDS)
   const goToPredictions = () => routing.to(RoutesPublic.PREDICTIONS)
+  const [connState, setConnState] = useState<boolean | null | undefined>(false);
+
+  const handleIsConnected = () => {
+    NetInfo.fetch().then(state => {
+      setConnState(state.isInternetReachable);
+    });
+  }
+  
+  useEffect(() => {
+    handleIsConnected()
+  },[NetInfo])
   
   const options = [
     {
@@ -31,8 +45,18 @@ const HomeContainer: React.FC = () => {
       onPress: goToPredictions
     }
   ]
+
+  console.log(connState)
   return (
-    <Home options={options} />
+    <>
+      <If condition={!connState || false}>
+          <MessageTryAgain handleIsConnected={handleIsConnected} />
+     </If>
+
+      <If condition={connState || false}>
+        <Home options={options} />
+      </If>
+    </>
   );
 };
 
