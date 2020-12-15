@@ -24,9 +24,6 @@ export const Wrapper = styled.TouchableOpacity`
   border-radius: ${mediumRadius};
   padding: ${mediumSpacing};
   background: ${primaryLight};
-
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const WrapperIcon = styled.View`
