@@ -15,67 +15,85 @@ import {
   Content,
   WrapperLine,
   TextCard,
-  IconLikeStyled
 } from './styles';
 
 type Props = {
-  iconHeartState?: any;
-  handleIconHeartState?: () => void;
   showClassification?: boolean;
   showButtonState?: boolean;
   showPredictions?: boolean;
+  showIconHeart?: boolean;
+  valueStar?: number;
+  action?: any;
 }
 
 const Card: React.FC<Props> = ({
-    iconHeartState, 
-    handleIconHeartState, 
     showClassification,
     showPredictions,
     showButtonState,
+    showIconHeart,
+    valueStar,
+    action,
     ...rest
   }) => {
   return (
-    <Wrapper typeButton={showClassification} {...rest} >
-      <WrapperHeader>
+    <Wrapper
+      typeButton={showClassification} {...rest} 
+      action={action.status === 1 ? true : false}
+      key={action.id}
+    >
+      <WrapperHeader showIconHeart={showIconHeart}>
         <ContentHeader>
-          <Title>Magazine Luiza</Title>
-          <Description>MGLU3</Description>
+          <Title 
+          numberOfLines={
+            action.status != 0 
+            && action.status != 1 ? 2 : 1}
+          >
+            {action.name}
+          </Title>
+          <Description>{action.ticker}</Description>
         </ContentHeader>
-        {showButtonState
-          ? <ButtonStateStyled  buttonPrimary />
-          : <IconLikeStyled showIconHeart={iconHeartState} />
-        }
-        
+          
+        <If condition={!!showIconHeart || false}>
+          <IconHeart name='hearto' />
+        </If> 
+
+        <If condition={action.status === 0 || false}>
+          <ButtonStateStyled  buttonPrimary />
+        </If>
+
+        <If condition={action.status === 1 || false}>
+          <ButtonStateStyled />
+        </If>
       </WrapperHeader>
 
       <Content>
         <If condition={showClassification || false}>
           <WrapperLine>
             <TextCard>Cassificação:</TextCard>
-            <StarStyled />
+            <StarStyled valueStar={action.rating} />
           </WrapperLine>
         </If>
 
         <WrapperLine>
           <TextCard>Valor mínimo:</TextCard>
-          <DescriptionValue>R$ 24,17</DescriptionValue>
+          <DescriptionValue>R$ {action.minimumValue}</DescriptionValue>
         </WrapperLine>
 
         <If condition={showPredictions || false}>
           <WrapperLine>
             <TextCard>Taxa:</TextCard>
-            <DescriptionValue>2,00%</DescriptionValue>
+            <DescriptionValue>{action.tax}%</DescriptionValue>
           </WrapperLine>
 
           <WrapperLine>
             <TextCard>Resgate:</TextCard>
-            <DescriptionValue>D+ 10</DescriptionValue>
+            <DescriptionValue>D+ {action.redemptionTerm}</DescriptionValue>
           </WrapperLine>
         </If>
 
         <WrapperLine>
           <TextCard>Rentabilidade:</TextCard>
-          <Profitability>-27%</Profitability>
+          <Profitability>{action.profitability}</Profitability>
         </WrapperLine>
       </Content>
     </Wrapper>

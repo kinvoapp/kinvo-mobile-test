@@ -31,19 +31,21 @@ export const Wrapper = styled.View`
   background: ${primaryContrast};
 `;
 
-export const WrapperCards = styled.View`
-  flex: 1;
-
-  align-items: center;
+export const WrapperCards = styled.ScrollView`
   padding-top: ${mediumSpacing};
 `;
 
-export const ScrollView = styled.ScrollView`
-
+export const CardStyled = styled(Card)`
+  height: ${moderateScale(240)};
+  margin-bottom: ${mediumSpacing};
 `;
 
-export const CardStyled = styled(Card)`
-  height: ${moderateScale(250)};
+export const Content = styled.View`
+  flex: 1;  
+  width: 90%;
+  margin: 0 auto;
+
+  padding-bottom: ${moderateScale(20)};
 `;
 
 export const WrapperSearch = styled.View`
@@ -71,3 +73,13 @@ export const Text = styled(Typography).attrs({
   color: ${isActiveButton(primaryLight, secondaryLight)};
   font-weight: bold;
 `;
+
+export const WrapperLoading = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Loading = styled.ActivityIndicator.attrs(props => ({
+  color: primaryMain(props)
+}))``;

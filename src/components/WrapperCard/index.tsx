@@ -3,7 +3,6 @@ import If from '../If'
 import { 
   Wrapper, 
   WrapperIcon, 
-  Icon, 
   WrapperText, 
   Title, 
   Description,
@@ -32,7 +31,6 @@ const WrapperCard: React.FC<Props> = ({
   return (
     <Wrapper {...rest} onPress={goTo}>
       <WrapperIcon>
-        {/* <Icon source={source} /> */}
         {source}
       </WrapperIcon>
 

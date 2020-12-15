@@ -4,12 +4,32 @@ import Predictions from './Predictions'
 import {If, MessageTryAgain} from '~/components'
 import NetInfo from "@react-native-community/netinfo";
 
+type Data = {
+  name: string;
+  profitability: string;
+  minimumValue: number;
+  ticker: number;
+}
+
 const PredictionsContainer: React.FC = () => {
   const [connState, setConnState] = useState<boolean | null | undefined>(false);
   const [optionsSearch, setOptionsSearch] = useState({
     active: 'SEM TAXA',
     items: ['SEM TAXA', 'R$ 100,00', 'D+1'],
   });
+  const [dataActions, setDataActions] = useState<Data[]>();
+
+  async function loadActions(): Promise<Response> {
+    const response = await fetch('https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension')
+    const data = await response.json()
+    
+    setDataActions(data.data)
+    return data
+  }
+
+  useEffect(() => {
+    loadActions();
+  }, []);
 
   const handleIsConnected = () => {
     NetInfo.fetch().then(state => {
@@ -33,7 +53,12 @@ const PredictionsContainer: React.FC = () => {
       </If>
 
       <If condition={connState || false}>
-        <Predictions goBack={goBack} handleOptionSearch={handleOptionSearch} optionsSearch={optionsSearch} />
+        <Predictions
+          goBack={goBack} 
+          handleOptionSearch={handleOptionSearch} 
+          optionsSearch={optionsSearch} 
+          dataActions={dataActions}   
+        />
       </If>
     </>
   );

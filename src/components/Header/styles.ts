@@ -12,7 +12,6 @@ type PropsIconBack = {
 // Colors
 const primaryLight = getTheme('primary.light');
 const primaryMain = getTheme('primary.main');
-const secondaryLight = getTheme('secondary.light');
 
 // Spacings
 const smallSpacing = getTheme('smallSpacing');

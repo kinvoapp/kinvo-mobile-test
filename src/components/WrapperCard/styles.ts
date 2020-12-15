@@ -37,8 +37,6 @@ export const WrapperIcon = styled.View`
   align-items: center;
 `;
 
-export const Icon = styled.Image``;
-
 export const WrapperText = styled.View`
   margin-left: ${smallSpacing};
 `;

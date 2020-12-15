@@ -1,7 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { Wrapper, IconActions, HeaderStyled, WrapperCards, WrapperCardStyled } from './styles';
-import ButtonState from '~/components/ButtonState'
+import { Wrapper, HeaderStyled, WrapperCards, WrapperCardStyled } from './styles';
 
 type PropsOptions = {
   title: string;
@@ -18,12 +16,11 @@ const Home: React.FC<Props> = ({options}) => {
   return (
     <Wrapper>
       <HeaderStyled title="Desafio" />
-      {options.map((item) => (
-        <WrapperCards>
+      {options.map((item, index) => (
+        <WrapperCards key={index}>
           <WrapperCardStyled 
             goTo={item.onPress} 
-            showButtonState 
-            // source={item.icon} 
+            source={item.icon} 
             title={item.title} 
             description={item.description}
           />

@@ -6,9 +6,6 @@ import { Header, WrapperCard } from '~/components';
 // Colors
 const primaryContrast = getTheme('primary.contrast');
 
-//Spacings
-const mediumSpacing = getTheme('mediumSpacing');
-
 export const Wrapper = styled.View`
   height: ${moderateScale(550)};
   background: ${primaryContrast};
@@ -28,19 +25,22 @@ export const WrapperCards = styled.View`
   padding-top: ${moderateScale(20)};
 `;
 
-export const IconActions = styled.Image`
-  width: 30px;
-  height: 30px;
-
+export const Icon = styled.Image`
+  width: ${moderateScale(25)};
+  height: ${moderateScale(25)};
 `;
 
-export const IconFunds = styled.Image`
-  width: 30px;
-  height: 30px;
+export const IconActions = styled(Icon).attrs({
+  source: require('~/assets/actions.png')
+})``;
 
-`;
-export const IconPredictions = styled.Image`
-  width: 30px;
-  height: 30px;
+export const IconFunds = styled(Icon).attrs({
+  source: require('~/assets/wallet.png'),
+  resizeMode: 'contain'
+})``;
 
+export const IconPredictions = styled(Icon).attrs({
+  source: require('~/assets/foresight.png'),
+  resizeMode: 'contain'
+})`
 `;

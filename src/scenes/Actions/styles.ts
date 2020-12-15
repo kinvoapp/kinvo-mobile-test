@@ -3,19 +3,40 @@ import {getTheme} from '~/utils/helpers'
 import {moderateScale} from '~/theme'
 import Card from '~/components/Card'
 
+const primaryMain = getTheme('primary.main');
 const primaryContrast = getTheme('primary.contrast');
 
+// Spacings
+const mediumSpacing = getTheme('mediumSpacing');
+
 export const Wrapper = styled.View`
-  height: ${moderateScale(550)};
+  flex: 1;
   background: ${primaryContrast};
 `;
 
-export const WrapperCards = styled.View`
-  flex: 1;
-
-  align-items: center;
-  padding-top: ${moderateScale(20)};
+export const WrapperCards = styled.ScrollView`
+  padding-top: ${mediumSpacing};
 `;
 
-export const CardStyled = styled(Card)``;
+export const CardStyled = styled(Card)`
+  margin-bottom: ${mediumSpacing};
+`;
+
+export const Content = styled.View`
+  flex: 1;  
+  width: 90%;
+  margin: 0 auto;
+
+  padding-bottom: ${moderateScale(20)};
+`;
+
+export const WrapperLoading = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Loading = styled.ActivityIndicator.attrs(props => ({
+  color: primaryMain(props)
+}))``;
 

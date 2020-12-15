@@ -1,13 +1,16 @@
 import styled from 'styled-components/native';
-import {getTheme, ifStyle} from '~/utils/helpers'
+import {getTheme, ifStyle, AntDesign} from '~/utils/helpers'
 import Typography from '../Typography'
 import ButtonState from '../ButtonState'
 import Star from '../Star'
-import LikeIcon from '../IconLike'
 import {moderateScale} from '~/theme'
 
 type ItemProps = {
   typeButton?: boolean;
+}
+
+type IconProps = {
+  showIconHeart?: boolean;
 }
 
 // Colors
@@ -26,20 +29,24 @@ const mediumRadius = getTheme('mediumRadius');
 
 // Ifs
 const isClassification = ifStyle('showClassification');
+const isAction = ifStyle('action');
+const isPadding = ifStyle('showIconHeart');
 
 export const Wrapper = styled.View<ItemProps>`
-  width: 90%;
+  width: 100%;
   height: ${isClassification(moderateScale(200), moderateScale(180))};
   border-radius: ${mediumRadius};
   padding: ${mediumSpacing};
   background: ${primaryLight};
+
+  opacity: ${isAction(0.5, 1)}
 `;
 
 export const WrapperHeader = styled.View`
   flex-direction: row;
   justify-content: space-between;
 
-  padding-bottom: ${smallSpacing};
+  padding-bottom: ${isPadding(smallSpacing, 0)};
   border-bottom-width: 1px;
   border-bottom-color: ${primaryContrast};
 
@@ -47,8 +54,6 @@ export const WrapperHeader = styled.View`
 `;
 
 export const ContentHeader = styled.View``;
-
-export const IconLikeStyled = styled(LikeIcon)``;
 
 export const ButtonStateStyled = styled(ButtonState)``;
 
@@ -65,17 +70,18 @@ export const WrapperLine = styled.View`
 `;
 
 export const Title = styled(Typography).attrs({
-  variant: 'title2',
+  variant: 'title3',
 })`
   font-weight: bold;
-  color: ${secondaryLight}
+  width: ${moderateScale(220)};
+  color: ${secondaryLight};
 `;
 
 export const Description = styled(Typography).attrs({
   variant: 'title4',
 })`
   font-weight: bold;
-  color: ${secondaryLight}
+  color: ${secondaryLight};
 `;
 
 export const DescriptionValue = styled(Typography).attrs({
@@ -88,7 +94,7 @@ export const DescriptionValue = styled(Typography).attrs({
 export const TextCard = styled(Typography).attrs({
   variant: 'body',
 })`
-  color: ${secondaryLight}
+  color: ${secondaryLight};
 `;
 
 export const Profitability = styled(Typography).attrs({
@@ -99,3 +105,8 @@ export const Profitability = styled(Typography).attrs({
 `;
 
 export const StarStyled = styled(Star)``;
+
+export const IconHeart = styled(AntDesign).attrs(props=> ({
+  size: 30,
+  color: primaryMain(props)
+}))<IconProps>``;

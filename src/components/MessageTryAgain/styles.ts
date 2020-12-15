@@ -1,14 +1,12 @@
 import styled from 'styled-components/native';
 import Typography from '../Typography'
-import { getTheme, ifStyle } from '~/utils/helpers';
+import { getTheme } from '~/utils/helpers';
 import { moderateScale } from '~/theme';
 
 // Colors 
 const primaryLight = getTheme('primary.light')
 const primaryMain = getTheme('primary.main')
-const secondaryMain = getTheme('secondary.main')
 const secondaryLight = getTheme('secondary.light')
-const secondaryDark = getTheme('secondary.dark')
 
 // Spacing
 const smallSpacing = getTheme('smallSpacing');
@@ -16,9 +14,6 @@ const mediumSpacing = getTheme('mediumSpacing');
 
 // Radius
 const mediumRadius = getTheme('largeRadius');
-
-// Ifs
-const isPrimary = ifStyle('typeButton');
 
 export const Wrapper = styled.View`
   flex: 1;

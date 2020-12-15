@@ -3,9 +3,7 @@ import {RoutesPublic, routing} from '~/routes'
 import NetInfo from "@react-native-community/netinfo";
 import {If, MessageTryAgain} from '~/components'
 import Home from './Home'
-import ActionIcon from '~/assets/actions.png'
-import FundsIcon from '~/assets/funds.png'
-import PredictionsIcon from '~/assets/predictions.png'
+import { IconActions, IconFunds, IconPredictions} from './styles';
 
 const HomeContainer: React.FC = () => {
   const goToActions = () => routing.to(RoutesPublic.ACTIONS)
@@ -27,24 +25,23 @@ const HomeContainer: React.FC = () => {
     {
       title: 'Ações',
       description: 'Nacionais',
-      icon: <ActionIcon />,
+      icon: <IconActions />,
       onPress: goToActions
     },
     {
       title: 'Fundos',
       description: 'De Investimentos',
-      icon: <ActionIcon />,
+      icon: <IconFunds />,
       onPress: goToFunds
     },
     {
       title: 'Previdências',
       description: 'Privadas',
-      icon: <ActionIcon />,
+      icon: <IconPredictions />,
       onPress: goToPredictions
     }
   ]
 
-  console.log(connState)
   return (
     <>
       <If condition={!connState || false}>
