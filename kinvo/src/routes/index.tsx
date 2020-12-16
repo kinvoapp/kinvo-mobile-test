@@ -13,7 +13,11 @@ const ChallangeRoutes: React.FC = () => (
     screenOptions={{
       headerShown: true,
       headerTintColor: '#6F4DBF',
-
+      headerStyle: {
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
       headerStatusBarHeight: 20,
       headerTitleStyle: {
         fontFamily: 'Montserrat',

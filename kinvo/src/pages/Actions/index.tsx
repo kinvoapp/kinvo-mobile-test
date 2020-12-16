@@ -7,11 +7,13 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-import api from '../../services/api';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { CardActions } from '../../components';
 
 import { Container, Content } from './styles';
+
+import { RootDispatch, RootState } from '../../store';
 
 interface IData {
   id: number;
@@ -35,48 +37,53 @@ interface ItemList {
 
 const Actions: React.FC = () => {
   const [actions, setActions] = useState<Array<IData>>([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const [favorites, setFavorites] = useState(null);
 
+  const dispatch = useDispatch<RootDispatch>();
+
+  const { stocks, loading } = useSelector((state: RootState) => state.stocks);
+
   useEffect(() => {
-    const getActions = async () => {
-      setLoading(true);
-      const response = await api.get('/stocks');
+    dispatch.stocks.load();
+    // const getActions = async () => {
+    //   setLoading(true);
+    //   const response = await api.get('/stocks');
 
-      const orderAlphabetical = response.data.data;
+    //   const orderAlphabetical = response.data.data;
 
-      const newOrder: Array<IData> = orderAlphabetical.sort((a, b) =>
-        a.name > b.name ? 1 : -1,
-      );
+    //   const newOrder: Array<IData> = orderAlphabetical.sort((a, b) =>
+    //     a.name > b.name ? 1 : -1,
+    //   );
 
-      const favResult = newOrder.map(item => {
-        const newObject = { ...item };
+    //   const favResult = newOrder.map(item => {
+    //     const newObject = { ...item };
 
-        newObject.like = false;
-        return newObject;
-      });
+    //     newObject.like = false;
+    //     return newObject;
+    //   });
 
-      const favIndex = favResult.findIndex(obj => obj.id === favorites);
+    //   const favIndex = favResult.findIndex(obj => obj.id === favorites);
 
-      console.log(favResult);
-      console.log('Before Item', favResult[favIndex]);
+    //   console.log(favResult);
+    //   console.log('Before Item', favResult[favIndex]);
 
-      const newState = favResult.map(obj =>
-        obj.id === favorites ? { ...obj, like: true } : obj,
-      );
+    //   const newState = favResult.map(obj =>
+    //     obj.id === favorites ? { ...obj, like: true } : obj,
+    //   );
 
-      console.log(newState, 'State');
+    //   console.log(newState, 'State');
 
-      console.log('After Item', newState[favIndex]);
+    //   console.log('After Item', newState[favIndex]);
 
-      console.log(favIndex, 'Index');
+    //   console.log(favIndex, 'Index');
 
-      setActions(favResult);
-      setLoading(false);
-    };
+    //   setActions(favResult);
+    //   setLoading(false);
+    // };
 
-    getActions();
+    // getActions();
   }, []);
 
   console.log(favorites);
@@ -103,7 +110,7 @@ const Actions: React.FC = () => {
           </Content>
         ) : (
           <FlatList
-            data={actions}
+            data={stocks}
             renderItem={renderActions}
             keyExtractor={item => item.id.toString()}
           />
