@@ -15,7 +15,7 @@ type Props = {
   source?: any;
   title: string;
   description: string;
-  showButtonState?: boolean;
+  showButtonState?: string;
   buttonPrimary?: boolean;
   goTo?: () => void;
 }
@@ -25,7 +25,6 @@ const WrapperCard: React.FC<Props> = ({
     title, 
     description, 
     showButtonState, 
-    buttonPrimary,
     goTo,
     ...rest}) => {
   return (
@@ -39,9 +38,9 @@ const WrapperCard: React.FC<Props> = ({
         <Description>{description}</Description>
       </WrapperText>
 
-      <If condition={showButtonState || false}>
+      <If condition={showButtonState === 'Fundos' || false}>
         <WrapperNotification>
-          <ButtonStateStyled buttonPrimary={buttonPrimary} />
+          <ButtonStateStyled buttonPrimary={true} />
         </WrapperNotification>
       </If>
     </Wrapper>

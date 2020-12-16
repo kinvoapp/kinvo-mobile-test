@@ -21,6 +21,7 @@ const Home: React.FC<Props> = ({options}) => {
           <WrapperCardStyled 
             goTo={item.onPress} 
             source={item.icon} 
+            showButtonState={item.title}
             title={item.title} 
             description={item.description}
           />
