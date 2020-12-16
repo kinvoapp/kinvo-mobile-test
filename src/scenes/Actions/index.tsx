@@ -12,9 +12,7 @@ type Data = {
 }
 
 const ActionsContainer: React.FC = () => {
-  const [iconHeartState, setIconHeartState] = useState(false)
   const [connState, setConnState] = useState<boolean | null | undefined>(false);
-  const [loading, setLoading] = useState(false);
   const [dataActions, setDataActions] = useState<Data[]>();
 
   async function loadActions(): Promise<Response> {
@@ -41,10 +39,6 @@ const ActionsContainer: React.FC = () => {
     handleIsConnected()
   },[NetInfo]) 
 
-  const handleIconHeartState = () => {
-    setIconHeartState(!iconHeartState)
-  }
-  
   return (
     <>
     <If condition={!connState || false}>
@@ -54,7 +48,6 @@ const ActionsContainer: React.FC = () => {
     <If condition={connState || false}>
       <Actions 
         goBack={goBack} 
-        handleIconHeartState={handleIconHeartState} 
         dataActions={dataActions} 
       />
     </If>

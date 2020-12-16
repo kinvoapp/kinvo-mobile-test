@@ -1,11 +1,13 @@
 import React from 'react';
 import {If} from '~/components'
 
+import {TouchableOpacity} from 'react-native';
+
 import { 
   Wrapper,
   WrapperHeader, 
   ContentHeader,
-  IconHeart, 
+  IconHeartStyled, 
   ButtonStateStyled,
   StarStyled,
   Title, 
@@ -22,7 +24,6 @@ type Props = {
   showButtonState?: boolean;
   showPredictions?: boolean;
   showIconHeart?: boolean;
-  valueStar?: number;
   action?: any;
 }
 
@@ -31,7 +32,6 @@ const Card: React.FC<Props> = ({
     showPredictions,
     showButtonState,
     showIconHeart,
-    valueStar,
     action,
     ...rest
   }) => {
@@ -53,9 +53,9 @@ const Card: React.FC<Props> = ({
           <Description>{action.ticker}</Description>
         </ContentHeader>
           
-        <If condition={!!showIconHeart || false}>
-          <IconHeart name='hearto' />
-        </If> 
+        <If condition={showIconHeart || false}>
+          <IconHeartStyled />
+         </If>
 
         <If condition={action.status === 0 || false}>
           <ButtonStateStyled  buttonPrimary />

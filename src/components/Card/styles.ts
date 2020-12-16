@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {getTheme, ifStyle, AntDesign} from '~/utils/helpers'
 import Typography from '../Typography'
+import IconHeart from '../IconHeart'
 import ButtonState from '../ButtonState'
 import Star from '../Star'
 import {moderateScale} from '~/theme'
@@ -106,7 +107,12 @@ export const Profitability = styled(Typography).attrs({
 
 export const StarStyled = styled(Star)``;
 
-export const IconHeart = styled(AntDesign).attrs(props=> ({
+/* export const IconHeart = styled(AntDesign).attrs(props=> ({
   size: 30,
   color: primaryMain(props)
-}))<IconProps>``;
+}))<IconProps>``; */
+
+
+export const IconHeartStyled = styled(IconHeart)`
+  
+`;

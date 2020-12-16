@@ -6,5 +6,5 @@ export {default as Header} from './Header';
 export {default as WrapperCard} from './WrapperCard';
 export {default as ButtonState} from './ButtonState';
 export {default as Card} from './Card';
-export {default as IconLike} from './IconLike';
+export {default as IconHeart} from './IconHeart';
 export {default as MessageTryAgain} from './MessageTryAgain';

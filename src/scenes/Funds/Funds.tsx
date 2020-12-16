@@ -35,7 +35,7 @@ const Funds: React.FC<Props> = ({goBack, dataActions}) => {
         <If condition={dataActions != undefined|| false}>
           <WrapperCards showsVerticalScrollIndicator={false}>
             {dataActions?.map((action, index) => {
-              return <CardStyled key={index} action={action} showClassification  valueStar={4} />
+              return <CardStyled key={index} action={action} showClassification showIconHeart={false} />
             })}
           </WrapperCards>
         </If>
