@@ -47,43 +47,6 @@ const Actions: React.FC = () => {
 
   useEffect(() => {
     dispatch.stocks.load();
-    // const getActions = async () => {
-    //   setLoading(true);
-    //   const response = await api.get('/stocks');
-
-    //   const orderAlphabetical = response.data.data;
-
-    //   const newOrder: Array<IData> = orderAlphabetical.sort((a, b) =>
-    //     a.name > b.name ? 1 : -1,
-    //   );
-
-    //   const favResult = newOrder.map(item => {
-    //     const newObject = { ...item };
-
-    //     newObject.like = false;
-    //     return newObject;
-    //   });
-
-    //   const favIndex = favResult.findIndex(obj => obj.id === favorites);
-
-    //   console.log(favResult);
-    //   console.log('Before Item', favResult[favIndex]);
-
-    //   const newState = favResult.map(obj =>
-    //     obj.id === favorites ? { ...obj, like: true } : obj,
-    //   );
-
-    //   console.log(newState, 'State');
-
-    //   console.log('After Item', newState[favIndex]);
-
-    //   console.log(favIndex, 'Index');
-
-    //   setActions(favResult);
-    //   setLoading(false);
-    // };
-
-    // getActions();
   }, []);
 
   console.log(favorites);
@@ -113,6 +76,8 @@ const Actions: React.FC = () => {
             data={stocks}
             renderItem={renderActions}
             keyExtractor={item => item.id.toString()}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 40 }}
           />
         )}
       </Container>

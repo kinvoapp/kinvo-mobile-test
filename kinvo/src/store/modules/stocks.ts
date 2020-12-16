@@ -1,4 +1,6 @@
 import { RematchDispatch } from '@rematch/core';
+import { getNormalizedSortedStocks } from '../../repositories/stocks';
+
 import api from '../../services/api';
 
 import { IStock } from './types';
@@ -42,9 +44,11 @@ const stocks = {
       dispatch.stocks.setLoadingTrue();
       const response = await api.get('stocks');
 
-      dispatch.stocks.loadedStocks(response.data.data);
+      const newSortedStocks = getNormalizedSortedStocks(response.data.data);
+
+      dispatch.stocks.loadedStocks(newSortedStocks);
       dispatch.stocks.setLoadingFalse();
-      console.log(response.data.data);
+      console.log(newSortedStocks);
     },
   }),
 };
