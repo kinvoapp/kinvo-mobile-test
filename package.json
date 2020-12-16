@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/react-redux": "^7.1.12",
+    "react-redux": "^7.2.2"
+  }
+}
