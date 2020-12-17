@@ -41,12 +41,9 @@ const CardActions: React.FC<IStockCard> = ({ item, handleIsFavorite }) => {
     console.log(item, 'ITEM');
     if (item.isFavorite === false) {
       handleIsFavorite({ ...item, isFavorite: true });
+    } else {
+      handleIsFavorite({ ...item, isFavorite: false });
     }
-    // if (item.isFavorite) {
-    //   handleIsFavorite({ ...item, isFavorite: false });
-    // } else {
-    //   handleIsFavorite({ ...item, isFavorite: true });
-    // }
   };
 
   const renderFavorite = (item: IStock): ReactNode => (
@@ -99,9 +96,8 @@ const CardActions: React.FC<IStockCard> = ({ item, handleIsFavorite }) => {
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {item.profitability}
-%
-</ProfitabilityNumber>
+                {item.profitability}%
+              </ProfitabilityNumber>
             </Row>
           )}
         </ContentPrices>

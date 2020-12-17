@@ -21,3 +21,12 @@ export const getSortedAddedStocks = (stocks: IStock[]) => {
     return a.isFavorite === b.isFavorite ? 0 : a.isFavorite ? -1 : 1;
   });
 };
+
+export const getSortedRemovedStocks = (stocks: IStock[]) => {
+  return stocks.sort(function (a, b) {
+    if (a.isFavorite === b.isFavorite) {
+      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    }
+    return a.isFavorite < b.isFavorite ? 1 : -1;
+  });
+};

@@ -29,8 +29,10 @@ const Actions: React.FC = () => {
 
   useEffect(() => {
     if (added) {
-      console.log(added, 'Added');
       dispatch.stocks.sortAdded(stocks);
+    } else if (added === null) {
+    } else {
+      dispatch.stocks.sortRemoved(stocks);
     }
   }, [stocks]);
 
@@ -39,6 +41,9 @@ const Actions: React.FC = () => {
     if (stock.isFavorite) {
       dispatch.stocks.addFavoriteToggled(stock);
       setAdded(true);
+    } else {
+      dispatch.stocks.removeFavoriteToggled(stock);
+      setAdded(false);
     }
   };
 

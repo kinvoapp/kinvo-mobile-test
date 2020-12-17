@@ -2,6 +2,7 @@ import { RematchDispatch } from '@rematch/core';
 import {
   getNormalizedSortedStocks,
   getSortedAddedStocks,
+  getSortedRemovedStocks,
 } from '../../repositories/stocks';
 
 import api from '../../services/api';
@@ -51,6 +52,7 @@ const stocks = {
     },
 
     removeFavoriteToggled: (state: IStockState, payload: IStock) => {
+      console.log(state, payload, 'Remove Rematch');
       return {
         ...state,
         stocks: state.stocks.map(stock =>
@@ -83,7 +85,13 @@ const stocks = {
     sortAdded(stocks: IStock[]) {
       const newSortedStocks = getSortedAddedStocks(stocks);
 
-      // console.log(newSortedStocks);
+      dispatch.stocks.setNewStocks(newSortedStocks);
+    },
+
+    sortRemoved(stocks: IStock[]) {
+      const newSortedStocks = getSortedRemovedStocks(stocks);
+
+      console.log(newSortedStocks);
 
       dispatch.stocks.setNewStocks(newSortedStocks);
     },
