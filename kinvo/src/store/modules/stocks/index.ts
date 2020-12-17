@@ -3,9 +3,9 @@ import {
   getNormalizedSortedStocks,
   getSortedAddedStocks,
   getSortedRemovedStocks,
-} from '../../repositories/stocks';
+} from '../../../repositories/stocks';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 import { IStock } from './types';
 
