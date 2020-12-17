@@ -15,3 +15,9 @@ export const getNormalizedSortedStocks = (stocks: IBeforeStock[]): IStock[] => {
       return 0;
     });
 };
+
+export const getSortedAddedStocks = (stocks: IStock[]) => {
+  return stocks.sort(function (a, b) {
+    return a.isFavorite === b.isFavorite ? 0 : a.isFavorite ? -1 : 1;
+  });
+};

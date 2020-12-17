@@ -1,5 +1,8 @@
 import { RematchDispatch } from '@rematch/core';
-import { getNormalizedSortedStocks } from '../../repositories/stocks';
+import {
+  getNormalizedSortedStocks,
+  getSortedAddedStocks,
+} from '../../repositories/stocks';
 
 import api from '../../services/api';
 
@@ -28,13 +31,38 @@ const stocks = {
     },
 
     loadedStocks: (state: IStockState, payload: IStock[]) => {
-      console.log(state, payload);
       return {
         ...state,
         loading: false,
         stocks: payload,
         initialStocks: payload,
       };
+    },
+
+    addFavoriteToggled: (state: IStockState, payload: IStock) => {
+      return {
+        ...state,
+        stocks: state.stocks.map(stock =>
+          stock.id === payload.id
+            ? { ...stock, isFavorite: payload.isFavorite }
+            : { ...stock },
+        ),
+      };
+    },
+
+    removeFavoriteToggled: (state: IStockState, payload: IStock) => {
+      return {
+        ...state,
+        stocks: state.stocks.map(stock =>
+          stock.id === payload.id
+            ? { ...stock, isFavorite: payload.isFavorite }
+            : { ...stock },
+        ),
+      };
+    },
+
+    setNewStocks: (state: IStockState, payload: IStock[]) => {
+      return { ...state, stock: payload };
     },
   },
 
@@ -48,7 +76,16 @@ const stocks = {
 
       dispatch.stocks.loadedStocks(newSortedStocks);
       dispatch.stocks.setLoadingFalse();
-      console.log(newSortedStocks);
+      // console.log(newSortedStocks);
+    },
+
+    // sort stocks when a stock is being marked as favorite
+    sortAdded(stocks: IStock[]) {
+      const newSortedStocks = getSortedAddedStocks(stocks);
+
+      // console.log(newSortedStocks);
+
+      dispatch.stocks.setNewStocks(newSortedStocks);
     },
   }),
 };

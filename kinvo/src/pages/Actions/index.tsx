@@ -14,54 +14,38 @@ import { CardActions } from '../../components';
 import { Container, Content } from './styles';
 
 import { RootDispatch, RootState } from '../../store';
-
-interface IData {
-  id: number;
-  name: string;
-  ticker: string;
-  minimumValue: number;
-  profitability: number;
-  like: boolean;
-}
-
-interface ItemList {
-  item: {
-    id: number;
-    name: string;
-    ticker: string;
-    minimumValue: number;
-    profitability: number;
-    like: boolean;
-  };
-}
+import { IStock } from '../../store/modules/types';
 
 const Actions: React.FC = () => {
-  const [actions, setActions] = useState<Array<IData>>([]);
-  // const [loading, setLoading] = useState(false);
-
-  const [favorites, setFavorites] = useState(null);
-
   const dispatch = useDispatch<RootDispatch>();
 
   const { stocks, loading } = useSelector((state: RootState) => state.stocks);
+
+  const [added, setAdded] = useState<boolean | null>(null);
 
   useEffect(() => {
     dispatch.stocks.load();
   }, []);
 
-  console.log(favorites);
+  useEffect(() => {
+    if (added) {
+      console.log(added, 'Added');
+      dispatch.stocks.sortAdded(stocks);
+    }
+  }, [stocks]);
 
-  const renderActions = ({ item }: ItemList) => (
-    <>
-      <CardActions
-        id={item.id}
-        title={item.name}
-        ticker={item.ticker}
-        minValue={item.minimumValue}
-        profitability={item.profitability}
-        favorites={setFavorites}
-      />
-    </>
+  const handleIsFavorite = (stock: IStock) => {
+    console.log(stock, 'STOCK NEW ITEM');
+    if (stock.isFavorite) {
+      dispatch.stocks.addFavoriteToggled(stock);
+      setAdded(true);
+    }
+  };
+
+  // console.log(stocks);
+
+  const renderActions = (item: IStock) => (
+    <CardActions item={item} handleIsFavorite={handleIsFavorite} />
   );
 
   return (
@@ -74,8 +58,8 @@ const Actions: React.FC = () => {
         ) : (
           <FlatList
             data={stocks}
-            renderItem={renderActions}
-            keyExtractor={item => item.id.toString()}
+            renderItem={({ item }) => renderActions(item)}
+            keyExtractor={(item, index) => `${item.name} + ${index}`}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 40 }}
           />

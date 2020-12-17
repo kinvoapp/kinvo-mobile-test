@@ -4,6 +4,7 @@ import React, {
   useImperativeHandle,
   Dispatch,
   SetStateAction,
+  ReactNode,
 } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
@@ -28,52 +29,47 @@ import {
   Row,
 } from './styles';
 
-interface ICardActions {
-  id: number;
-  title: string;
-  ticker: string;
-  minValue: number;
-  profitability: number;
-  favorites(favorite: number): boolean;
+import { IStock } from '../../store/modules/types';
+
+interface IStockCard {
+  item: IStock;
+  handleIsFavorite: (stock: IStock) => void;
 }
 
-const CardActions: React.FC<ICardActions> = ({
-  id,
-  title,
-  ticker,
-  minValue,
-  profitability,
-  favorites,
-}) => {
-  const [like, setLike] = useState<boolean>(false);
-
-  const handleLike = () => {
-    if (like === false) {
-      setLike(true);
-      favorites(id);
-    } else {
-      setLike(false);
-      favorites(id);
+const CardActions: React.FC<IStockCard> = ({ item, handleIsFavorite }) => {
+  const handleSetFavorite = (item: IStock) => {
+    console.log(item, 'ITEM');
+    if (item.isFavorite === false) {
+      handleIsFavorite({ ...item, isFavorite: true });
     }
+    // if (item.isFavorite) {
+    //   handleIsFavorite({ ...item, isFavorite: false });
+    // } else {
+    //   handleIsFavorite({ ...item, isFavorite: true });
+    // }
   };
+
+  const renderFavorite = (item: IStock): ReactNode => (
+    <TouchableOpacity onPress={() => handleSetFavorite(item)}>
+      {item.isFavorite ? (
+        <Like height="30" width="30" />
+      ) : (
+        <LikeOutline height="30" width="30" />
+      )}
+    </TouchableOpacity>
+  );
 
   return (
     <Container>
       <Header>
         <View>
           <Title numberOfLines={1} ellipsizeMode="tail">
-            {title}
+            {item.name}
           </Title>
-          <Ticker>{ticker}</Ticker>
+          <Ticker>{item.ticker}</Ticker>
         </View>
 
-        <TouchableOpacity onPress={handleLike}>
-          {like ? (
-            <Like height="30" width="30" />
-          ) : (
-            <LikeOutline height="30" width="30" />
-          )}
-        </TouchableOpacity>
+        {renderFavorite(item)}
       </Header>
 
       <Body>
@@ -89,21 +85,21 @@ const CardActions: React.FC<ICardActions> = ({
         <ContentPrices>
           <Price>
             R$
-            {minValue}
+            {item.minimumValue}
           </Price>
 
-          {profitability > 0 ? (
+          {item.profitability > 0 ? (
             <Row>
               <ArrowUp />
               <ProfitabilityNumber>
 {' '}
-{profitability}%</ProfitabilityNumber>
+{item.profitability}%</ProfitabilityNumber>
             </Row>
           ) : (
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {profitability}
+                {item.profitability}
 %
 </ProfitabilityNumber>
             </Row>
