@@ -16,7 +16,7 @@ interface IData {
   profitability: number;
 }
 
-const Forecasts: React.FC = () => {
+const Pension: React.FC = () => {
   const [data, setData] = useState<Array<IData>>([]);
   const [loading, setLoading] = useState(false);
 
@@ -56,10 +56,12 @@ const Forecasts: React.FC = () => {
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 40 }}
         />
       )}
     </Container>
   );
 };
 
-export default Forecasts;
+export default Pension;

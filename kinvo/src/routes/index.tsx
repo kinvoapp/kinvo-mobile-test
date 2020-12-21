@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Actions, Home, Funds, Forecasts } from '../pages';
+import { Actions, Home, Funds, Pension } from '../pages';
 
 import Left from '../assets/svgs/left.svg';
 
@@ -100,7 +100,7 @@ const ChallangeRoutes: React.FC = () => (
         ),
       })}
       name="Previdências"
-      component={Forecasts}
+      component={Pension}
     />
   </Challange.Navigator>
 );

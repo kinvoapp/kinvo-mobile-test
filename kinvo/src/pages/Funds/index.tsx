@@ -75,6 +75,8 @@ const Funds: React.FC = () => {
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 40 }}
         />
       )}
     </Container>
