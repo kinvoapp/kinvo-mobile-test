@@ -25,7 +25,7 @@ import {
 } from './styles';
 
 interface IData {
-  id: number;
+  id?: number;
   name: string;
   type: string;
   minimumValue: number;
@@ -89,9 +89,8 @@ const CardForecasts: React.FC<IData> = ({
             <Row>
               <ArrowDown />
               <ProfitabilityNumber colors="#E85D1F">
-                {profitability}
-%
-</ProfitabilityNumber>
+                {profitability}%
+              </ProfitabilityNumber>
             </Row>
           )}
         </ContentTitles>

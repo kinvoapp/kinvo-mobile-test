@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, ActivityIndicator, FlatList } from 'react-native';
 
 import api from '../../services/api';
-import { CardForecasts } from '../../components';
+import { CardForecasts, PensionFilter } from '../../components';
 
-import { Container, Content } from './styles';
+import { Container, Content, FilterContent } from './styles';
 
 interface IData {
   id: number;
@@ -52,13 +52,19 @@ const Pension: React.FC = () => {
           <ActivityIndicator size="large" color="#6F4DBF" />
         </Content>
       ) : (
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id.toString()}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 40 }}
-        />
+        <>
+          <FilterContent>
+            <PensionFilter />
+          </FilterContent>
+
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={item => item.id.toString()}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 40 }}
+          />
+        </>
       )}
     </Container>
   );

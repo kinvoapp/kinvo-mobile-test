@@ -42,6 +42,7 @@ const PensionFilter: React.FC<IPensionFilters> = ({ handleSetFilters }) => {
     setFilters(newArr);
     handleSetFilters(newArr);
   };
+
   return (
     <View style={styles.container}>
       {options.map(item => (
