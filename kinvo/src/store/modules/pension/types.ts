@@ -17,3 +17,9 @@ export interface ChipItem {
 export type Item = {
   [key: string]: number;
 };
+
+export type Filter = {
+  tax: number;
+  minimumValue: number;
+  redemptionTerm: number;
+};

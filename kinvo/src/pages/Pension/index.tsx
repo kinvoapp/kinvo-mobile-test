@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, ActivityIndicator, FlatList } from 'react-native';
 
+import { useDispatch, useSelector } from 'react-redux';
 import api from '../../services/api';
 import { CardForecasts, PensionFilter } from '../../components';
 
-import { Container, Content, FilterContent } from './styles';
+import { Item, IPension } from '../../store/modules/pension/types';
+
+import { RootDispatch, RootState } from '../../store';
+
+import { Container, Content, FilterContent, Divider } from './styles';
 
 interface IData {
   id: number;
@@ -17,21 +22,17 @@ interface IData {
 }
 
 const Pension: React.FC = () => {
-  const [data, setData] = useState<Array<IData>>([]);
-  const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState<Array<IData>>([]);
+  // const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch<RootDispatch>();
+
+  const { loading, pensions } = useSelector(
+    (state: RootState) => state.pension,
+  );
 
   useEffect(() => {
-    const getForecasts = async () => {
-      setLoading(true);
-      const response = await api.get('pension');
-
-      console.log(response.data.data);
-
-      setData(response.data.data);
-      setLoading(false);
-    };
-
-    getForecasts();
+    dispatch.pension.load();
   }, []);
 
   const renderItem = ({ item }) => (
@@ -55,10 +56,11 @@ const Pension: React.FC = () => {
         <>
           <FilterContent>
             <PensionFilter />
+            <Divider />
           </FilterContent>
 
           <FlatList
-            data={data}
+            data={pensions}
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}
             showsVerticalScrollIndicator={false}

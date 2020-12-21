@@ -1,9 +1,11 @@
 import { init, RematchDispatch, RematchRootState } from '@rematch/core';
 
 import stocks from './modules/stocks';
+import pension from './modules/pension';
 
 const models = {
   stocks,
+  pension,
 };
 
 const store = init({

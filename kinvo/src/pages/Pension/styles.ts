@@ -15,4 +15,14 @@ export const FilterContent = styled.View`
   padding-top: 20px;
   justify-content: space-between;
   width: 90%;
+  margin-bottom: -8px;
+`;
+
+export const Divider = styled.View`
+  height: 1px;
+  width: 100%;
+  background-color: #dae0e3;
+  opacity: 0.5;
+  margin-top: 15px;
+  margin-bottom: 20px;
 `;

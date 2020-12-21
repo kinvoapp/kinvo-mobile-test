@@ -1,6 +1,9 @@
 import { RematchDispatch } from '@rematch/core';
 
-import { IPension } from './types';
+import { sortPensions } from '../../../repositories/pension';
+import api from '../../../services/api';
+
+import { IPension, Filter, Item } from './types';
 
 interface IPensionState {
   loading: boolean;
@@ -24,8 +27,23 @@ const pension = {
       return { ...state, loading: false };
     },
 
-    loadedPensions: (state: IPensionState, payload: IPension[]) => {},
+    loadedPensions: (state: IPensionState, payload: IPension[]) => {
+      return { ...state, pensions: payload, initialPensions: payload };
+    },
   },
+
+  effects: (dispatch: RematchDispatch) => ({
+    async load() {
+      dispatch.pension.setLoadingTrue();
+
+      const response = await api.get('pension');
+
+      const sortedPensions = sortPensions(response.data.data);
+
+      dispatch.pension.loadedPensions(sortedPensions);
+      dispatch.pension.setLoadingFalse();
+    },
+  }),
 };
 
 export default pension;
