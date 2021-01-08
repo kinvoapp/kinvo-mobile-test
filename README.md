@@ -10,13 +10,14 @@
 
 ## Especificações:
 
-O desafio consiste em desenvolver um aplicativo de quatro telas descritas abaixo. 
+O desafio consiste em desenvolver um aplicativo de **2 telas, sendo obrigatório o desenvolvimento da Tela Inicial e mais uma à sua escolha, dentre as telas descritas abaixo**.
+
 
 As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
 
-Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).
+**Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).**
 
-### Tela "Desafio"
+### Tela "Desafio" (Tela inicial)
 
 - A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
 
@@ -60,6 +61,7 @@ Atentar para o comportamento dos elementos do layout, como: botão de favorito, 
 
 ### O que iremos avaliar
 
+- Capacidade de abstração
 - Simplicidade da solução
 - Componentização
 - Princípio da reutilização
