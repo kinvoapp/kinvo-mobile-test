@@ -1,26 +1,9 @@
 import 'react-native-gesture-handler'
-import { StatusBar } from 'expo-status-bar'
+
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import Percentage from './src/components/Percentage'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>
-        Open up App.tsx to start working on your app! <Percentage />{' '}
-      </Text>
-      <StatusBar style="auto" />
-    </View>
-  )
+import App from './src/index'
+
+export default function Main() {
+  return <App />
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'black'
-  }
-})
