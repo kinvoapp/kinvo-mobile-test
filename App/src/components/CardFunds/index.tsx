@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
 import {
@@ -12,11 +13,12 @@ import {
 } from './styles'
 
 import Funds from '../../../assets/funds.png'
-import { New } from '../New'
 
-export default function CardFunds() {
+import { NewOrClosed } from '../NewOrClosed'
+
+export default function CardFunds({ onPress }: any) {
   return (
-    <Container>
+    <Container onStartShouldSetResponder={onPress}>
       <Content>
         <ContentLeft>
           <ImgContainer>
@@ -29,7 +31,7 @@ export default function CardFunds() {
           </TextContainer>
         </ContentLeft>
 
-        <New />
+        <NewOrClosed status={1} />
       </Content>
     </Container>
   )

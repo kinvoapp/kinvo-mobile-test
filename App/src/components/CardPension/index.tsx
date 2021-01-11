@@ -23,8 +23,8 @@ export default function CardPensions() {
           </ImgContainer>
 
           <TextContainer>
-            <Bold>Ações</Bold>
-            <Info>Nacionais</Info>
+            <Bold>Previdências</Bold>
+            <Info>Privadas</Info>
           </TextContainer>
         </ContentLeft>
       </Content>
