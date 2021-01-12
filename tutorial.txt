@@ -1,0 +1,2 @@
+1-> No terminal, digite "cd app"
+2 -> Digite expo start
