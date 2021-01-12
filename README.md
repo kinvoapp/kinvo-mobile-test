@@ -1,85 +1,31 @@
+<img src="https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/32/97/fb/3297fb2e-a5c0-2274-89d7-85de04f796a8/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-P3-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/400x400.png" alt="Logo Kinvo" align="right">
 
-# React Native Code Challenge
+# App Kinvo &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+> Aplicação para gerenciamento de fundos de investimentos criada durante o processo seletivo do Kinvo
 
-## Instruções:
+## Installing / Getting started
 
-1. Faça um fork deste repositório;
-2. Siga as especificações;
-3. Implemente o layout disponível;
-4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+Para rodar o projeto é necessário seguir os seguintes passos: 
 
-## Especificações:
+```shell
+Abra o terminal 
+git clone https://github.com/Woxavier/kinvo-mobile-test.git
+cd kinvo-mobile-test
+yarn install
+yarn start ou expo start
+```
 
-O desafio consiste em desenvolver um aplicativo de **2 telas, sendo obrigatório o desenvolvimento da Tela Inicial e mais uma à sua escolha, dentre as telas descritas abaixo**.
+Ao executar o código acima, aparecerá em seu terminal um qr code que poderá ser processado utiizando o aplicativo do expo, disponível nas lojas de aplicativo tanto de IOS quanto Android. Ao utilizar essa ferramenta, a aplicação estará rodando em seu smartphone.
 
+## Developing
 
-As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
+### Built With
+* React Native
+* Typescript
+* Expo 
+* ESlint
+* Prettier
+* Styled-Components
 
-**Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).**
-
-### Tela "Desafio" (Tela inicial)
-
-- A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
-
-### Tela "Ações"
-
-- A lista de "ações" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
-- A lista de "ações" deve obedecer a seguinte prioridade:
-   - Favoritadas deve aparecer primeiro
-   - Ordem alfabética
-- O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
-- A lista de "ações" inicia com todos as "ações" desfavoritadas.
-
-### Tela "Fundos"
-
-- A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
-- A lista de "fundos" deve estar em ordem alfabética.
-- Os estados do fundo são:
-  - 0: Comum
-  - 1: Novo
-  - 2: Fechado
-- Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
-- Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
-- Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
-
-### Tela "Previdências"
-
-- A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
-- A lista de "previdências" deve estar em ordem alfabética.
-- A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-   - "SEM TAXA": inclui as previdências com taxa igual a zero.
-   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-   - "D+1": inclui as previdências com resgate igual a um.
-
-### Pré-requisitos:
-
-- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-- Desenvolver o app utilizando `React Native`
-
-### O que iremos avaliar
-
-- Capacidade de abstração
-- Simplicidade da solução
-- Componentização
-- Princípio da reutilização
-- Clean Code
-
-### O que vai te diferenciar
-
-- Utilizar TypeScript
-- Realizar testes unitários
-
-## Material:
-
-- O layout em formato Adobe XD consta no repositório em [/material](/material);
-- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
+### Prerequisites
+Para Utilizar o aplicativo, é necessário ter o [git](https://git-scm.com/downloads) instalado e configurado (para fazer o clone do repositório) e o [Node](https://nodejs.org/en/) (recomendo a versão LTS)   
