@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons'
 
 interface PropsHeader {
   title: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onPress: any
 }
 

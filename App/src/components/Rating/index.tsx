@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import { Entypo } from '@expo/vector-icons'
 import { Container } from './styles'
-import colors from '../../utils/colors'
 
 interface ratingProps {
   value: number

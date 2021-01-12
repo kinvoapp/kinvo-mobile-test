@@ -16,4 +16,5 @@ export const ValueNegative = styled.Text`
 
 export const ValueZero = styled.Text`
   font-weight: bold;
+  color: ${colors.lightGrey};
 `

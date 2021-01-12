@@ -9,6 +9,4 @@
     "resolveJsonModule": true,
     "strict": true,
   }
-  // "include": ["src/index.d.ts"],
-  // "exclude": ["node_modules", "**/*.spec.ts"]
 }
