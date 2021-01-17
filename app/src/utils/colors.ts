@@ -1,0 +1,12 @@
+enum Colors {
+  LIGHT = "#FFFFFF",
+  BODY = "#ECF0F2",
+  BORDER = "#DAE0E3",
+  PRIMARY = "#6F4DBF",
+  DARK = "#627179",
+  TINT = "#40C5D6",
+  PROFITABILITY_NEGATIVE = "#E85D1F",
+  PROFITABILITY_POSITIVE = "#AED335",
+}
+
+export default Colors;
