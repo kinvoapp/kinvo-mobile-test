@@ -15,6 +15,8 @@ import {
 } from "@expo-google-fonts/montserrat";
 import Constants from "expo-constants";
 import BackButton from "./src/components/BackButton";
+import { Stock } from "./src/utils/apiTypes";
+import { Context, useContextState } from "./src/services/context";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -37,35 +39,41 @@ export default function App() {
     Montserrat_600SemiBold,
     Montserrat_700Bold,
   });
+  const contextState = useContextState();
+
   if (!fontsLoaded) {
     // TODO: LoadingScreen here!
     return <View />;
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle,
-          headerTitleStyle,
-        }}
-      >
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title: "Desafio",
+    <Context.Provider value={contextState}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle,
+            headerTitleStyle,
           }}
-        />
-        <Stack.Screen
-          name="Stocks"
-          component={Stocks}
-          options={{
-            title: "Ações",
-            headerLeft: () => <BackButton />,
-          }}
-        />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+        >
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              title: "Desafio",
+            }}
+          />
+          <Stack.Screen
+            name="Stocks"
+            component={Stocks}
+            options={({ navigation }) => ({
+              title: "Ações",
+              headerLeft: () => (
+                <BackButton onPress={() => navigation.goBack()} />
+              ),
+            })}
+          />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </Context.Provider>
   );
 }

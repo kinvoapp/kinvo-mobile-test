@@ -4,6 +4,7 @@ export type Stock = {
   ticker: string;
   minimumValue: number;
   profitability: number;
+  isFavorite?: boolean;
 };
 
 export type ApiResponse<T> = {

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import NumberFormat from "react-number-format";
+import Stocks from "../../../screens/Stocks";
 import { Stock } from "../../../utils/apiTypes";
 import Colors from "../../../utils/colors";
 import Divider from "../../Divider";
+import FavoriteButton from "../../FavoriteButton";
+import Icon from "../../Icon";
 import Typography from "../../Typography";
 import CurrencyTypography from "../../Typography/CurrencyTypography";
 import IndicatorTypography from "../../Typography/IndicatorTypography";
@@ -13,13 +16,19 @@ import { HeaderContainer, Header } from "./styles";
 // import { format } from 'number-currency-format';
 // import { Container } from './styles';
 
-// type Props = {
-//   name: string;
-//   ticker: string;
-//   id: number;
-// };
+type Props = Stock & {
+  toggleFavorite: (id: number) => void;
+};
 
-function StockCard({ name, ticker, id, profitability, minimumValue }: Stock) {
+function StockCard({
+  name,
+  isFavorite,
+  ticker,
+  id,
+  profitability,
+  minimumValue,
+  toggleFavorite,
+}: Props) {
   const details = [
     {
       label: "Valor mínimo",
@@ -30,6 +39,8 @@ function StockCard({ name, ticker, id, profitability, minimumValue }: Stock) {
       value: <IndicatorTypography value={profitability} sufix={"%"} />,
     },
   ];
+
+  const [active, setActive] = useState(false);
   return (
     <Card>
       <View
@@ -48,13 +59,9 @@ function StockCard({ name, ticker, id, profitability, minimumValue }: Stock) {
             </Typography>
             <Typography type="ticker">{ticker}</Typography>
           </Header>
-          <View
-            style={{
-              width: 20,
-              height: 18,
-              backgroundColor: "blue",
-              borderRadius: 4,
-            }}
+          <FavoriteButton
+            active={!!isFavorite}
+            onPress={() => toggleFavorite(id)}
           />
         </HeaderContainer>
         <Divider />
