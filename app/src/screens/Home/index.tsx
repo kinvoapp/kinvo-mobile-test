@@ -1,7 +1,7 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { Button, Text, Touchable, View } from "react-native";
-import Container from "../../components/Container";
+import CardList from "../../components/CardList";
 import Card from "../../components/Card";
 import { RootStackParamList } from "../../utils/navigator";
 import Colors from "../../utils/colors";
@@ -43,8 +43,11 @@ function Home({ navigation }: Props) {
   ];
 
   return (
-    <Container>
-      {options.map((option, index) => (
+    <CardList
+      data={options}
+      // style={{ padding: 20 }}
+      keyExtractor={(_, index) => `${index}`}
+      renderItem={({ item: option, index }) => (
         <TouchableOpacity
           key={index}
           onPress={() =>
@@ -77,9 +80,8 @@ function Home({ navigation }: Props) {
             </View>
           </Card>
         </TouchableOpacity>
-      ))}
-      {/* <Text>Se eu vou entrar na Kinvo vei!</Text> */}
-    </Container>
+      )}
+    />
   );
 }
 

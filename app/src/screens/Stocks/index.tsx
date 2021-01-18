@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-// import { Text, View } from "react-native";
-// import Container from "../../components/Container";
 import StockCard from "../../components/Card/StockCard";
 import { ApiResponse, Stock } from "../../utils/apiTypes";
 import api from "../../services/api";
-import { FlatList } from "react-native-gesture-handler";
 import { useStocks } from "../../services/context";
 import Loading from "../Loading";
+import CardList from "../../components/CardList";
 
 function sortStocks(a: Stock, b: Stock) {
   if (!!a.isFavorite === !!b.isFavorite) {
@@ -54,7 +52,7 @@ function Stocks() {
   return loading ? (
     <Loading />
   ) : (
-    <FlatList
+    <CardList
       style={{ padding: 20 }}
       data={stocks}
       keyExtractor={(item) => `${item.id}`}

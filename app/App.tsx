@@ -17,6 +17,7 @@ import Constants from "expo-constants";
 import BackButton from "./src/components/BackButton";
 import { Stock } from "./src/utils/apiTypes";
 import { Context, useContextState } from "./src/services/context";
+import Loading from "./src/screens/Loading";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -43,7 +44,7 @@ export default function App() {
 
   if (!fontsLoaded) {
     // TODO: LoadingScreen here!
-    return <View />;
+    return <Loading />;
   }
   return (
     <Context.Provider value={contextState}>
