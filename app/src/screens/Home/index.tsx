@@ -1,14 +1,13 @@
-import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { Button, Text, Touchable, View } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import CardList from "../../components/CardList";
 import Card from "../../components/Card";
 import { RootStackParamList } from "../../utils/navigator";
-import Colors from "../../utils/colors";
 import Typography from "../../components/Typography";
 import Badget from "../../components/Badget";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "../../components/Icon";
+import { IconCircle, OptionContainer, OptionNameContainer } from "./styles";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -18,7 +17,6 @@ type Props = {
 
 type Option = {
   title: string;
-  // TODO: transformar em um enum
   icon: React.ComponentProps<typeof Icon>["name"];
   redirectTo?: keyof RootStackParamList;
   subtitle: string;
@@ -45,7 +43,6 @@ function Home({ navigation }: Props) {
   return (
     <CardList
       data={options}
-      // style={{ padding: 20 }}
       keyExtractor={(_, index) => `${index}`}
       renderItem={({ item: option, index }) => (
         <TouchableOpacity
@@ -55,29 +52,16 @@ function Home({ navigation }: Props) {
           }
         >
           <Card>
-            {/* TODO: Componentizar isso! */}
-            <View
-              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
-            >
-              <View
-                style={{
-                  width: 56,
-                  height: 56,
-                  backgroundColor: Colors.BODY,
-                  borderRadius: 56,
-                  marginRight: 12,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+            <OptionContainer>
+              <IconCircle>
                 <Icon name={option.icon} />
-              </View>
-              <View style={{ flexGrow: 1 }}>
+              </IconCircle>
+              <OptionNameContainer>
                 <Typography type="title">{option.title}</Typography>
                 <Typography type="subtitle">{option.subtitle}</Typography>
-              </View>
-              <View>{option.isNew && <Badget />}</View>
-            </View>
+              </OptionNameContainer>
+              {option.isNew && <Badget title="Novo" />}
+            </OptionContainer>
           </Card>
         </TouchableOpacity>
       )}

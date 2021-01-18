@@ -1,18 +1,17 @@
 import React from "react";
-import { View } from "react-native";
+import NumberFormat from "react-number-format";
 import Typography from "..";
 import Colors from "../../../utils/colors";
 import Icon from "../../Icon";
-
-// import { Container } from './styles';
+import { Container, IconContainer } from "./styles";
 
 type Props = {
   value: number;
-  prefix?: string | number;
-  sufix?: string | number;
+  prefix?: string;
+  sufix?: string;
 };
 
-function IndicatorTypography({ value, prefix, sufix }: Props) {
+function IndicatorTypography({ value, prefix = "", sufix = "" }: Props) {
   const color =
     value > 0
       ? Colors.PROFITABILITY_POSITIVE
@@ -20,22 +19,8 @@ function IndicatorTypography({ value, prefix, sufix }: Props) {
       ? Colors.PROFITABILITY_NEGATIVE
       : Colors.DARK;
   return (
-    <View
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <View
-        style={{
-          // width: 8.4,
-          // height: 8.25,
-          // backgroundColor: color,
-          marginRight: 7,
-        }}
-      >
+    <Container>
+      <IconContainer>
         {value !== 0 && (
           <Icon
             width={8.4}
@@ -43,13 +28,23 @@ function IndicatorTypography({ value, prefix, sufix }: Props) {
             name={value > 0 ? "arrow-up" : "arrow-down"}
           />
         )}
-      </View>
-      <Typography type="strong" color={color}>
-        {prefix}
-        {value}
-        {sufix}
-      </Typography>
-    </View>
+      </IconContainer>
+      <NumberFormat
+        value={Number(value.toFixed(0))}
+        decimalScale={0}
+        fixedDecimalScale={true}
+        displayType={"text"}
+        thousandSeparator={"."}
+        decimalSeparator={","}
+        prefix={prefix}
+        suffix={sufix}
+        renderText={(value) => (
+          <Typography align="right" color={color} type="strong">
+            {value}
+          </Typography>
+        )}
+      />
+    </Container>
   );
 }
 

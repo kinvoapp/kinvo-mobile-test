@@ -1,11 +1,12 @@
 import styled from "styled-components/native";
 
-// export const Content
+export const ContentContainer = styled.View`
+  height: 100%;
+`;
 
 export const HeaderContainer = styled.View`
   flex: 1;
   flex-grow: 0;
-  /* background-color: red; */
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
@@ -14,4 +15,12 @@ export const HeaderContainer = styled.View`
 
 export const Header = styled.View`
   flex: 1;
+`;
+
+export const DetailContainer = styled.View`
+  margin-top: 10px;
+  margin-bottom: 5px;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
 `;

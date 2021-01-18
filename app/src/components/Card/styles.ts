@@ -10,6 +10,5 @@ export const Container = styled.View`
   border: 1px solid ${Colors.BORDER};
   margin-bottom: 20px;
   flex: 1;
-  /* align-items: center; */
   justify-content: center;
 `;

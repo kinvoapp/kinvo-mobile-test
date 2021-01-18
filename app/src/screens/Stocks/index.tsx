@@ -21,9 +21,7 @@ function Stocks() {
   const [error, setError] = useState(false);
 
   async function getStocks() {
-    console.log("a");
     try {
-      console.log("b");
       setLoading(true);
       setError(false);
       const response = await api.get<ApiResponse<Stock>>("/stocks");
@@ -61,7 +59,7 @@ function Stocks() {
 
   return error ? (
     <ErrorScreen
-      message="Não foi possível se conectar ao banco de fundos."
+      message="Não foi possível se conectar ao banco de ações."
       action={{
         label: "Tentar Novamente",
         onPress: getStocks,
@@ -71,7 +69,6 @@ function Stocks() {
     <Loading />
   ) : (
     <CardList
-      style={{ padding: 20 }}
       data={stocks}
       keyExtractor={(item) => `${item.id}`}
       renderItem={({ item }) => (

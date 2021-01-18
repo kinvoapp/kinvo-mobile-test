@@ -1,8 +1,6 @@
 import React from "react";
-import { View } from "react-native";
 import SvgUri, { SvgUriProps } from "expo-svg-uri";
 import Colors from "../../utils/colors";
-// import { Container } from './styles';
 const arrowUp = require("../../assets/up-shape.svg");
 const arrowDown = require("../../assets/down-shape.svg");
 const arrowLeft = require("../../assets/arrow-left-shape.svg");
@@ -37,7 +35,6 @@ const sources = {
 } as { [key in Props["name"]]: any };
 
 function Icon({ name, ...props }: Props) {
-  //   console.log({ name });
   return <SvgUri {...props} source={sources[name]} />;
 }
 

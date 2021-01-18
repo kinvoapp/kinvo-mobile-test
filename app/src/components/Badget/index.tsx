@@ -4,11 +4,21 @@ import Typography from "../Typography";
 
 import { Container } from "./styles";
 
-function Badget() {
+type Props = {
+  title?: string;
+  color?: Colors;
+};
+
+function Badget({ title, color }: Props) {
   return (
-    <Container>
-      <Typography type="body" color={Colors.LIGHT} align="center">
-        NOVO
+    <Container backgroundColor={color}>
+      <Typography
+        textTransform="uppercase"
+        type="body"
+        color={Colors.LIGHT}
+        align="center"
+      >
+        {title}
       </Typography>
     </Container>
   );

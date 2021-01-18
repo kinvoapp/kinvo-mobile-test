@@ -1,4 +1,3 @@
-import { FlatListProps } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import Colors from "../../utils/colors";

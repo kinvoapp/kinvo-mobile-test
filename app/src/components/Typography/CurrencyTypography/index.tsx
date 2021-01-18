@@ -26,8 +26,12 @@ function CurrencyTypography({
       displayType={"text"}
       thousandSeparator={"."}
       decimalSeparator={","}
-      prefix={"R$ "}
-      renderText={(value) => <Typography type="strong">{value}</Typography>}
+      prefix={prefix[currency]}
+      renderText={(value) => (
+        <Typography {...typographyProps} type="strong">
+          {value}
+        </Typography>
+      )}
     />
   );
 }
