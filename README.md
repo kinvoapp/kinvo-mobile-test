@@ -39,4 +39,4 @@ Aguarde gerar o bulder do aplicativo e já estará pronto para testar! ✨
 A tela escolhida para ser desenvolvida foi a tela de **Ações**.
 
 ## Rota Api
-A rota usada foi [https://docs.expo.io/workflow/publishing/](https://docs.expo.io/workflow/publishing/) para pegar as informações da Ações.
+A rota usada foi [https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks](https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks) para pegar as informações da Ações.
