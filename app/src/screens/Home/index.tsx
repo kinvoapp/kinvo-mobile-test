@@ -8,6 +8,7 @@ import Colors from "../../utils/colors";
 import Typography from "../../components/Typography";
 import Badget from "../../components/Badget";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Icon from "../../components/Icon";
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -18,7 +19,7 @@ type Props = {
 type Option = {
   title: string;
   // TODO: transformar em um enum
-  icon: string;
+  icon: React.ComponentProps<typeof Icon>["name"];
   redirectTo?: keyof RootStackParamList;
   subtitle: string;
   isNew?: boolean;
@@ -26,9 +27,19 @@ type Option = {
 
 function Home({ navigation }: Props) {
   const options: Option[] = [
-    { title: "Ações", icon: "", subtitle: "Nacionais", redirectTo: "Stocks" },
-    { title: "Fundos", icon: "", subtitle: "De investimentos", isNew: true },
-    { title: "Previdências", icon: "", subtitle: "Privadas" },
+    {
+      title: "Ações",
+      icon: "stocks",
+      subtitle: "Nacionais",
+      redirectTo: "Stocks",
+    },
+    {
+      title: "Fundos",
+      icon: "funds",
+      subtitle: "De investimentos",
+      isNew: true,
+    },
+    { title: "Previdências", icon: "pension", subtitle: "Privadas" },
   ];
 
   return (
@@ -52,8 +63,12 @@ function Home({ navigation }: Props) {
                   backgroundColor: Colors.BODY,
                   borderRadius: 56,
                   marginRight: 12,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              ></View>
+              >
+                <Icon name={option.icon} />
+              </View>
               <View style={{ flexGrow: 1 }}>
                 <Typography type="title">{option.title}</Typography>
                 <Typography type="subtitle">{option.subtitle}</Typography>

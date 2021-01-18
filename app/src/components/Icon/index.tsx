@@ -9,6 +9,8 @@ const arrowLeft = require("../../assets/arrow-left-shape.svg");
 const stocks = require("../../assets/stocks-icon.svg");
 const funds = require("../../assets/funds-icon.svg");
 const pension = require("../../assets/pension-icon.svg");
+const heartFilled = require("../../assets/heart-filled.svg");
+const heartOutlined = require("../../assets/heart-outlined.svg");
 
 interface Props extends SvgUriProps {
   name:
@@ -18,7 +20,8 @@ interface Props extends SvgUriProps {
     | "stocks"
     | "funds"
     | "pension"
-    | "heart";
+    | "heart-outlined"
+    | "heart-filled";
   source?: undefined;
 }
 
@@ -29,11 +32,13 @@ const sources = {
   stocks: stocks,
   funds: funds,
   pension: pension,
+  "heart-filled": heartFilled,
+  "heart-outlined": heartOutlined,
 } as { [key in Props["name"]]: any };
 
-function Icon({ name }: Props) {
+function Icon({ name, ...props }: Props) {
   //   console.log({ name });
-  return <SvgUri width="8" height="8" source={sources[name]} />;
+  return <SvgUri {...props} source={sources[name]} />;
 }
 
 export default Icon;
