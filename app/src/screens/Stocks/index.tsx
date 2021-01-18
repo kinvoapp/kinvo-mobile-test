@@ -6,6 +6,7 @@ import { ApiResponse, Stock } from "../../utils/apiTypes";
 import api from "../../services/api";
 import { FlatList } from "react-native-gesture-handler";
 import { useStocks } from "../../services/context";
+import Loading from "../Loading";
 
 function sortStocks(a: Stock, b: Stock) {
   if (!!a.isFavorite === !!b.isFavorite) {
@@ -50,7 +51,9 @@ function Stocks() {
     setStocks(sorted);
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <FlatList
       style={{ padding: 20 }}
       data={stocks}
