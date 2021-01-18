@@ -1,7 +1,7 @@
 import React from "react";
 import { GestureResponderEvent } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "../Icon";
+import { Container } from "./styles";
 
 type Props = {
   active: boolean;
@@ -12,13 +12,13 @@ type Props = {
 
 function FavoriteButton({ active, width = 20, height = 18, onPress }: Props) {
   return (
-    <TouchableOpacity style={{ padding: 2 }} onPress={onPress}>
+    <Container onPress={onPress}>
       <Icon
         name={active ? "heart-filled" : "heart-outlined"}
-        width={20}
-        height={18}
+        width={width}
+        height={height}
       />
-    </TouchableOpacity>
+    </Container>
   );
 }
 

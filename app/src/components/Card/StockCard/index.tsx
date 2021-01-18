@@ -13,8 +13,6 @@ import CurrencyTypography from "../../Typography/CurrencyTypography";
 import IndicatorTypography from "../../Typography/IndicatorTypography";
 import Card from "../index";
 import { HeaderContainer, Header } from "./styles";
-// import { format } from 'number-currency-format';
-// import { Container } from './styles';
 
 type Props = Stock & {
   toggleFavorite: (id: number) => void;
@@ -46,10 +44,6 @@ function StockCard({
       <View
         style={{
           height: "100%",
-          // flex: 1,
-          // justifyContent: "flex-start",
-          // alignItems: "flex-start",
-          // backgroundColor: "green",
         }}
       >
         <HeaderContainer>
