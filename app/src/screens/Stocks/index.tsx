@@ -5,6 +5,7 @@ import api from "../../services/api";
 import { useStocks } from "../../services/context";
 import Loading from "../Loading";
 import CardList from "../../components/CardList";
+import ErrorScreen from "../ErrorScreen/index";
 
 function sortStocks(a: Stock, b: Stock) {
   if (!!a.isFavorite === !!b.isFavorite) {
@@ -17,27 +18,36 @@ function sortStocks(a: Stock, b: Stock) {
 function Stocks() {
   const [stocks, setStocks] = useStocks();
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    async function getStocks() {
-      try {
-        setLoading(true);
-        const response = await api.get<ApiResponse<Stock>>("/stocks");
-        // array of favorited stocks id
-        const favoritedStocksIds = stocks
-          .filter((stock) => stock.isFavorite)
-          .map((s) => s.id);
+  const [error, setError] = useState(false);
 
-        const returnedStocks = response.data.data.map((stock) =>
-          // verify if it was a favorited stock
-          favoritedStocksIds.includes(stock.id)
-            ? { ...stock, isFavorite: true }
-            : stock
-        );
-        const sorted = returnedStocks.sort(sortStocks);
-        setStocks(sorted);
-        setLoading(false);
-      } catch {}
+  async function getStocks() {
+    console.log("a");
+    try {
+      console.log("b");
+      setLoading(true);
+      setError(false);
+      const response = await api.get<ApiResponse<Stock>>("/stocks");
+
+      // array of favorited stocks id
+      const favoritedStocksIds = stocks
+        .filter((stock) => stock.isFavorite)
+        .map((s) => s.id);
+
+      // verify if it was a favorited stock
+      const returnedStocks = response.data.data.map((stock) =>
+        favoritedStocksIds.includes(stock.id)
+          ? { ...stock, isFavorite: true }
+          : stock
+      );
+      const sorted = returnedStocks.sort(sortStocks);
+      setStocks(sorted);
+      setLoading(false);
+    } catch {
+      setError(true);
     }
+  }
+
+  useEffect(() => {
     getStocks();
   }, []);
 
@@ -49,7 +59,15 @@ function Stocks() {
     setStocks(sorted);
   };
 
-  return loading ? (
+  return error ? (
+    <ErrorScreen
+      message="Não foi possível se conectar ao banco de fundos."
+      action={{
+        label: "Tentar Novamente",
+        onPress: getStocks,
+      }}
+    />
+  ) : loading ? (
     <Loading />
   ) : (
     <CardList
@@ -57,7 +75,11 @@ function Stocks() {
       data={stocks}
       keyExtractor={(item) => `${item.id}`}
       renderItem={({ item }) => (
-        <StockCard toggleFavorite={toggleFavorite} key={item.id} {...item} />
+        <StockCard
+          toggleFavorite={() => toggleFavorite(item.id)}
+          key={item.id}
+          {...item}
+        />
       )}
     />
   );

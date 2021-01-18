@@ -15,7 +15,7 @@ import Card from "../index";
 import { HeaderContainer, Header } from "./styles";
 
 type Props = Stock & {
-  toggleFavorite: (id: number) => void;
+  toggleFavorite: () => void;
 };
 
 function StockCard({
@@ -53,10 +53,7 @@ function StockCard({
             </Typography>
             <Typography type="ticker">{ticker}</Typography>
           </Header>
-          <FavoriteButton
-            active={!!isFavorite}
-            onPress={() => toggleFavorite(id)}
-          />
+          <FavoriteButton active={!!isFavorite} onPress={toggleFavorite} />
         </HeaderContainer>
         <Divider />
         <FlatList

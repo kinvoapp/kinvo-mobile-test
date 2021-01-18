@@ -42,8 +42,9 @@ const styles: Record<Props["type"], DefaultStyle> = {
 
 export const StyledText = styled.Text<Props>`
   font-family: ${(p) => styles[p.type].fontFamily};
-  font-size: ${(p) => styles[p.type].fontSize}px;
+  font-size: ${(p) => p.fontSize ?? styles[p.type].fontSize}px;
   color: ${(p) => p.color ?? (styles[p.type].color as string)};
   text-align: ${(p) => p.align ?? "auto"};
-  text-transform: ${(p) => styles[p.type].textTransform ?? "none"};
+  text-transform: ${(p) =>
+    p.textTransform ?? styles[p.type].textTransform ?? "none"};
 `;
