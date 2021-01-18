@@ -4,7 +4,7 @@
 > Candidato: Hebert Oliveira
 
 ## Instalação
-Certifique-se de ter os [pré-requisitos](###Pre-requisitos) e execute os comandos
+Certifique-se de ter os [pré-requisitos](#pre-requisitos) e execute os comandos
 
 ```shell
 git clone https://github.com/hebit/kinvo-mobile-test.git
