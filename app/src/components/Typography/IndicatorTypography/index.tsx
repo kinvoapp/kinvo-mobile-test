@@ -2,14 +2,17 @@ import React from "react";
 import { View } from "react-native";
 import Typography from "..";
 import Colors from "../../../utils/colors";
+import Icon from "../../Icon";
 
 // import { Container } from './styles';
 
 type Props = {
   value: number;
+  prefix?: string | number;
+  sufix?: string | number;
 };
 
-function IndicatorTypography({ value }: Props) {
+function IndicatorTypography({ value, prefix, sufix }: Props) {
   const color =
     value > 0
       ? Colors.PROFITABILITY_POSITIVE
@@ -27,14 +30,24 @@ function IndicatorTypography({ value }: Props) {
     >
       <View
         style={{
-          width: 8.4,
-          height: 8.25,
-          backgroundColor: color,
+          // width: 8.4,
+          // height: 8.25,
+          // backgroundColor: color,
           marginRight: 7,
         }}
-      ></View>
+      >
+        {value !== 0 && (
+          <Icon
+            width={8.4}
+            height={8.25}
+            name={value > 0 ? "arrow-up" : "arrow-down"}
+          />
+        )}
+      </View>
       <Typography type="strong" color={color}>
+        {prefix}
         {value}
+        {sufix}
       </Typography>
     </View>
   );

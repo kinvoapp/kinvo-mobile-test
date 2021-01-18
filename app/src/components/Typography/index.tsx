@@ -6,7 +6,6 @@ export type Props = {
   type: "title" | "subtitle" | "ticker" | "body" | "strong";
   color?: Colors;
   align?: TextStyle["textAlign"];
-  children?: string | number;
 };
 
 export default Typography;

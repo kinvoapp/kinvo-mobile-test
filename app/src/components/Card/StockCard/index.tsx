@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import NumberFormat from "react-number-format";
+import { Stock } from "../../../utils/apiTypes";
 import Colors from "../../../utils/colors";
 import Divider from "../../Divider";
 import Typography from "../../Typography";
@@ -12,21 +13,21 @@ import { HeaderContainer, Header } from "./styles";
 // import { format } from 'number-currency-format';
 // import { Container } from './styles';
 
-type Props = {
-  name: string;
-  ticker: string;
-  id: number;
-};
+// type Props = {
+//   name: string;
+//   ticker: string;
+//   id: number;
+// };
 
-function StockCard({ name, ticker, id }: Props) {
+function StockCard({ name, ticker, id, profitability, minimumValue }: Stock) {
   const details = [
     {
       label: "Valor mínimo",
-      value: <CurrencyTypography value={24.2} />,
+      value: <CurrencyTypography value={minimumValue} />,
     },
     {
       label: "Rentabilidade",
-      value: <IndicatorTypography value={24.17} />,
+      value: <IndicatorTypography value={profitability} sufix={"%"} />,
     },
   ];
   return (
@@ -59,7 +60,7 @@ function StockCard({ name, ticker, id }: Props) {
         <Divider />
         <FlatList
           data={details}
-          // keyExtractor={}
+          keyExtractor={(a, i) => `${a.label}-${i}`}
           renderItem={({ item, index }) => (
             <View
               key={index}
@@ -71,14 +72,11 @@ function StockCard({ name, ticker, id }: Props) {
                 justifyContent: "space-between",
               }}
             >
-              <Typography type="body">{item.label}</Typography>
+              <Typography type="body">{item.label}:</Typography>
               {item.value}
             </View>
           )}
-          // keyExtractor={(detail, index) => index}
         />
-        {/* {details.map(info => (
-        ))} */}
       </View>
     </Card>
   );
