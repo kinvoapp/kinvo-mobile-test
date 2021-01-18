@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import Colors from "../../utils/colors";
 
-export const Container = styled.TouchableOpacity`
+export const TouchableContainer = styled.TouchableOpacity`
   width: 24px;
   height: 24px;
   max-height: 24px;
