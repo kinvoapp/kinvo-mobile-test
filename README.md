@@ -34,7 +34,7 @@ yarn start
 ```
 E aguarde ele iniciar o projeto. Abrirá uma nova aba no navegador ou aparecerá um QrCode no terminal, neste momento abra o app do Expo no celular e selecione a opção de Scanear o QrCode gerado.
 
-Aguarde gerar o bulder do aplicativo e já estará pronto para testar! ✨
+Aguarde gerar o bundler do aplicativo e já estará pronto para testar! ✨
 
 A tela escolhida para ser desenvolvida foi a tela de **Ações**.
 
