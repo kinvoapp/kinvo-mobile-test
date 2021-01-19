@@ -3,13 +3,10 @@ import {Container} from './styles';
 import Header from '../../components/Header';
 import CardActions from '../../components/CardActions';
 import {  ScrollView} from "react-native";
-import CardErro from '../../components/CardErro';
-
 
 const ActionsScreen: React.FC = () => {
 
   const [allItens, setAllItens] = useState([]); 
-  // const [allFavorites, setAllFavorites] = useState([]); 
 
   useEffect(() => {
     const getItens = async () => {
@@ -22,15 +19,11 @@ const ActionsScreen: React.FC = () => {
       }
       getItens();
     
-      
     }, [])
     
-  
  
 const  itensOrdenados =  [].concat(allItens).sort((a, b) => a.name > b.name ? 1 : -1);
-
       return (
-    
         <Container>
     
             <Header name="Ações" />

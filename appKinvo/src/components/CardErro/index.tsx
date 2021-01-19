@@ -8,14 +8,12 @@ interface ActionProps {
   adress: string;
 }
 
-
-
 const CardErro: React.FC<ActionProps> = ({children, adress, ...rest}) => {
 
   const navigation = useNavigation();
 
-  const irSobre = (teste: string) => {
-    navigation.navigate(teste);
+  const irSobre = () => {
+    navigation.navigate("HomePage");
   };
 
  return (
@@ -23,12 +21,9 @@ const CardErro: React.FC<ActionProps> = ({children, adress, ...rest}) => {
   <Container {...rest}>
       <TextTitle>Ocorreu um erro.</TextTitle>
       <TextSubTitle>Não foi possivel se conectar ao banco de dados</TextSubTitle>
-
-      <ButtonLink onPress={() => irSobre(adress)}>
-        <TextButton>TENTAR NOVAMENTE</TextButton>
+      <ButtonLink onPress={irSobre}>
+        <TextButton>VOLTAR</TextButton>
       </ButtonLink>
-
-    
   </Container>
 
 );

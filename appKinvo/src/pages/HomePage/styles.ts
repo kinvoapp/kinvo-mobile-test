@@ -14,7 +14,8 @@ export const HeaderHome = styled.View`
 
 export const TextHeader = styled.Text`
   color: #6f4dbf;
-  font-size: 20px;
+  font-size: 24px;
   font-family: 'Montserrat-Medium';
   font-weight: bold;
+  margin-left: 10px;
 `;

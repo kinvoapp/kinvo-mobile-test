@@ -1,12 +1,15 @@
 import React from 'react';
-
-import {Container, Text} from './styles';
+import CardErro from '../../components/CardErro';
+import Header from '../../components/Header';
+import {Container} from './styles';
 
 const ScreenPredictions: React.FC = () => {
   return (
     <Container>
-      <Text>ScreenPredictions</Text>
+      <Header name="Previdência" />
+      <CardErro />
     </Container>
+        
   );
 };
 

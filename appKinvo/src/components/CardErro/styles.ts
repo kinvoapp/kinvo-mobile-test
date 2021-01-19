@@ -13,29 +13,30 @@ export const Container = styled.View`
 export const TextTitle = styled.Text`
   font-family: 'Montserrat-Medium';
   color: #627179;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom: 16px;
 
 `;
 
 export const TextSubTitle = styled.Text`
   font-family: 'Montserrat-Medium';
   color: #627179;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
-
+  margin-bottom: 16px;
 `;
 
 export const TextButton = styled.Text`
   font-family: 'Montserrat-Medium';
   color: #FFFFFF;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
 `;
 
 export const ButtonLink = styled(RectButton)`
   background: #6F4DBF;
-  width: 50%;
+  width: 60%;
   height: 40px;
   align-items: center;
   justify-content: center;

@@ -1,8 +1,6 @@
 import React from 'react';
 import {RectButtonProperties} from 'react-native-gesture-handler';
 import {Container, ButtonTextTitle, ButtonTextSubTitle, ContainerIcon, ContainerText, Img} from './styles';
-// import { Image } from 'react-native';
-
 
 interface ButtonProps extends RectButtonProperties {
   children: string;
@@ -11,6 +9,7 @@ interface ButtonProps extends RectButtonProperties {
 }
 
 const ButtonHome: React.FC<ButtonProps> = ({children, img, title, ...rest}) => (
+  
   <Container {...rest}>
     
     <ContainerIcon>

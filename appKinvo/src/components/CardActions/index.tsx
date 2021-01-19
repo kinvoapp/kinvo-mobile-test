@@ -1,5 +1,4 @@
 import React from 'react';
-// import {RectButtonProperties} from 'react-native-gesture-handler';
 import {Container,
         TextTitle,
         TextSubTitle,
@@ -7,9 +6,7 @@ import {Container,
         ContainerRight,
         Text,
         TextMinimo,
-        TextRentabilidade,
-        Img} from './styles';
-// import heartImg2 from '../../assets/heart2.png';
+        TextRentabilidade,} from './styles';
 import Icon from 'react-native-vector-icons/Feather';
 import { StyleSheet } from 'react-native';
 import FavoritesButton from '../FavoritesButton';
@@ -22,22 +19,19 @@ interface ActionProps {
   profitability: number;
 }
 
-
 const CardActions: React.FC<ActionProps> = ({children, name, ticker, minimumValue, profitability, ...rest}) => (
 
   <Container {...rest}>
     <Containerleft>
       <TextTitle>{name}</TextTitle>
       <TextSubTitle>{ticker}</TextSubTitle>
-
       <Text>Valor mínimo:</Text>
       <Text>Rentabilidade:</Text>
     </Containerleft>
 
     <ContainerRight>
-      {/* <Img source={heartImg2} /> */}
       <FavoritesButton />
-      <TextMinimo>R$ {minimumValue}</TextMinimo>
+      <TextMinimo>R$ {minimumValue.toFixed(2) }</TextMinimo>
       <TextRentabilidade style={profitability <= 0 ? styles.textDown : styles.textUp} >
           <Icon name={profitability <= 0 ? 'arrow-down' : 'arrow-up' }/>
           {profitability}

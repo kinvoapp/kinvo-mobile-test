@@ -1,9 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native'; 
-
 import {Container, HeaderHome, TextHeader} from './styles';
 import ButtonHome from '../../components/ButtonHome';
-
 import acoesImg from '../../assets/acoes.png';
 import fundosImg from '../../assets/fundos.png';
 import previdenciaImg from '../../assets/previdencia.png';

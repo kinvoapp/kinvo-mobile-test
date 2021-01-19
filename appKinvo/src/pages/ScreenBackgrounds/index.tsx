@@ -1,12 +1,15 @@
 import React from 'react';
-
-import {Container, Text} from './styles';
+import CardErro from '../../components/CardErro';
+import Header from '../../components/Header';
+import {Container} from './styles';
 
 const ScreenBackgrounds: React.FC = () => {
   return (
     <Container>
-      <Text>ScreenBackgrounds</Text>
+      <Header name="Fundos" />
+      <CardErro />
     </Container>
+        
   );
 };
 
