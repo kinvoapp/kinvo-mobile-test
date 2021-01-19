@@ -9,7 +9,7 @@ import {Container,
         TextMinimo,
         TextRentabilidade,
         Img} from './styles';
-import heartImg2 from '../../assets/heart2.png';
+// import heartImg2 from '../../assets/heart2.png';
 import Icon from 'react-native-vector-icons/Feather';
 import { StyleSheet } from 'react-native';
 import FavoritesButton from '../FavoritesButton';
@@ -51,7 +51,7 @@ export default CardActions;
 
 const styles = StyleSheet.create({
     textUp:{
-      color: "#627179"
+      color: "#AED335"
     },
     textDown:{
       color: "#E85D1F"

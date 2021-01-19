@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage';
 import ScreenBackgrounds from '../pages/ScreenBackgrounds';
 import ActionsScreen from '../pages/ActionsScreen';
 import ScreenPredictions from '../pages/ScreenPredictions';
+import PageError from '../pages/PageError';
 
 const Auth = createStackNavigator();
 
@@ -19,6 +20,7 @@ const AuthRoutes: React.FC = () => (
     <Auth.Screen name="ScreenBackgrounds" component={ScreenBackgrounds} />
     <Auth.Screen name="ActionsScreen" component={ActionsScreen} />
     <Auth.Screen name="ScreenPredictions" component={ScreenPredictions} />
+    <Auth.Screen name="PageError" component={PageError} />
   </Auth.Navigator>
 );
 

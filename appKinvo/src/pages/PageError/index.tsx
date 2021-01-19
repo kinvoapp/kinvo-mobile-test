@@ -7,6 +7,7 @@ import ButtonHome from '../../components/ButtonHome';
 import acoesImg from '../../assets/acoes.png';
 import fundosImg from '../../assets/fundos.png';
 import previdenciaImg from '../../assets/previdencia.png';
+import { Image } from 'react-native';
 
 
 const HomePage: React.FC = () => {
