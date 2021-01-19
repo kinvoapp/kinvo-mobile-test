@@ -1,17 +1,18 @@
 import React from 'react';
 // import {RectButtonProperties} from 'react-native-gesture-handler';
 import {Container,
-    TextTitle,
-    TextSubTitle,
-    Containerleft,
-    ContainerRight,
-    Text,
-    TextMinimo,
-    TextRentabilidade,
-     Img} from './styles';
-import heartImg from '../../assets/heart.png';
-
-// import CardActions from '../'
+        TextTitle,
+        TextSubTitle,
+        Containerleft,
+        ContainerRight,
+        Text,
+        TextMinimo,
+        TextRentabilidade,
+        Img} from './styles';
+import heartImg2 from '../../assets/heart2.png';
+import Icon from 'react-native-vector-icons/Feather';
+import { StyleSheet } from 'react-native';
+import FavoritesButton from '../FavoritesButton';
 
 interface ActionProps {
   id: number;
@@ -34,13 +35,25 @@ const CardActions: React.FC<ActionProps> = ({children, name, ticker, minimumValu
     </Containerleft>
 
     <ContainerRight>
-      <Img source={heartImg} />
+      {/* <Img source={heartImg2} /> */}
+      <FavoritesButton />
       <TextMinimo>R$ {minimumValue}</TextMinimo>
-      <TextRentabilidade>{profitability}</TextRentabilidade>
+      <TextRentabilidade style={profitability <= 0 ? styles.textDown : styles.textUp} >
+          <Icon name={profitability <= 0 ? 'arrow-down' : 'arrow-up' }/>
+          {profitability}
+      </TextRentabilidade>
     </ContainerRight>
   </Container>
-
 
 );
 
 export default CardActions;
+
+const styles = StyleSheet.create({
+    textUp:{
+      color: "#627179"
+    },
+    textDown:{
+      color: "#E85D1F"
+    }
+})

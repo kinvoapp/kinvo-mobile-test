@@ -1,44 +1,69 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import {Container} from './styles';
 import Header from '../../components/Header';
-import { Text, View} from 'react-native';
 import CardActions from '../../components/CardActions';
+import { ScrollView } from "react-native";
+
+interface Ordem {
+  name:string;
+}
 
 const ActionsScreen: React.FC = () => {
 
-  const [allHome, setAllHome] = useState([]);  ///  o segredo são as chaves
-  useEffect(() => {
+  const [allItens, setAllItens] = useState([]); 
+  const [allFavorites, setAllFavorites] = useState([]); 
 
+
+  useEffect(() => {
     const getItens = async () => {
       const res = await fetch('https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks');
       const json = await res.json()
-      const todoshome = json;
-      setAllHome(todoshome.data); 
+      const todosItens = json;
+
+    // const rest = namesOrder(todosItens.data.name)
+
+      setAllItens(todosItens.data); 
     }
     getItens();
   }, [])
 
- 
+  const itensOrdenados =  [].concat(allItens).sort((a, b) => a.name > b.name ? 1 : -1);
+  const itensOrdenadosFavoritos =  [].concat(allFavorites).sort((a, b) => a.name > b.name ? 1 : -1);
+
+  
   return (
+    
     <Container>
-      <Header name="Ações" />
 
+        <Header name="Ações" />
 
-      <CardActions id={1} name='Magazine Luiza' ticker='MGLU3' minimumValue={100} profitability={27.05} />
+        <ScrollView showsVerticalScrollIndicator={false} scrollEnabled={true}>
         
+        {itensOrdenadosFavoritos.map(({id, name, ticker, minimumValue, profitability}) => {
+            return (
+                    <CardActions key={id}
+                      id={id} 
+                      name={name} 
+                      ticker={ticker} 
+                      minimumValue={minimumValue} 
+                      profitability={profitability} />
+                        )
+                      })}
 
 
 
 
-      {/* <View>
-        {allHome.map(({id, name}) => {
-          return (
-            <View key={id}>
-              <Text>{name}</Text>
-            </View>
-          )
-        })}
-      </View> */}
+          {itensOrdenados.map(({id, name, ticker, minimumValue, profitability}) => {
+            return (
+                    <CardActions key={id}
+                      id={id} 
+                      name={name} 
+                      ticker={ticker} 
+                      minimumValue={minimumValue} 
+                      profitability={profitability} />
+                        )
+                      })}
+          </ScrollView>
 
     </Container>
   );

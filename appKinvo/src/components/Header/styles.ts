@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const HeaderHome = styled.View`
-  flex: 0.2;
+  height: 120px;
   background: #ffffff;
   justify-content: center;
   padding-left: 20px;
