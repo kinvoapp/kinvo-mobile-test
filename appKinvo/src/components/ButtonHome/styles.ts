@@ -2,17 +2,41 @@ import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled(RectButton)`
-  flex: 0.2;
+  flex: 0.15;
   background: #ffffff;
   border-radius: 10px;
-
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   margin: 20px 20px 0 20px;
+  padding: 0 20px 0 20px;
 `;
 
-export const ButtonText = styled.Text`
-  font-family: 'RobotoSlab-Medium';
-  color: #312e38;
-  font-size: 18px;
+export const ButtonTextTitle = styled.Text`
+  font-family: 'Montserrat-Medium';
+  color: #6f4dbf;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+export const ButtonTextSubTitle = styled.Text`
+  font-family: 'Montserrat-Medium';
+  color: #627179;
+  font-size: 10px;
+  font-weight: bold;
+`;
+
+export const ContainerIcon = styled.View`
+  width: 20%;
+  border-radius: 50px;
+`;
+
+export const ContainerText = styled.View`
+  width: 70%;
+  margin-left: 20px;
+`;
+
+export const Img = styled.Image`
+  
+  /* border-radius: 20px; */
 `;

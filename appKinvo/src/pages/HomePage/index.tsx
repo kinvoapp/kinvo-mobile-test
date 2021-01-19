@@ -1,14 +1,20 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native'; //utilizar a navegação para outra tela
+import {useNavigation} from '@react-navigation/native'; 
 
 import {Container, HeaderHome, TextHeader} from './styles';
 import ButtonHome from '../../components/ButtonHome';
 
+import acoesImg from '../../assets/acoes.png';
+import fundosImg from '../../assets/fundos.png';
+import previdenciaImg from '../../assets/previdencia.png';
+import { Image } from 'react-native';
+
+
 const HomePage: React.FC = () => {
   const navigation = useNavigation();
 
-  const irSobre = (teste: string) => {
-    navigation.navigate(teste);
+  const irSobre = (adress: string) => {
+    navigation.navigate(adress);
   };
 
   return (
@@ -17,16 +23,18 @@ const HomePage: React.FC = () => {
         <TextHeader>Desafio</TextHeader>
       </HeaderHome>
 
-      <ButtonHome onPress={() => irSobre('ActionsScreen')}>
-        ActionsScreen
+      <ButtonHome
+      img={acoesImg} title="Ações"
+      onPress={() => irSobre('ActionsScreen')} >
+        Nacionais
       </ButtonHome>
 
-      <ButtonHome onPress={() => irSobre('ScreenBackgrounds')}>
-        ScreenBackgrounds
+      <ButtonHome onPress={() => irSobre('ScreenBackgrounds')} img={fundosImg} title="Fundos">
+        De Investimentos
       </ButtonHome>
 
-      <ButtonHome onPress={() => irSobre('ScreenPredictions')}>
-        ScreenPredictions
+      <ButtonHome onPress={() => irSobre('ScreenPredictions')} img={previdenciaImg} title="Previdências">
+        Privadas
       </ButtonHome>
     </Container>
   );
