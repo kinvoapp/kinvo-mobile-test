@@ -10,8 +10,7 @@
 
 ## Especificações:
 
-O desafio consiste em desenvolver um aplicativo de **2 telas, sendo obrigatório o desenvolvimento da Tela Inicial e mais uma à sua escolha, dentre as telas descritas abaixo**.
-
+O desafio consiste em desenvolver um aplicativo de **4 telas**.
 
 As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
 
