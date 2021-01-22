@@ -73,7 +73,7 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
 
 ## Material:
 
-- O layout em formato Adobe XD consta no repositório em [/material](/material);
+- O layout em formato Adobe XD consta no repositório em [/material](/material) ou através [desse link](https://xd.adobe.com/view/4701a220-a119-482a-89a5-4d110332e25f-1252/);
 - Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
 
 ## Submissão
