@@ -11,7 +11,7 @@
 </span>
 
 ## Setup para rodar o projeto
-Você primeiro deve entrar na pasta `app` e rodar o comando `yarn`,
+Você primeiro deve rodar o comando `yarn`,
 o comando serve para instalar as dependências do projeto, como bibliotecas
 instaladas no `package.json` e também com biblitoecas vindas do React Native.
 Após rodar o comando, pode ser executado o comando `yarn start`, o comando serve para começar a aplicação React Native e depois executar o comando
