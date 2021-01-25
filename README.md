@@ -1,4 +1,8 @@
-# Kinvo Mobile Teste Técnico
+<div align=center>
+  <img src="https://github.com/vagnerwentz/kinvo-mobile-test/blob/vagnerwentz/logo.svg" width=400/> 
+</div>
+
+<h1>Kinvo Mobile Teste Técnico </h1>
 
 <span>
   Este projeto foi realizado para o
