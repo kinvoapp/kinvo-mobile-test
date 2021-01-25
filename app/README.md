@@ -53,4 +53,4 @@ Previdências privadas.
 
 ## O que não foi realizado
 * Um problema de encontrar a solução e não encontrado foi:
-  * Quando a internet estiver desligada, e voltar ao normal, clicar no botão de tentar novamente para fazer o reload.
+  * Quando a internet estiver desligada, e voltar ao normal, clicar no botão de tentar novamente para fazer o reload, a tela foi feita e questão de verificar o Wi-Fi também, foi deixado fixo para clicar no botão e voltar ao Dashboard.
