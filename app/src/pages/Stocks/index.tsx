@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 
 import Header from '../../components/Header';
-import CardStocks from '../../components/CardStocks';
+import StocksList from '../../components/StocksList';
 
 const Stocks: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Stocks: React.FC = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{flexGrow: 1}}
       >
-        <CardStocks />
+        <StocksList />
       </ScrollView>
     </>
   );

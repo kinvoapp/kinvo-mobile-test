@@ -77,7 +77,7 @@ const FundsList: React.FC = () => {
 
   return (
     <>
-      {!isConnected && <WifiError text="fundos" navigateTo="Funds" />}
+      {!isConnected && <WifiError text="fundos" navigateTo="Dashboard" />}
       {(isConnected && loading) && <LoadScreen /> }
       {funds &&
       funds.map((fund) => (

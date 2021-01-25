@@ -147,7 +147,7 @@ const PrivatePensionList: React.FC = () => {
         <Separator />
       </SeparatorView>
 
-      {!isConnected && <WifiError text="previdências" navigateTo="PrivatePension" />}
+      {!isConnected && <WifiError text="previdências" navigateTo="Dashboard" />}
       {(isConnected && loading) && <LoadScreen /> }
       {(privatePensions.length === 0 && !loading) && (
         <MessageView>

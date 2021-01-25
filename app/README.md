@@ -43,42 +43,14 @@ Previdências privadas.
 * Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout. ✔️
 * Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout. ✔️
 
+## Tela de Pervidências
+* A lista de "previdências" deve ser carregada através de uma chamada a api. ✔️
+* A lista de "previdências" deve estar em ordem alfabética. ✔️
+* A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
+  * "SEM TAXA": inclui as previdências com taxa igual a zero. ✔️
+  * "R$100,00": inclui as previdências com valor mínimo igual a cem reais. ✔️
+  * "D+1": inclui as previdências com resgate igual a um. ✔️
 
-# Ações
-
--> Títulos e Descrição de cada card [X]
--> Valor mínimo texto / Valor mínimo [X]
--> Rentabilidade texto / Rentabilidade [X]
--> Separador [X]
--> A lista de "ações" deve obedecer a seguinte prioridade:
-  -> Favoritadas deve aparecer primeiro
-  -> Ordem alfabética
--> O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
--> A lista de "ações" inicia com todos as "ações" desfavoritadas.
-
-# Fundos
-
--> Títulos e Descrição de cada card [X]
--> Valor mínimo texto / Valor mínimo [X]
--> Rentabilidade texto / Rentabilidade [X]
--> Separador [X]
--> A lista de "fundos" deve estar em ordem alfabética. [X]
--> Os estados do fundo são:
-  -> 0: Comum [X]
-  -> 1: Novo [X]
-  -> 2: Fechado [X]
--> Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout. [X]
--> Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme  layout. [X]
--> Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout. [X]
-
-# Previdências
-
--> Títulos e Descrição de cada card [X]
--> Valor mínimo texto / Valor mínimo [X]
--> Rentabilidade texto / Rentabilidade [X]
--> Separador [X]
--> A lista de "previdências" deve estar em ordem alfabética. [X]
--> A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros: [X]
-  -> "SEM TAXA": inclui as previdências com taxa igual a zero. [X]
-  -> "R$100,00": inclui as previdências com valor mínimo igual a cem reais. [X]
-  -> "D+1": inclui as previdências com resgate igual a um. [X]
+## O que não foi realizado
+* Um problema de encontrar a solução e não encontrado foi:
+  * Quando a internet estiver desligada, e voltar ao normal, clicar no botão de tentar novamente para fazer o reload.
