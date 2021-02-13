@@ -1,0 +1,9 @@
+export default {
+  PRIMARY: '#6F4DBF',
+  SECONDARY: '#40C5D6',
+  BLACK: '#627179',
+  BACKGROUND: '#ECF0F2',
+  WARNING: '#E85D1F',
+  WHITE: '#FFF',
+  BORDER: '#DAE0E3',
+};

@@ -4,12 +4,12 @@ import { Text } from 'react-native';
 
 import { Container } from './styles';
 
-const Funds: React.FC = () => {
+const InvestmentFunds: React.FC = () => {
   return (
     <Container>
-      <Text>Funds</Text>
+      <Text>InvestmentFunds</Text>
     </Container>
   );
 };
 
-export default Funds;
+export default InvestmentFunds;

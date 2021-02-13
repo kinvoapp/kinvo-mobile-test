@@ -8,7 +8,7 @@ import { View, StatusBar } from 'react-native';
 
 const App: React.FC = () => (
   <NavigationContainer>
-    <StatusBar barStyle="dark-content" backgroundColor="#ECF0F2" />
+    <StatusBar barStyle="dark-content" backgroundColor="#fff" />
     <View style={{ flex: 1, backgroundColor: '#ECF0F2' }}>
       <Routes />
     </View>
