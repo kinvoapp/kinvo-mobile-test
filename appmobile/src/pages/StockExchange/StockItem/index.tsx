@@ -1,11 +1,11 @@
 import React from 'react';
-import { Image, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Image, View, TouchableOpacity } from 'react-native';
 
 import Favorite from '../../../assets/favorite.png';
 import NoFavorite from '../../../assets/nofavorite.png';
-import { Profitability } from '../../../components';
 
+import { Profitability } from '../../../components';
+import formatMoney from '../../../utils/formatMoney';
 import Stock from '../../../@types/stock';
 
 import {
@@ -20,18 +20,12 @@ import {
   ProfitabilityContent,
 } from './styles';
 
-interface CardItemProps {
+interface StockItemProps {
   stock: Stock;
   onFavorite: () => void;
 }
 
-const StockItem: React.FC<CardItemProps> = ({ stock, onFavorite }) => {
-  function formatPrice(price: number): string {
-    const priceFormarted = price.toFixed(2).replace('.', ',');
-
-    return `R$ ${priceFormarted}`;
-  }
-
+const StockItem: React.FC<StockItemProps> = ({ stock, onFavorite }) => {
   return (
     <Container>
       <TopContent>
@@ -47,7 +41,7 @@ const StockItem: React.FC<CardItemProps> = ({ stock, onFavorite }) => {
       <BottomContent>
         <Minimum>
           <TextValue>Valor mínimo: </TextValue>
-          <MinimumValue>{formatPrice(stock.minimumValue)}</MinimumValue>
+          <MinimumValue>{formatMoney(stock.minimumValue)}</MinimumValue>
         </Minimum>
         <ProfitabilityContent>
           <TextValue>Rentabilidade:</TextValue>

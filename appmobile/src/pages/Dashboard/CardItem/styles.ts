@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import color from '../../../styles/colors';
+import { color } from '../../../styles/colors';
 
 export const Container = styled.TouchableOpacity`
   flex-direction: row;

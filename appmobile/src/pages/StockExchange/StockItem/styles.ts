@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import color from '../../../styles/colors';
+import { color } from '../../../styles/colors';
 
 export const Container = styled.View`
   flex: 1;
@@ -51,7 +51,7 @@ export const TextValue = styled.Text`
 
 export const MinimumValue = styled.Text`
   font-family: 'Montserrat-SemiBold';
-  font-size: 24px;
+  font-size: 12px;
   color: ${color.BLACK};
 `;
 

@@ -19,10 +19,10 @@
   },
   "plugins": [
     "react",
+    "import-helpers",
     "@typescript-eslint",
     "react-hooks",
-    "prettier",
-    "import-helpers"
+    "prettier"
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
