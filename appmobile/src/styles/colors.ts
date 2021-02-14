@@ -4,6 +4,7 @@ export default {
   BLACK: '#627179',
   BACKGROUND: '#ECF0F2',
   WARNING: '#E85D1F',
+  GREEN: '#AED335',
   WHITE: '#FFF',
   BORDER: '#DAE0E3',
 };
