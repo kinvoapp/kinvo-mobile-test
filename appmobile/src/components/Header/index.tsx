@@ -2,22 +2,22 @@ import React from 'react';
 import { Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { Container, BackButton, Title } from './styles';
 
 import left from '../../assets/left.png';
+import { Container, BackButton, Title } from './styles';
 
 interface HeaderProps {
   title: string;
-  backbutton?: boolean;
+  backButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, backbutton }) => {
+const Header: React.FC<HeaderProps> = ({ title, backButton }) => {
   const navigation = useNavigation();
 
   return (
     <Container>
-      {backbutton && (
-        <BackButton onPress={() => navigation.goBack()}>
+      {backButton && (
+        <BackButton onPress={navigation.goBack}>
           <Image source={left} />
         </BackButton>
       )}

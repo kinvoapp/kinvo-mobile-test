@@ -1,11 +1,10 @@
 import React from 'react';
-
 import { View } from 'react-native';
 
+import Funds from '../../../@types/funds';
 import { Profitability, Status, Rating } from '../../../components';
 import formatMoney from '../../../utils/formatMoney';
-import Funds from '../../../@types/funds';
-
+import reduceWords from '../../../utils/reduceWords';
 import {
   Container,
   TopContent,
@@ -22,13 +21,6 @@ interface FundsItemProps {
 }
 
 const FundsItem: React.FC<FundsItemProps> = ({ funds }) => {
-  function handleWords(word: string) {
-    const lestWord = word;
-    const newWord = lestWord.split(' ').slice(0, 2).join(' ');
-
-    return newWord;
-  }
-
   function closeMarket() {
     if (funds.status === 2) {
       return true;
@@ -52,7 +44,7 @@ const FundsItem: React.FC<FundsItemProps> = ({ funds }) => {
     <Container isClosed={closeMarket()}>
       <TopContent>
         <View>
-          <Title isClosed={closeMarket()}>{handleWords(funds.name)}</Title>
+          <Title isClosed={closeMarket()}>{reduceWords(funds.name)}</Title>
           <Type isClosed={closeMarket()}>{funds.type}</Type>
         </View>
         {handleStatus()}
@@ -61,8 +53,7 @@ const FundsItem: React.FC<FundsItemProps> = ({ funds }) => {
       <BottomContent>
         <Space>
           <TextValue isClosed={closeMarket()}>Classificação:</TextValue>
-
-          {/* <Rating /> */}
+          <Rating rating={funds.rating} />
         </Space>
         <Space>
           <TextValue isClosed={closeMarket()}>Valor mínimo:</TextValue>

@@ -1,13 +1,11 @@
 import React from 'react';
 import { Image, View, TouchableOpacity } from 'react-native';
 
+import Stock from '../../../@types/stock';
 import Favorite from '../../../assets/favorite.png';
 import NoFavorite from '../../../assets/nofavorite.png';
-
 import { Profitability } from '../../../components';
 import formatMoney from '../../../utils/formatMoney';
-import Stock from '../../../@types/stock';
-
 import {
   Container,
   TopContent,

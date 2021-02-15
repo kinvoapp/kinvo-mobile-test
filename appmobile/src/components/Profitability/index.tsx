@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 
-import { Container, ProfitabilityValue } from './styles';
-import Up from '../../assets/up.png';
 import Down from '../../assets/down.png';
+import Up from '../../assets/up.png';
 import { colorLight } from '../../styles/colors';
+import { Container, ProfitabilityValue } from './styles';
 
 interface ProfitabilityProps {
   value: number;
@@ -14,31 +14,33 @@ interface ProfitabilityProps {
 const Profitability: React.FC<ProfitabilityProps> = ({ value, isClosed }) => {
   const [market, setMarket] = useState('');
 
-  function handleColor(closed: any, positive: any) {
-    if (closed === true) {
+  useEffect(() => {
+    if (isClosed === true) {
       setMarket('CLOSED');
       return;
     }
-    if (positive >= 0) {
+
+    if (value >= 0) {
       setMarket('POSITIVE');
       return;
     }
-    setMarket('NEGATIVE');
-    return;
-  }
 
-  useEffect(() => {
-    handleColor(isClosed, value);
-  }, []);
+    setMarket('NEGATIVE');
+  }, [isClosed, value]);
 
   return (
     <Container>
       <Image
-        style={{ tintColor: market === 'CLOSED' && colorLight.SECONDARY }}
+        style={{
+          tintColor: market === 'CLOSED' ? colorLight.SECONDARY : undefined,
+        }}
         source={value >= 0 ? Up : Down}
       />
-      <ProfitabilityValue isClosed={market} isPositive={market}>
-        {value}%
+      <ProfitabilityValue
+        isClosed={market === 'CLOSED'}
+        isPositive={market === 'POSITIVE'}
+      >
+        {`${value}%`}
       </ProfitabilityValue>
     </Container>
   );

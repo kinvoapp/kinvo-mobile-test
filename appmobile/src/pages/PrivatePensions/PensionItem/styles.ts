@@ -1,25 +1,14 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
-import { color, colorLight } from '../../../styles/colors';
+import { color } from '../../../styles/colors';
 
-interface ChangeColor {
-  isClosed: boolean;
-}
-
-export const Container = styled.View<ChangeColor>`
-  flex: 1;
+export const Container = styled.View`
+  width: 100%;
   background: ${color.WHITE};
   margin-top: 20px;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid ${color.BORDER};
-
-  ${props =>
-    props.isClosed &&
-    css`
-      background: ${colorLight.WHITE};
-      border-color: ${colorLight.WHITE};
-    `}
 `;
 
 export const TopContent = styled.View`
@@ -30,31 +19,18 @@ export const TopContent = styled.View`
   border-bottom-width: 1px;
 `;
 
-export const Title = styled.Text<ChangeColor>`
-  flex: 1;
+export const Title = styled.Text`
   font-family: 'Montserrat-Bold';
   font-size: 16px;
   color: ${color.BLACK};
-
-  ${props =>
-    props.isClosed &&
-    css`
-      color: ${colorLight.BLACK};
-    `}
 `;
 
-export const Type = styled.Text<ChangeColor>`
+export const Type = styled.Text`
   font-family: 'Montserrat-SemiBold';
   font-size: 12px;
   color: ${color.BLACK};
   padding: 5px 0 15px 0;
   text-transform: uppercase;
-
-  ${props =>
-    props.isClosed &&
-    css`
-      color: ${colorLight.BLACK};
-    `}
 `;
 
 export const Space = styled.View`
@@ -65,32 +41,27 @@ export const Space = styled.View`
   margin-top: 15px;
 `;
 
+export const TextDefault = styled.Text`
+  font-family: 'Montserrat-SemiBold';
+  font-size: 12px;
+  color: ${color.BLACK};
+  text-transform: uppercase;
+`;
+
 export const BottomContent = styled.View`
   width: 100%;
   justify-content: space-between;
   padding-top: 10px;
 `;
 
-export const TextValue = styled.Text<ChangeColor>`
+export const TextValue = styled.Text`
   font-family: 'Montserrat-Medium';
   font-size: 10px;
   color: ${color.BLACK};
-
-  ${props =>
-    props.isClosed &&
-    css`
-      color: ${colorLight.BLACK};
-    `}
 `;
 
-export const MinimumValue = styled.Text<ChangeColor>`
+export const MinimumValue = styled.Text`
   font-family: 'Montserrat-SemiBold';
   font-size: 12px;
   color: ${color.BLACK};
-
-  ${props =>
-    props.isClosed &&
-    css`
-      color: ${colorLight.BLACK};
-    `}
 `;

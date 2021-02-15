@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Header } from '../../components';
-import { Container, Content } from './styles';
-import Card from './CardItem';
+import { useNavigation } from '@react-navigation/native';
 
-import stock from '../../assets/stock.png';
 import foresight from '../../assets/foresight.png';
 import shape from '../../assets/shape.png';
-import { useNavigation } from '@react-navigation/native';
+import stock from '../../assets/stock.png';
+import { Header } from '../../components';
+import Card from './CardItem';
+import { Container, Content } from './styles';
 
 const Dashboard: React.FC = () => {
   const navigation = useNavigation();
@@ -17,19 +17,19 @@ const Dashboard: React.FC = () => {
       <Header title="Desafio" />
       <Content>
         <Card
-          image={stock}
+          leftIcon={stock}
           title="Ações"
           subtitle="Nacionais"
           onPress={() => navigation.navigate('Stock-Exchange')}
         />
         <Card
-          image={shape}
+          leftIcon={shape}
           title="Fundos"
           subtitle="De investimento"
           onPress={() => navigation.navigate('Investment-Funds')}
         />
         <Card
-          image={foresight}
+          leftIcon={foresight}
           title="Previdências"
           subtitle="Privadas"
           onPress={() => navigation.navigate('Private-Pensions')}

@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Dashboard from '../pages/Dashboard';
-import StockExchange from '../pages/StockExchange';
-import PrivatePensions from '../pages/PrivatePensions';
 import InvestmentFunds from '../pages/InvestmentFunds';
+import PrivatePensions from '../pages/PrivatePensions';
+import StockExchange from '../pages/StockExchange';
 import { color } from '../styles/colors';
 
 const Route = createStackNavigator();

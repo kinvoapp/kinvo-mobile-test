@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components/native';
+
 import { color, colorLight } from '../../styles/colors';
 
 interface ProfitabilityValueProps {
-  isPositive: string;
-  isClosed?: string;
+  isPositive: boolean;
+  isClosed?: boolean;
 }
 
 export const Container = styled.View`
@@ -16,20 +17,18 @@ export const ProfitabilityValue = styled.Text<ProfitabilityValueProps>`
   font-family: 'Montserrat-SemiBold';
   font-size: 12px;
 
-  ${({ isPositive, isClosed }) =>
-    isPositive === 'POSITIVE'
+  ${({ isPositive }) =>
+    isPositive
       ? css`
           color: ${color.GREEN};
         `
-      : isPositive === 'NEGATIVE'
-      ? css`
-          color: ${color.WARNING};
-        `
-      : isClosed === 'CLOSED'
-      ? css`
-          color: ${colorLight.BLACK};
-        `
       : css`
-          color: ${color.PRIMARY};
+          color: ${color.WARNING};
         `}
+
+  ${({ isClosed }) =>
+    isClosed &&
+    css`
+      color: ${colorLight.BLACK};
+    `}
 `;

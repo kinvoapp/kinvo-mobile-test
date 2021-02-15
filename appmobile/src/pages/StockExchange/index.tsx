@@ -1,44 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { Header } from '../../components';
-import { Container, Content } from './styles';
-import StockItem from './StockItem';
-
 import Stock from '../../@types/stock';
-
-const api = 'https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks';
+import { Header, Spinner, NetworkError } from '../../components';
+import api from '../../services/api';
+import StockItem from './StockItem';
+import { Container, Content } from './styles';
 
 const StockExchange: React.FC = () => {
   const [stock, setStock] = useState<Stock[]>([]);
   const [loading, setLoading] = useState(false);
+  const [networkError, setNetworkError] = useState(false);
 
-  useEffect(() => {
-    async function fetchStock() {
-      try {
-        setLoading(true);
-        const response = await axios.get(api);
-        const { data } = response.data;
-
-        setStock(data);
-        handleSortList();
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchStock();
-  }, []);
-
-  function handleSortList() {
+  const handleSortList = useCallback(() => {
     setStock(state => {
       const newState = [...state];
 
       newState.sort((a, b) => {
-        if (a.favorite) return -1;
+        if (a.favorite || b.favorite) {
+          if (a.favorite && !b.favorite) return -1;
+          if (a.favorite && b.favorite) return 0;
+          if (b.favorite && !a.favorite) return 1;
+        }
 
         if (a.name < b.name) return -1;
 
@@ -49,28 +32,64 @@ const StockExchange: React.FC = () => {
 
       return newState;
     });
-  }
+  }, []);
 
-  function handleFavorite(index: number) {
-    const newStock = [...stock];
+  const fetchStock = useCallback(async () => {
+    try {
+      setNetworkError(false);
+      setLoading(true);
+      const response = await api.get('stocks');
+      const { data } = response.data;
 
-    newStock[index].favorite = !newStock[index].favorite;
+      setStock(data);
+      handleSortList();
+    } catch (error) {
+      setNetworkError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, [handleSortList]);
 
-    setStock(newStock);
-    handleSortList();
-  }
+  useEffect(() => {
+    fetchStock();
+  }, [fetchStock]);
+
+  const handleFavorite = useCallback(
+    index => {
+      const newStock = [...stock];
+
+      newStock[index].favorite = !newStock[index].favorite;
+
+      setStock(newStock);
+      handleSortList();
+    },
+    [stock, handleSortList],
+  );
 
   return (
     <Container>
-      <Header title="Ações" backbutton />
+      <Header title="Ações" backButton />
       <Content>
-        <FlatList
-          data={stock}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item, index }) => (
-            <StockItem stock={item} onFavorite={() => handleFavorite(index)} />
-          )}
-        />
+        {loading && <Spinner />}
+        {networkError && (
+          <NetworkError
+            subtitle="Não foi possível se conectar ao banco de ações."
+            onPress={fetchStock}
+          />
+        )}
+
+        {!loading === !networkError && (
+          <FlatList
+            data={stock}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({ item, index }) => (
+              <StockItem
+                stock={item}
+                onFavorite={() => handleFavorite(index)}
+              />
+            )}
+          />
+        )}
       </Content>
     </Container>
   );

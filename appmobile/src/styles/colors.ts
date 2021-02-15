@@ -1,3 +1,4 @@
+// TODO rename var name
 export const color = {
   PRIMARY: '#6F4DBF',
   SECONDARY: '#40C5D6',

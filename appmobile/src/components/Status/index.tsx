@@ -7,18 +7,11 @@ interface StatusProps {
 }
 
 const Status: React.FC<StatusProps> = ({ status }) => {
-  function closeMarket() {
-    if (status === 2) {
-      return true;
-    }
-    return false;
-  }
+  const title = status === 1 ? 'Novo' : 'Fechado';
 
   return (
     <Container>
-      <Title isClosed={closeMarket()}>
-        {status === 1 ? 'Novo' : 'Fechado'}
-      </Title>
+      <Title isClosed={status === 2}>{title}</Title>
     </Container>
   );
 };

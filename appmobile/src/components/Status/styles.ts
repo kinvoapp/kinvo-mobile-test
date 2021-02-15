@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components/native';
+
 import { color, colorLight } from '../../styles/colors';
 
+export const Container = styled.View``;
 interface TextProps {
   isClosed: boolean;
 }
-
-export const Container = styled.View``;
 
 export const Title = styled.Text<TextProps>`
   font-family: 'Montserrat-Medium';

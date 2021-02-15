@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { FlatList } from 'react-native';
 
-import { Header } from '../../components';
-import { Container, Content } from './styles';
-
 import Funds from '../../@types/funds';
+import { Header, Spinner } from '../../components';
+import api from '../../services/api';
 import FundsItem from './FundsItem';
-
-const api = 'https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds';
+import { Container, Content } from './styles';
 
 const InvestmentFunds: React.FC = () => {
   const [funds, setFunds] = useState<Funds[]>([]);
@@ -18,11 +15,10 @@ const InvestmentFunds: React.FC = () => {
     async function fetchFunds() {
       try {
         setLoading(true);
-        const response = await axios.get(api);
+        const response = await api.get('funds');
         const { data } = response.data;
-        setFunds(data);
 
-        setFunds(data => {
+        setFunds(() => {
           const newState = [...data];
           newState.sort((a, b) => {
             if (a.name < b.name) return -1;
@@ -42,13 +38,16 @@ const InvestmentFunds: React.FC = () => {
 
   return (
     <Container>
-      <Header title="Fundos" backbutton />
+      <Header title="Fundos" backButton />
       <Content>
-        <FlatList
-          data={funds}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <FundsItem funds={item} />}
-        />
+        {loading && <Spinner />}
+        {!loading && (
+          <FlatList
+            data={funds}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({ item }) => <FundsItem funds={item} />}
+          />
+        )}
       </Content>
     </Container>
   );

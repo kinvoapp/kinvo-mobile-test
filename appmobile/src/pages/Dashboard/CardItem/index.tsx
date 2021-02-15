@@ -1,21 +1,25 @@
 import React from 'react';
-
 import { Image, ImageProps } from 'react-native';
 
 import { Container, TextView, Title, Subtitle, ImageContent } from './styles';
 
 interface CardProps {
-  image: ImageProps;
+  leftIcon: ImageProps;
   title: string;
   subtitle: string;
   onPress: () => void;
 }
 
-const CardItem: React.FC<CardProps> = ({ image, title, subtitle, onPress }) => {
+const CardItem: React.FC<CardProps> = ({
+  leftIcon,
+  title,
+  subtitle,
+  onPress,
+}) => {
   return (
     <Container onPress={onPress}>
       <ImageContent>
-        <Image source={image} />
+        <Image source={leftIcon} />
       </ImageContent>
       <TextView>
         <Title>{title}</Title>
