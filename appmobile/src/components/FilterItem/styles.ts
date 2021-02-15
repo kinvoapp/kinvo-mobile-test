@@ -1,32 +1,32 @@
 import styled, { css } from 'styled-components/native';
 
-import { color } from '../../styles/colors';
+import { colors } from '../../styles/colors';
 
 interface ContainerProps {
   isActive: boolean;
 }
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
-  background: ${color.WHITE};
+  background: ${colors.WHITE};
   padding: 8px 15px;
   border-radius: 20px;
 
   ${props =>
     props.isActive &&
     css`
-      background: ${color.PRIMARY};
+      background: ${colors.PRIMARY};
     `}
 `;
 
 export const Title = styled.Text<ContainerProps>`
   font-family: 'Montserrat-SemiBold';
   font-size: 12px;
-  color: ${color.BLACK};
+  color: ${colors.BLACK};
   text-transform: uppercase;
 
   ${props =>
     props.isActive &&
     css`
-      color: ${color.WHITE};
+      color: ${colors.WHITE};
     `}
 `;

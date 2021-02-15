@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import Pension from '../../../@types/pension';
 import { Profitability } from '../../../components';
-import formatMoney from '../../../utils/formatMoney';
+import { formatMoneyLocale } from '../../../utils/formatMoneyLocale';
 import reduceWords from '../../../utils/reduceWords';
 import {
   Container,
@@ -36,7 +36,7 @@ const PensionItem: React.FC<PensionItemProps> = ({ pension }) => {
       <BottomContent>
         <Space>
           <TextValue>Valor mínimo:</TextValue>
-          <MinimumValue>{formatMoney(pension.minimumValue)}</MinimumValue>
+          <MinimumValue>{formatMoneyLocale(pension.minimumValue)}</MinimumValue>
         </Space>
         <Space>
           <TextValue>Taxa:</TextValue>
@@ -58,5 +58,4 @@ const PensionItem: React.FC<PensionItemProps> = ({ pension }) => {
   );
 };
 
-// TODO maybe memo()
-export default PensionItem;
+export default React.memo(PensionItem);

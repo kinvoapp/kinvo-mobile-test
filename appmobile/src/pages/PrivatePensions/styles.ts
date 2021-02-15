@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { color } from '../../styles/colors';
+import { colors } from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -19,11 +19,11 @@ export const FilterList = styled.View`
   justify-content: space-between;
   align-items: center;
   border-bottom-width: 1px;
-  border-bottom-color: ${color.BORDER};
+  border-bottom-color: ${colors.BORDER};
 `;
 
 export const FilterItem = styled.TouchableOpacity`
-  background: ${color.WHITE};
+  background: ${colors.WHITE};
   padding: 8px 15px;
   border-radius: 20px;
 `;
@@ -31,6 +31,6 @@ export const FilterItem = styled.TouchableOpacity`
 export const TextFilter = styled.Text`
   font-family: 'Montserrat-SemiBold';
   font-size: 12px;
-  color: ${color.BLACK};
+  color: ${colors.BLACK};
   text-transform: uppercase;
 `;

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import Funds from '../../../@types/funds';
 import { Profitability, Status, Rating } from '../../../components';
-import formatMoney from '../../../utils/formatMoney';
+import { formatMoneyLocale } from '../../../utils/formatMoneyLocale';
 import reduceWords from '../../../utils/reduceWords';
 import {
   Container,
@@ -53,12 +53,16 @@ const FundsItem: React.FC<FundsItemProps> = ({ funds }) => {
       <BottomContent>
         <Space>
           <TextValue isClosed={closeMarket()}>Classificação:</TextValue>
-          <Rating rating={funds.rating} />
+          <Rating
+            rating={funds.rating}
+            key={funds.id}
+            closedMarket={funds.status === 2}
+          />
         </Space>
         <Space>
           <TextValue isClosed={closeMarket()}>Valor mínimo:</TextValue>
           <MinimumValue isClosed={closeMarket()}>
-            {formatMoney(funds.minimumValue)}
+            {formatMoneyLocale(funds.minimumValue)}
           </MinimumValue>
         </Space>
         <Space>

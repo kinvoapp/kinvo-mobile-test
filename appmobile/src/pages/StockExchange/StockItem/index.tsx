@@ -5,7 +5,7 @@ import Stock from '../../../@types/stock';
 import Favorite from '../../../assets/favorite.png';
 import NoFavorite from '../../../assets/nofavorite.png';
 import { Profitability } from '../../../components';
-import formatMoney from '../../../utils/formatMoney';
+import { formatMoneyLocale } from '../../../utils/formatMoneyLocale';
 import {
   Container,
   TopContent,
@@ -39,7 +39,7 @@ const StockItem: React.FC<StockItemProps> = ({ stock, onFavorite }) => {
       <BottomContent>
         <Minimum>
           <TextValue>Valor mínimo: </TextValue>
-          <MinimumValue>{formatMoney(stock.minimumValue)}</MinimumValue>
+          <MinimumValue>{formatMoneyLocale(stock.minimumValue)}</MinimumValue>
         </Minimum>
         <ProfitabilityContent>
           <TextValue>Rentabilidade:</TextValue>

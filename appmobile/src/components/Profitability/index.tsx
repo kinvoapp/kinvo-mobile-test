@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 
 import Down from '../../assets/down.png';
 import Up from '../../assets/up.png';
-import { colorLight } from '../../styles/colors';
+import { colorsLight } from '../../styles/colors';
 import { Container, ProfitabilityValue } from './styles';
 
 interface ProfitabilityProps {
@@ -32,7 +32,7 @@ const Profitability: React.FC<ProfitabilityProps> = ({ value, isClosed }) => {
     <Container>
       <Image
         style={{
-          tintColor: market === 'CLOSED' ? colorLight.SECONDARY : undefined,
+          tintColor: market === 'CLOSED' ? colorsLight.SECONDARY : undefined,
         }}
         source={value >= 0 ? Up : Down}
       />

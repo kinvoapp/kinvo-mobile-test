@@ -6,7 +6,7 @@ import Dashboard from '../pages/Dashboard';
 import InvestmentFunds from '../pages/InvestmentFunds';
 import PrivatePensions from '../pages/PrivatePensions';
 import StockExchange from '../pages/StockExchange';
-import { color } from '../styles/colors';
+import { colors } from '../styles/colors';
 
 const Route = createStackNavigator();
 
@@ -14,7 +14,7 @@ const Routes: React.FC = () => (
   <Route.Navigator
     screenOptions={{
       headerShown: false,
-      cardStyle: { backgroundColor: color.BACKGROUND },
+      cardStyle: { backgroundColor: colors.BACKGROUND },
     }}
   >
     <Route.Screen name="Dashboard" component={Dashboard} />

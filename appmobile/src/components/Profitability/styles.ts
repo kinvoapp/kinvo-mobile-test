@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native';
 
-import { color, colorLight } from '../../styles/colors';
+import { colors, colorsLight } from '../../styles/colors';
 
 interface ProfitabilityValueProps {
   isPositive: boolean;
@@ -20,15 +20,15 @@ export const ProfitabilityValue = styled.Text<ProfitabilityValueProps>`
   ${({ isPositive }) =>
     isPositive
       ? css`
-          color: ${color.GREEN};
+          color: ${colors.GREEN};
         `
       : css`
-          color: ${color.WARNING};
+          color: ${colors.WARNING};
         `}
 
   ${({ isClosed }) =>
     isClosed &&
     css`
-      color: ${colorLight.BLACK};
+      color: ${colorsLight.BLACK};
     `}
 `;

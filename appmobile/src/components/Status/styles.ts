@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native';
 
-import { color, colorLight } from '../../styles/colors';
+import { colors, colorsLight } from '../../styles/colors';
 
 export const Container = styled.View``;
 interface TextProps {
@@ -12,12 +12,12 @@ export const Title = styled.Text<TextProps>`
   font-size: 10px;
   padding: 3px 10px;
   border-radius: 10px;
-  color: ${color.WHITE};
-  background: ${color.SECONDARY};
+  color: ${colors.WHITE};
+  background: ${colors.SECONDARY};
 
   ${props =>
     props.isClosed &&
     css`
-      background: ${colorLight.SECONDARY};
+      background: ${colorsLight.SECONDARY};
     `}
 `;

@@ -1,5 +1,4 @@
-// TODO rename var name
-export const color = {
+export const colors = {
   PRIMARY: '#6F4DBF',
   SECONDARY: '#40C5D6',
   BLACK: '#627179',
@@ -10,7 +9,7 @@ export const color = {
   BORDER: '#DAE0E3',
 };
 
-export const colorLight = {
+export const colorsLight = {
   PRIMARY: '#6F4DBF',
   SECONDARY: '#818181',
   BLACK: '#AAAFB2',

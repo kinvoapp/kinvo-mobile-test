@@ -1,6 +1,4 @@
-// TODO remove default
-// TODo rename file
-export default function formatPrice(price: number): string {
+export function formatMoneyLocale(price: number): string {
   const priceFormarted = price.toFixed(2).split('.');
   priceFormarted[0] = `R$ ${priceFormarted[0]
     .split(/(?=(?:...)*$)/)

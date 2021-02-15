@@ -1,20 +1,20 @@
 import styled from 'styled-components/native';
 
-import { color } from '../../../styles/colors';
+import { colors } from '../../../styles/colors';
 
 export const Container = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  background: ${color.WHITE};
+  background: ${colors.WHITE};
   margin-top: 20px;
   padding: 32px 20px;
-  border: 1px solid ${color.BORDER};
+  border: 1px solid ${colors.BORDER};
   border-radius: 10px;
 `;
 
 export const ImageContent = styled.View`
   padding: 15px;
-  background: ${color.BACKGROUND};
+  background: ${colors.BACKGROUND};
   border-radius: 50px;
 `;
 
@@ -25,11 +25,11 @@ export const TextView = styled.View`
 export const Title = styled.Text`
   font-family: 'Montserrat-Bold';
   font-size: 16px;
-  color: ${color.PRIMARY};
+  color: ${colors.PRIMARY};
 `;
 
 export const Subtitle = styled.Text`
   font-family: 'Montserrat-SemiBold';
   font-size: 10px;
-  color: ${color.BLACK};
+  color: ${colors.BLACK};
 `;
