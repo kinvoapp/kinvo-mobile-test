@@ -3,7 +3,7 @@
  React Native Code Challenge - KINVO
 </h1>
 
-###Sobre o desafio
+### Sobre o desafio
 
 O desafio consiste em desenvolver um aplicativo de 4 telas com as seguintes funcionalidades logo abaixo:
 
