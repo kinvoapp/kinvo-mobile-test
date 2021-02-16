@@ -62,7 +62,7 @@ Para utilizar esta aplicação, você precisa do [Git](https://git-scm.com), [No
 $ git clone https://github.com/pedrohenrque/kinvo-mobile-test.git
 
 # Entre no repositório
-$ cd desafio-tecnico-web
+$ cd appmobile
 
 # Instale as dependências
 $ yarn ou npm install
