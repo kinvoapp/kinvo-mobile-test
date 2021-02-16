@@ -55,7 +55,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 ## Como usar
 
-Para utilizar esta aplicação, você precisa do [Git](https://git-scm.com), [Node.js v14.15.5][nodejs] ou superior + [Yarn v1.13][yarn] ou superior instalado no seu computador. Caso queira utilizar o emulador de android ou IOS siga o tutorial [para android](https://react-native.rocketseat.dev/android/windows) ou este para [macOS](https://react-native.rocketseat.dev/android/macos) Na sua linha de comando:
+Para utilizar esta aplicação, você precisa do [Git](https://git-scm.com), [Node.js v14.15.5][nodejs] ou superior + [Yarn v1.13][yarn] ou superior instalado no seu computador. Caso queira utilizar o emulador de android ou IOS siga o tutorial [para android](https://react-native.rocketseat.dev/android/windows) ou este para [macOS](https://react-native.rocketseat.dev/android/macos). Na sua linha de comando:
 
 ```bash
 # Clone este repositório
