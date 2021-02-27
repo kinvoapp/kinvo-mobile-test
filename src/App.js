@@ -1,16 +1,13 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StatusBar } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
+import Routes from './Routes'
+import appTheme from './utils/appTheme'
 
 function App() {
 	return (
-		<>
-			<StatusBar barStyle='dark-content' />
-			<SafeAreaView>
-				<View>
-					<Text>Hello, World!</Text>
-				</View>
-			</SafeAreaView>
-		</>
+		<ThemeProvider theme={appTheme}>
+			<Routes />
+		</ThemeProvider>
 	)
 }
 
