@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 import { Container, TextContainer, Title, Subtitle } from './styles'
 import StocksIcon from '../../assets/stocks-icon.svg'
 import FundsIcon from '../../assets/funds-icon.svg'
@@ -9,8 +11,11 @@ import { fetchPensions } from '../../actions/pensionsActions'
 import { STOCKS, FUNDS, PENSIONS } from '../../utils/consts/routeNames'
 
 function SectionCard({ id, isLastChild }) {
+	const navigation = useNavigation()
+	const dispatch = useDispatch()
+
 	return (
-		<Container isLastChild={isLastChild}>
+		<Container isLastChild={isLastChild} onPress={goToNextScreen}>
 			{getIcon()}
 			<TextContainer>
 				<Title>{getTitle()}</Title>
@@ -18,6 +23,15 @@ function SectionCard({ id, isLastChild }) {
 			</TextContainer>
 		</Container>
 	)
+
+	function goToNextScreen() {
+		dispatch(fetchInvestments())
+		navigation.navigate(id)
+	}
+
+	function fetchInvestments() {
+		return pickValueBasedOnId(fetchStocks, fetchFunds, fetchPensions)
+	}
 
 	function getIcon() {
 		return pickValueBasedOnId(
