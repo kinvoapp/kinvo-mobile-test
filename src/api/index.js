@@ -1,13 +1,13 @@
 import axios from './axios'
 
-export function fetchStocks() {
+export function getStocks() {
 	return axios.get('/stocks')
 }
 
-export function fetchFunds() {
+export function getFunds() {
 	return axios.get('/funds')
 }
 
-export function fetchPensions() {
+export function getPensions() {
 	return axios.get('/pension')
 }
