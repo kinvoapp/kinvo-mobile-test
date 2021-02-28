@@ -15,22 +15,12 @@ const stocksReducer = createReducer(
 			isPending: true,
 			error: null
 		}),
-		[fetchStocks.fulfilled]: (state, action) => {
-			const payload = action.payload
-			if (payload.error) {
-				return {
-					...state,
-					isPending: false,
-					error: payload.error
-				}
-			}
-			return {
-				...state,
-				isPending: false,
-				stocks: payload.data,
-				error: null
-			}
-		},
+		[fetchStocks.fulfilled]: (state, action) => ({
+			...state,
+			isPending: false,
+			stocks: action.payload.data,
+			error: null
+		}),
 		[fetchStocks.rejected]: (state, action) => ({
 			...state,
 			isPending: false,
