@@ -30,7 +30,7 @@ function SectionCard({ id, isLastChild }) {
 	}
 
 	function fetchInvestments() {
-		return pickValueBasedOnId(fetchStocks, fetchFunds, fetchPensions)
+		return pickValueBasedOnId(fetchStocks, fetchFunds, fetchPensions)()
 	}
 
 	function getIcon() {

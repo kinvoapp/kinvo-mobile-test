@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container } from './styles'
 
-function Card(props) {
+function ScreenContainer(props) {
 	return <Container {...props} />
 }
 
-export default Card
+export default ScreenContainer

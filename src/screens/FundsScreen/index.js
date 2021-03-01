@@ -1,12 +1,13 @@
 import React from 'react'
-import { SafeAreaView, View, Text } from 'react-native'
+import { SafeAreaView, Text } from 'react-native'
+import ScreenContainer from '../../components/ScreenContainer'
 
 function FundsScreen() {
 	return (
 		<SafeAreaView>
-			<View>
+			<ScreenContainer>
 				<Text>The Funds Screen!</Text>
-			</View>
+			</ScreenContainer>
 		</SafeAreaView>
 	)
 }
