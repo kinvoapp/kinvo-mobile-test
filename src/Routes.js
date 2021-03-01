@@ -8,6 +8,12 @@ import StocksScreen from './screens/StocksScreen'
 import FundsScreen from './screens/FundsScreen'
 import PensionsScreen from './screens/PensionsScreen'
 import { HOME, STOCKS, FUNDS, PENSIONS } from './utils/consts/routeNames'
+import {
+	HOME_SCREEN_TITLE,
+	STOCKS_SCREEN_TITLE,
+	FUNDS_SCREEN_TITLE,
+	PENSIONS_SCREEN_TITLE
+} from './utils/consts/screenTitles'
 
 const Stack = createStackNavigator()
 
@@ -38,18 +44,30 @@ function Routes() {
 					name={HOME}
 					component={HomeScreen}
 					options={{
-						title: 'Desafio'
+						title: HOME_SCREEN_TITLE
 					}}
 				/>
 				<Stack.Screen
 					name={STOCKS}
 					component={StocksScreen}
 					options={{
-						title: 'Ações'
+						title: STOCKS_SCREEN_TITLE
 					}}
 				/>
-				<Stack.Screen name={FUNDS} component={FundsScreen} />
-				<Stack.Screen name={PENSIONS} component={PensionsScreen} />
+				<Stack.Screen
+					name={FUNDS}
+					component={FundsScreen}
+					options={{
+						title: FUNDS_SCREEN_TITLE
+					}}
+				/>
+				<Stack.Screen
+					name={PENSIONS}
+					component={PensionsScreen}
+					options={{
+						title: PENSIONS_SCREEN_TITLE
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
