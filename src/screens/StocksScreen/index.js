@@ -1,8 +1,10 @@
 import React from 'react'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import { SafeAreaView, Text } from 'react-native'
+import { fetchStocks } from '../../actions/stocksActions'
 import ScreenContainer from '../../components/ScreenContainer'
 import Loader from '../../components/Loader'
+import ErrorWarning from '../../components/ErrorWarning'
 
 function StocksScreen() {
 	const isPending = useShallowEqualSelector(
@@ -19,7 +21,7 @@ function StocksScreen() {
 				{isPending ? (
 					<Loader />
 				) : error ? (
-					<Text>{error}</Text>
+					<ErrorWarning error={error} retryAction={fetchStocks} />
 				) : (
 					<Text>The Stocks Screen!</Text>
 				)}

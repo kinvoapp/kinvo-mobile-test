@@ -25,7 +25,7 @@ function Loader() {
 	return (
 		<View
 			style={{
-				transform: [{ rotate: angle + 'deg' }],
+				transform: [{ rotate: angle + 'deg' }, { perspective: 1000 }],
 				alignSelf: 'center',
 				marginTop: 'auto',
 				marginBottom: 'auto'

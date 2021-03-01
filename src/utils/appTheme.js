@@ -5,7 +5,9 @@ const appTheme = {
 	backgroundColor: '#ECF0F2',
 	primaryColor: '#ffffff',
 	secondaryColor: '#6F4DBF',
-	primaryTextColor: '#627179'
+	primaryTextColor: '#627179',
+	secondaryTextColor: '#ffffff',
+	ripplePrimaryColor: '#ffffff'
 }
 
 export default appTheme

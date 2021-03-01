@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components/native'
-import { StatusBar, PixelRatio } from 'react-native'
+import { StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from './screens/HomeScreen'
@@ -41,7 +41,13 @@ function Routes() {
 						title: 'Desafio'
 					}}
 				/>
-				<Stack.Screen name={STOCKS} component={StocksScreen} />
+				<Stack.Screen
+					name={STOCKS}
+					component={StocksScreen}
+					options={{
+						title: 'Ações'
+					}}
+				/>
 				<Stack.Screen name={FUNDS} component={FundsScreen} />
 				<Stack.Screen name={PENSIONS} component={PensionsScreen} />
 			</Stack.Navigator>
