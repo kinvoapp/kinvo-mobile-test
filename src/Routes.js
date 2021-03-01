@@ -5,7 +5,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from './screens/HomeScreen'
 import StocksScreen from './screens/StocksScreen'
-import { HOME, STOCKS } from './utils/consts/routeNames'
+import FundsScreen from './screens/FundsScreen'
+import PensionsScreen from './screens/PensionsScreen'
+import { HOME, STOCKS, FUNDS, PENSIONS } from './utils/consts/routeNames'
 
 const Stack = createStackNavigator()
 
@@ -40,6 +42,8 @@ function Routes() {
 					}}
 				/>
 				<Stack.Screen name={STOCKS} component={StocksScreen} />
+				<Stack.Screen name={FUNDS} component={FundsScreen} />
+				<Stack.Screen name={PENSIONS} component={PensionsScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
