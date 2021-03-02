@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getStocks } from '../api'
 import handleRequestError from '../utils/handleRequestError'
 
@@ -13,3 +13,7 @@ export const fetchStocks = createAsyncThunk(
 		}
 	}
 )
+
+export const addFavoriteStockId = createAction('addFavoriteStockId')
+
+export const removeFavoriteStockId = createAction('removeFavoriteStockId')

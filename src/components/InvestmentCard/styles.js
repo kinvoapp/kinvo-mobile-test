@@ -25,12 +25,6 @@ export const Subtitle = styled.Text`
 	opacity: ${(props) => (props.isActive ? 1 : 0.5)};
 `
 
-export const CardTopRightContainer = styled.View`
-	position: absolute;
-	top: ${(props) => (props.top ? props.top : '14px')};
-	end: ${(props) => (props.end ? props.end : '14px')};
-`
-
 export const HorizontalDivider = styled.View`
 	height: 1px;
 	background-color: ${(props) => props.theme.cardBorderColor};
