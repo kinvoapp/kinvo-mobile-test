@@ -1,0 +1,5 @@
+export const MINIMUM_VALUE = 'Valor mínimo'
+export const PROFITABILITY = 'Rentabilidade'
+export const RATING = 'Classificação'
+export const TAX = 'Taxa'
+export const REDEMPTION_TERM = 'Resgate'

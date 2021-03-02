@@ -1,10 +1,11 @@
 import React from 'react'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView, FlatList } from 'react-native'
 import { fetchStocks } from '../../actions/stocksActions'
 import ScreenContainer from '../../components/ScreenContainer'
 import Loader from '../../components/Loader'
 import ErrorWarning from '../../components/ErrorWarning'
+import StockCard from '../../components/StockCard'
 
 function StocksScreen() {
 	const isPending = useShallowEqualSelector(
@@ -23,11 +24,19 @@ function StocksScreen() {
 				) : error ? (
 					<ErrorWarning error={error} retryAction={fetchStocks} />
 				) : (
-					<Text>The Stocks Screen!</Text>
+					<FlatList
+						data={stocks}
+						renderItem={renderItem}
+						keyExtractor={(item) => item.id + ''}
+					/>
 				)}
 			</ScreenContainer>
 		</SafeAreaView>
 	)
+
+	function renderItem({ item, index }) {
+		return <StockCard stock={item} isFirstChild={index === 0} />
+	}
 }
 
 export default StocksScreen

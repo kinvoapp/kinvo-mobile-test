@@ -16,13 +16,13 @@ export const TextContainer = styled.View`
 export const Title = styled.Text`
 	font-size: 16px;
 	color: ${(props) => props.theme.secondaryColor};
-	font-family: Montserrat;
+	font-family: ${(props) => props.theme.primaryFontFamily};
 	font-weight: bold;
 `
 
 export const Subtitle = styled.Text`
 	font-size: 10px;
 	color: ${(props) => props.theme.primaryTextColor};
-	font-family: Montserrat;
-	font-weight: 600;
+	font-family: ${(props) => props.theme.primaryFontFamily};
+	font-weight: ${(props) => props.theme.semiBoldFontWeight};
 `

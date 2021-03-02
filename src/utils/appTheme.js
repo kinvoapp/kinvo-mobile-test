@@ -7,7 +7,10 @@ const appTheme = {
 	secondaryColor: '#6F4DBF',
 	primaryTextColor: '#627179',
 	secondaryTextColor: '#ffffff',
-	ripplePrimaryColor: '#ffffff'
+	ripplePrimaryColor: '#ffffff',
+	cardBorderColor: '#dae0e3',
+	primaryFontFamily: 'Montserrat',
+	semiBoldFontWeight: 600
 }
 
 export default appTheme

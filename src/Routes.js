@@ -14,6 +14,7 @@ import {
 	FUNDS_SCREEN_TITLE,
 	PENSIONS_SCREEN_TITLE
 } from './utils/consts/screenTitles'
+import GoBack from './assets/go-back.svg'
 
 const Stack = createStackNavigator()
 
@@ -36,9 +37,14 @@ function Routes() {
 					headerTintColor: theme.headerTintColor,
 					headerTitleStyle: {
 						fontSize: 20,
-						fontFamily: 'Montserrat',
+						fontFamily: theme.primaryFontFamily,
 						fontWeight: 'bold'
-					}
+					},
+					headerBackImage: () => <GoBack />,
+					headerLeftContainerStyle: {
+						paddingStart: 8
+					},
+					headerBackTitleVisible: false
 				}}>
 				<Stack.Screen
 					name={HOME}
