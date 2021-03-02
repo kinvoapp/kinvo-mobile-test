@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text } from 'react-native'
 import InvestmentCard from '../InvestmentCard'
+import MinimumValue from '../MinimumValue'
+import ProfitabilityDisplay from '../ProfitabilityDisplay'
 import {
 	MINIMUM_VALUE,
 	PROFITABILITY
@@ -14,10 +15,10 @@ function StockCard({ stock, isFirstChild }) {
 			subtitle={stock.ticker}
 			isFirstChild={isFirstChild}>
 			<MinimumValueUnit label={MINIMUM_VALUE}>
-				<Text>R$ 10,00</Text>
+				<MinimumValue value={stock.minimumValue} />
 			</MinimumValueUnit>
 			<ProfitabilityUnit label={PROFITABILITY}>
-				<Text>R$ 10,00</Text>
+				<ProfitabilityDisplay profitability={stock.profitability} />
 			</ProfitabilityUnit>
 		</InvestmentCard>
 	)
