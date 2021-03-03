@@ -1,7 +1,7 @@
 
 # React Native Code Challenge
 
-_An app that showcase the best brazillian stocks, funds and pensions for you. Made with React Native._
+_An app that showcase the best brazilian stocks, funds and pensions for you. Made with React Native._
 
 
 ## Como rodar o projeto:
