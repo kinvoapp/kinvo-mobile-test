@@ -66,3 +66,7 @@ $ npm react-native run-android
    - "SEM TAXA": inclui as previdências com taxa igual a zero. (FEITO)
    - "R$100,00": inclui as previdências com valor mínimo igual a cem reais. (FEITO)
    - "D+1": inclui as previdências com resgate igual a um. (FEITO)
+
+## License
+
+Read about license rights and limitations [here](LICENSE).
