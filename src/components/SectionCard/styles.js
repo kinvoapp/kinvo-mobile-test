@@ -10,7 +10,7 @@ export const Container = styled(Card)`
 `
 
 export const TextContainer = styled.View`
-	margin-left: 12px;
+	margin-start: 12px;
 `
 
 export const Title = styled.Text`

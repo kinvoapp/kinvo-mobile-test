@@ -30,13 +30,13 @@ const stocksReducer = createReducer(
 				console.log(fetchStocks.fulfilled.toString(), action.payload)
 
 			const stocks = action.payload.data
-			const favorites = new Set(state.favorites)
-			sortStocks(stocks, favorites)
+			stocks.sort(sortItemsAlphabetically)
 
 			return {
 				...state,
 				isPending: false,
 				stocks,
+				favorites: [],
 				error: null
 			}
 		},
