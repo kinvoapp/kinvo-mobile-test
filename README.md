@@ -1,8 +1,7 @@
 
 # React Native Code Challenge
 
-_An app that showcase the best brazilian stocks, funds and pensions for you. Made with React Native._
-
+_Um aplicativo que exibe as melhores ações, fundos e previdências brasileiras para você. Feito com React Native._
 
 ## Como rodar o projeto:
 
@@ -69,4 +68,4 @@ $ npm react-native run-android
 
 ## License
 
-Read about license rights and limitations [here](LICENSE).
+Leia mais sobre a licença [aqui](LICENSE).
