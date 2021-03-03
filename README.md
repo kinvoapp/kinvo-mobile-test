@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 # Desafio Kinvo
 ```
-git clone URL
+https://github.com/qiller/kinvo.git
 ```
 ## Project folder
 ```
-cd FOLDER
+cd kinvo
 ```
 ## Project setup
 ```
