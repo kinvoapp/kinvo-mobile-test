@@ -2,7 +2,6 @@ import React from 'react'
 import { Container, Title, Subtitle, HorizontalDivider } from './styles'
 
 function InvestmentCard({
-	investmentId,
 	title,
 	subtitle,
 	CardTopRight,
@@ -12,8 +11,10 @@ function InvestmentCard({
 }) {
 	return (
 		<Container isActive={isActive} isFirstChild={isFirstChild}>
-			{CardTopRight ? <CardTopRight investmentId={investmentId} /> : null}
-			<Title isActive={isActive}>{title}</Title>
+			{CardTopRight}
+			<Title CardTopRight={CardTopRight} isActive={isActive}>
+				{title}
+			</Title>
 			<Subtitle isActive={isActive}>{subtitle}</Subtitle>
 			<HorizontalDivider />
 			{children}

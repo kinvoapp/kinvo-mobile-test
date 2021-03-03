@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getPensions } from '../api'
 import handleRequestError from '../utils/handleRequestError'
 
@@ -13,3 +13,6 @@ export const fetchPensions = createAsyncThunk(
 		}
 	}
 )
+
+export const applyPensionsFilter = createAction('applyPensionsFilter')
+export const removePensionsFilter = createAction('removePensionsFilter')

@@ -9,7 +9,7 @@ function ProfitabilityDisplay({ profitability, isActive = true }) {
 			<ProfitabilityText
 				profitability={profitability}
 				isActive={isActive}>
-				{toBRNumber(profitability) + '%'}
+				{toBRNumber(profitability, 0, 2) + '%'}
 			</ProfitabilityText>
 		</Container>
 	)

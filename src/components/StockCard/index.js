@@ -12,11 +12,10 @@ import { MinimumValueUnit, ProfitabilityUnit } from './styles'
 function StockCard({ stock, isFirstChild }) {
 	return (
 		<InvestmentCard
-			investmentId={stock.id}
 			title={stock.name}
 			subtitle={stock.ticker}
 			isFirstChild={isFirstChild}
-			CardTopRight={MarkAsFavoriteButton}>
+			CardTopRight={<MarkAsFavoriteButton investmentId={stock.id} />}>
 			<MinimumValueUnit label={MINIMUM_VALUE}>
 				<MinimumValue value={stock.minimumValue} />
 			</MinimumValueUnit>

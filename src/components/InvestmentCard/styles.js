@@ -15,6 +15,7 @@ export const Title = styled.Text`
 	font-size: 16px;
 	font-family: ${(props) => props.theme.primaryFontFamily};
 	opacity: ${(props) => (props.isActive ? 1 : 0.5)};
+	margin-end: ${(props) => (props.CardTopRight ? '79px' : '0px')};
 `
 
 export const Subtitle = styled.Text`
@@ -23,6 +24,7 @@ export const Subtitle = styled.Text`
 	font-size: 12px;
 	font-family: ${(props) => props.theme.primaryFontFamily};
 	opacity: ${(props) => (props.isActive ? 1 : 0.5)};
+	margin-end: 79px;
 `
 
 export const HorizontalDivider = styled.View`

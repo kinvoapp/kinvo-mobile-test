@@ -4,6 +4,7 @@ import {
 	addFavoriteStockId,
 	removeFavoriteStockId
 } from '../actions/stocksActions'
+import sortItemsAlphabetically from '../utils/sortItemsAlphabetically'
 
 const initialState = {
 	isPending: false,
@@ -88,24 +89,16 @@ function sortStocks(stocks, favorites) {
 	})
 	stocks.sort((stock1, stock2) => {
 		if (favorites.has(stock1.id) && favorites.has(stock2.id)) {
-			return sortStocksAlphabetically(stock1, stock2)
+			return sortItemsAlphabetically(stock1, stock2)
 		}
 		return 0
 	})
 	stocks.sort((stock1, stock2) => {
 		if (!favorites.has(stock1.id) && !favorites.has(stock2.id)) {
-			return sortStocksAlphabetically(stock1, stock2)
+			return sortItemsAlphabetically(stock1, stock2)
 		}
 		return 0
 	})
-}
-
-function sortStocksAlphabetically(stock1, stock2) {
-	const stock1Name = stock1.name.toUpperCase()
-	const stock2Name = stock2.name.toUpperCase()
-	if (stock1Name < stock2Name) return -1
-	else if (stock1Name > stock2Name) return 1
-	return 0
 }
 
 export default stocksReducer

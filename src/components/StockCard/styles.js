@@ -1,4 +1,3 @@
-import { exp } from 'react-native/Libraries/Animated/src/Easing'
 import styled from 'styled-components/native'
 import InvestmentInfoUnit from '../InvestmentInfoUnit'
 

@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
 import { fetchFunds } from '../actions/fundsActions'
+import sortItemsAlphabetically from '../utils/sortItemsAlphabetically'
 
 const initialState = {
 	isPending: false,
@@ -23,10 +24,13 @@ const fundsReducer = createReducer(
 			if (__DEV__)
 				console.log(fetchFunds.fulfilled.toString(), action.payload)
 
+			const funds = action.payload.data
+			funds.sort(sortItemsAlphabetically)
+
 			return {
 				...state,
 				isPending: false,
-				funds: action.payload.data,
+				funds,
 				error: null
 			}
 		},
