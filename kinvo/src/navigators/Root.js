@@ -23,6 +23,11 @@ export default () => {
 						...TransitionPresets.SlideFromRightIOS,
 						headerStyle: {
 							height: 100,
+							elevation: 0,
+            	shadowOpacity: 0,
+							borderWidth: 1,
+							borderColor: colors.cardBorder,
+						},
 						},
 						headerTitleContainerStyle: {
 							paddingTop: 4,
@@ -30,6 +35,10 @@ export default () => {
 						headerTintColor: colors.primary,
 						headerTitleStyle: {
 							fontSize: 20,
+							fontWeight: 'bold',
+						},
+						cardStyle: { 
+							backgroundColor: colors.background,
 						},
         }}>
         <RootStack.Screen 

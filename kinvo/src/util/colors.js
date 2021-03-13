@@ -1,6 +1,6 @@
 const colors = {
     primary: '#6F4DBF',
-    background: '#E4E4E4',
+    background: '#ECF0F2',
     blue: '#36C4D6',
     gray: '#818181',
     badgeText: '#F7F8F8',
@@ -8,7 +8,8 @@ const colors = {
     yellow: '#F8C22E',
     red: '#E85D1F',
     green: '#AED335',
-    white: '#FFFFFF'
+    cardBackground: 'white',
+    cardBorder: '#DAE0E3'
 }
 
 export default colors
