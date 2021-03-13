@@ -28,9 +28,13 @@ export default () => {
 							borderWidth: 1,
 							borderColor: colors.cardBorder,
 						},
+						headerLeftContainerStyle: {
+							paddingTop: 4,
 						},
 						headerTitleContainerStyle: {
+							left: 0,
 							paddingTop: 4,
+							marginLeft: 20 + 24 + 13
 						},
 						headerTintColor: colors.primary,
 						headerTitleStyle: {
@@ -45,7 +49,12 @@ export default () => {
 					name="Home"
 					component={HomeScreen}
 					options={{
-						title: strings.challenge
+						title: strings.challenge,
+						headerTitleContainerStyle: {	
+							left: 0,
+							paddingTop: 4,
+							marginLeft: 20,
+						}
 					}}
         />
         <RootStack.Screen 

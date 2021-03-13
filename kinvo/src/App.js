@@ -4,12 +4,16 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
+import { BreadProvider } from "material-bread";
+
 import RootNavigator from './navigators/Root'
 
 const App = () => {
   return (
     <NavigationContainer>
-      <RootNavigator />
+      <BreadProvider>
+        <RootNavigator />
+      </BreadProvider>
     </NavigationContainer>
   );
 }
