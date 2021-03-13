@@ -6,62 +6,57 @@ import {
   Text,
 } from 'react-native'
 
-import { AirbnbRating } from 'react-native-ratings';
-
-import StatusBadge from './StatusBadge'
-
 import ProfitabilityDisplay from './ProfitabilityDisplay'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default ({item}) => {
   const {
     name,
     type,
-    status,
-    rating,
     minimumValue,
+    tax,
+    redemptionTerm,
     profitability,
   } = item
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.headerTexts}>
-          <Text 
-            style={styles.name}
-            numberOfLines={2}
-            ellipsizeMode="tail">
-            {name}
-          </Text>
-          <Text style={styles.type}>
-            {type.toUpperCase()}
-          </Text>
-        </View>
-        <View>
-          <StatusBadge status={status} />
-        </View>
+        <Text 
+          style={styles.name}
+          numberOfLines={2}
+          ellipsizeMode="tail">
+          {name}
+        </Text>
+        <Text style={styles.type}>
+          {type.toUpperCase()}
+        </Text>
       </View>
       <View style={styles.line} />
       <View style={styles.row}>
         <Text style={styles.label}>
-          {`${strings.rating}:`}
+          {`${strings.minimumValue}:`}
         </Text>
-        <AirbnbRating
-          showRating={false}
-          selectedColor={colors.yellow}
-          defaultRating={rating}
-          size={17}
-        />
+        <Text style={styles.value}>
+          {`R$${minimumValue}`}
+        </Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>
-          {`${strings.minimumValue}:`}
+          {`${strings.tax}:`}
         </Text>
-        <Text style={styles.minimumValue}>
-        {`R$${minimumValue}`}
+        <Text style={styles.value}>
+          {`${tax}%`}
+        </Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>
+          {`${strings.redemptionTerm}:`}
+        </Text>
+        <Text style={styles.value}>
+          {`D+${redemptionTerm}`}
         </Text>
       </View>
       <View style={styles.row}>
@@ -89,16 +84,10 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    flexDirection: 'row',
-  },
-  headerTexts: {
-    flexShrink: 1,
-    marginRight: 8,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     marginTop: 15,
   },
   line: {
@@ -121,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: colors.text
   },
-  minimumValue: {
+  value: {
     fontSize: 12,
     color: colors.text
   },

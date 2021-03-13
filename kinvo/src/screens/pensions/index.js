@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   View, 
-  Text
+  FlatList
 } from 'react-native'
 
 import {
@@ -13,11 +13,13 @@ import {
 	IconButton
 } from 'material-bread'
 
+import PensionsCard from '../../components/PensionCard'
+
 import styles from './styles'
 
 import colors from '../../util/colors'
 
-const data = [
+const pensions = [
   {
     id: 1,
     name: "Adam XP Seg Prev I FIC FIM",
@@ -47,9 +49,18 @@ const index = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>
-        Pensions Screen
-      </Text>
+      <FlatList
+        data={pensions}
+        contentContainerStyle={styles.flatListContent}
+        renderItem={({item}) => {
+          return(
+            <PensionsCard
+              item={item}
+            />
+          )
+        }}
+        keyExtractor={pension => pension.id}
+      />
     </View>
   )
 }
