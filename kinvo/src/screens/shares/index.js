@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   View, 
-  Text
+  FlatList,
 } from 'react-native'
 
 import {
@@ -13,17 +13,20 @@ import {
 	IconButton
 } from 'material-bread'
 
+import ShareCard from '../../components/ShareCard'
+
 import styles from './styles'
 
 import colors from '../../util/colors'
 
-const data = [
+const shares = [
   {
      id:1,
      name:"Magazine Luiza",
      ticker:"MGLU3",
      minimumValue:100,
-     profitability:27.05
+     profitability:27.05,
+     favorited: true
   },
 ]
 
@@ -45,9 +48,18 @@ const index = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>
-        Shares Screen
-      </Text>
+      <FlatList
+        data={shares}
+        contentContainerStyle={styles.flatListContent}
+        renderItem={({item}) => {
+          return(
+            <ShareCard
+              item={item}
+            />
+          )
+        }}
+        keyExtractor={share => share.id}
+      />
     </View>
   )
 }

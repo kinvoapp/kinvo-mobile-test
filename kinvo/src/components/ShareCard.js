@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   StyleSheet,
@@ -6,61 +6,44 @@ import {
   Text,
 } from 'react-native'
 
-import { AirbnbRating } from 'react-native-ratings';
-
-import StatusBadge from './StatusBadge'
+import {
+  IconButton
+} from 'material-bread'
 
 import ProfitabilityDisplay from './ProfitabilityDisplay'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default ({item}) => {
   const {
     name,
-    type,
-    status,
-    rating,
+    ticker,
+    favorited,
     minimumValue,
     profitability,
   } = item
 
+  const [isFavorited, setFavorited] = useState(favorited)
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerTexts}>
-          <Text 
-            style={styles.name}
-            numberOfLines={2}
-            ellipsizeMode="tail">
-            {name}
-          </Text>
-          <Text style={styles.type}>
-            {type.toUpperCase()}
-          </Text>
-        </View>
-        <View>
-          <StatusBadge status={status} />
-        </View>
-      </View>
+      <Text 
+        style={styles.name}
+        numberOfLines={1}
+        ellipsizeMode="tail">
+        {name}
+      </Text>
+      <Text style={styles.ticker}>
+        {ticker.toUpperCase()}
+      </Text>
       <View style={styles.line} />
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          {`${strings.rating}:`}
-        </Text>
-        <AirbnbRating
-          showRating={false}
-          selectedColor={colors.yellow}
-          defaultRating={rating}
-          size={17}
-        />
-      </View>
+
       <View style={styles.row}>
         <Text style={styles.label}>
           {`${strings.minimumValue}:`}
         </Text>
-        <Text style={styles.minimumValue}>
+        <Text style={styles.value}>
           {`R$${minimumValue}`}
         </Text>
       </View>
@@ -72,6 +55,15 @@ export default ({item}) => {
           profitability={profitability}
         />
       </View>
+      <IconButton
+        style={styles.favoriteBtn}
+        name={isFavorited ? "favorite" : "favorite-border"}
+        color={colors.primary}
+        size={24}
+        onPress={() => {
+          setFavorited(!isFavorited)
+        }}
+      />
     </View>
   )
 }
@@ -87,18 +79,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
   },
-  header: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  headerTexts: {
-    flexShrink: 1,
-    marginRight: 8,
+  favoriteBtn: {
+    position: 'absolute',
+    marginRight: 18,
+    marginTop: 18,
+    right: 0,
+    top: 0,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     marginTop: 15,
   },
   line: {
@@ -112,17 +102,17 @@ const styles = StyleSheet.create({
     color: colors.text,
     marginBottom: 3,
   },
-  type: {
+  ticker: {
     fontSize: 12,
     color: colors.text,
-    marginBottom: 20
+    marginBottom: 20,
   },
   label: {
     fontSize: 10,
     color: colors.text
   },
-  minimumValue: {
+  value: {
     fontSize: 12,
     color: colors.text
-  },
+  }
 })
