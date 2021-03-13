@@ -15,7 +15,8 @@ const strings = {
     redemptionTerm: "Resgate",
     pensionFilter1: "SEM TAXA",
     pensionFilter2: "R$ 100,00",
-    pensionFilter3: "D+1"
+    pensionFilter3: "D+1",
+    noResults: "Nenhum resultado foi encontrado para os filtros selecionados."
 }
 
 export default strings

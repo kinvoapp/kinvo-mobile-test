@@ -79,8 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: colors.cardBorder,
     borderWidth: 1,
-    marginHorizontal: 20,
-    marginTop: 20,
+    marginBottom: 20,
   },
   header: {
     flex: 1,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     backgroundColor: colors.background,
-    height: 1,
+    height: 2,
   },
   name: {
     fontSize: 16,

@@ -50,6 +50,7 @@ const index = ({navigation}) => {
     <View style={styles.container}>
       <FlatList
         data={shares}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.flatListContent}
         renderItem={({item}) => {
           return(
