@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   View, 
-  Text
+  FlatList,
 } from 'react-native'
 
 import {
@@ -13,21 +13,21 @@ import {
 	IconButton
 } from 'material-bread'
 
+import FundCard from '../../components/FundCard'
+
 import styles from './styles'
 
 import colors from '../../util/colors'
 
-
-
-const data = [
+const funds = [
   {
-     id:1,
+     id: '1',
      name:"Alaska Black Institucional Fundo de Investimento de Ações",
      type:"FIA",
      minimumValue:500,
-     rating:0,
+     rating:4,
      profitability:-52.05,
-     status:0
+     status:2
   },
 ]
 
@@ -49,9 +49,18 @@ const index = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>
-        Funds Screen
-      </Text>
+      <FlatList
+        data={funds}
+        contentContainerStyle={styles.flatListContent}
+        renderItem={({item}) => {
+          return(
+            <FundCard
+              item={item}
+            />
+          )
+        }}
+        keyExtractor={fund => fund.id}
+      />
     </View>
   )
 }
