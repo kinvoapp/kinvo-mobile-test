@@ -72,8 +72,10 @@ const index = ({navigation}) => {
       } = response.data
       
       if(success && error === null){
-        setPensions(data)
-        setFilteredPensions(data)
+        const orderedData = data.sort((a, b) => a.name.localeCompare(b.name))
+
+        setPensions(orderedData)
+        setFilteredPensions(orderedData)
         setRequestFailed(false)
       } else {
         setRequestFailed(true)
