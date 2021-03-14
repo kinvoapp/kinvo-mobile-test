@@ -1,0 +1,1 @@
+export const formatDecimalValue = (value) => value.toString().replace(/[.]/g, ",")

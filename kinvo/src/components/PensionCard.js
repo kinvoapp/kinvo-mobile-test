@@ -11,6 +11,8 @@ import ProfitabilityDisplay from './ProfitabilityDisplay'
 import colors from '../util/colors'
 import strings from '../util/strings'
 
+import { formatDecimalValue } from '../util/functions'
+
 export default ({item}) => {
   const {
     name,
@@ -40,7 +42,7 @@ export default ({item}) => {
           {`${strings.minimumValue}:`}
         </Text>
         <Text style={styles.value}>
-          {`R$${minimumValue}`}
+          {`R$${formatDecimalValue(minimumValue)}`}
         </Text>
       </View>
       <View style={styles.row}>
@@ -48,7 +50,7 @@ export default ({item}) => {
           {`${strings.tax}:`}
         </Text>
         <Text style={styles.value}>
-          {`${tax}%`}
+          {`${formatDecimalValue(tax)}%`}
         </Text>
       </View>
       <View style={styles.row}>

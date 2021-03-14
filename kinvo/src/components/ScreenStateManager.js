@@ -37,7 +37,6 @@ const index = (props) => {
       
       if(success && error === null){
         setData(data)
-        setFilteredData(data)
         setRequestFailed(false)
       } else {
         setRequestFailed(true)

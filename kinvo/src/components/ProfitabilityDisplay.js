@@ -16,6 +16,8 @@ import {
 
 import colors from '../util/colors'
 
+import { formatDecimalValue } from '../util/functions'
+
 export default ({profitability}) => {
   return (
     <View style={styles.container}>
@@ -27,7 +29,7 @@ export default ({profitability}) => {
         color={(profitability < 0) ? colors.red : colors.green}
       />
       <Text style={(profitability < 0) ? styles.badProfitability : styles.goodProfitability}>
-        {profitability}
+        {`${formatDecimalValue(profitability)}%`}
       </Text>
     </View>
   )
