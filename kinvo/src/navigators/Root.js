@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/stack'
 
 import HomeScreen from '../screens/home'
-import SharesScreen from '../screens/shares'
+import StocksScreen from '../screens/stocks'
 import FundsScreen from '../screens/funds'
 import PensionsScreen from '../screens/pensions'
 
@@ -58,10 +58,10 @@ export default () => {
 					}}
         />
         <RootStack.Screen 
-					name="Shares"
-					component={SharesScreen}
+					name="Stocks"
+					component={StocksScreen}
 					options={{
-						title: strings.shares
+						title: strings.stocks
 					}}
         />
         <RootStack.Screen 

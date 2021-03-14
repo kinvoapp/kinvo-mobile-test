@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   View,
   Text,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native'
 
 import {
@@ -15,24 +16,16 @@ import {
 } from 'material-bread'
 
 import PensionsCard from '../../components/PensionCard'
-
+import FilterOption from '../../components/FilterOption'
+import Button from '../../components/Button'
 import styles from './styles'
 
 import colors from '../../util/colors'
-import FilterOption from '../../components/FilterOption'
 import strings from '../../util/strings'
 
-const pensions = [
-  {
-    id: 1,
-    name: "Adam XP Seg Prev I FIC FIM",
-    type: "Multimercados",
-    minimumValue: 100.00,
-    tax: 0,
-    redemptionTerm: 10,
-    profitability: 10.59
-  },
-]
+import { PENSIONS_API_ENDPOINT } from '../../util/constants';
+
+const axios = require('axios') 
 
 const index = ({navigation}) => {
   React.useLayoutEffect(() => {
@@ -50,19 +43,50 @@ const index = ({navigation}) => {
     })
   })
 
+  const [pensions, setPensions] = useState([])
+  const [filteredPensions, setFilteredPensions] = useState([])
   const [tax, setTax] = useState(false)
   const [minimumValue, setMinimumValue] = useState(false)
   const [redemptionTerm, setRedemptionTerm] = useState(false)
 
-  const [filteredPensions, setFilteredPensions] = useState(pensions)
+  const [requestFailed, setRequestFailed] = useState(false)
+
+  useEffect(() => {
+    getPensions()
+  }, [])
 
   useEffect(() => {
     filter()
   }, [tax, minimumValue, redemptionTerm])
 
+  const getPensions = async () => {
+    setRequestFailed(false)
+    
+    try{
+      const response = await axios.get(PENSIONS_API_ENDPOINT)
+      
+      const {
+        success,
+        data, 
+        error
+      } = response.data
+      
+      if(success && error === null){
+        setPensions(data)
+        setFilteredPensions(data)
+        setRequestFailed(false)
+      } else {
+        setRequestFailed(true)
+      }
+    }catch(error){
+      console.log(error)
+      setRequestFailed(true)        
+    }
+  }
+
   const filter = () => {
     let filtered = pensions
-    
+
     if(tax){
       filtered = filtered.filter((pension) => pension.tax === 0)
     }
@@ -80,52 +104,79 @@ const index = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.filterOptions}>
-        <FilterOption 
-          text={strings.pensionFilter1}
-          selected={tax}
-          onPress={() => {
-            setTax(!tax)
-          }} 
-        />
-        <FilterOption
-          text={strings.pensionFilter2}
-          selected={minimumValue}
-          onPress={() => {
-
-            setMinimumValue(!minimumValue)
-          }} 
-        />
-        <FilterOption 
-          text={strings.pensionFilter3}
-          selected={redemptionTerm}
-          onPress={() => {
-            setRedemptionTerm(!redemptionTerm)
-          }} 
-        />
-      </View>
-      <View style={styles.line} />
       {
-        (filteredPensions.length > 0) ? (
-          <FlatList
-            data={filteredPensions}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.flatListContent}
-            renderItem={({item}) => {
-              return(
-                <PensionsCard
-                  item={item}
+        (Array.isArray(pensions) && pensions.length) ? (
+          <View style={styles.container}>
+            <View style={styles.filterOptions}>
+              <FilterOption 
+                text={strings.pensionFilter1}
+                selected={tax}
+                onPress={() => {   
+                  setTax(!tax)
+                }} 
+              />
+              <FilterOption
+                text={strings.pensionFilter2}
+                selected={minimumValue}
+                onPress={() => {
+                  setMinimumValue(!minimumValue)
+                }} 
+              />
+              <FilterOption 
+                text={strings.pensionFilter3}
+                selected={redemptionTerm}
+                onPress={() => {
+                  setRedemptionTerm(!redemptionTerm)
+                }} 
+              />
+            </View>
+            <View style={styles.line} />
+            {
+              (filteredPensions.length > 0) ? (
+                <FlatList
+                  data={filteredPensions}
+                  showsVerticalScrollIndicator={false}
+                  contentContainerStyle={styles.flatListContent}
+                  renderItem={({item}) => {
+                    return(
+                      <PensionsCard
+                        item={item}
+                      />
+                    )
+                  }}
+                  keyExtractor={pension => pension.id.toString()}
                 />
+              ) : (
+                <View style={styles.noResultsView}>
+                  <Text style={styles.noResultsText}>
+                    {strings.noResults}
+                  </Text>
+                </View>
               )
-            }}
-            keyExtractor={pension => pension.id}
-          />
-        ) : (
-          <View style={styles.noResultsView}>
-            <Text style={styles.noResultsText}>
-              {strings.noResults}
-            </Text>
+            }
           </View>
+        ) : (
+          requestFailed ? (
+            <View style={styles.containerCenter}>
+              <Text style={styles.errorText}>
+                {strings.anErrorOcurred}
+              </Text>
+              <Text style={styles.noConnectionText}>
+                {strings.noConnectionPensions}
+              </Text>
+              <Button
+                text={strings.tryAgain.toUpperCase()}
+                onPress={getPensions}
+              />
+            </View>
+          ) : (
+            <View style={styles.containerCenter}>
+              <ActivityIndicator 
+                size="large"
+                color={colors.primary}
+              />
+            </View> 
+          )
         )
       }
     </View>

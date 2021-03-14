@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   line: {
-    backgroundColor: colors.text,
-    height: 0.5,
+    backgroundColor: colors.cardBorder,
+    height: 1,
     marginTop: 10,
   },
   flatListContent: {
@@ -33,7 +33,23 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.text,
     textAlign: 'center',
-  }
+  },
+  containerCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  errorText: {
+    fontSize: 16,
+    color: colors.text,
+    fontWeight: 'bold',
+    marginBottom: 12,
+  },
+  noConnectionText: {
+    fontSize: 12,
+    color: colors.text,
+    marginBottom: 20,
+  },
 })
 
 export default styles

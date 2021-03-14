@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.cardBorder,
     height: 1,
   },
   name: {

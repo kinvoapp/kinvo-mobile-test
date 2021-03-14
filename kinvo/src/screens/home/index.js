@@ -6,7 +6,7 @@ import {
 
 import styles from './styles'
 
-import sharesIcon from '../../assets/shares.png'
+import stocksIcon from '../../assets/stocks.png'
 import fundsIcon from '../../assets/funds.png'
 import pensionsIcon from '../../assets/pensions.png'
 
@@ -18,10 +18,10 @@ const index = ({navigation}) => {
   return (
     <View style={styles.container}>
       <MainMenuCard
-        image={sharesIcon}
-        title={strings.shares}
+        image={stocksIcon}
+        title={strings.stocks}
         subTitle={strings.national}
-        onPress={() => navigation.navigate('Shares')}
+        onPress={() => navigation.navigate('Stocks')}
       />
       <MainMenuCard
         image={fundsIcon}

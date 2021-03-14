@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  View,
+  View, 
   FlatList,
 } from 'react-native'
 
@@ -15,14 +15,14 @@ import {
 
 import ScreenStateManager from '../../components/ScreenStateManager'
 
-import FundCard from '../../components/FundCard'
+import StockCard from '../../components/StockCard'
 
 import styles from './styles'
 
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
-import { FUNDS_API_ENDPOINT } from '../../util/constants';
+import { STOCKS_API_ENDPOINT } from '../../util/constants';
 
 const index = ({navigation}) => {
   React.useLayoutEffect(() => {
@@ -42,8 +42,8 @@ const index = ({navigation}) => {
 
   return (
     <ScreenStateManager
-      endpoint={FUNDS_API_ENDPOINT}
-      noConnectionText={strings.noConnectionFunds}
+      endpoint={STOCKS_API_ENDPOINT}
+      noConnectionText={strings.noConnectionStocks}
       render={(data) => (
         <View style={styles.container}>
           <FlatList
@@ -52,12 +52,12 @@ const index = ({navigation}) => {
             contentContainerStyle={styles.flatListContent}
             renderItem={({item}) => {
               return(
-                <FundCard
+                <StockCard
                   item={item}
                 />
               )
             }}
-            keyExtractor={fund => fund.id.toString()}
+            keyExtractor={stock => stock.id.toString()}
           />
         </View>
       )}
