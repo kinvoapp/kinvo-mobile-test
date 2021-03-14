@@ -7,11 +7,13 @@ import {
   ActivityIndicator,
 } from 'react-native'
 
+//Components
 import Button from './Button'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
 
+//Redux
 import { useSelector } from 'react-redux'
 
 const index = (props) => {

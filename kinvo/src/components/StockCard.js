@@ -10,12 +10,13 @@ import {
   IconButton
 } from 'material-bread'
 
+//Components
 import ProfitabilityDisplay from './ProfitabilityDisplay'
+
+import { formatDecimalValue } from '../util/functions'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-
-import { formatDecimalValue } from '../util/functions'
 
 export default (props) => {
   const {

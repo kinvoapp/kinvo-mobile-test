@@ -14,9 +14,9 @@ import {
   AntDesign
 } from '@expo/vector-icons'
 
-import colors from '../util/colors'
-
 import { formatDecimalValue } from '../util/functions'
+
+import colors from '../util/colors'
 
 export default ({profitability}) => {
   return (

@@ -6,12 +6,13 @@ import {
   Text,
 } from 'react-native'
 
+//Components
 import ProfitabilityDisplay from './ProfitabilityDisplay'
+
+import { formatDecimalValue } from '../util/functions'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-
-import { formatDecimalValue } from '../util/functions'
 
 export default ({item}) => {
   const {

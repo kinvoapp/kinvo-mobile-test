@@ -7,7 +7,6 @@ import {
 } from 'react-native'
 
 import colors from '../util/colors'
-
 import strings from '../util/strings'
 
 export default ({status}) => {

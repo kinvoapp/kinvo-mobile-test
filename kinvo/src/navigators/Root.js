@@ -5,6 +5,7 @@ import {
 	TransitionPresets 
 } from '@react-navigation/stack'
 
+//Screens
 import HomeScreen from '../screens/home'
 import StocksScreen from '../screens/stocks'
 import FundsScreen from '../screens/funds'

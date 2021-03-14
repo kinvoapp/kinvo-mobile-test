@@ -6,16 +6,17 @@ import {
   Text,
 } from 'react-native'
 
+// Dependency Components
 import { AirbnbRating } from 'react-native-ratings';
 
+//Components
 import StatusBadge from './StatusBadge'
-
 import ProfitabilityDisplay from './ProfitabilityDisplay'
+
+import { formatDecimalValue } from '../util/functions'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-
-import { formatDecimalValue } from '../util/functions'
 
 export default ({item}) => {
   const {

@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
-import colors from '../util/colors'
-
+//Components
 import StatusBadge from './StatusBadge'
+
+import colors from '../util/colors'
 
 export default (props) => {
   const {

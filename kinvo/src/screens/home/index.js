@@ -4,13 +4,15 @@ import {
   View, 
 } from 'react-native'
 
-import styles from './styles'
-
+//Icons
 import stocksIcon from '../../assets/stocks.png'
 import fundsIcon from '../../assets/funds.png'
 import pensionsIcon from '../../assets/pensions.png'
 
+//Components
 import MainMenuCard from '../../components/MainMenuCard' 
+
+import styles from './styles'
 
 import strings from '../../util/strings'
 

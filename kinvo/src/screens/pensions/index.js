@@ -14,21 +14,23 @@ import {
 	IconButton
 } from 'material-bread'
 
+//Components
 import ScreenStateManager from '../../components/ScreenStateManager'
-
 import PensionsCard from '../../components/PensionCard'
 import FilterOption from '../../components/FilterOption'
+
 import styles from './styles'
 
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
-import { useSelector, useDispatch } from 'react-redux'
-import * as UIActions from '../../store/actions/ui'
-
 import { PENSIONS_API_ENDPOINT } from '../../util/constants';
 
 import { sortAlphabetically } from '../../util/functions'
+
+//Redux
+import { useSelector, useDispatch } from 'react-redux'
+import * as UIActions from '../../store/actions/ui'
 
 const axios = require('axios') 
 

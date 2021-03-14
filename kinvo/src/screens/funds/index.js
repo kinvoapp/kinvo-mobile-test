@@ -12,9 +12,8 @@ import {
 import {
 	IconButton
 } from 'material-bread'
-
+//Components
 import ScreenStateManager from '../../components/ScreenStateManager'
-
 import FundCard from '../../components/FundCard'
 
 import styles from './styles'
@@ -22,12 +21,13 @@ import styles from './styles'
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
-import { useSelector, useDispatch } from 'react-redux'
-import * as UIActions from '../../store/actions/ui'
-
 import { sortAlphabetically } from '../../util/functions'
 
 import { FUNDS_API_ENDPOINT } from '../../util/constants';
+
+//Redux
+import { useSelector, useDispatch } from 'react-redux'
+import * as UIActions from '../../store/actions/ui'
 
 const axios = require('axios')
 
