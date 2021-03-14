@@ -4,9 +4,7 @@ export default function isIPhoneX() {
   const dim = Dimensions.get("window");
 
   return (
-    // This has to be iOS
     Platform.OS === "ios" &&
-    // Check either, iPhone X or XR
     (isIPhoneXSize(dim) || isIPhoneXrSize(dim))
   );
 }

@@ -4,7 +4,6 @@ import {
   View,
   Text,
   FlatList,
-  ActivityIndicator
 } from 'react-native'
 
 import {
@@ -15,53 +14,48 @@ import {
 	IconButton
 } from 'material-bread'
 
+import ScreenStateManager from '../../components/ScreenStateManager'
+
 import PensionsCard from '../../components/PensionCard'
 import FilterOption from '../../components/FilterOption'
-import Button from '../../components/Button'
 import styles from './styles'
 
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as UIActions from '../../store/actions/ui'
+
 import { PENSIONS_API_ENDPOINT } from '../../util/constants';
+
+import { sortAlphabetically } from '../../util/functions'
 
 const axios = require('axios') 
 
 const index = ({navigation}) => {
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () =>  (
-        <IconButton
-          style={styles.headerLeft}
-          name={'leftcircle'}
-          size={24}
-          color={colors.primary}
-          iconComponent={AntDesign}
-          onPress={() => navigation.goBack()}
-        />
-      )
-    })
-  })
+  const pensions = useSelector(state => state.ui.pensions)
+  
+  const [filteredPensions, setFilteredPensions] = useState(pensions)
 
-  const [pensions, setPensions] = useState([])
-  const [filteredPensions, setFilteredPensions] = useState([])
   const [tax, setTax] = useState(false)
   const [minimumValue, setMinimumValue] = useState(false)
   const [redemptionTerm, setRedemptionTerm] = useState(false)
-
-  const [requestFailed, setRequestFailed] = useState(false)
 
   useEffect(() => {
     getPensions()
   }, [])
 
-  useEffect(() => {
-    filter()
-  }, [tax, minimumValue, redemptionTerm])
+  const dispatch = useDispatch()
 
-  const getPensions = async () => {
-    setRequestFailed(false)
-    
+   const setPensions = (pensions) => {
+    dispatch(UIActions.setPensions(pensions))
+  }
+
+  const setRequestFailed = (resquestFailed) => {
+    dispatch(UIActions.setRequestFailed(resquestFailed))
+  }
+
+  const getPensions = async () => {    
     try{
       const response = await axios.get(PENSIONS_API_ENDPOINT)
       
@@ -72,10 +66,10 @@ const index = ({navigation}) => {
       } = response.data
       
       if(success && error === null){
-        const orderedData = data.sort((a, b) => a.name.localeCompare(b.name))
+        const orderedPensions = sortAlphabetically(data)
 
-        setPensions(orderedData)
-        setFilteredPensions(orderedData)
+        setPensions(orderedPensions)
+        setFilteredPensions(orderedPensions)
         setRequestFailed(false)
       } else {
         setRequestFailed(true)
@@ -86,7 +80,7 @@ const index = ({navigation}) => {
     }
   }
 
-  const filter = () => {
+  const filter = (tax, minimumValue, redemptionTerm) => {
     let filtered = pensions
 
     if(tax){
@@ -104,84 +98,79 @@ const index = ({navigation}) => {
     setFilteredPensions(filtered);
   };
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () =>  (
+        <IconButton
+          style={styles.headerLeft}
+          name={'leftcircle'}
+          size={24}
+          color={colors.primary}
+          iconComponent={AntDesign}
+          onPress={() => navigation.goBack()}
+        />
+      )
+    })
+  })
+
   return (
-    <View style={styles.container}>
-      {
-        (Array.isArray(pensions) && pensions.length) ? (
-          <View style={styles.container}>
-            <View style={styles.filterOptions}>
-              <FilterOption 
-                text={strings.pensionFilter1}
-                selected={tax}
-                onPress={() => {   
-                  setTax(!tax)
-                }} 
-              />
-              <FilterOption
-                text={strings.pensionFilter2}
-                selected={minimumValue}
-                onPress={() => {
-                  setMinimumValue(!minimumValue)
-                }} 
-              />
-              <FilterOption 
-                text={strings.pensionFilter3}
-                selected={redemptionTerm}
-                onPress={() => {
-                  setRedemptionTerm(!redemptionTerm)
-                }} 
-              />
-            </View>
-            <View style={styles.line} />
-            {
-              (filteredPensions.length > 0) ? (
-                <FlatList
-                  data={filteredPensions}
-                  showsVerticalScrollIndicator={false}
-                  contentContainerStyle={styles.flatListContent}
-                  renderItem={({item}) => {
-                    return(
-                      <PensionsCard
-                        item={item}
-                      />
-                    )
-                  }}
-                  keyExtractor={pension => pension.id.toString()}
-                />
-              ) : (
-                <View style={styles.noResultsView}>
-                  <Text style={styles.noResultsText}>
-                    {strings.noResults}
-                  </Text>
-                </View>
-              )
-            }
-          </View>
-        ) : (
-          requestFailed ? (
-            <View style={styles.containerCenter}>
-              <Text style={styles.errorText}>
-                {strings.anErrorOcurred}
-              </Text>
-              <Text style={styles.noConnectionText}>
-                {strings.noConnectionPensions}
-              </Text>
-              <Button
-                text={strings.tryAgain.toUpperCase()}
-                onPress={getPensions}
-              />
-            </View>
+    <ScreenStateManager
+      getData={getPensions}
+      data={pensions}
+      noConnectionText={strings.noConnectionPensions}>
+      <View style={styles.container}>
+        <View style={styles.filterOptions}>
+          <FilterOption 
+            text={strings.pensionFilter1}
+            selected={tax}
+            onPress={() => {   
+              setTax(!tax)
+              filter(!tax, minimumValue, redemptionTerm)
+            }} 
+          />
+          <FilterOption
+            text={strings.pensionFilter2}
+            selected={minimumValue}
+            onPress={() => {
+              setMinimumValue(!minimumValue)
+              filter(tax, !minimumValue, redemptionTerm)
+            }} 
+          />
+          <FilterOption 
+            text={strings.pensionFilter3}
+            selected={redemptionTerm}
+            onPress={() => {
+              setRedemptionTerm(!redemptionTerm)
+              filter(tax, minimumValue, !redemptionTerm)
+            }} 
+          />
+        </View>
+        <View style={styles.line} />
+        {
+          (filteredPensions.length > 0) ? (
+            <FlatList
+              data={filteredPensions}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.flatListContent}
+              renderItem={({item}) => {
+                return(
+                  <PensionsCard
+                    item={item}
+                  />
+                )
+              }}
+              keyExtractor={pension => pension.id.toString()}
+            />
           ) : (
-            <View style={styles.containerCenter}>
-              <ActivityIndicator 
-                size="large"
-                color={colors.primary}
-              />
-            </View> 
+            <View style={styles.noResultsView}>
+              <Text style={styles.noResultsText}>
+                {strings.noResults}
+              </Text>
+            </View>
           )
-        )
-      }
-    </View>
+        }
+      </View>
+    </ScreenStateManager>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import {
   StyleSheet,
@@ -17,16 +17,17 @@ import strings from '../util/strings'
 
 import { formatDecimalValue } from '../util/functions'
 
-export default ({item}) => {
+export default (props) => {
   const {
-    name,
-    ticker,
-    favorited,
-    minimumValue,
-    profitability,
-  } = item
-
-  const [isFavorited, setFavorited] = useState(favorited)
+    item: {
+      name,
+      ticker,
+      favorited,
+      minimumValue,
+      profitability,
+    },
+    onFavorited
+  } = props
 
   return (
     <View style={styles.container}>
@@ -59,11 +60,11 @@ export default ({item}) => {
       </View>
       <IconButton
         style={styles.favoriteBtn}
-        name={isFavorited ? "favorite" : "favorite-border"}
+        name={favorited ? "favorite" : "favorite-border"}
         color={colors.primary}
         size={24}
         onPress={() => {
-          setFavorited(!isFavorited)
+          onFavorited(!favorited, props.item)
         }}
       />
     </View>

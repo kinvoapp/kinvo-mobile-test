@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   View,
@@ -22,9 +22,57 @@ import styles from './styles'
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as UIActions from '../../store/actions/ui'
+
+import { sortAlphabetically } from '../../util/functions'
+
 import { FUNDS_API_ENDPOINT } from '../../util/constants';
 
+const axios = require('axios')
+
 const index = ({navigation}) => {
+  const funds = useSelector(state => state.ui.funds)
+
+  console.log(funds)
+  const dispatch = useDispatch()
+
+  const setFunds = (funds) => {
+    dispatch(UIActions.setFunds(funds))
+  }
+
+  const setRequestFailed = (resquestFailed) => {
+    dispatch(UIActions.setRequestFailed(resquestFailed))
+  }
+
+  useEffect(() => {
+    getFunds()
+  }, [])
+
+  const getFunds = async () => {
+    try {
+      const response = await axios.get(FUNDS_API_ENDPOINT)
+
+      const {
+        success,
+        data, 
+        error
+      } = response.data
+      
+      if(success && error === null) {
+        const orderedFunds = sortAlphabetically(data)
+        
+        setFunds(orderedFunds)
+        setRequestFailed(false)
+      } else {
+        setRequestFailed(true)
+      }
+    }catch(error){
+      console.log(error)
+      setRequestFailed(true)      
+    }
+  }
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () =>  (
@@ -42,12 +90,12 @@ const index = ({navigation}) => {
 
   return (
     <ScreenStateManager
-      endpoint={FUNDS_API_ENDPOINT}
-      noConnectionText={strings.noConnectionFunds}
-      render={(data) => (
+      getData={getFunds}
+      data={funds}
+      noConnectionText={strings.noConnectionFunds}>
         <View style={styles.container}>
           <FlatList
-            data={data}
+            data={funds}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.flatListContent}
             renderItem={({item}) => {
@@ -60,8 +108,7 @@ const index = ({navigation}) => {
             keyExtractor={fund => fund.id.toString()}
           />
         </View>
-      )}
-    />
+    </ScreenStateManager>
   )
 }
 

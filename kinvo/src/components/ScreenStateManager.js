@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import {
   StyleSheet,
@@ -12,50 +12,22 @@ import Button from './Button'
 import colors from '../util/colors'
 import strings from '../util/strings'
 
-const axios = require('axios') 
+import { useSelector } from 'react-redux'
 
 const index = (props) => {
   const {
-    endpoint,
+    data,
+    getData,
     noConnectionText
   } = props;
 
-  const [data, setData] = useState([])
-  const [requestFailed, setRequestFailed] = useState(false)
-
-  const getData = async () => {
-    setRequestFailed(false)
-    
-    try{
-      const response = await axios.get(endpoint)
-      
-      const {
-        success,
-        data, 
-        error
-      } = response.data
-      
-      if(success && error === null){
-        setData(data)
-        setRequestFailed(false)
-      } else {
-        setRequestFailed(true)
-      }
-    }catch(error){
-      console.log(error)
-      setRequestFailed(true)        
-    }
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
+  const requestFailed = useSelector(state => state.ui.requestFailed)
 
   return (
     <View style={styles.container}>
       {
         (Array.isArray(data) && data.length) ? (
-          props.render(data)
+          props.children
         ) : (
           requestFailed ? (
             <View style={styles.containerCenter}>

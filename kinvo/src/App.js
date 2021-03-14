@@ -12,6 +12,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { BreadProvider } from "material-bread";
 
+import { Provider } from 'react-redux'
+import store from './store'
+
 import RootNavigator from './navigators/Root'
 
 import AppStatusBar from './components/AppStatusBar'
@@ -23,7 +26,7 @@ import colors from './util/colors'
 const App = () => {
   if(isIPhoneX()) {
     return (
-      <>
+      <Provider store={store}>
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.top} />
         <SafeAreaView style={styles.bottom}>
@@ -33,12 +36,12 @@ const App = () => {
             </BreadProvider>
           </NavigationContainer>
         </SafeAreaView> 
-      </>
+      </Provider>
     )
   }
   
   return (
-    <>
+    <Provider store={store}>
       <AppStatusBar
         backgroundColor={colors.primary}
         barStyle="light-content"
@@ -48,7 +51,7 @@ const App = () => {
             <RootNavigator />
         </BreadProvider>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 }
 

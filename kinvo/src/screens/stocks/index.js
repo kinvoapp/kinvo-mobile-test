@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   View, 
@@ -22,9 +22,78 @@ import styles from './styles'
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
+import { useSelector, useDispatch } from 'react-redux'
+import * as UIActions from '../../store/actions/ui'
+
+import { sortStocks, sortAlphabetically } from '../../util/functions'
+
 import { STOCKS_API_ENDPOINT } from '../../util/constants';
 
+const axios = require('axios')
+
 const index = ({navigation}) => {
+  const stocks = useSelector(state => state.ui.stocks)
+
+  const dispatch = useDispatch()
+
+  const setStocks = (stocks) => {
+    dispatch(UIActions.setStocks(stocks))
+  }
+
+  const setRequestFailed = (resquestFailed) => {
+    dispatch(UIActions.setRequestFailed(resquestFailed))
+  }
+
+  const onFavorited = (isFavorited, item) => {
+    const updatedStocks = stocks.map((stock) => {
+      if(stock.id === item.id){
+        return {
+          ...stock,
+          favorited: isFavorited
+        }
+      }
+
+      return stock
+    })
+  
+    const orderedStocks = sortStocks(sortAlphabetically(updatedStocks))
+
+    setStocks(orderedStocks)
+  }
+
+  useEffect(() => {
+    getStocks()
+  }, [])
+
+  const getStocks = async () => {
+    try {
+      const response = await axios.get(STOCKS_API_ENDPOINT)
+
+      const {
+        success,
+        data, 
+        error
+      } = response.data
+
+      if(success && error === null) {
+        const orderedStocks = sortAlphabetically(data).map((stock) => {
+          return {
+            ...stock,
+            favorited: false
+          }
+        })
+        
+        setStocks(orderedStocks)
+        setRequestFailed(false)
+      } else {
+        setRequestFailed(true)
+      }
+    }catch(error){
+      console.log(error)
+      setRequestFailed(true)      
+    }
+  }
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () =>  (
@@ -39,29 +108,29 @@ const index = ({navigation}) => {
       )
     })
   })
-
+  
   return (
     <ScreenStateManager
-      endpoint={STOCKS_API_ENDPOINT}
-      noConnectionText={strings.noConnectionStocks}
-      render={(data) => (
-        <View style={styles.container}>
-          <FlatList
-            data={data}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.flatListContent}
-            renderItem={({item}) => {
-              return(
-                <StockCard
-                  item={item}
-                />
-              )
-            }}
-            keyExtractor={stock => stock.id.toString()}
-          />
-        </View>
-      )}
-    />
+      getData={getStocks}
+      data={stocks}
+      noConnectionText={strings.noConnectionStocks}>
+      <View style={styles.container}>
+        <FlatList
+          data={stocks}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.flatListContent}
+          renderItem={({item}) => {
+            return(
+              <StockCard
+                item={item}
+                onFavorited={onFavorited}                  
+              />
+            )
+          }}
+          keyExtractor={stock => stock.id.toString()}
+        />
+      </View>
+    </ScreenStateManager>
   )
 }
 
