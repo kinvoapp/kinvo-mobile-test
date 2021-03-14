@@ -14,7 +14,6 @@ import ProfitabilityDisplay from './ProfitabilityDisplay'
 
 import colors from '../util/colors'
 import strings from '../util/strings'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default ({item}) => {
   const {
@@ -28,49 +27,51 @@ export default ({item}) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerTexts}>
-          <Text 
-            style={styles.name}
-            numberOfLines={2}
-            ellipsizeMode="tail">
-            {name}
+      <View 
+        style={styles.content}
+        opacity={status === 2 ? 0.5 : 1}>
+        <View style={styles.header}>
+            <Text 
+              style={styles.name}
+              numberOfLines={2}
+              ellipsizeMode="clip">
+              {name}
+            </Text>
+            <Text style={styles.type}>
+              {type.toUpperCase()}
+            </Text>
+        </View>
+        <View style={styles.line} />
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            {`${strings.rating}:`}
           </Text>
-          <Text style={styles.type}>
-            {type.toUpperCase()}
+          <AirbnbRating
+            showRating={false}
+            selectedColor={colors.yellow}
+            defaultRating={rating}
+            size={17}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            {`${strings.minimumValue}:`}
+          </Text>
+          <Text style={styles.minimumValue}>
+            {`R$${minimumValue}`}
           </Text>
         </View>
-        <View>
-          <StatusBadge status={status} />
+        <View style={styles.row}>
+          <Text style={styles.label}>
+            {`${strings.profitability}:`}
+          </Text>
+          <ProfitabilityDisplay
+            profitability={profitability}
+          />
         </View>
       </View>
-      <View style={styles.line} />
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          {`${strings.rating}:`}
-        </Text>
-        <AirbnbRating
-          showRating={false}
-          selectedColor={colors.yellow}
-          defaultRating={rating}
-          size={17}
-        />
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          {`${strings.minimumValue}:`}
-        </Text>
-        <Text style={styles.minimumValue}>
-          {`R$${minimumValue}`}
-        </Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>
-          {`${strings.profitability}:`}
-        </Text>
-        <ProfitabilityDisplay
-          profitability={profitability}
-        />
+      <View style={styles.statusBadge}>
+        <StatusBadge status={status} />
       </View>
     </View>
   )
@@ -87,13 +88,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
   },
-  header: {
-    flex: 1,
-    flexDirection: 'row',
+  content: {
+    flex: 1
   },
-  headerTexts: {
-    flexShrink: 1,
-    marginRight: 8,
+  header: {
+    marginRight: 80,
   },
   row: {
     flexDirection: 'row',
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.cardBorder,
     height: 1,
   },
   name: {
@@ -125,4 +124,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.text
   },
+  statusBadge: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    marginTop: 18,
+    marginRight: 18,
+  }
 })

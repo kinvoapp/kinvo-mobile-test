@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
-    backgroundColor: colors.background,
-    height: 2,
+    backgroundColor: colors.cardBorder,
+    height: 1,
   },
   name: {
     fontSize: 16,
