@@ -24,6 +24,7 @@ const index = ({navigation}) => {
         onPress={() => navigation.navigate('Stocks')}
       />
       <MainMenuCard
+        newCard
         image={fundsIcon}
         title={strings.funds}
         subTitle={strings.investiment}

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   flatListContent: {
-    padding: 8,
+    paddingBottom: 20,
   }
 })
 

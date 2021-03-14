@@ -4,7 +4,6 @@ import {
   StyleSheet,
   TouchableOpacity, 
   Text,
-  View
 } from 'react-native'
 
 import colors from '../util/colors'
@@ -18,7 +17,6 @@ export default (props) => {
 
   return (
     <TouchableOpacity
-      activeOpacity={1}
       style={selected ? [styles.container, styles.selected] : styles.container}
       onPress={onPress}>
         <Text style={selected ? styles.textSelected : styles.text}>{text}</Text>

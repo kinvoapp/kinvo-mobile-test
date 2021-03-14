@@ -10,8 +10,11 @@ import {
 
 import colors from '../util/colors'
 
+import StatusBadge from './StatusBadge'
+
 export default (props) => {
   const {
+    newCard,
     title,
     subTitle,
     image,
@@ -23,21 +26,28 @@ export default (props) => {
       style={styles.container}
       activeOpacity={0.6}
       onPress={onPress}>
-      <View style={styles.circle}>
-        <Image 
-          style={styles.image} 
-          source={image} 
-          resizeMode="contain" 
-        />
+      <View style={styles.row}>  
+        <View style={styles.circle}>
+          <Image 
+            style={styles.image} 
+            source={image} 
+            resizeMode="contain" 
+          />
+        </View>
+        <View>
+          <Text style={styles.title}>
+            {title}
+          </Text>
+          <Text style={styles.subTitle}>
+            {subTitle}
+          </Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.title}>
-          {title}
-        </Text>
-        <Text style={styles.subTitle}>
-          {subTitle}
-        </Text>
-      </View>
+      {
+        newCard ? (
+          <StatusBadge status={1} />
+        ) : null
+      }
     </TouchableOpacity>
   )
 }
@@ -45,6 +55,7 @@ export default (props) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: colors.cardBackground,
     flexDirection: 'row',
     padding: 20,
@@ -63,6 +74,10 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 56 / 2,
     marginRight: 12,
+  },
+  row: {
+    alignItems: 'center',
+    flexDirection: 'row'
   },
   image: {
     width: 28,

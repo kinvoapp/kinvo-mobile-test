@@ -50,6 +50,7 @@ export default ({item}) => {
           </Text>
           <AirbnbRating
             showRating={false}
+            isDisabled
             selectedColor={colors.yellow}
             defaultRating={rating}
             size={17}
