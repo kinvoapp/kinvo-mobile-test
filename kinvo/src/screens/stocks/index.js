@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+
+import { useFocusEffect } from '@react-navigation/native'
 
 import {
   View, 
@@ -24,13 +26,11 @@ import strings from '../../util/strings'
 
 import { sortStocks, sortAlphabetically } from '../../util/functions'
 
-import { STOCKS_API_ENDPOINT } from '../../util/constants';
-
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import * as UIActions from '../../store/actions/ui'
 
-const axios = require('axios')
+import api from '../../services/api'
 
 const index = ({navigation}) => {
   const stocks = useSelector(state => state.ui.stocks)
@@ -62,13 +62,15 @@ const index = ({navigation}) => {
     setStocks(orderedStocks)
   }
 
-  useEffect(() => {
-    getStocks()
-  }, [])
+  useFocusEffect(
+    React.useCallback(() => {
+      getStocks()
+    }, [])
+  )
 
   const getStocks = async () => {
     try {
-      const response = await axios.get(STOCKS_API_ENDPOINT)
+      const response = await api.get('stocks')
 
       const {
         success,

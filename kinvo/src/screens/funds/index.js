@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useFocusEffect } from '@react-navigation/native'
 
@@ -25,18 +25,15 @@ import strings from '../../util/strings'
 
 import { sortAlphabetically } from '../../util/functions'
 
-import { FUNDS_API_ENDPOINT } from '../../util/constants';
-
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import * as UIActions from '../../store/actions/ui'
 
-const axios = require('axios')
+import api from '../../services/api'
 
 const index = ({navigation}) => {
   const funds = useSelector(state => state.ui.funds)
 
-  console.log(funds)
   const dispatch = useDispatch()
 
   const setFunds = (funds) => {
@@ -47,10 +44,6 @@ const index = ({navigation}) => {
     dispatch(UIActions.setRequestFailed(resquestFailed))
   }
 
-  // useEffect(() => {
-  //   getFunds()
-  // }, [])
-
   useFocusEffect(
     React.useCallback(() => {
       getFunds()
@@ -59,7 +52,7 @@ const index = ({navigation}) => {
 
   const getFunds = async () => {
     try {
-      const response = await axios.get(FUNDS_API_ENDPOINT)
+      const response = await api.get('funds')
 
       const {
         success,

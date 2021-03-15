@@ -72,7 +72,6 @@ const App = () => {
   )  
 }
 
-
 const styles = StyleSheet.create({
   top: {
     flex: 0,

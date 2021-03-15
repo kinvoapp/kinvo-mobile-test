@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+import { useFocusEffect } from '@react-navigation/native'
 
 import {
   View,
@@ -24,15 +26,13 @@ import styles from './styles'
 import colors from '../../util/colors'
 import strings from '../../util/strings'
 
-import { PENSIONS_API_ENDPOINT } from '../../util/constants';
-
 import { sortAlphabetically } from '../../util/functions'
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import * as UIActions from '../../store/actions/ui'
 
-const axios = require('axios') 
+import api from '../../services/api'
 
 const index = ({navigation}) => {
   const pensions = useSelector(state => state.ui.pensions)
@@ -43,9 +43,11 @@ const index = ({navigation}) => {
   const [minimumValue, setMinimumValue] = useState(false)
   const [redemptionTerm, setRedemptionTerm] = useState(false)
 
-  useEffect(() => {
-    getPensions()
-  }, [])
+  useFocusEffect(
+    React.useCallback(() => {
+      getPensions()
+    } , [])
+  )
 
   const dispatch = useDispatch()
 
@@ -59,7 +61,7 @@ const index = ({navigation}) => {
 
   const getPensions = async () => {    
     try{
-      const response = await axios.get(PENSIONS_API_ENDPOINT)
+      const response = await api.get('pension')
       
       const {
         success,
