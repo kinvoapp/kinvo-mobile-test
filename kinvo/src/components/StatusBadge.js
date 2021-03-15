@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gray
   },
   textNew: {
+    fontFamily: 'Montserrat-Medium',
     fontSize: 10,
     color: 'white'
   },
   textClosed: {
+    fontFamily: 'Montserrat-Medium',
     fontSize: 10,
     color: colors.badgeText
   }

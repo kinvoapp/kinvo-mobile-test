@@ -37,7 +37,7 @@ export default ({item}) => {
             <Text 
               style={styles.name}
               numberOfLines={2}
-              ellipsizeMode="clip">
+              ellipsizeMode="tail">
               {name}
             </Text>
             <Text style={styles.type}>
@@ -52,7 +52,7 @@ export default ({item}) => {
           <AirbnbRating
             showRating={false}
             isDisabled
-            selectedColor={colors.yellow}
+            selectedColor={(status === 2) ? colors.text : colors.yellow}
             defaultRating={rating}
             size={17}
           />
@@ -70,6 +70,7 @@ export default ({item}) => {
             {`${strings.profitability}:`}
           </Text>
           <ProfitabilityDisplay
+            disabled={(status === 2)}
             profitability={profitability}
           />
         </View>
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    marginRight: 80,
+    marginRight: 50,
   },
   row: {
     flexDirection: 'row',
@@ -111,28 +112,31 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     color: colors.text,
     marginBottom: 3,
   },
   type: {
     fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.text,
     marginBottom: 20
   },
   label: {
     fontSize: 10,
+    fontFamily: 'Montserrat-Medium',
     color: colors.text
   },
   minimumValue: {
     fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.text
   },
   statusBadge: {
     position: 'absolute',
     right: 0,
     top: 0,
-    marginTop: 18,
-    marginRight: 18,
+    marginTop: 15,
+    marginRight: 10,
   }
 })

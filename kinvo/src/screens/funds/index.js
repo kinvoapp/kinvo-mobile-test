@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+import { useFocusEffect } from '@react-navigation/native'
+
 import {
   View,
   FlatList,
@@ -45,9 +47,15 @@ const index = ({navigation}) => {
     dispatch(UIActions.setRequestFailed(resquestFailed))
   }
 
-  useEffect(() => {
-    getFunds()
-  }, [])
+  // useEffect(() => {
+  //   getFunds()
+  // }, [])
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getFunds()
+    }, [])
+  )
 
   const getFunds = async () => {
     try {

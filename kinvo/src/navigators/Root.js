@@ -40,7 +40,7 @@ export default () => {
 						headerTintColor: colors.primary,
 						headerTitleStyle: {
 							fontSize: 20,
-							fontWeight: 'bold',
+							fontFamily: 'Montserrat-Bold',
 						},
 						cardStyle: { 
 							backgroundColor: colors.background,

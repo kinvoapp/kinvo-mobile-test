@@ -70,11 +70,12 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 16,
     color: colors.text,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     marginBottom: 12,
   },
   noConnectionText: {
     fontSize: 12,
+    fontFamily: 'Montserrat-Medium',
     color: colors.text,
     marginBottom: 20,
   },

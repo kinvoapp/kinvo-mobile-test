@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   noResultsText: {
     fontSize: 12,
+    fontFamily: 'Montserrat-Medium',
     color: colors.text,
     textAlign: 'center',
   },

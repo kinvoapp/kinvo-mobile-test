@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
     color: 'white'
   },
 })

@@ -5,9 +5,9 @@ import {
 } from 'react-native'
 
 //Icons
-import stocksIcon from '../../assets/stocks.png'
-import fundsIcon from '../../assets/funds.png'
-import pensionsIcon from '../../assets/pensions.png'
+import stocksIcon from '../../assets/img/stocks.png'
+import fundsIcon from '../../assets/img/funds.png'
+import pensionsIcon from '../../assets/img/pensions.png'
 
 //Components
 import MainMenuCard from '../../components/MainMenuCard' 

@@ -99,21 +99,24 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
     color: colors.text,
     marginBottom: 3,
   },
   type: {
     fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.text,
     marginBottom: 20
   },
   label: {
     fontSize: 10,
+    fontFamily: 'Montserrat-Medium',
     color: colors.text
   },
   value: {
     fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.text
   },
 })
