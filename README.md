@@ -1,84 +1,59 @@
+# Kinvo React Native App &middot; [![npm](https://img.shields.io/badge/npm-6.14.9-blue)](https://www.npmjs.com/package/npm)
 
-# React Native Code Challenge
+This is a technical challenge for a job opportunity at Kinvo that consists in developing an mobile app from a Adobe XD [propotype](https://xd.adobe.com/view/4701a220-a119-482a-89a5-4d110332e25f-1252/screen/59ecf5f8-d6a9-47e9-a14a-d890567d5b3d/specs/). The app was created in React Native and I chose [Expo CLI](https://docs.expo.io/get-started/installation/) to make development easier.
 
-## Instruções:
+## __Installing / Getting started__
 
-1. Faça um fork deste repositório;
-2. Siga as especificações;
-3. Implemente o layout disponível;
-4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+Assuming that you have [Node](https://nodejs.org/en/download/) 12 LTS or greater installed, you can use npm to install the Expo CLI command line utility:
 
-## Especificações:
+```shell
+npm install -g expo-cli
+```
 
-O desafio consiste em desenvolver um aplicativo de **4 telas**.
+Navigate to the react native project directory
 
-As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
+```shell
+cd kinvo
+```
 
-**Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).**
+Install the project dependencies
 
-### Tela "Desafio" (Tela inicial)
+```shell
+npm install
+```
 
-- A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
+Start the development server
 
-### Tela "Ações"
+```shell
+expo start
+```
 
-- A lista de "ações" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
-- A lista de "ações" deve obedecer a seguinte prioridade:
-   - Favoritadas deve aparecer primeiro
-   - Ordem alfabética
-- O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
-- A lista de "ações" inicia com todos as "ações" desfavoritadas.
+## __Opening the app on your phone/tablet__
 
-### Tela "Fundos"
+🍎 On your iPhone or iPad, open the default Apple "Camera" app and scan the QR code you see in the terminal or in Expo Dev Tools.
 
-- A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
-- A lista de "fundos" deve estar em ordem alfabética.
-- Os estados do fundo são:
-  - 0: Comum
-  - 1: Novo
-  - 2: Fechado
-- Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
-- Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
-- Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
+🤖 On your Android device, press "Scan QR Code" on the "Projects" tab of the Expo Go app and scan the QR code you see in the terminal or in Expo Dev Tools.
 
-### Tela "Previdências"
+If you are using an iOS simulator or Android emulator, you may find the following Expo CLI keyboard shortcuts to be useful:
 
-- A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
-- A lista de "previdências" deve estar em ordem alfabética.
-- A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-   - "SEM TAXA": inclui as previdências com taxa igual a zero.
-   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-   - "D+1": inclui as previdências com resgate igual a um.
+- Pressing `i` will open in an iOS simulator.
+- Pressing `a` will open in an Android emulator or connected device.
 
-### Pré-requisitos:
+## __Developing__
 
-- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-- Desenvolver o app utilizando `React Native`
+### __Built With__
 
-### O que iremos avaliar
+__Expo__<br>
+Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator.
 
-- Capacidade de abstração
-- Simplicidade da solução
-- Componentização
-- Princípio da reutilização
-- Clean Code
+### __Deploying / Publishing__<br>
+Run expo `build:android` or `expo build:ios`. <br>
 
-### O que vai te diferenciar
+__Wait for it to finish build__
 
-- Utilizar TypeScript
-- Realizar testes unitários
+When one of the building machines is free, it'll start building your app. A url will be printed that you can visit  to watch your build progress and access the build logs. When it's done, you'll see the url to your app file - an .apk, .aab (both Android), or .ipa (iOS) file. Copy and paste the link into your browser to download the file.
 
-## Material:
+__Android__
 
-- O layout em formato Adobe XD consta no repositório em [/material](/material) ou através [desse link](https://xd.adobe.com/view/4701a220-a119-482a-89a5-4d110332e25f-1252/);
-- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
+- __To run it on your Android emulator__, first build your project with the apk flag by running `expo build:android -t apk`, and you can drag and drop the .apk into the emulator.
+- __To run it on your Android device__, make sure you have the Android platform tools installed along with adb, then just run `adb install app-filename.apk` with USB debugging enabled on your device and the device plugged in.
