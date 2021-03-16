@@ -4,10 +4,11 @@ This is a technical challenge for a job opportunity at Kinvo that consists in de
 
 ## __Installing / Getting started__
 
-Assuming that you have [Node](https://nodejs.org/en/download/) 12 LTS or greater installed, you can use npm to install the Expo CLI command line utility:
+Assuming that you have [Node](https://nodejs.org/en/download/) 12 LTS or greater installed, you can use npm to install yarn package manager and then use it to install the Expo CLI command line utility:
 
 ```shell
-npm install -g expo-cli
+npm install --global yarn
+yarn global add expo-cli
 ```
 
 Navigate to the react native project directory
