@@ -1,5 +1,4 @@
 import {
-  SET_REQUEST_FAILED,
   SET_STOCKS,
   SET_FUNDS,
   SET_PENSIONS
@@ -23,12 +22,5 @@ export function setPensions(pensions){
   return {
     type: SET_PENSIONS,
     pensions,
-  }
-}
-
-export function setRequestFailed(requestFailed){
-  return {
-    type: SET_REQUEST_FAILED,
-    requestFailed,
   }
 }

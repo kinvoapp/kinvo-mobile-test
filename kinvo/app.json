@@ -17,9 +17,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.kinvo.kinvo",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.kinvo.kinvo",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/img/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

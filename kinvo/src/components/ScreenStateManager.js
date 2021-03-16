@@ -13,17 +13,13 @@ import Button from './Button'
 import colors from '../util/colors'
 import strings from '../util/strings'
 
-//Redux
-import { useSelector } from 'react-redux'
-
 const index = (props) => {
   const {
+    requestFailed,
     data,
     getData,
     noConnectionText
   } = props;
-
-  const requestFailed = useSelector(state => state.ui.requestFailed)
 
   return (
     <View style={styles.container}>

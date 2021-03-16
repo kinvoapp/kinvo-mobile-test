@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useFocusEffect } from '@react-navigation/native'
 
@@ -36,12 +36,10 @@ const index = ({navigation}) => {
 
   const dispatch = useDispatch()
 
+  const [requestFailed, setRequestFailed] = useState(false)
+
   const setFunds = (funds) => {
     dispatch(UIActions.setFunds(funds))
-  }
-
-  const setRequestFailed = (resquestFailed) => {
-    dispatch(UIActions.setRequestFailed(resquestFailed))
   }
 
   useFocusEffect(
@@ -51,8 +49,10 @@ const index = ({navigation}) => {
   )
 
   const getFunds = async () => {
+    setRequestFailed(false)
+    
     try {
-      const response = await api.get('funds')
+      const response = await api.get('funds', { timeout: 5000})
 
       const {
         success,
@@ -91,6 +91,7 @@ const index = ({navigation}) => {
 
   return (
     <ScreenStateManager
+      requestFailed={requestFailed}
       getData={getFunds}
       data={funds}
       noConnectionText={strings.noConnectionFunds}>

@@ -43,6 +43,8 @@ const index = ({navigation}) => {
   const [minimumValue, setMinimumValue] = useState(false)
   const [redemptionTerm, setRedemptionTerm] = useState(false)
 
+  const [requestFailed, setRequestFailed] = useState(false)
+
   useFocusEffect(
     React.useCallback(() => {
       getPensions()
@@ -55,13 +57,11 @@ const index = ({navigation}) => {
     dispatch(UIActions.setPensions(pensions))
   }
 
-  const setRequestFailed = (resquestFailed) => {
-    dispatch(UIActions.setRequestFailed(resquestFailed))
-  }
+  const getPensions = async () => {  
+    setRequestFailed(false)
 
-  const getPensions = async () => {    
     try{
-      const response = await api.get('pension')
+      const response = await api.get('pension', { timeout: 5000})
       
       const {
         success,
@@ -80,7 +80,7 @@ const index = ({navigation}) => {
       }
     }catch(error){
       console.log(error)
-      setRequestFailed(true)        
+      setRequestFailed(true)  
     }
   }
 
@@ -119,6 +119,7 @@ const index = ({navigation}) => {
 
   return (
     <ScreenStateManager
+      requestFailed={requestFailed}
       getData={getPensions}
       data={pensions}
       noConnectionText={strings.noConnectionPensions}>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useFocusEffect } from '@react-navigation/native'
 
@@ -37,12 +37,10 @@ const index = ({navigation}) => {
 
   const dispatch = useDispatch()
 
+  const [requestFailed, setRequestFailed] = useState(false)
+
   const setStocks = (stocks) => {
     dispatch(UIActions.setStocks(stocks))
-  }
-
-  const setRequestFailed = (resquestFailed) => {
-    dispatch(UIActions.setRequestFailed(resquestFailed))
   }
 
   const onFavorited = (isFavorited, item) => {
@@ -69,8 +67,10 @@ const index = ({navigation}) => {
   )
 
   const getStocks = async () => {
+    setRequestFailed(false)
+
     try {
-      const response = await api.get('stocks')
+      const response = await api.get('stocks', { timeout: 5000})
 
       const {
         success,
@@ -114,6 +114,7 @@ const index = ({navigation}) => {
   
   return (
     <ScreenStateManager
+      requestFailed={requestFailed}
       getData={getStocks}
       data={stocks}
       noConnectionText={strings.noConnectionStocks}>

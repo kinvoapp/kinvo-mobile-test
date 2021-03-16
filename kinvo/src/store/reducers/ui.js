@@ -2,14 +2,12 @@ import {
   SET_STOCKS,
   SET_FUNDS,
   SET_PENSIONS,
-  SET_REQUEST_FAILED,
 } from "../types";
 
 const initialState = {
   stocks: [],
   pensions: [],
   funds: [],
-  requestFailed: false,
 };
 
 export default function ui(state = initialState, action) {
@@ -28,11 +26,6 @@ export default function ui(state = initialState, action) {
       return {
         ...state,
         pensions: action.pensions,
-      };
-    case SET_REQUEST_FAILED:
-      return {
-        ...state,
-        requestFailed: action.requestFailed,
       };
     default:
       return state;
