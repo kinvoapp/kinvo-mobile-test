@@ -1,12 +1,41 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Container, NavigationImage} from './styles';
+import {
+  Container,
+  Content,
+  SvgContainer,
+  TextContainer,
+  TitleText,
+  SubtitleText,
+  NewCardContainer,
+  NewCardText,
+} from './styles';
 
-export function NavigationCard(cardImage: any) {
+interface NavigationCardProps {
+  CardTitle: string;
+  CardSubtitle: string;
+  isNew?: Boolean;
+}
+
+export const NavigationCard: React.FC<NavigationCardProps> = ({
+  children,
+  CardTitle,
+  CardSubtitle,
+  isNew,
+}) => {
   return (
     <Container>
-      <NavigationImage source={cardImage} />
-      <Text>Memes</Text>
+      <Content>
+        <SvgContainer>{children}</SvgContainer>
+        <TextContainer>
+          <TitleText>{CardTitle}</TitleText>
+          <SubtitleText>{CardSubtitle}</SubtitleText>
+        </TextContainer>
+      </Content>
+      {isNew && (
+        <NewCardContainer>
+          <NewCardText>Novo</NewCardText>
+        </NewCardContainer>
+      )}
     </Container>
   );
-}
+};
