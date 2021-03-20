@@ -11,18 +11,25 @@ export function Dashboard() {
     <>
       <Header />
       <Container>
-        <NavigationCard CardTitle="Ações" CardSubtitle="Nacionais">
+        <NavigationCard
+          CardRoute="Stocks"
+          CardTitle="Ações"
+          CardSubtitle="Nacionais">
           <StocksImg width={28.32} height={28.44} />
         </NavigationCard>
 
         <NavigationCard
           isNew={true}
+          CardRoute="Funds"
           CardTitle="Fundos"
           CardSubtitle="De investimento">
           <FundsImg width={28.32} height={28.44} />
         </NavigationCard>
 
-        <NavigationCard CardTitle="Previdências" CardSubtitle="Privadas">
+        <NavigationCard
+          CardRoute="Pensions"
+          CardTitle="Previdências"
+          CardSubtitle="Privadas">
           <PensionsImg width={28.32} height={28.44} />
         </NavigationCard>
       </Container>
