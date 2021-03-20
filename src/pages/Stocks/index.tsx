@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native-svg';
+import {Header} from '../../components/Header';
 import {Container} from './styles';
 
 export function Stocks() {
   return (
-    <Container>
-      <Text>Ações</Text>
-    </Container>
+    <>
+      <Header hasGoBackButton={true} title={'Ações'} />
+      <Container />
+    </>
   );
 }

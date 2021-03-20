@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native-svg';
+import {Header} from '../../components/Header';
 import {Container} from './styles';
 
 export function Pensions() {
   return (
-    <Container>
-      <Text>Pensões</Text>
-    </Container>
+    <>
+      <Header hasGoBackButton={true} title={'Previdências'} />
+      <Container />
+    </>
   );
 }

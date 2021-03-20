@@ -4,12 +4,12 @@ import {NavigationCard} from '../../components/NavigationCard';
 import StocksImg from '../../assets/stocks.svg';
 import FundsImg from '../../assets/funds.svg';
 import PensionsImg from '../../assets/pensions.svg';
-import {Container} from './styles';
+import {Container, SvgContainer} from './styles';
 
 export function Dashboard() {
   return (
     <>
-      <Header />
+      <Header title={'Desafio'} />
       <Container>
         <NavigationCard
           CardRoute="Stocks"

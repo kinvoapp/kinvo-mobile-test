@@ -10,6 +10,8 @@ export const Container = styled.TouchableOpacity`
   justify-content: space-between;
   border-radius: 10px;
   margin-top: 20px;
+  border: 1px;
+  border-color: #dae0e3;
   padding: 20px;
 `;
 
