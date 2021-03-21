@@ -1,0 +1,14 @@
+com/kin/MainApplication.java
+ com.kin.MainApplication
+ com.kin.MainApplication$1
+com/kin/ReactNativeFlipper.java
+ com.kin.ReactNativeFlipper
+ com.kin.ReactNativeFlipper$1
+ com.kin.ReactNativeFlipper$2
+ com.kin.ReactNativeFlipper$2$1
+com/kin/BuildConfig.java
+ com.kin.BuildConfig
+com/kin/MainActivity.java
+ com.kin.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
