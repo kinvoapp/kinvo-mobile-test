@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   Container,
@@ -17,8 +18,17 @@ import {
 import Favorite from '../../assets/heart.svg';
 import NotFavorite from '../../assets/heartoutline.svg';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
 
-export function StockCard() {
+interface Stock {
+  id: number;
+  name: string;
+  ticker: string;
+  minimumValue: number;
+  profitability: number;
+}
+
+export function StockCard({name, ticker, minimumValue, profitability}: Stock) {
   const [favoriteStock, setFavoriteStock] = useState(false);
   const isIncrease = true;
 
@@ -30,8 +40,8 @@ export function StockCard() {
     <Container>
       <StockTitleContainer>
         <Title>
-          <StockName>Magazine Luiza</StockName>
-          <StockTicker>MGLU3</StockTicker>
+          <StockName>{name}</StockName>
+          <StockTicker>{ticker}</StockTicker>
         </Title>
         <TouchableOpacity onPress={handleFavoriteButton}>
           {favoriteStock ? (
@@ -44,13 +54,15 @@ export function StockCard() {
       <StockInfo>
         <InfoContainer>
           <InfoText>Valor mínimo:</InfoText>
-          <ValueData>R$ 24,17</ValueData>
+          <ValueData>{currencyFormatToBRL(minimumValue)}</ValueData>
         </InfoContainer>
         <InfoContainer style={{marginTop: 15}}>
           <InfoText>Rentabilidade:</InfoText>
           <RentabilityDataContainer>
             {isIncrease ? <GreenArrow /> : <RedArrow />}
-            <RentabilityData increase={isIncrease}>-27%</RentabilityData>
+            <RentabilityData increase={isIncrease}>
+              {profitability}
+            </RentabilityData>
           </RentabilityDataContainer>
         </InfoContainer>
       </StockInfo>
