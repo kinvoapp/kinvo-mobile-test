@@ -74,7 +74,7 @@ export default function KinCardDefault({
     }
   };
   const renderRedemption = () => {
-    if (redemption || redemption == 0) {
+    if (redemption || redemption === 0) {
       return (
         <ContentBetween style={space}>
           <Label>Resgate:</Label>

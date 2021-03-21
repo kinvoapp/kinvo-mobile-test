@@ -1,10 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
+///components
 import KinButtonFilter from '../../components/button/button_filter';
 import KinCardDefault from '../../components/card/card_default';
 import KinDivider from '../../components/divider';
 import KinHeader from '../../components/header';
+import KinCenter from '../../components/center';
+import KinGroupError from '../../components/error';
+///apiservice
 import {fetchPensions} from '../../services/apiService';
+///utils
+import {getTagFund, sortByName} from '../../utils/utils';
+
+///styles and colors
 import Colors from '../../resources/colors';
 import {
   Container,
@@ -12,9 +20,6 @@ import {
   ContentMenuPension,
   divider,
 } from './styles';
-import KinCenter from '../../components/center';
-import KinGroupError from '../../components/error';
-import {getTagFund, sortByName} from '../../utils/utils';
 
 enum casesFilterType {
   TAX,
@@ -103,7 +108,6 @@ export default function PensionPage({navigation: {goBack}}): JSX.Element {
       );
     } else {
       const result = filter ? filter : data;
-      console.log(result.length, filter?.length, data.length);
       if (filter && filter?.length <= 0) {
         return (
           <KinGroupError subtitle="Nenhum resultado foi encontrado para os filtros selecionados." />

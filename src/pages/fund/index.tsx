@@ -1,14 +1,17 @@
 import React from 'react';
-import {useEffect} from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
+///components
 import KinCardDefault from '../../components/card/card_default';
 import KinCenter from '../../components/center';
 import KinGroupError from '../../components/error';
 import KinHeader from '../../components/header';
-import Colors from '../../resources/colors';
+///Apiservice
 import {fetchFunds} from '../../services/apiService';
+///utils
 import {getTagFund, sortByName} from '../../utils/utils';
+///color and style
+import Colors from '../../resources/colors';
 import {Container, ContentCardFund} from './styles';
 
 export default function FundPage({navigation: {goBack}}): JSX.Element {
