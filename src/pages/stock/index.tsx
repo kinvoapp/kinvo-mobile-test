@@ -47,7 +47,7 @@ export default function StockPage({navigation: {goBack}}): JSX.Element {
           <ActivityIndicator size="large" color={Colors.primary} />
         </KinCenter>
       );
-    } else if (!data || data.length <= 0) {
+    } else if (!data) {
       return (
         <KinCenter>
           <KinGroupError
@@ -55,6 +55,12 @@ export default function StockPage({navigation: {goBack}}): JSX.Element {
             subtitle="Não foi possível se conectar ao banco de fundos."
             onPress={() => setStocks()}
           />
+        </KinCenter>
+      );
+    } else if (data.length <= 0) {
+      return (
+        <KinCenter>
+          <KinGroupError subtitle="Lista vazia" />
         </KinCenter>
       );
     } else {
