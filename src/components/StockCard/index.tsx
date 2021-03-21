@@ -19,6 +19,7 @@ import Favorite from '../../assets/heart.svg';
 import NotFavorite from '../../assets/heartoutline.svg';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
+import {percentFormat} from '../../utils/percentFormat';
 
 interface Stock {
   id: number;
@@ -30,7 +31,7 @@ interface Stock {
 
 export function StockCard({name, ticker, minimumValue, profitability}: Stock) {
   const [favoriteStock, setFavoriteStock] = useState(false);
-  const isIncrease = true;
+  const isIncrease = profitability >= 0;
 
   function handleFavoriteButton() {
     setFavoriteStock(state => !state);
@@ -61,7 +62,7 @@ export function StockCard({name, ticker, minimumValue, profitability}: Stock) {
           <RentabilityDataContainer>
             {isIncrease ? <GreenArrow /> : <RedArrow />}
             <RentabilityData increase={isIncrease}>
-              {profitability}
+              {percentFormat(profitability)}
             </RentabilityData>
           </RentabilityDataContainer>
         </InfoContainer>

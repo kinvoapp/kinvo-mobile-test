@@ -16,9 +16,22 @@ interface Stock {
 export function Stocks() {
   const [stocks, setStocks] = useState<Stock[]>([]);
 
+  function sortStocks(inputStocks: Stock[]) {
+    return inputStocks.sort(function (a, b) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
   useEffect(() => {
     api.get('stocks').then(response => {
-      setStocks(response.data.data);
+      const sortedStocks = sortStocks(response.data.data);
+      setStocks(sortedStocks);
     });
   }, []);
 
