@@ -1,13 +1,16 @@
 import styled from 'styled-components/native';
-import GreenArrowSVG from '../../assets/greenarrow.svg';
-import RedArrowSVG from '../../assets/redarrow.svg';
+import ArrowSVG from '../../assets/arrow.svg';
 
-export const Container = styled.View`
+interface StatusProps {
+  isClosed: boolean;
+}
+
+export const Container = styled.View<StatusProps>`
   display: flex;
   flex-direction: column;
   width: 88%;
   height: 185px;
-  background-color: #fff;
+  background-color: ${props => (props.isClosed ? '#F7F8F8' : '#FFF')};
   align-items: center;
   justify-content: center;
   border-radius: 10px;
@@ -34,16 +37,17 @@ export const Title = styled.View`
   margin-top: 10px;
 `;
 
-export const FundName = styled.Text`
+export const FundName = styled.Text<StatusProps>`
   font-size: 16px;
   font-family: 'Montserrat-Bold';
-  color: #627179;
+  color: ${props => (props.isClosed ? 'rgba(98,113,121,0.5)' : '#627179')};
 `;
 
-export const FundType = styled.Text`
+export const FundType = styled.Text<StatusProps>`
   font-size: 12px;
   font-family: 'Montserrat-SemiBold';
-  color: #627179;
+  color: ${props => (props.isClosed ? 'rgba(98,113,121,0.5)' : '#627179')};
+
   margin-bottom: 16px;
 `;
 
@@ -85,21 +89,23 @@ export const RatingData = styled.View`
   align-items: center;
 `;
 
-export const InfoText = styled.Text`
+export const InfoText = styled.Text<StatusProps>`
   font-size: 10px;
   font-family: 'Montserrat-Medium';
-  color: #627179;
+  color: ${props => (props.isClosed ? 'rgba(98,113,121,0.5)' : '#627179')};
 `;
 
-export const ValueData = styled.Text`
+export const ValueData = styled.Text<StatusProps>`
   font-size: 12px;
   font-family: 'Montserrat-SemiBold';
-  color: #627179;
+  color: ${props => (props.isClosed ? 'rgba(98,113,121,0.5)' : '#627179')};
+
   margin-right: 5px;
 `;
 
 interface RentabilityDataProps {
-  increase: boolean;
+  isIncrease: boolean;
+  isClosed: boolean;
 }
 
 export const RentabilityDataContainer = styled.View`
@@ -113,16 +119,29 @@ export const RentabilityData = styled.Text<RentabilityDataProps>`
   font-size: 12px;
   font-family: 'Montserrat-SemiBold';
   margin-left: 5px;
-  color: ${props => (props.increase ? '#AED335' : '#E85D1F')};
+  color: ${props => {
+    if (!props.isClosed) {
+      return props.isIncrease ? '#AED335' : '#E85D1F';
+    } else {
+      return 'rgba(98, 113, 121, 0.5)';
+    }
+  }};
 `;
 
-export const RedArrow = styled(RedArrowSVG)`
-  height: 8.25px;
-  width: 8.25px;
-  transform: rotate(180deg);
-`;
+interface ArrowSVGProps {
+  isIncrease: boolean;
+  isClosed: boolean;
+}
 
-export const GreenArrow = styled(GreenArrowSVG)`
+export const Arrow = styled(ArrowSVG)<ArrowSVGProps>`
   height: 8.25px;
   width: 8.25px;
+  transform: ${props => (props.isIncrease ? null : 'rotate(180deg)')};
+  color: ${props => {
+    if (!props.isClosed) {
+      return props.isIncrease ? '#AED335' : '#E85D1F';
+    } else {
+      return 'rgba(98, 113, 121, 0.5)';
+    }
+  }};
 `;

@@ -14,33 +14,56 @@ import {
   ValueData,
   RentabilityData,
   RentabilityDataContainer,
-  RedArrow,
-  GreenArrow,
+  Arrow,
 } from './styles';
 
 import StarOutline from '../../assets/staroutline.svg';
 import Star from '../../assets/star.svg';
+import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
+import {percentFormat} from '../../utils/percentFormat';
 
-export function FundCard() {
-  const isIncrease = false;
-  const isNew = true;
+interface FundCardProps {
+  name: string;
+  type: string;
+  minimumValue: number;
+  rating: number;
+  profitability: number;
+  status: number;
+}
 
+export function FundCard({
+  name,
+  type,
+  minimumValue,
+  rating,
+  profitability,
+  status,
+}: FundCardProps) {
+  const isIncrease = profitability >= 0;
+  const isNew = status === 1;
+  const isClosed = status === 2;
+  const shortName = name.split(' ')[0] + ' ' + name.split(' ')[1];
   return (
-    <Container>
+    <Container isClosed={isClosed}>
       <FundTitleContainer>
         <Title>
-          <FundName>Alaska Black</FundName>
+          <FundName isClosed={isClosed}>{shortName}</FundName>
           {isNew && (
             <FundStatusContainer>
               <FundStatusText>Novo</FundStatusText>
             </FundStatusContainer>
           )}
+          {isClosed && (
+            <FundStatusContainer style={{backgroundColor: '#818181'}}>
+              <FundStatusText>Fechado</FundStatusText>
+            </FundStatusContainer>
+          )}
         </Title>
-        <FundType>MULTIMERCADOS</FundType>
+        <FundType isClosed={isClosed}>{type}</FundType>
       </FundTitleContainer>
       <FundInfo>
         <InfoContainer>
-          <InfoText>Classificação:</InfoText>
+          <InfoText isClosed={isClosed}>Classificação:</InfoText>
           <RatingData>
             <Star height={16} width={16} />
             <Star height={16} width={16} />
@@ -53,14 +76,18 @@ export function FundCard() {
           </RatingData>
         </InfoContainer>
         <InfoContainer>
-          <InfoText>Valor mínimo:</InfoText>
-          <ValueData>R$ 24,17</ValueData>
+          <InfoText isClosed={isClosed}>Valor mínimo:</InfoText>
+          <ValueData isClosed={isClosed}>
+            {currencyFormatToBRL(minimumValue)}
+          </ValueData>
         </InfoContainer>
         <InfoContainer>
-          <InfoText>Rentabilidade:</InfoText>
+          <InfoText isClosed={isClosed}>Rentabilidade:</InfoText>
           <RentabilityDataContainer>
-            {isIncrease ? <GreenArrow /> : <RedArrow />}
-            <RentabilityData increase={isIncrease}>-27%</RentabilityData>
+            <Arrow isClosed={isClosed} isIncrease={isIncrease} />
+            <RentabilityData isClosed={isClosed} isIncrease={isIncrease}>
+              {percentFormat(profitability)}
+            </RentabilityData>
           </RentabilityDataContainer>
         </InfoContainer>
       </FundInfo>

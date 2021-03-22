@@ -27,14 +27,29 @@ interface Stock {
   ticker: string;
   minimumValue: number;
   profitability: number;
+  isFavorite: Boolean;
+  sortFavorites: () => void;
+  setIsFavorite: (id: number) => void;
 }
 
-export function StockCard({name, ticker, minimumValue, profitability}: Stock) {
-  const [favoriteStock, setFavoriteStock] = useState(false);
+export function StockCard({
+  id,
+  name,
+  ticker,
+  minimumValue,
+  profitability,
+  isFavorite,
+  sortFavorites,
+  setIsFavorite,
+}: Stock) {
+  const [isFavoriteStock, setIsFavoriteStock] = useState(false);
   const isIncrease = profitability >= 0;
+  isFavorite = isFavoriteStock;
 
   function handleFavoriteButton() {
-    setFavoriteStock(state => !state);
+    setIsFavoriteStock(state => !state);
+    setIsFavorite(id);
+    sortFavorites();
   }
 
   return (
@@ -45,7 +60,7 @@ export function StockCard({name, ticker, minimumValue, profitability}: Stock) {
           <StockTicker>{ticker}</StockTicker>
         </Title>
         <TouchableOpacity onPress={handleFavoriteButton}>
-          {favoriteStock ? (
+          {isFavorite ? (
             <Favorite width={24} height={24} />
           ) : (
             <NotFavorite width={24} height={24} />
