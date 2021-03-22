@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   Container,
@@ -15,12 +16,13 @@ import {
   RentabilityData,
   RentabilityDataContainer,
   Arrow,
+  Star,
+  StarOutline,
 } from './styles';
 
-import StarOutline from '../../assets/staroutline.svg';
-import Star from '../../assets/star.svg';
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
 import {percentFormat} from '../../utils/percentFormat';
+import {StarsRating} from '../StarsRating';
 
 interface FundCardProps {
   name: string;
@@ -54,7 +56,8 @@ export function FundCard({
             </FundStatusContainer>
           )}
           {isClosed && (
-            <FundStatusContainer style={{backgroundColor: '#818181'}}>
+            <FundStatusContainer
+              style={{backgroundColor: '#818181', width: 75}}>
               <FundStatusText>Fechado</FundStatusText>
             </FundStatusContainer>
           )}
@@ -64,16 +67,7 @@ export function FundCard({
       <FundInfo>
         <InfoContainer>
           <InfoText isClosed={isClosed}>Classificação:</InfoText>
-          <RatingData>
-            <Star height={16} width={16} />
-            <Star height={16} width={16} />
-
-            <Star height={16} width={16} />
-
-            <Star height={16} width={16} />
-
-            <StarOutline height={16} width={16} />
-          </RatingData>
+          <StarsRating rating={rating} isClosed={isClosed} />
         </InfoContainer>
         <InfoContainer>
           <InfoText isClosed={isClosed}>Valor mínimo:</InfoText>

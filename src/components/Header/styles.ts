@@ -10,6 +10,7 @@ export const Container = styled.View`
   padding-left: 20px;
   border: 1px;
   border-color: #dae0e3;
+  background-color: #fff;
 `;
 
 export const HeaderText = styled.Text`

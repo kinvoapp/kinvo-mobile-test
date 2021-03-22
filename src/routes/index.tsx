@@ -16,7 +16,7 @@ export function AppRoutes() {
     <App.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {backgroundColor: '#FFF'},
+        cardStyle: {backgroundColor: '#ecf0f2'},
         animationTypeForReplace: 'push',
       }}>
       <App.Screen name="Dashboard" component={Dashboard} />
