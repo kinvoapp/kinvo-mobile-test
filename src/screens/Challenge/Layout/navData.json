@@ -1,0 +1,25 @@
+{
+  "navData": [
+    {
+      "status": 0,
+      "title": "Ações",
+      "description": "Nacionais",
+      "icon": "stocks",
+      "route": "Ações"
+    },
+    {
+      "status": 1,
+      "title": "Fundos",
+      "description": "De investimentos",
+      "icon": "funds",
+      "route": "Fundos"
+    },
+    {
+      "status": 0,
+      "title": "Previdências",
+      "description": "Privadas",
+      "icon": "pensions",
+      "route": "Previdências"
+    }
+  ]
+}
