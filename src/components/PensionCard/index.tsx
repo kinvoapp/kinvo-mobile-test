@@ -1,4 +1,5 @@
 import React from 'react';
+import {ProfitabilityArrow} from '../ProfitabilityArrow';
 import {
   Container,
   PensionTitleContainer,
@@ -12,8 +13,6 @@ import {
   ValueData,
   RentabilityData,
   RentabilityDataContainer,
-  RedArrow,
-  GreenArrow,
   InfoContainer,
 } from './styles';
 
@@ -50,7 +49,7 @@ export function PensionCard() {
         <InfoContainer style={{marginTop: 20}}>
           <InfoText>Rentabilidade:</InfoText>
           <RentabilityDataContainer>
-            {isIncrease ? <GreenArrow /> : <RedArrow />}
+            <ProfitabilityArrow isIncrease={isIncrease} />
             <RentabilityData increase={isIncrease}>-27,50%</RentabilityData>
           </RentabilityDataContainer>
         </InfoContainer>

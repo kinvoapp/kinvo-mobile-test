@@ -12,14 +12,13 @@ import {
   ValueData,
   RentabilityData,
   RentabilityDataContainer,
-  RedArrow,
-  GreenArrow,
 } from './styles';
 import Favorite from '../../assets/heart.svg';
 import NotFavorite from '../../assets/heartoutline.svg';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
 import {percentFormat} from '../../utils/percentFormat';
+import {ProfitabilityArrow} from '../ProfitabilityArrow';
 
 interface Stock {
   id: number;
@@ -75,7 +74,7 @@ export function StockCard({
         <InfoContainer style={{marginTop: 15}}>
           <InfoText>Rentabilidade:</InfoText>
           <RentabilityDataContainer>
-            {isIncrease ? <GreenArrow /> : <RedArrow />}
+            <ProfitabilityArrow isIncrease={isIncrease} />
             <RentabilityData increase={isIncrease}>
               {percentFormat(profitability)}
             </RentabilityData>

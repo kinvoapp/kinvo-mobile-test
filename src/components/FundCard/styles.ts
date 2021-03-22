@@ -129,8 +129,8 @@ export const RentabilityData = styled.Text<RentabilityDataProps>`
 `;
 
 interface ArrowSVGProps {
-  isIncrease: boolean;
-  isClosed: boolean;
+  isIncrease: Boolean;
+  isClosed: Boolean;
 }
 
 export const Arrow = styled(ArrowSVG)<ArrowSVGProps>`
