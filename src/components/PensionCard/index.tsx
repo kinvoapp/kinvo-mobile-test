@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
+import {formatShortName} from '../../utils/nameFormat';
 import {percentFormat} from '../../utils/percentFormat';
 import {ProfitabilityArrow} from '../ProfitabilityArrow';
 import {
@@ -26,7 +27,7 @@ interface Pension {
   minimumValue: number;
   redemptionTerm: number;
   profitability: number;
-  isNew?: Boolean;
+  isNew?: boolean;
 }
 
 export function PensionCard({
@@ -39,15 +40,14 @@ export function PensionCard({
   isNew,
 }: Pension) {
   const isIncrease = profitability > 0;
-  const isNewProp = isNew;
-  const shortName = name.split(' ')[0] + ' ' + name.split(' ')[1];
+  const shortName = formatShortName(name);
 
   return (
     <Container>
       <PensionTitleContainer>
         <Title>
           <PensionName>{shortName}</PensionName>
-          {isNewProp && (
+          {isNew && (
             <PensionStatusContainer>
               <PensionStatusText>Novo</PensionStatusText>
             </PensionStatusContainer>

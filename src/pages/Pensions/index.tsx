@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -16,14 +17,21 @@ interface Pension {
   redemptionTerm: number;
   profitability: number;
 }
+interface FilterProps {
+  taxFilter: boolean;
+  valueFilter: boolean;
+  redemptionFilter: boolean;
+}
 
 export function Pensions() {
   const [pensionsLoading, setPensionsLoading] = useState(true);
+  const [pensionFiltersOn, setPensionFiltersOn] = useState(false);
 
   const [pensions, setPensions] = useState<Pension[]>([]);
+  const [filteredPensions, setFilteredPensions] = useState<Pension[]>([]);
 
-  function sortPensions(inputStock: Pension[]) {
-    const sortedPensions = inputStock.sort(function (a, b) {
+  function sortPensions(inputPensions: Pension[]) {
+    const sortedPensions = inputPensions.sort(function (a, b) {
       if (a.name < b.name) {
         return -1;
       }
@@ -34,6 +42,40 @@ export function Pensions() {
     });
 
     return sortedPensions;
+  }
+
+  function handleFilterPensions({
+    valueFilter,
+    taxFilter,
+    redemptionFilter,
+  }: FilterProps) {
+    valueFilter || taxFilter || redemptionFilter
+      ? setPensionFiltersOn(true)
+      : setPensionFiltersOn(false);
+    setFilteredPensions([]);
+    console.log(valueFilter);
+    if (valueFilter) {
+      const minValuePensions = pensions.filter(
+        pension => pension.minimumValue === 100,
+      );
+      setFilteredPensions(oldValues => {
+        return [...new Set([...oldValues, ...minValuePensions])];
+      });
+    }
+    if (taxFilter) {
+      const noTaxesPensions = pensions.filter(pension => pension.tax === 0);
+      setFilteredPensions(oldValues => {
+        return [...new Set([...oldValues, ...noTaxesPensions])];
+      });
+    }
+    if (redemptionFilter) {
+      const redemptionPensions = pensions.filter(
+        pension => pension.redemptionTerm === 1,
+      );
+      setFilteredPensions(oldValues => {
+        return [...new Set([...oldValues, ...redemptionPensions])];
+      });
+    }
   }
 
   useEffect(() => {
@@ -49,7 +91,7 @@ export function Pensions() {
   return (
     <>
       <Header hasGoBackButton={true} title={'Previdências'} />
-      <PensionsFilter />
+      <PensionsFilter handleFilterPensions={handleFilterPensions} />
 
       <ScrollView>
         <Container>
@@ -61,9 +103,14 @@ export function Pensions() {
               style={{alignSelf: 'center', marginTop: 178}}
             />
           )}
-          {pensions.map(pension => (
-            <PensionCard key={pension.id} {...pension} />
-          ))}
+
+          {pensionFiltersOn
+            ? filteredPensions.map(pension => (
+                <PensionCard key={pension.id} {...pension} />
+              ))
+            : pensions.map(pension => (
+                <PensionCard key={pension.id} {...pension} />
+              ))}
         </Container>
       </ScrollView>
     </>

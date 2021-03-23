@@ -37,17 +37,15 @@ export function StockCard({
   ticker,
   minimumValue,
   profitability,
-  isFavorite,
   sortFavorites,
   setFavorite,
 }: Stock) {
   const [isFavoriteStock, setIsFavoriteStock] = useState(false);
-  const isIncrease = profitability >= 0;
-  isFavorite = isFavoriteStock;
+  const isIncrease = profitability > 0;
 
-  function handleFavoriteButton() {
+  async function handleFavoriteButton() {
     setIsFavoriteStock(state => !state);
-    setFavorite(id);
+    await setFavorite(id);
     sortFavorites();
   }
 
@@ -59,7 +57,7 @@ export function StockCard({
           <StockTicker>{ticker}</StockTicker>
         </Title>
         <TouchableOpacity onPress={handleFavoriteButton}>
-          {isFavorite ? (
+          {isFavoriteStock ? (
             <Favorite width={24} height={24} />
           ) : (
             <NotFavorite width={24} height={24} />

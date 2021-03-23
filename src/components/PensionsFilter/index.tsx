@@ -1,21 +1,55 @@
 import React, {useState} from 'react';
 import {Container, ButtonContainer, ButtonText} from './styles';
 
-export function PensionsFilter() {
-  const [taxFilter, setTaxFilter] = useState(false);
-  const [priceFilter, setPriceFilter] = useState(false);
-  const [liquidityFilter, setLiquidityFilter] = useState(false);
+interface FilterProps {
+  taxFilter: boolean;
+  valueFilter: boolean;
+  redemptionFilter: boolean;
+}
+interface PensionsFilterProps {
+  handleFilterPensions: ({
+    valueFilter,
+    taxFilter,
+    redemptionFilter,
+  }: FilterProps) => void;
+}
 
-  function handleTaxButton() {
-    setTaxFilter(tax => !tax);
+export function PensionsFilter({handleFilterPensions}: PensionsFilterProps) {
+  const [taxFilter, setTaxFilter] = useState(false);
+  const [valueFilter, setValueFilter] = useState(false);
+  const [redemptionFilter, setRedemptionFilter] = useState(false);
+
+  async function handleTaxButton() {
+    await setTaxFilter(tax => {
+      handleFilterPensions({
+        redemptionFilter,
+        taxFilter: !tax,
+        valueFilter,
+      });
+      return !tax;
+    });
   }
 
   function handlePriceButton() {
-    setPriceFilter(price => !price);
+    setValueFilter(price => {
+      handleFilterPensions({
+        redemptionFilter,
+        taxFilter,
+        valueFilter: !price,
+      });
+      return !price;
+    });
   }
 
   function handleLiquidityButton() {
-    setLiquidityFilter(liquidity => !liquidity);
+    setRedemptionFilter(redemption => {
+      handleFilterPensions({
+        redemptionFilter: !redemption,
+        taxFilter,
+        valueFilter,
+      });
+      return !redemption;
+    });
   }
 
   return (
@@ -29,16 +63,16 @@ export function PensionsFilter() {
 
       <ButtonContainer
         activeOpacity={0.8}
-        isActive={priceFilter}
+        isActive={valueFilter}
         onPress={handlePriceButton}>
-        <ButtonText isActive={priceFilter}>R$ 100,00</ButtonText>
+        <ButtonText isActive={valueFilter}>R$ 100,00</ButtonText>
       </ButtonContainer>
 
       <ButtonContainer
         activeOpacity={0.8}
-        isActive={liquidityFilter}
+        isActive={redemptionFilter}
         onPress={handleLiquidityButton}>
-        <ButtonText isActive={liquidityFilter}>D+1</ButtonText>
+        <ButtonText isActive={redemptionFilter}>D+1</ButtonText>
       </ButtonContainer>
     </Container>
   );

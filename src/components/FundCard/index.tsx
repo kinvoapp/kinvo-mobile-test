@@ -20,6 +20,7 @@ import {
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
 import {percentFormat} from '../../utils/percentFormat';
 import {StarsRating} from '../StarsRating';
+import {formatShortName} from '../../utils/nameFormat';
 
 interface FundCardProps {
   name: string;
@@ -38,10 +39,11 @@ export function FundCard({
   profitability,
   status,
 }: FundCardProps) {
-  const isIncrease = profitability >= 0;
+  const isIncrease = profitability > 0;
   const isNew = status === 1;
   const isClosed = status === 2;
-  const shortName = name.split(' ')[0] + ' ' + name.split(' ')[1];
+  const shortName = formatShortName(name);
+
   return (
     <Container isClosed={isClosed}>
       <FundTitleContainer>

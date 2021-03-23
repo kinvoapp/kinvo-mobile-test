@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -35,18 +36,22 @@ export function Stocks() {
 
   function setFavorite(id: number) {
     const index = stocks.findIndex(stock => stock.id === id);
-    console.log(index);
+    setStocks(oldStocks => {
+      oldStocks[index].isFavorite = !oldStocks[index].isFavorite;
+      return oldStocks;
+    });
   }
 
   function sortFavorites() {
-    // stocks.forEach(stock => console.log(stock.isFavorite));
+    const favoriteStocks = stocks.filter(stock => stock.isFavorite);
+    const notFavoriteStocks = stocks.filter(stock => !stock.isFavorite);
+    const sortedNotFavoriteStocks = sortStocks(notFavoriteStocks);
+    setStocks(favoriteStocks.concat(sortedNotFavoriteStocks));
   }
-
   useEffect(() => {
     async function getStocksFromAPI() {
-      const response = await api.get('stocks');
-      const sortedStocks = sortStocks(response.data.data);
-
+      const {data} = await api.get('stocks');
+      const sortedStocks = sortStocks(data.data);
       setStocks(sortedStocks);
       setStocksLoading(false);
     }
