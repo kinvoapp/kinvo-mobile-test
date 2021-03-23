@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {ActivityIndicator} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Header} from '../../components/Header';
 import {StockCard} from '../../components/StockCard';
@@ -11,12 +12,12 @@ interface Stock {
   ticker: string;
   minimumValue: number;
   profitability: number;
-  isFavorite: Boolean;
+  isFavorite: boolean;
 }
 
 export function Stocks() {
+  const [stocksLoading, setStocksLoading] = useState(true);
   const [stocks, setStocks] = useState<Stock[]>([]);
-  const [favoriteStocks, setFavoriteStocks] = useState<Stock[]>([]);
 
   function sortStocks(inputStock: Stock[]) {
     const sortedStocks = inputStock.sort(function (a, b) {
@@ -32,33 +33,22 @@ export function Stocks() {
     return sortedStocks;
   }
 
-  function setIsFavorite(id: number) {
-    let indexOfFavorite = stocks.findIndex(i => i.id === id);
-    const favoritedStock = stocks[indexOfFavorite];
-    // setStocks(() => {});
-    setFavoriteStocks(favStocks => {
-      return [...favStocks, favoritedStock];
-    });
-    console.log(favoriteStocks);
+  function setFavorite(id: number) {
+    const index = stocks.findIndex(stock => stock.id === id);
+    console.log(index);
   }
 
   function sortFavorites() {
-    let sortedStocks = stocks;
-
-    sortedStocks.forEach(function (item, i) {
-      if (item.isFavorite) {
-        sortedStocks.splice(i, 1);
-        sortedStocks.unshift(item);
-      }
-    });
-    setStocks(sortedStocks);
+    // stocks.forEach(stock => console.log(stock.isFavorite));
   }
 
   useEffect(() => {
     async function getStocksFromAPI() {
       const response = await api.get('stocks');
       const sortedStocks = sortStocks(response.data.data);
+
       setStocks(sortedStocks);
+      setStocksLoading(false);
     }
     getStocksFromAPI();
   }, []);
@@ -68,12 +58,21 @@ export function Stocks() {
       <Header hasGoBackButton={true} title={'Ações'} />
       <ScrollView>
         <Container>
+          {stocksLoading && (
+            <ActivityIndicator
+              animating={stocksLoading}
+              size="large"
+              color="#6F4DBF"
+              style={{alignSelf: 'center', marginTop: 250}}
+            />
+          )}
+
           {stocks.map(stock => (
             <StockCard
               key={stock.id}
               {...stock}
               sortFavorites={sortFavorites}
-              setIsFavorite={setIsFavorite}
+              setFavorite={setFavorite}
             />
           ))}
         </Container>

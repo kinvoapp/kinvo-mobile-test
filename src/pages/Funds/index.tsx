@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {FundCard} from '../../components/FundCard';
 import {Header} from '../../components/Header';
+import {ActivityIndicator} from 'react-native';
 import {api} from '../../services/api';
 import {Container} from './styles';
 
@@ -17,6 +18,7 @@ interface Fund {
 
 export function Funds() {
   const [funds, setFunds] = useState<Fund[]>([]);
+  const [fundsLoading, setFundsLoading] = useState(true);
 
   function sortFunds(inputStock: Fund[]) {
     const sortedFunds = inputStock.sort(function (a, b) {
@@ -37,6 +39,7 @@ export function Funds() {
       const response = await api.get('funds');
       const sortedFunds = sortFunds(response.data.data);
       setFunds(sortedFunds);
+      setFundsLoading(false);
     }
     getStocksFromAPI();
   }, []);
@@ -46,6 +49,14 @@ export function Funds() {
       <Header hasGoBackButton={true} title={'Fundos'} />
       <ScrollView>
         <Container>
+          {fundsLoading && (
+            <ActivityIndicator
+              animating={fundsLoading}
+              size="large"
+              color="#6F4DBF"
+              style={{alignSelf: 'center', marginTop: 250}}
+            />
+          )}
           {funds.map(fund => (
             <FundCard key={fund.id} {...fund} />
           ))}

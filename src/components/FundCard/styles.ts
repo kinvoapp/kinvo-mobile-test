@@ -83,12 +83,6 @@ export const InfoContainer = styled.View`
   margin-top: 15px;
 `;
 
-export const RatingData = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
 export const InfoText = styled.Text<StatusProps>`
   font-size: 10px;
   font-family: 'Montserrat-Medium';
@@ -108,14 +102,14 @@ interface RentabilityDataProps {
   isClosed: boolean;
 }
 
-export const RentabilityDataContainer = styled.View`
+export const ProfitabilityDataContainer = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 5px;
 `;
 
-export const RentabilityData = styled.Text<RentabilityDataProps>`
+export const ProfitabilityData = styled.Text<RentabilityDataProps>`
   font-size: 12px;
   font-family: 'Montserrat-SemiBold';
   margin-left: 5px;
@@ -133,7 +127,7 @@ interface ArrowSVGProps {
   isClosed: Boolean;
 }
 
-export const Arrow = styled(ArrowSVG)<ArrowSVGProps>`
+export const FundsProfitabilityArrow = styled(ArrowSVG)<ArrowSVGProps>`
   height: 8.25px;
   width: 8.25px;
   transform: ${props => (props.isIncrease ? null : 'rotate(180deg)')};

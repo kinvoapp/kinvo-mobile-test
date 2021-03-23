@@ -26,9 +26,9 @@ interface Stock {
   ticker: string;
   minimumValue: number;
   profitability: number;
-  isFavorite: Boolean;
+  isFavorite: boolean;
   sortFavorites: () => void;
-  setIsFavorite: (id: number) => void;
+  setFavorite: (id: number) => void;
 }
 
 export function StockCard({
@@ -39,7 +39,7 @@ export function StockCard({
   profitability,
   isFavorite,
   sortFavorites,
-  setIsFavorite,
+  setFavorite,
 }: Stock) {
   const [isFavoriteStock, setIsFavoriteStock] = useState(false);
   const isIncrease = profitability >= 0;
@@ -47,7 +47,7 @@ export function StockCard({
 
   function handleFavoriteButton() {
     setIsFavoriteStock(state => !state);
-    setIsFavorite(id);
+    setFavorite(id);
     sortFavorites();
   }
 

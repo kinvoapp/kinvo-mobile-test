@@ -1,4 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
+import {percentFormat} from '../../utils/percentFormat';
 import {ProfitabilityArrow} from '../ProfitabilityArrow';
 import {
   Container,
@@ -16,41 +19,62 @@ import {
   InfoContainer,
 } from './styles';
 
-export function PensionCard() {
-  const isIncrease = false;
-  const isNew = true;
+interface Pension {
+  name: string;
+  type: string;
+  tax: number;
+  minimumValue: number;
+  redemptionTerm: number;
+  profitability: number;
+  isNew?: Boolean;
+}
+
+export function PensionCard({
+  name,
+  type,
+  tax,
+  minimumValue,
+  profitability,
+  redemptionTerm,
+  isNew,
+}: Pension) {
+  const isIncrease = profitability > 0;
+  const isNewProp = isNew;
+  const shortName = name.split(' ')[0] + ' ' + name.split(' ')[1];
 
   return (
     <Container>
       <PensionTitleContainer>
         <Title>
-          <PensionName>Alaska Prev</PensionName>
-          {isNew && (
+          <PensionName>{shortName}</PensionName>
+          {isNewProp && (
             <PensionStatusContainer>
               <PensionStatusText>Novo</PensionStatusText>
             </PensionStatusContainer>
           )}
         </Title>
-        <PensionType>MULTIMERCADOS</PensionType>
+        <PensionType>{type}</PensionType>
       </PensionTitleContainer>
       <PensionInfo>
         <InfoContainer style={{marginTop: 13}}>
           <InfoText>Valor mínimo:</InfoText>
-          <ValueData>R$ 1000,00</ValueData>
+          <ValueData>{currencyFormatToBRL(minimumValue)}</ValueData>
         </InfoContainer>
         <InfoContainer style={{marginTop: 18}}>
           <InfoText>Taxa:</InfoText>
-          <ValueData>2,00%</ValueData>
+          <ValueData>{percentFormat(tax)}</ValueData>
         </InfoContainer>
         <InfoContainer style={{marginTop: 13}}>
           <InfoText>Resgate:</InfoText>
-          <ValueData>D+ 10</ValueData>
+          <ValueData>{`D+ ${redemptionTerm}`}</ValueData>
         </InfoContainer>
         <InfoContainer style={{marginTop: 20}}>
           <InfoText>Rentabilidade:</InfoText>
           <RentabilityDataContainer>
             <ProfitabilityArrow isIncrease={isIncrease} />
-            <RentabilityData increase={isIncrease}>-27,50%</RentabilityData>
+            <RentabilityData increase={isIncrease}>
+              {percentFormat(profitability)}
+            </RentabilityData>
           </RentabilityDataContainer>
         </InfoContainer>
       </PensionInfo>

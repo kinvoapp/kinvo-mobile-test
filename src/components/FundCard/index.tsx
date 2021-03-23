@@ -10,14 +10,11 @@ import {
   FundStatusText,
   FundInfo,
   InfoContainer,
-  RatingData,
   InfoText,
   ValueData,
-  RentabilityData,
-  RentabilityDataContainer,
-  Arrow,
-  Star,
-  StarOutline,
+  ProfitabilityData,
+  ProfitabilityDataContainer,
+  FundsProfitabilityArrow,
 } from './styles';
 
 import {currencyFormatToBRL} from '../../utils/currencyFormatToBRL';
@@ -77,12 +74,15 @@ export function FundCard({
         </InfoContainer>
         <InfoContainer>
           <InfoText isClosed={isClosed}>Rentabilidade:</InfoText>
-          <RentabilityDataContainer>
-            <Arrow isClosed={isClosed} isIncrease={isIncrease} />
-            <RentabilityData isClosed={isClosed} isIncrease={isIncrease}>
+          <ProfitabilityDataContainer>
+            <FundsProfitabilityArrow
+              isClosed={isClosed}
+              isIncrease={isIncrease}
+            />
+            <ProfitabilityData isClosed={isClosed} isIncrease={isIncrease}>
               {percentFormat(profitability)}
-            </RentabilityData>
-          </RentabilityDataContainer>
+            </ProfitabilityData>
+          </ProfitabilityDataContainer>
         </InfoContainer>
       </FundInfo>
     </Container>
