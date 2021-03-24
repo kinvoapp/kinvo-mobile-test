@@ -10,9 +10,10 @@
 
 ## Preview
 
- <img src=".github/app_preview.jpg" />
- 
- 
+<p align="center">
+  <img src=".github/appGif.gif" width=25% height=25%/>
+</p
+
 ## Installing / Getting started
 <a href="https://reactnative.dev/docs/running-on-device"> Guide for testing the app on device</a>
 <a href="https://reactnative.dev/docs/running-on-simulator-ios"> Guide for testing the app on IOS simulator</a>
@@ -30,8 +31,6 @@ yarn android --variant=release
 * <a href="https://reactnavigation.org/">React Navigation 🔧</a>
 * <a href="https://styled-components.com/">Styled-Components ✨</a>
 * <a href="https://www.typescriptlang.org/">ESLint ✨</a>
-
-## Prerequisites
 
 ## Setting up Dev
 ```shell
