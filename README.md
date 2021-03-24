@@ -11,14 +11,16 @@
 ## Preview
 
 <p align="center">
-  <img src=".github/appGif.gif" width=25% height=25%/>
-</p
+  <img src=".github/appGif.gif" width=35% height=35%/>
+</p>
+  
+  
 
 ## Installing / Getting started
-<a href="https://reactnative.dev/docs/running-on-device"> Guide for testing the app on device</a>
-<a href="https://reactnative.dev/docs/running-on-simulator-ios"> Guide for testing the app on IOS simulator</a>
+* <a href="https://reactnative.dev/docs/running-on-device"> Guide for testing the app on device</a>
+* <a href="https://reactnative.dev/docs/running-on-simulator-ios"> Guide for testing the app on IOS simulator</a>
 
-Command to test the app with android emulator 
+* Command to test the app with android emulator 
 ```shell
 yarn android --variant=release
 ```
