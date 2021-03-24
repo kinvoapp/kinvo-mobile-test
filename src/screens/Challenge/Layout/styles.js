@@ -4,5 +4,6 @@ import { fonts, colors } from "../../../styles";
 export const Container = styled.ScrollView`
   ${() => css`
     padding: 20px;
+    background-color: ${colors.secondaryGray};
   `}
 `;

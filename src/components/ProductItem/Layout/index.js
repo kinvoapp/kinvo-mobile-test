@@ -1,7 +1,7 @@
 import React from "react";
 import RatingStars from "../../RatingStars";
-import UpArrowIcon from "../../../../assets/images/icons/upArrowIcon.svg";
-import DownArrowIcon from "../../../../assets/images/icons/downArrowIcon.svg";
+import FavoriteStock from "../../FavoriteStock";
+import ProfitabilityArrows from "../../ProfitabilityArrows";
 import text from "./text.json";
 import Notification from "../../Notification";
 import * as S from "./styles";
@@ -16,28 +16,41 @@ export default function ProductItem({
   redemptionTerm,
   profitability,
   status,
+  isFavorited,
+  favoriteStock,
+  id,
 }) {
   return (
-    <S.Container>
+    <S.Container status={status}>
       <S.Header>
         <S.ProductHeader>
-          <S.ProductTitle>{title}</S.ProductTitle>
-          <S.ProductSubtitle>{subtitle}</S.ProductSubtitle>
+          <S.ProductTitle status={status}>{title}</S.ProductTitle>
+          <S.ProductSubtitle status={status}>{subtitle}</S.ProductSubtitle>
         </S.ProductHeader>
         <S.InfoContainer>
-          {isStocks ? null : <Notification status={status} />}
+          {isStocks ? (
+            <FavoriteStock
+              isFavorited={isFavorited}
+              id={id}
+              favoriteStock={favoriteStock}
+            />
+          ) : (
+            <Notification status={status} />
+          )}
         </S.InfoContainer>
       </S.Header>
       {rating != undefined ? (
         <S.ProductTextContainer>
-          <S.ProductKeyName>{text.keyName1}</S.ProductKeyName>
-          <RatingStars rating={rating} />
+          <S.ProductKeyName status={status}>{text.keyName1}</S.ProductKeyName>
+          <RatingStars status={status} rating={rating} />
         </S.ProductTextContainer>
       ) : null}
       {minimumValue != undefined ? (
         <S.ProductTextContainer>
-          <S.ProductKeyName>{text.keyName2}</S.ProductKeyName>
-          <S.ProductKeyValue>{`R$ ${minimumValue
+          <S.ProductKeyName status={status}>{text.keyName2}</S.ProductKeyName>
+          <S.ProductKeyValue
+            status={status}
+          >{`R$ ${minimumValue
             .toString()
             .replace(".", ",")}`}</S.ProductKeyValue>
         </S.ProductTextContainer>
@@ -58,9 +71,16 @@ export default function ProductItem({
       ) : null}
       {profitability != undefined ? (
         <S.ProductTextContainer>
-          <S.ProductKeyName>{text.keyName5}</S.ProductKeyName>
+          <S.ProductKeyName status={status}>{text.keyName5}</S.ProductKeyName>
           <S.ProductKeyValueContainer>
-            <S.ProductKeyValueProfitability profitability={profitability}>
+            <ProfitabilityArrows
+              status={status}
+              profitability={profitability}
+            />
+            <S.ProductKeyValueProfitability
+              status={status}
+              profitability={profitability}
+            >
               {`${profitability.toString().replace(".", ",")}%`}
             </S.ProductKeyValueProfitability>
           </S.ProductKeyValueContainer>

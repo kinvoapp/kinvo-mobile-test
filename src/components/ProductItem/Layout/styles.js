@@ -2,12 +2,15 @@ import styled, { css } from "styled-components";
 import { fonts, colors } from "../../../styles";
 
 export const Container = styled.View`
-  ${() => css`
+  ${({ status }) => css`
     display: flex;
-    background-color: ${colors.white};
+    background-color: ${
+      status == 2 ? "rgba(247, 248, 248, 0.5)" : colors.white
+    };
+    border: 1px;
+    border-color: ${colors.primaryGray}
     border-radius: 8px;
-    elevation: 1;
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 20px;
   `}
 `;
@@ -31,18 +34,20 @@ export const ProductHeader = styled.View`
 `;
 
 export const ProductTitle = styled.Text`
-  ${() => css`
+  ${({ status }) => css`
     font-family: ${fonts.bold};
     font-size: 16px;
     color: ${colors.tertiaryGray};
+    opacity: ${status == 2 ? 0.5 : 1};
   `}
 `;
 
 export const ProductSubtitle = styled.Text`
-  ${() => css`
+  ${({ status }) => css`
     font-family: ${fonts.semiBold};
     font-size: 12px;
     color: ${colors.tertiaryGray};
+    opacity: ${status == 2 ? 0.5 : 1};
   `}
 `;
 
@@ -63,10 +68,11 @@ export const ProductTextContainer = styled.View`
 `;
 
 export const ProductKeyName = styled.Text`
-  ${() => css`
+  ${({ status }) => css`
     font-family: ${fonts.medium};
     font-size: 10px;
     color: ${colors.tertiaryGray};
+    opacity: ${status == 2 ? 0.5 : 1};
   `}
 `;
 
@@ -74,14 +80,16 @@ export const ProductKeyValueContainer = styled.View`
   ${() => css`
     display: flex;
     flex-direction: row;
+    align-items: center;
   `}
 `;
 
 export const ProductKeyValue = styled.Text`
-  ${() => css`
+  ${({ status }) => css`
     font-family: ${fonts.semiBold};
     font-size: 12px;
     color: ${colors.tertiaryGray};
+    opacity: ${status == 2 ? 0.5 : 1};
   `}
 `;
 
@@ -99,9 +107,12 @@ const handleProfitabilityColor = (profitability) => {
 };
 
 export const ProductKeyValueProfitability = styled.Text`
-  ${({ profitability }) => css`
+  ${({ profitability, status }) => css`
     font-family: ${fonts.semiBold};
     font-size: 12px;
-    color: ${handleProfitabilityColor(profitability)};
+    color: ${status == 2
+      ? colors.tertiaryGray
+      : handleProfitabilityColor(profitability)};
+    opacity: ${status == 2 ? 0.5 : 1};
   `}
 `;

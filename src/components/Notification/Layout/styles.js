@@ -26,7 +26,7 @@ export const NotificationContainer = styled.View`
 export const Text = styled.Text`
   ${() => css`
     font-family: ${fonts.medium};
-    font-size: 9px;
+    font-size: 10px;
     color: ${colors.white};
   `}
 `;
