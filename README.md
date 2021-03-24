@@ -1,5 +1,4 @@
-
-# React Native Code Challenge
+# Teste
 
 ## Instruções:
 
@@ -25,8 +24,8 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
 - A lista de "ações" deve ser carregada através de uma chamada a api.
   - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
 - A lista de "ações" deve obedecer a seguinte prioridade:
-   - Favoritadas deve aparecer primeiro
-   - Ordem alfabética
+  - Favoritadas deve aparecer primeiro
+  - Ordem alfabética
 - O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
 - A lista de "ações" inicia com todos as "ações" desfavoritadas.
 
@@ -49,9 +48,9 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
   - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
 - A lista de "previdências" deve estar em ordem alfabética.
 - A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-   - "SEM TAXA": inclui as previdências com taxa igual a zero.
-   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-   - "D+1": inclui as previdências com resgate igual a um.
+  - "SEM TAXA": inclui as previdências com taxa igual a zero.
+  - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
+  - "D+1": inclui as previdências com resgate igual a um.
 
 ### Pré-requisitos:
 
