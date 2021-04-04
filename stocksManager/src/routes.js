@@ -20,19 +20,19 @@ const NAVIGATIONOPTIONS = {
 export const Main = createStackNavigator({
     Dashboard: {
       screen: Dashboard,
-      navigationOptions: NAVIGATIONOPTIONS
+      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Desafio'}
     },
     Stocks: {
       screen: Stocks,
-      navigationOptions: NAVIGATIONOPTIONS
+      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Ações'}
     },
     Funds: {
       screen: Funds,
-      navigationOptions: NAVIGATIONOPTIONS
+      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Fundos'}
     },
     Previdences: {
       screen: Previdences,
-      navigationOptions: NAVIGATIONOPTIONS
+      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Previdência'}
     },
 });
 

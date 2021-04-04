@@ -3,7 +3,8 @@ export default {
     regular: '#999',
     dark: '#627179',
     gray: "#707B811A",
-    danger: '#e37a7a',
+    danger: '#E85D1F',
+    success: '#AED335',
 
     primary: '#ECF0F2',
     primaryDarken: '#DAE0E3',
@@ -12,7 +13,7 @@ export default {
     lighBlue: '#40C5D6',
 
     transparent: 'transparent',
-    darkTransparent: 'rgba(0, 0, 0, 0.6)',
-    lightTransparent: 'rgba(255, 255, 255, 0.6)',
+    lightTransparent: '#F7F8F8',
+    gold: '#F8C22E'
 
 }

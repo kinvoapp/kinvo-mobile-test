@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 
 import { Text, Image, SafeAreaView, View, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import NavigationService from '../services/navigationService';
 import Variables from '../styles';
 
 const FrontCard = (props) => {
-    
-    openSection = (category) => {
-        NavigationService.navigate(category);
-    } 
 
     return (
-        <TouchableOpacity onPress={() => this.openSection(props.category.route)} style={styles.card}>
+        <TouchableOpacity onPress={() => NavigationService.navigate(props.category.route)} style={styles.card}>
             <View style={styles.cardDisplayContainer}>
                 <View style={styles.iconContainer}>
                     <Image resizeMode='contain' source={props.category.imageUrl} style={styles.icon} />                
@@ -38,7 +32,7 @@ export default FrontCard;
 
 const styles = StyleSheet.create({
     card:{
-        marginTop: 10,
+        marginTop: 20,
         marginHorizontal: 25,
         paddingVertical: 32,
         paddingHorizontal: 20,
