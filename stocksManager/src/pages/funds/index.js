@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {View, Text, FlatList} from 'react-native';
 import FundsCard from '../../components/fundsCard.js'
-
+import ApiError from '../../components/apiError';
+import LoadingIndicator from '../../components/loadingIndicator';
 
 //redux things
 import {connect} from 'react-redux';
@@ -11,22 +12,28 @@ import { bindActionCreators } from 'redux';
 const Funds = (props) => {
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(false);
+  const [apiCall, setApiCall] = useState(false);
 
   useEffect(() => {
     if(props.funds.length == 0){
-      //getStocks();
       setLoading(true)
       props.getFunds()
           .then(() => {
             setLoading(false)
             console.log(props);
+            setFetchError(false);
+
+            if(props.funds.length == 0){
+              setApiCall(!apiCall);
+              setLoading(false)
+            }
           })
           .catch(() => {
               setLoading(false)
               setFetchError(true)
           })
     }
-  },[props.funds.length]);
+  },[apiCall]);
 
   const renderItems = ({item, index}) => {
     return (
@@ -37,6 +44,14 @@ const Funds = (props) => {
 
   return (
     <View>
+        {fetchError == true &&
+          <ApiError setApiCall={() => setApiCall(!apiCall)} />
+        }
+        
+        {!fetchError && loading &&
+          <LoadingIndicator/>
+        }
+        {!fetchError && !loading &&
         <FlatList 
             data={props.funds}
             keyExtractor={(item, index) => index + ""}
@@ -45,7 +60,8 @@ const Funds = (props) => {
             initialNumToRender={3}
             refreshing={loading}
             //onRefresh={e => getStocks()}
-            horizontal={false}/>   
+            horizontal={false}/>
+        }   
     </View>
   );
 }

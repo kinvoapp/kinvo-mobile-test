@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import StockCard from '../../components/stockCard.js'
-
+import ApiError from '../../components/apiError';
+import LoadingIndicator from '../../components/loadingIndicator';
 
 //redux things
 import {connect} from 'react-redux';
@@ -13,6 +14,7 @@ const Stocks = (props) => {
   const [fetchError, setFetchError] = useState(false);
   const [stocks, setStocks] = useState([]);
   const [stocksIdToFavorite, setStocksIdToFavorite] = useState(0);
+  const [apiCall, setApiCall] = useState(false);
 
   useEffect(() => {
     if(stocks.length == 0){
@@ -20,17 +22,21 @@ const Stocks = (props) => {
       setLoading(true)
       props.getStocks()
           .then(() => {
-            setLoading(false)
-            console.log(props);
             setStocks(props.stocks)
             console.log(stocks);
+            setFetchError(false);
+
+            if(stocks.length == 0){
+              setApiCall(!apiCall);
+              setLoading(false);
+            }
           })
           .catch(() => {
-              setLoading(false)
-              setFetchError(true)
+              setLoading(false);
+              setFetchError(true);
           })
     }
-  },[stocks.length]);
+  },[apiCall]);
 
   useEffect(() => {
     if(props.stocks.length > 0 && stocksIdToFavorite != 0){
@@ -48,15 +54,23 @@ const Stocks = (props) => {
 
   return (
     <View>
+        {fetchError &&
+          <ApiError setApiCall={() => setApiCall(!apiCall)} />
+        }
+
+        {!fetchError && loading &&
+          <LoadingIndicator/>
+        }
+
+        {!fetchError && !loading &&
         <FlatList 
             data={props.stocks}
             keyExtractor={(item, index) => index + ""}
             renderItem={renderItems}
             inverted={false}
             initialNumToRender={3}
-            refreshing={loading}
-            onRefresh={e => getStocks()}
-            horizontal={false}/>   
+            horizontal={false}/>
+        }   
     </View>
   );
 }

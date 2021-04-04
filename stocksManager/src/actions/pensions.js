@@ -2,18 +2,18 @@ import api from '../services/api';
 import deviceStorage from '../services/deviceStorage';
 import apiUtils from '../services/apiUtils';
 
-export const getStocks = () =>{
+export const getPensions = () =>{
 
     return async (dispatch) => {
         return api({
             method: 'get',
-            url: "stocks",
+            url: "pension",
             headers: {
                 "Accept": "application/json"
             },
             })  
             .then((response) => {
-                dispatch(getStocksSuccess(response.data.data));
+                dispatch(getPensionsSuccess(response.data.data));
             })
             .catch((error) => {
                 // Handle returned errors here
@@ -24,28 +24,11 @@ export const getStocks = () =>{
 }
 
 
-export const getStocksSuccess = (stocks) => {    
+export const getPensionsSuccess = (pensions) => {    
     return {
-        type: 'GET_STOCKS',
+        type: 'GET_PENSIONS',
         payload:{
-            stocks
-        }
-    }
-}
-
-export const updateFavorites = (stockId) =>{
-
-    return async (dispatch) => {
-        return dispatch(updateStockFavorite(stockId));
-    }
-}
-
-export const updateStockFavorite = (stockId) => {
-    
-    return {
-        type: 'UPDATE_STOCK_FAVORITE',
-        payload:{
-            stockId
+            pensions
         }
     }
 }

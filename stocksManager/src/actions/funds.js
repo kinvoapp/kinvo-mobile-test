@@ -17,7 +17,7 @@ export const getFunds = () =>{
             })
             .catch((error) => {
                 // Handle returned errors here
-                apiUtils.handleError(error);
+                //apiUtils.handleError(error);
                 dispatch();
             });
     }

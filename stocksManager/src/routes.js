@@ -8,7 +8,7 @@ import SharedStyles from './styles/shared';
 import Dashboard from './pages/dashboard';
 import Stocks from './pages/stocks';
 import Funds from './pages/funds';
-import Previdences from './pages/previdences';
+import Pensions from './pages/pensions';
 
 const NAVIGATIONOPTIONS = {
   headerStyle: SharedStyles.stackHeader,
@@ -30,9 +30,9 @@ export const Main = createStackNavigator({
       screen: Funds,
       navigationOptions: {...NAVIGATIONOPTIONS, title: 'Fundos'}
     },
-    Previdences: {
-      screen: Previdences,
-      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Previdência'}
+    Pensions: {
+      screen: Pensions,
+      navigationOptions: {...NAVIGATIONOPTIONS, title: 'Previdências'}
     },
 });
 

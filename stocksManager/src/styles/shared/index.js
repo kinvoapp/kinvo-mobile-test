@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     stackCard: {
         backgroundColor: Variables.colors.primary
-    }
+    },
 });
 
 export default styles;
