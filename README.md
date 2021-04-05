@@ -1,84 +1,55 @@
+<img src="./images/logo.sample.png" alt="Logo of the project" align="right">
 
-# React Native Code Challenge
+# Kinvo test Project - Kinvo Kinho &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+> A sample project with react-native and hooks, built for android phones. It showcases Franklin Silva's expertize on hybrid development techniques.
 
-## Instruções:
 
-1. Faça um fork deste repositório;
-2. Siga as especificações;
-3. Implemente o layout disponível;
-4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+## Installing / Getting started
 
-## Especificações:
+First we assume that you have the react-native cli envioroment installed. If not, please click in the following link first:
+https://reactnative.dev/docs/getting-started
 
-O desafio consiste em desenvolver um aplicativo de **4 telas**.
+To build the app you should run the following commands in order:
+```yarn``` (To install all dependencies. I strongly suggests you to install Yarn from https://classic.yarnpkg.com/en/docs/install/#windows-stable)
+```npx react-native run-android```
 
-As telas que contem chamadas a api devem estar preparadas para tratar estados de erro (sem internet), carregamento (chamada a api em andamento) e lista vazia (quando o resultado de um filtro não contem itens).
+## Developing
 
-**Atentar para o comportamento dos elementos do layout, como: botão de favorito, classificação em estrelas, rentabilidade, etc (encontram-se no XD).**
+### Built With
+react v17.0.1
+react-native v0.64.0
+axios v0.19
+redux v4.0
+react-navigation v4.0.10
 
-### Tela "Desafio" (Tela inicial)
+### Prerequisites
+Set up can be done by following the react-native official website.
+https://reactnative.dev/docs/environment-setup
 
-- A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
+### Setting up Dev
 
-### Tela "Ações"
+Here's a brief intro about what a developer must do in order to start developing
+the project further:
 
-- A lista de "ações" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
-- A lista de "ações" deve obedecer a seguinte prioridade:
-   - Favoritadas deve aparecer primeiro
-   - Ordem alfabética
-- O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
-- A lista de "ações" inicia com todos as "ações" desfavoritadas.
+```shell
+git clone https://github.com/FranklinSilva/kinvo-mobile-test
+cd kinvo-mobile-test/stocksManager
+yarn
+npx react-native run-android
+```
 
-### Tela "Fundos"
+### Deploying / Publishing
+In order to deply a new release for android, you should use the following command:
 
-- A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
-- A lista de "fundos" deve estar em ordem alfabética.
-- Os estados do fundo são:
-  - 0: Comum
-  - 1: Novo
-  - 2: Fechado
-- Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
-- Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
-- Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
+```shell
+cd android && ./gradlew assembleRelease
+```
 
-### Tela "Previdências"
+## Tests
 
-- A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
-- A lista de "previdências" deve estar em ordem alfabética.
-- A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-   - "SEM TAXA": inclui as previdências com taxa igual a zero.
-   - "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-   - "D+1": inclui as previdências com resgate igual a um.
+Describe and show how to run the tests with code examples.
+Explain what these tests test and why.
 
-### Pré-requisitos:
-
-- Criar um passo a passo de como rodar o app - [Sugestão](https://github.com/elsewhencode/project-guidelines/blob/master/README.sample.md);
-- Desenvolver o app utilizando `React Native`
-
-### O que iremos avaliar
-
-- Capacidade de abstração
-- Simplicidade da solução
-- Componentização
-- Princípio da reutilização
-- Clean Code
-
-### O que vai te diferenciar
-
-- Utilizar TypeScript
-- Realizar testes unitários
-
-## Material:
-
-- O layout em formato Adobe XD consta no repositório em [/material](/material) ou através [desse link](https://xd.adobe.com/view/4701a220-a119-482a-89a5-4d110332e25f-1252/);
-- Imagens e Ícones devem ser exportados do Adobe XD (Aalho: CTRL + E / CMD + E)
-
-## Submissão
-
-Para iniciar o teste, faça um fork deste repositório, crie uma branch com o seu nome e depois envie-nos o pull request.
-Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
-
-**Sucesso!**
+```shell
+Give an example
+```
