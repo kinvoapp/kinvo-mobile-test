@@ -7,7 +7,7 @@ import Variables from '../styles';
 const FrontCard = (props) => {
 
     return (
-        <TouchableOpacity onPress={() => NavigationService.navigate(props.category.route)} style={styles.card}>
+        <TouchableOpacity testID={props.category.testID} onPress={() => NavigationService.navigate(props.category.route)} style={styles.card}>
             <View style={styles.cardDisplayContainer}>
                 <View style={styles.iconContainer}>
                     <Image resizeMode='contain' source={props.category.imageUrl} style={styles.icon} />                

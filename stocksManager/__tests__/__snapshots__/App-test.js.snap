@@ -1,0 +1,598 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dashboard renders correctly 1`] = `
+<View>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "imageUrl": Object {
+            "testUri": "../../../src/images/icons/acoes.png",
+          },
+          "new": false,
+          "route": "Stocks",
+          "subtitle": "Nacionais",
+          "testID": "stocksBtn",
+          "title": "Ações",
+        },
+        Object {
+          "imageUrl": Object {
+            "testUri": "../../../src/images/icons/funds.png",
+          },
+          "new": true,
+          "route": "Funds",
+          "subtitle": "De Investimentos",
+          "testID": "fundsBtn",
+          "title": "Fundos",
+        },
+        Object {
+          "imageUrl": Object {
+            "testUri": "../../../src/images/icons/previdencia.png",
+          },
+          "new": false,
+          "route": "Pensions",
+          "subtitle": "Privadas",
+          "testID": "pensionsBtn",
+          "title": "Previdências",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={3}
+    invertStickyHeaders={false}
+    inverted={false}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderColor": "#707B811A",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "marginHorizontal": 25,
+              "marginTop": 20,
+              "opacity": 1,
+              "paddingHorizontal": 20,
+              "paddingVertical": 32,
+            }
+          }
+          testID="stocksBtn"
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#ECF0F2",
+                  "borderRadius": 30,
+                  "padding": 10,
+                }
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "testUri": "../../../src/images/icons/acoes.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "marginLeft": 12,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#6F4DBF",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Ações
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#627179",
+                    "fontSize": 10,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Nacionais
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderColor": "#707B811A",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "marginHorizontal": 25,
+              "marginTop": 20,
+              "opacity": 1,
+              "paddingHorizontal": 20,
+              "paddingVertical": 32,
+            }
+          }
+          testID="fundsBtn"
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#ECF0F2",
+                  "borderRadius": 30,
+                  "padding": 10,
+                }
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "testUri": "../../../src/images/icons/funds.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "marginLeft": 12,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#6F4DBF",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Fundos
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#627179",
+                    "fontSize": 10,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                De Investimentos
+              </Text>
+            </View>
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#40C5D6",
+                  "borderRadius": 20,
+                  "padding": 5,
+                  "width": 70,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 10,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                Novo
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderColor": "#707B811A",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "marginHorizontal": 25,
+              "marginTop": 20,
+              "opacity": 1,
+              "paddingHorizontal": 20,
+              "paddingVertical": 32,
+            }
+          }
+          testID="pensionsBtn"
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#ECF0F2",
+                  "borderRadius": 30,
+                  "padding": 10,
+                }
+              }
+            >
+              <Image
+                resizeMode="contain"
+                source={
+                  Object {
+                    "testUri": "../../../src/images/icons/previdencia.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 25,
+                    "width": 25,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "marginLeft": 12,
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "color": "#6F4DBF",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Previdências
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "color": "#627179",
+                    "fontSize": 10,
+                    "fontWeight": "bold",
+                  }
+                }
+              >
+                Privadas
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`funds renders correctly 1`] = `
+<View>
+  <ActivityIndicator
+    animating={true}
+    color="#6F4DBF"
+    hidesWhenStopped={true}
+    size="large"
+    style={
+      Object {
+        "color": "#6F4DBF",
+        "left": 355,
+        "position": "relative",
+        "right": 0,
+        "top": 375,
+        "width": 40,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`pensions renders correctly 1`] = `
+<View>
+  <View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-evenly",
+          "marginHorizontal": 10,
+          "marginTop": 20,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 15,
+            "opacity": 1,
+            "paddingHorizontal": 25,
+            "paddingVertical": 7,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#627179",
+              "fontSize": 12,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          SEM TAXA
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 15,
+            "opacity": 1,
+            "paddingHorizontal": 25,
+            "paddingVertical": 7,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#627179",
+              "fontSize": 12,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          R$ 100,00
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 15,
+            "opacity": 1,
+            "paddingHorizontal": 25,
+            "paddingVertical": 7,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#627179",
+              "fontSize": 12,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          D+1
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#707B811A",
+          "flexDirection": "row",
+          "height": 2,
+          "marginHorizontal": 30,
+          "marginTop": 15,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-evenly",
+        "marginHorizontal": 10,
+        "marginTop": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#627179",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "marginHorizontal": 90,
+          "marginTop": 5,
+          "textAlign": "center",
+        }
+      }
+    >
+      Nenhum resultado foi encontrado para os filtros selecionados.
+    </Text>
+  </View>
+  <RCTScrollView
+    data={Array []}
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "height": "85%",
+      }
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;
+
+exports[`stocks renders correctly 1`] = `
+<View>
+  <ActivityIndicator
+    animating={true}
+    color="#6F4DBF"
+    hidesWhenStopped={true}
+    size="large"
+    style={
+      Object {
+        "color": "#6F4DBF",
+        "left": 355,
+        "position": "relative",
+        "right": 0,
+        "top": 375,
+        "width": 40,
+      }
+    }
+  />
+</View>
+`;
