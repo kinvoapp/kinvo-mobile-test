@@ -20,7 +20,6 @@ const Funds = (props) => {
       props.getFunds()
           .then(() => {
             setLoading(false)
-            console.log(props);
             setFetchError(false);
 
             if(props.funds.length == 0){

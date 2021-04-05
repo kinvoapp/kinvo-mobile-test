@@ -5,7 +5,7 @@ const deviceStorage = {
         try {
           await AsyncStorage.setItem(key, value);
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       },
 
@@ -18,7 +18,7 @@ const deviceStorage = {
             return ''
           }
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       },
 
@@ -30,7 +30,7 @@ const deviceStorage = {
             }
           );
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       },
 
@@ -39,7 +39,7 @@ const deviceStorage = {
           const value = await AsyncStorage.getItem(itemId);
             return value;
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       },
 
@@ -54,10 +54,9 @@ const deviceStorage = {
               store[items[i]] = {};
 
           }
-          console.log(store)
           return store;
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       },
 
@@ -69,7 +68,7 @@ const deviceStorage = {
             }
           );
         } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
+          //console.log('AsyncStorage Error: ' + error.message);
         }
       }
 };

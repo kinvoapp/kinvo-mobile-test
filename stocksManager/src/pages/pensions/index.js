@@ -40,29 +40,20 @@ const Pensions = (props) => {
   },[apiCall]);
 
   useEffect(() => {
-      //props.updateFavorites(stocksIdToFavorite).then(() => setStocks(props.stocks));
-      //setStocksIdToFavorite(0);
     let noTaxActive = pensionsFilter.noTax;
     let min100Active = pensionsFilter.min100;
     let d1Active = pensionsFilter.d1;
-    console.log(pensionsFilter);
     
     let pensionsFiltered = props.pensions;
     
     if(noTaxActive)
       pensionsFiltered = pensionsFiltered.filter(e=> e.tax == 0);
 
-    console.log('noTaxActive => ' + noTaxActive);
-
     if(min100Active)
       pensionsFiltered = pensionsFiltered.filter(e=> e.minimumValue == 100);
 
-    console.log(pensionsFiltered);
-
     if(d1Active)
       pensionsFiltered = pensionsFiltered.filter(e=> e.redemptionTerm == 1);
-
-    console.log(pensionsFiltered);
   
     setPension(pensionsFiltered);
     setPensionsFilter(pensionsFilter);

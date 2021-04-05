@@ -23,7 +23,6 @@ const Stocks = (props) => {
       props.getStocks()
           .then(() => {
             setStocks(props.stocks)
-            console.log(stocks);
             setFetchError(false);
 
             if(stocks.length == 0){
