@@ -47,9 +47,8 @@ cd android && ./gradlew assembleRelease
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
-Explain what these tests test and why.
+Snapshot tests are available using jest. Run simply by using the following command
 
 ```shell
-Give an example
+yarn test
 ```
