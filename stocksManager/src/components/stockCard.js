@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Text, Image, SafeAreaView, View, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import Variables from '../styles';
 
-import { TransformToMoney } from '../services/utils'; 
+import { FormatToMoneyType } from '../services/utils'; 
 
 const Stockcard = (props) => {
     
@@ -30,7 +30,7 @@ const Stockcard = (props) => {
             <View style={styles.line}></View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Valor Mínimo:</Text>
-                <Text style={[styles.subtitle, styles.boldText]}>R$ {TransformToMoney(props.stock.minimumValue)}</Text>
+                <Text style={[styles.subtitle, styles.boldText]}>R$ {FormatToMoneyType(props.stock.minimumValue)}</Text>
             </View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Rentabilidade:</Text>

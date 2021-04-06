@@ -14,7 +14,7 @@ const NAVIGATIONOPTIONS = {
   headerStyle: SharedStyles.stackHeader,
   headerTitleStyle: SharedStyles.stackTitle,
   cardStyle: SharedStyles.stackCard,
-  headerBackImage: () => <Image resizeMode='contain' source={require('./images/icons/back.png')} style={{width:35, height: 35, marginLeft: 20}} />                
+  headerBackImage: () => <Image resizeMode='contain' source={require('./images/icons/back.png')} style={SharedStyles.headerBackImage} />                
 };
 
 export const Main = createStackNavigator({

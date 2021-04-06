@@ -9,13 +9,14 @@ import {connect} from 'react-redux';
 import * as pensionsActions from '../../actions/pensions';
 import { bindActionCreators } from 'redux';
 import styles from './styles.js';
-import shared from '../../styles/shared';
+
+const FILTERLIMITS = {noTaxFundsValue: 0, minimumFundsValue: 100, redemptionTermValue: 1}
 
 const Pensions = (props) => {
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(false);
   const [pensions, setPension] = useState([]);
-  const [apiCall, setApiCall] = useState(false);
+  const [shouldCallApi, setShouldCallApi] = useState(false);
   const [pensionsFilter, setPensionsFilter] = useState({noTax: false, min100: false, d1: false});
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Pensions = (props) => {
             setFetchError(false)
             
             if(pensions.length == 0){
-              setApiCall(!apiCall);
+              setShouldCallApi(!shouldCallApi);
               setLoading(false)
             }
 
@@ -37,7 +38,7 @@ const Pensions = (props) => {
               setFetchError(true)
           })
     }
-  },[apiCall]);
+  },[shouldCallApi]);
 
   useEffect(() => {
     let noTaxActive = pensionsFilter.noTax;
@@ -47,13 +48,13 @@ const Pensions = (props) => {
     let pensionsFiltered = props.pensions;
     
     if(noTaxActive)
-      pensionsFiltered = pensionsFiltered.filter(e=> e.tax == 0);
+      pensionsFiltered = pensionsFiltered.filter(e=> e.tax == FILTERLIMITS.noTaxFundsValue);
 
     if(min100Active)
-      pensionsFiltered = pensionsFiltered.filter(e=> e.minimumValue == 100);
+      pensionsFiltered = pensionsFiltered.filter(e=> e.minimumValue == FILTERLIMITS.minimumFundsValue);
 
     if(d1Active)
-      pensionsFiltered = pensionsFiltered.filter(e=> e.redemptionTerm == 1);
+      pensionsFiltered = pensionsFiltered.filter(e=> e.redemptionTerm == FILTERLIMITS.redemptionTermValue);
   
     setPension(pensionsFiltered);
     setPensionsFilter(pensionsFilter);
@@ -93,7 +94,7 @@ const Pensions = (props) => {
       }
 
       {fetchError &&
-        <ApiError setApiCall={() => setApiCall(!apiCall)} />
+        <ApiError callTryAgain={() => setShouldCallApi(!shouldCallApi)} />
       }
 
       {!fetchError && loading &&

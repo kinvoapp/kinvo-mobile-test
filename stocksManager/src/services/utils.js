@@ -1,44 +1,43 @@
-const compareStocks = (a, b) => {
-    // Use toUpperCase() to ignore character casing
-    if(!!a.name && !!b.name){
-        const stockAname = a.name.toUpperCase();
-        const stockBname = b.name.toUpperCase();
+const CompareItemsByName = (itemA, itemB) => {
+  if(!!itemA.name && !!itemB.name){
+      const stockAname = itemA.name.toUpperCase();
+      const stockBname = itemB.name.toUpperCase();
 
-        let comparison = 0;
-        if (stockAname > stockBname) {
+      let comparison = 0;
+      if (stockAname > stockBname) {
         comparison = 1;
-        } else if (stockAname < stockBname) {
+      } else if (stockAname < stockBname) {
         comparison = -1;
-        }
+      }
 
-        return comparison;
-    } else {
-        return 1;
-    }
+      return comparison;
+  } else {
+      return 1;
+  }
 }
 
-const favoritesFirst = (array) => {
-  let arraySorted = array.sort(compareStocks);
-  let favoriteFirst = []
-  arraySorted.map(e => {
-    if(e.isFavorite)
-      favoriteFirst.push(e)
-  })
-  arraySorted.map(e => {
-    if(!e.isFavorite)
-      favoriteFirst.push(e)
-  });
-  return favoriteFirst;
+const SortByFavorites = (array) => {
+let arraySorted = array.sort(CompareItemsByName);
+let listOrderedByFavorite = []
+arraySorted.map(item => {
+  if(item.isFavorite)
+    listOrderedByFavorite.push(item)
+})
+arraySorted.map(item => {
+  if(!item.isFavorite)
+    listOrderedByFavorite.push(item)
+});
+return listOrderedByFavorite;
 }
 
-const TransformToMoney = (number) => {
+const FormatToMoneyType = (number) => {
   let round2decimals = number.toFixed(2);
-  round2decimals = '' +round2decimals.replace('.',',');
-  return round2decimals;
+  valueToMoneyString = '' + round2decimals.replace('.',',');
+return valueToMoneyString;
 }
-  
-  export {
-    compareStocks,
-    TransformToMoney,
-    favoritesFirst
-  };
+
+export {
+  CompareItemsByName,
+  FormatToMoneyType,
+  SortByFavorites
+};

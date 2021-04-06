@@ -10,7 +10,7 @@ const ApiError = (props) => {
       <View style={styles.errorContainer}>
         <Text style={styles.errorTitle}>Ocorreu um erro.</Text>
         <Text style={styles.errorBody}>Não foi possível se conectar ao banco de fundos.</Text>
-        <TouchableOpacity onPress={() => props.setApiCall()} style={styles.errorTryAgain}>
+        <TouchableOpacity onPress={() => props.callTryAgain()} style={styles.errorTryAgain}>
           <Text style={styles.errorTryAgainText}>TENTAR NOVAMENTE</Text>
         </TouchableOpacity>
       </View>

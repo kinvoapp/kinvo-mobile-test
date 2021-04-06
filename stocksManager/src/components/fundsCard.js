@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { Text, Image, SafeAreaView, View, TouchableOpacity, ScrollView, StyleSheet, Switch } from 'react-native';
+import { Text, Image, View, StyleSheet } from 'react-native';
 import Variables from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { TransformToMoney } from '../services/utils'; 
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FormatToMoneyType } from '../services/utils'; 
 
 FUNDSTYPES = [
     {status: '0', name: 'Comum'},
@@ -53,7 +53,7 @@ const FundsCard = (props) => {
             </View>
             <View style={fundType.name == 'Fechado' ? [styles.cardDisplayContainer, styles.containerdistanced, styles.opacityFund] : [styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Valor Mínimo:</Text>
-                <Text style={[styles.subtitle, styles.boldText]}>R$ {TransformToMoney(props.fund.minimumValue)}</Text>
+                <Text style={[styles.subtitle, styles.boldText]}>R$ {FormatToMoneyType(props.fund.minimumValue)}</Text>
             </View>
             <View style={fundType.name == 'Fechado' ? [styles.cardDisplayContainer, styles.containerdistanced, styles.opacityFund] : [styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Rentabilidade:</Text>

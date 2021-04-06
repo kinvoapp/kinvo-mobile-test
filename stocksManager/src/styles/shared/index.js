@@ -18,6 +18,18 @@ const styles = StyleSheet.create({
     stackCard: {
         backgroundColor: Variables.colors.primary
     },
+    headerBackImage: {
+        width:35,
+        height: 35, 
+        marginLeft: 20
+    },
+    defautLoadingStyle: {
+        flex: 1, 
+        backgroundColor: 
+        Variables.colors.primary, 
+        justifyContent: "center", 
+        alignItems: "center"
+    }
 });
 
 export default styles;

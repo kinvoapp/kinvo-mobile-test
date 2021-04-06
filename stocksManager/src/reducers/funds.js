@@ -1,4 +1,4 @@
-import { compareStocks } from '../services/utils';
+import { CompareItemsByName } from '../services/utils';
 
 
 export default function funds(state=[], action) {
@@ -6,7 +6,7 @@ export default function funds(state=[], action) {
     switch (action.type) {
         case 'GET_FUNDS':
             let sorted = action.payload.funds;
-            sorted.sort(compareStocks);
+            sorted.sort(CompareItemsByName);
             return sorted
         default:
             return state;

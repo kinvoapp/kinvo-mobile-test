@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { Text, Image, SafeAreaView, View, TouchableOpacity, ScrollView, StyleSheet, Switch } from 'react-native';
+import { Text, Image, View, StyleSheet } from 'react-native';
 import Variables from '../styles';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { TransformToMoney } from '../services/utils'; 
+import { FormatToMoneyType } from '../services/utils'; 
 
 
 const PensionCard = (props) => {
@@ -20,7 +18,7 @@ const PensionCard = (props) => {
             <View style={styles.line}></View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Valor Mínimo:</Text>
-                <Text style={[styles.subtitle, styles.boldText]}>R$ {TransformToMoney(props.pension.minimumValue)}</Text>
+                <Text style={[styles.subtitle, styles.boldText]}>R$ {FormatToMoneyType(props.pension.minimumValue)}</Text>
             </View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Resgate:</Text>
@@ -28,7 +26,7 @@ const PensionCard = (props) => {
             </View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Taxa:</Text>
-                <Text style={[styles.subtitle, styles.boldText]}>{TransformToMoney(props.pension.tax)}%</Text>
+                <Text style={[styles.subtitle, styles.boldText]}>{FormatToMoneyType(props.pension.tax)}%</Text>
             </View>
             <View style={[styles.cardDisplayContainer, styles.containerdistanced]}>    
                 <Text style={styles.subtitle}>Rentabilidade:</Text>

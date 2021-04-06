@@ -12,7 +12,7 @@
  import thunk from 'redux-thunk';
  import { Provider } from 'react-redux';
  import reducer from '../src/reducers';
- import {getStocks, getStocksSuccess, updateFavorites, updateStockFavorite} from '../src/actions/stocks';
+ import {getStocks, getStocksSuccess} from '../src/actions/stocks';
  import {getFunds, getFundsSuccess} from '../src/actions/funds';
  import {getPensions, getPensionsSuccess} from '../src/actions/pensions';
  

@@ -33,17 +33,17 @@ export const getStocksSuccess = (stocks) => {
     }
 }
 
-export const updateFavorites = (stockId) =>{
+export const setFavoritedStock = (stockId) =>{
 
     return async (dispatch) => {
-        return dispatch(updateStockFavorite(stockId));
+        return dispatch(setFavoritedStockSucess(stockId));
     }
 }
 
-export const updateStockFavorite = (stockId) => {
+export const setFavoritedStockSucess = (stockId) => {
     
     return {
-        type: 'UPDATE_STOCK_FAVORITE',
+        type: 'SET_STOCK_TO_FAVORITE',
         payload:{
             stockId
         }

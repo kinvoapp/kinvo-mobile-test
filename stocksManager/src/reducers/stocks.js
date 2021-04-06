@@ -1,4 +1,4 @@
-import { compareStocks, favoritesFirst } from '../services/utils';
+import { CompareItemsByName, SortByFavorites } from '../services/utils';
 
 
 export default function stocks(state=[], action) {
@@ -6,20 +6,20 @@ export default function stocks(state=[], action) {
     switch (action.type) {
         case 'GET_STOCKS':
             let sorted = action.payload.stocks;
-            sorted.sort(compareStocks);
+            sorted.sort(CompareItemsByName);
             return sorted
-        case 'UPDATE_STOCK_FAVORITE':
-            const is = state.findIndex(e => e.id == action.payload.stockId);
-            let updated = state[is];
-            updated.isFavorite = !updated.isFavorite;
+        case 'SET_STOCK_TO_FAVORITE':
+            const favoriteIndex = state.findIndex(e => e.id == action.payload.stockId);
+            let favoriteStock = state[favoriteIndex];
+            favoriteStock.isFavorite = !favoriteStock.isFavorite;
 
-            let newState = [
-                ...state.slice(0,is),
-                updated,
-                ...state.slice(is + 1),
+            let stockList = [
+                ...state.slice(0,favoriteIndex),
+                favoriteStock,
+                ...state.slice(favoriteIndex + 1),
             ]
-            newStateSorted = favoritesFirst(newState);
-        return newStateSorted;
+            stockListSorted = SortByFavorites(stockList);
+        return stockListSorted;
         default:
             return state;
     }

@@ -6,7 +6,7 @@ import {StatusBar, View, Text, ActivityIndicator} from 'react-native';
 import { Provider } from 'react-redux';
 import store from './store';
 import NavigationService from './services/navigationService';
-import Variables from './styles';
+import SharedStyles from './styles/shared';
 
 const App = (props) => {
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ const App = (props) => {
 
     const Layout = createAppContainer(createRootNavigator());
     if(loading){
-        return (<View style={{flex: 1, backgroundColor: Variables.colors.primary, justifyContent: "center", alignItems: "center"}}>
+        return (<View style={SharedStyles.defautLoadingStyle}>
                     <StatusBar
               color="#fff"
               barStyle="light-content"

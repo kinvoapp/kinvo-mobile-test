@@ -4,7 +4,6 @@ import FundsCard from '../../components/fundsCard.js'
 import ApiError from '../../components/apiError';
 import LoadingIndicator from '../../components/loadingIndicator';
 
-//redux things
 import {connect} from 'react-redux';
 import * as fundsActions from '../../actions/funds';
 import { bindActionCreators } from 'redux';
@@ -12,18 +11,17 @@ import { bindActionCreators } from 'redux';
 const Funds = (props) => {
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(false);
-  const [apiCall, setApiCall] = useState(false);
+  const [shouldCallApi, setShouldCallApi] = useState(false);
 
   useEffect(() => {
     if(props.funds.length == 0){
       setLoading(true)
       props.getFunds()
           .then(() => {
-            setLoading(false)
             setFetchError(false);
 
             if(props.funds.length == 0){
-              setApiCall(!apiCall);
+              setShouldCallApi(!shouldCallApi);
               setLoading(false)
             }
           })
@@ -32,7 +30,7 @@ const Funds = (props) => {
               setFetchError(true)
           })
     }
-  },[apiCall]);
+  },[shouldCallApi]);
 
   const renderItems = ({item, index}) => {
     return (
@@ -44,7 +42,7 @@ const Funds = (props) => {
   return (
     <View>
         {fetchError == true &&
-          <ApiError setApiCall={() => setApiCall(!apiCall)} />
+          <ApiError callTryAgain={() => setShouldCallApi(!shouldCallApi)} />
         }
         
         {!fetchError && loading &&
@@ -57,8 +55,6 @@ const Funds = (props) => {
             renderItem={renderItems}
             inverted={false}
             initialNumToRender={3}
-            refreshing={loading}
-            //onRefresh={e => getStocks()}
             horizontal={false}/>
         }   
     </View>

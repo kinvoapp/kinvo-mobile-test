@@ -4,7 +4,6 @@ import StockCard from '../../components/stockCard.js'
 import ApiError from '../../components/apiError';
 import LoadingIndicator from '../../components/loadingIndicator';
 
-//redux things
 import {connect} from 'react-redux';
 import * as stocksActions from '../../actions/stocks';
 import { bindActionCreators } from 'redux';
@@ -13,12 +12,11 @@ const Stocks = (props) => {
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(false);
   const [stocks, setStocks] = useState([]);
-  const [stocksIdToFavorite, setStocksIdToFavorite] = useState(0);
-  const [apiCall, setApiCall] = useState(false);
+  const [favoritedStock, setFavoritedStock] = useState(0);
+  const [shouldCallApi, setShouldCallApi] = useState(false);
 
   useEffect(() => {
     if(stocks.length == 0){
-      //getStocks();
       setLoading(true)
       props.getStocks()
           .then(() => {
@@ -26,7 +24,7 @@ const Stocks = (props) => {
             setFetchError(false);
 
             if(stocks.length == 0){
-              setApiCall(!apiCall);
+              setShouldCallApi(!shouldCallApi);
               setLoading(false);
             }
           })
@@ -35,18 +33,18 @@ const Stocks = (props) => {
               setFetchError(true);
           })
     }
-  },[apiCall]);
+  },[shouldCallApi]);
 
   useEffect(() => {
-    if(props.stocks.length > 0 && stocksIdToFavorite != 0){
-      props.updateFavorites(stocksIdToFavorite).then(() => setStocks(props.stocks));
-      setStocksIdToFavorite(0);
+    if(props.stocks.length > 0 && favoritedStock != 0){
+      props.setFavoritedStock(favoritedStock).then(() => setStocks(props.stocks));
+      setFavoritedStock(0);
     }
-  },[stocksIdToFavorite]);
+  },[favoritedStock]);
 
   const renderItems = ({item, index}) => {
     return (
-        <StockCard setLikedStock={(stockId) => setStocksIdToFavorite(stockId)} index={index} stock={item} />
+        <StockCard setLikedStock={(stockId) => setFavoritedStock(stockId)} index={index} stock={item} />
         )
   }
 
@@ -54,7 +52,7 @@ const Stocks = (props) => {
   return (
     <View>
         {fetchError &&
-          <ApiError setApiCall={() => setApiCall(!apiCall)} />
+          <ApiError callTryAgain={() => setShouldCallApi(!shouldCallApi)} />
         }
 
         {!fetchError && loading &&
