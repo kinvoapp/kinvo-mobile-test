@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   leftContainerStyle: {
     flex: 1,
     justifyContent: 'center',
-    marginHorizontal: 20,
+    marginLeft: 20,
+    marginRight: 10,
   },
   rightContainerStyle: {
     flex: 1,

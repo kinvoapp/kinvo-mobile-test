@@ -12,7 +12,7 @@ export class HomeScene extends Component<{}, {}> {
   };
 
   render = () => {
-    const { bgContainer } = styles;
+    const { bgContainer, listContainerStyle } = styles;
 
     return (
       <View style={bgContainer}>
@@ -20,6 +20,7 @@ export class HomeScene extends Component<{}, {}> {
           <FlatList
             renderItem={this.renderItem}
             data={HomeCardsArray}
+            contentContainerStyle={listContainerStyle}
             keyExtractor={(_, index: number) => index.toString()}
             scrollEnabled={false}
           />
@@ -33,6 +34,10 @@ const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
     backgroundColor: DEFAULT_GREY,
+  },
+  listContainerStyle: {
+    marginHorizontal: 20,
+    marginTop: 20,
   },
   cardTitleStyle: {
     color: DEFAULT_PURPLE,

@@ -1,9 +1,13 @@
-import { Button, FlatList, StyleSheet, View } from 'react-native';
-// import { HomeCardsArray } from './constants';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
-
 import React, { Component } from 'react';
 import { PrevidenciasCard, PrevidenciasCardProps } from './PrevidenciasCard';
+import _ from 'lodash';
+import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
+import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
+
+import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
+import axios from 'axios';
 
 export interface PrevidenciasRequestData {
   id: number;
@@ -15,60 +19,109 @@ export interface PrevidenciasRequestData {
   profitability: number;
 }
 
-const PrevidenciasRequest: { success: Boolean; data: PrevidenciasRequestData[] } = {
-  success: true,
-  data: [
-    {
-      id: 1,
-      name: 'Adam XP Seg Prev I FIC FIM',
-      type: 'Multimercados',
-      minimumValue: 100,
-      tax: 0,
-      redemptionTerm: 10,
-      profitability: 10.59,
-    },
-    {
-      id: 2,
-      name: 'Brasil Capital 100 XP Seg Advisory FIC FIA',
-      type: 'Multimercados',
-      minimumValue: 100,
-      tax: 0,
-      redemptionTerm: 2,
-      profitability: -7.05,
-    },
-    {
-      id: 3,
-      name: 'Capitânia Prev Advisory XP Seg FIRF CP',
-      type: 'Renda Fixa Pós',
-      minimumValue: 300,
-      tax: 2.67,
-      redemptionTerm: 1,
-      profitability: 5.12,
-    },
-    {
-      id: 4,
-      name: 'Icatu Seg Kadima FIM CP Prev',
-      type: 'Multimercados',
-      minimumValue: 400,
-      tax: 0.45,
-      redemptionTerm: 5,
-      profitability: 19.26,
-    },
-    {
-      id: 5,
-      name: 'XP Horizonte XP Seg FIRF Prev',
-      type: 'Renda Fixa Pré',
-      minimumValue: 500,
-      tax: 0,
-      redemptionTerm: 1,
-      profitability: 0,
-    },
-  ],
-  error: null,
+export enum PrevidenciasSceneFilterEnum {
+  Taxa = 'sem taxa',
+  ValorMinimo = '100',
+  Resgate = 'D+1',
+  Todos = 'todos',
+}
+
+interface PrevidenciasSceneState {
+  loading: Boolean;
+  activeFilter: PrevidenciasSceneFilterEnum;
+  requestData: PrevidenciasRequestData[] | null;
+  filteredData: PrevidenciasRequestData[] | null;
+  connected: Boolean;
+}
+
+interface PrevidenciasRequest {
+  success: Boolean;
+  data: PrevidenciasRequestData[];
+  error: Boolean | null;
+}
+
+const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
+  try {
+    const response = await axios.get('https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension');
+
+    const { status, data } = response;
+
+    if (status === 200) {
+      return data;
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 };
 
-export class PrevidenciasScene extends Component<{}, {}> {
-  async componentDidMount() {}
+export class PrevidenciasScene extends Component<{}, PrevidenciasSceneState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      loading: true,
+      activeFilter: PrevidenciasSceneFilterEnum.Todos,
+      requestData: [],
+      filteredData: [],
+      connected: true,
+    };
+  }
+
+  async componentDidMount() {
+    const data = await getPrevidencias();
+    if (!data) {
+      this.setState({ connected: false, requestData: null });
+    } else {
+      this.setState({ connected: true, requestData: data });
+    }
+    this.filterData();
+    this.setState({ loading: false });
+  }
+
+  filterData = async () => {
+    const { data } = this.state.requestData;
+
+    let filterFunction: (requestData: PrevidenciasRequestData) => void;
+
+    if (this.state.activeFilter === PrevidenciasSceneFilterEnum.Resgate) {
+      filterFunction = (requestData) => {
+        return requestData.redemptionTerm === 1;
+      };
+    } else if (this.state.activeFilter === PrevidenciasSceneFilterEnum.ValorMinimo) {
+      filterFunction = (requestData) => {
+        return requestData.minimumValue < 100;
+      };
+    } else if (this.state.activeFilter === PrevidenciasSceneFilterEnum.Taxa) {
+      filterFunction = (requestData) => {
+        return requestData.tax === 0;
+      };
+    } else {
+      filterFunction = () => {
+        return true;
+      };
+    }
+
+    const filteredData = _.filter(data, filterFunction);
+
+    const orderedData = _.orderBy(filteredData, ['name'], ['asc']);
+
+    this.setState({ filteredData: orderedData });
+  };
+
+  changeFilter = async ({ filterValue }: { filterValue: PrevidenciasSceneFilterEnum }) => {
+    //discutir com vitor
+    await this.setState({
+      activeFilter: filterValue,
+      loading: true,
+    });
+
+    this.filterData(this.state.filteredData);
+    this.setState({ loading: false });
+  };
+
   renderItem = ({ item }: { item: PrevidenciasCardProps; index: number }) => {
     const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
 
@@ -86,26 +139,73 @@ export class PrevidenciasScene extends Component<{}, {}> {
   };
 
   render = () => {
-    const { bgContainer, divisorStyle } = styles;
-    const { success, data } = PrevidenciasRequest;
+    const { bgContainer, divisorStyle, loadingContainer, listContainerStyle } = styles;
 
-    return (
-      <View style={bgContainer}>
-        <View style={{ flex: 3 }}>
-          <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-            <Button title={'SEM TAXA'} onPress={() => null} />
-            <Button title={'R$100,00'} onPress={() => null} />
-            <Button title={'D+1'} onPress={() => null} />
-          </View>
-          <View style={divisorStyle} />
-          <FlatList renderItem={this.renderItem} data={data} keyExtractor={(_, index: number) => index.toString()} />
+    if (this.state.loading)
+      return (
+        <View style={loadingContainer}>
+          <ActivityIndicator size={48} color={DEFAULT_PURPLE} />
         </View>
-      </View>
-    );
+      );
+    else {
+      if (this.state.connected) {
+        return (
+          <View style={bgContainer}>
+            <View style={{ flex: 3 }}>
+              <View
+                style={{
+                  flex: 0,
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                  marginTop: 20,
+                  marginBottom: 10,
+                }}
+              >
+                <PrevidenciasFilterButton
+                  title={'SEM TAXA'}
+                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.Taxa })}
+                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.Taxa}
+                />
+                <PrevidenciasFilterButton
+                  title={'R$100,00'}
+                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.ValorMinimo}
+                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.ValorMinimo })}
+                />
+                <PrevidenciasFilterButton
+                  title={'D+1'}
+                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.Resgate}
+                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.Resgate })}
+                />
+              </View>
+              <View style={divisorStyle} />
+              <FlatList
+                renderItem={this.renderItem}
+                data={this.state.filteredData}
+                extraData={[this.state.activeFilter]}
+                ListEmptyComponent={PrevidenciasEmptyListComponent}
+                contentContainerStyle={listContainerStyle}
+                keyExtractor={(_, index: number) => index.toString()}
+              />
+            </View>
+          </View>
+        );
+      } else {
+        return <PrevidenciasErrorComponent />;
+      }
+    }
   };
 }
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  listContainerStyle: {
+    marginHorizontal: 20,
+    marginTop: 10,
+  },
   bgContainer: {
     flex: 1,
     backgroundColor: DEFAULT_GREY,
@@ -117,8 +217,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   divisorStyle: {
-    marginHorizontal: 10,
-    marginVertical: 10,
+    marginTop: 10,
+    marginBottom: 10,
     borderBottomColor: NAV_BORDER_COLOR,
     borderBottomWidth: 1,
   },

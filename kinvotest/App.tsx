@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import * as Font from 'expo-font';
 import { MSFontList } from './assets/fonts/montserrat-fontlist';
+import { ThemeProvider } from 'react-native-elements';
 
 import AppRouter from './assets/router/Router';
 

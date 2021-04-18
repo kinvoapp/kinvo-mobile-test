@@ -1,44 +1,14 @@
-import {
-  DEFAULT_BLUE,
-  DEFAULT_BORDER_COLOR,
-  DEFAULT_GREY,
-  DEFAULT_PURPLE,
-  DEFAULT_TEXT_COLOR,
-  DEFAULT_WHITE,
-  NAV_BORDER_COLOR,
-  NEGATIVE_COLOR,
-  POSITIVE_COLOR,
-} from '../../assets/constants/colors';
+import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 import { Card } from '../../components/common/card';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { PrevidenciasRequestData } from './PrevidenciasScene';
-import { getFormattedValue } from '../../assets/utils/utils';
+import { PrevidenciasItemRow } from './PrevidenciasItemRow';
 
 export interface PrevidenciasCardProps extends PrevidenciasRequestData {}
 
-const previdenciaItemRow = ({ label, value, format }: { label: string; value: number; format: string }) => {
-  const { labelStyle, cardSubtitleStyle } = styles;
-  let valueColor = DEFAULT_TEXT_COLOR;
-
-  const formattedValue = getFormattedValue({ value, format });
-  if (format === 'profit') valueColor = value > 0 ? POSITIVE_COLOR : NEGATIVE_COLOR;
-
-  return (
-    <View style={{ flexDirection: 'row', flex: 1 }}>
-      <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-        <Text style={labelStyle}>{label}:</Text>
-      </View>
-      <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'flex-end' }}>
-        <Text style={{ ...cardSubtitleStyle, color: valueColor }}>{formattedValue}</Text>
-      </View>
-    </View>
-  );
-};
-
 export const PrevidenciasCard = ({
-  id,
   name,
   type,
   minimumValue,
@@ -46,29 +16,20 @@ export const PrevidenciasCard = ({
   redemptionTerm,
   profitability,
 }: PrevidenciasCardProps) => {
-  const { cardTitleStyle, divisorStyle, cardSubtitleStyle, containerStyle } = styles;
+  const { cardTitleStyle, divisorStyle, cardSubtitleStyle, containerStyle, titleContainerStyle } = styles;
 
   return (
     <Card height={218}>
       <View style={containerStyle}>
-        <View>
+        <View style={titleContainerStyle}>
           <Text style={cardTitleStyle}>{name}</Text>
           <Text style={cardSubtitleStyle}>{type}</Text>
         </View>
         <View style={divisorStyle} />
-
-        {previdenciaItemRow({ label: 'Valor mínimo', value: minimumValue, format: 'BRL' })}
-        {previdenciaItemRow({ label: 'Taxa', value: tax, format: '%' })}
-        {previdenciaItemRow({ label: 'Resgate', value: redemptionTerm, format: 'D' })}
-        {previdenciaItemRow({ label: 'Rentabilidade', value: profitability, format: 'profit' })}
-
-        {/* <View>
-          <Text style={labelStyle}>Taxa:</Text>
-          <Text style={cardSubtitleStyle}>{tax}</Text>
-        </View>
-
-        <Text style={cardSubtitleStyle}>{redemptionTerm}</Text>
-        <Text style={cardSubtitleStyle}>{profitability}</Text> */}
+        <PrevidenciasItemRow label={'Valor mínimo'} value={minimumValue} format={'BRL'} />
+        <PrevidenciasItemRow label={'Taxa'} value={tax} format={'%'} />
+        <PrevidenciasItemRow label={'Resgate'} value={redemptionTerm} format={'D'} />
+        <PrevidenciasItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
       </View>
     </Card>
   );
@@ -76,6 +37,9 @@ export const PrevidenciasCard = ({
 
 const styles = StyleSheet.create({
   iconImageStyle: { alignSelf: 'center' },
+  titleContainerStyle: {
+    marginBottom: 10,
+  },
   cardTitleStyle: {
     color: DEFAULT_TEXT_COLOR,
     fontFamily: 'ms-bold',
