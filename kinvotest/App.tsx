@@ -1,40 +1,24 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import * as Font from 'expo-font';
 import { MSFontList } from './assets/fonts/montserrat-fontlist';
-import { ThemeProvider } from 'react-native-elements';
-
 import AppRouter from './assets/router/Router';
+import { DEFAULT_PURPLE } from './assets/constants/colors';
+import { Spinner } from './components/common/Spinner';
 
-interface AppState {
-  isFontLoaded: boolean;
-  isReady: boolean;
-  isConnected: boolean;
-}
+const App = () => {
+  const [isFontLoaded, setIsFontLoaded] = useState(false);
 
-export default class App extends Component<{}, AppState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isFontLoaded: false,
-      isReady: false,
-      isConnected: false,
+  useEffect(() => {
+    const loadFont = async () => {
+      await Font.loadAsync(MSFontList);
+      setIsFontLoaded(true);
     };
-  }
 
-  async componentDidMount() {
-    await Font.loadAsync(MSFontList);
+    loadFont();
+  }, []);
 
-    this.setState({ isFontLoaded: true });
-  }
+  return isFontLoaded ? <AppRouter /> : <Spinner />;
+};
 
-  render() {
-    const { isFontLoaded } = this.state;
-
-    if (isFontLoaded) {
-      return <AppRouter />;
-    } else {
-      return <View />;
-    }
-  }
-}
+export default App;

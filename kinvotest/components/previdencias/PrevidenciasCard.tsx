@@ -1,5 +1,5 @@
 import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../assets/constants/colors';
-import { Card } from '../../components/common/card';
+import { Card } from '../../components/common/Card';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 

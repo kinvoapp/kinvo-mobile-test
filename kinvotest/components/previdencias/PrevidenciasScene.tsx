@@ -8,6 +8,7 @@ import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent
 
 import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
 import axios from 'axios';
+import { Spinner } from '../common/Spinner';
 
 export interface PrevidenciasRequestData {
   id: number;
@@ -139,14 +140,9 @@ export class PrevidenciasScene extends Component<{}, PrevidenciasSceneState> {
   };
 
   render = () => {
-    const { bgContainer, divisorStyle, loadingContainer, listContainerStyle } = styles;
+    const { bgContainer, divisorStyle, listContainerStyle } = styles;
 
-    if (this.state.loading)
-      return (
-        <View style={loadingContainer}>
-          <ActivityIndicator size={48} color={DEFAULT_PURPLE} />
-        </View>
-      );
+    if (this.state.loading) return <Spinner />;
     else {
       if (this.state.connected) {
         return (
@@ -197,11 +193,6 @@ export class PrevidenciasScene extends Component<{}, PrevidenciasSceneState> {
 }
 
 const styles = StyleSheet.create({
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   listContainerStyle: {
     marginHorizontal: 20,
     marginTop: 10,

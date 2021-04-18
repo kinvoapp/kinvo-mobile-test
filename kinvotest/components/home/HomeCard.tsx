@@ -5,7 +5,7 @@ import {
   DEFAULT_PURPLE,
   DEFAULT_WHITE,
 } from '../../assets/constants/colors';
-import { Card } from '../../components/common/card';
+import { Card } from '../../components/common/Card';
 import React from 'react';
 import { Image, View, Text, StyleSheet } from 'react-native';
 import { getIcon, getPath } from '../../assets/utils/utils';
@@ -57,7 +57,6 @@ export const HomeCard = ({ titulo, subtitulo, novoBadge, icon }: HomeCardProps) 
 
 const styles = StyleSheet.create({
   iconImageStyle: { alignSelf: 'center' },
-
   cardTitleStyle: {
     color: DEFAULT_PURPLE,
     fontFamily: 'ms-bold',

@@ -4,7 +4,7 @@ import { Actions, Router, Scene, Stack } from 'react-native-router-flux';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { DEFAULT_BORDER_COLOR, DEFAULT_PURPLE, DEFAULT_WHITE, NAV_BORDER_COLOR } from '../constants/colors';
 import { ROUTER_HOME, ROUTER_PREVIDENCIAS } from '../constants/router';
-import { PrevidenciasScene } from '../../components/previdencias/PrevidenciasScene';
+import { PrevidenciasScene } from '../../components/previdencias/PrevidenciasSceneHooked';
 
 const renderBackButton = () => {
   return (

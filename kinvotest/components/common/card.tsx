@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
-import { View, StyleSheet, TouchableOpacity, StyleProp } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { DEFAULT_WHITE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 
-const Card = ({ path, children, height }: { path?: string; children: ReactNode; height: number }) => {
+export const Card = ({ path, children, height }: { path?: string; children: ReactNode; height: number }) => {
   const { container } = styles;
   let customContainerStyle = { ...container, height: height };
 
@@ -16,13 +17,10 @@ const Card = ({ path, children, height }: { path?: string; children: ReactNode; 
 const styles = StyleSheet.create({
   container: {
     height: 120,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: DEFAULT_WHITE,
     marginBottom: 20,
-    borderRadius: 10,
     flexDirection: 'row',
-    borderColor: '#DAE0E3',
+    borderColor: NAV_BORDER_COLOR,
     borderWidth: 1,
   },
 });
-
-export { Card };
