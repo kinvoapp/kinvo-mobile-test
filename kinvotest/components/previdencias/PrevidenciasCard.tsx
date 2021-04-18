@@ -25,7 +25,7 @@ export const PrevidenciasCard = ({
   const { cardTitleStyle, cardSubtitleStyle, containerStyle } = styles;
 
   return (
-    <Card>
+    <Card customContainerProps={{ height: 218 }}>
       <View style={containerStyle}>
         <View>
           <Text style={cardTitleStyle}>{name}</Text>
