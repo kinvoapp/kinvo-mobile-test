@@ -123,22 +123,6 @@ export class PrevidenciasScene extends Component<{}, PrevidenciasSceneState> {
     this.setState({ loading: false });
   };
 
-  renderItem = ({ item }: { item: PrevidenciasCardProps; index: number }) => {
-    const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
-
-    return (
-      <PrevidenciasCard
-        id={id}
-        name={name}
-        type={type}
-        minimumValue={minimumValue}
-        tax={tax}
-        redemptionTerm={redemptionTerm}
-        profitability={profitability}
-      />
-    );
-  };
-
   render = () => {
     const { bgContainer, divisorStyle, listContainerStyle } = styles;
 

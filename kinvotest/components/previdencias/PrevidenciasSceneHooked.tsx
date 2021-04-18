@@ -7,6 +7,8 @@ import { Spinner } from '../common/Spinner';
 import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
 import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
 import { PrevidenciasFilter } from './PrevidenciasFilter';
+import _, { isEmpty } from 'lodash';
+import { PrevidenciasCard } from './PrevidenciasCard';
 
 export interface PrevidenciasRequestData {
   id: number;
@@ -17,6 +19,8 @@ export interface PrevidenciasRequestData {
   redemptionTerm: number;
   profitability: number;
 }
+
+type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
 
 interface PrevidenciasRequest {
   success: Boolean;
@@ -32,30 +36,110 @@ export enum PrevidenciasSceneFilterEnum {
 
 export interface FilterOption {
   title: string;
-  filter: () => void;
+  filter: FilterFunction;
   isSelected: Boolean;
 }
 
-const options = [
+const defaultOptions: FilterOption[] = [
   {
     title: PrevidenciasSceneFilterEnum.Resgate,
     filter: (requestData: PrevidenciasRequestData) => {
       return requestData.redemptionTerm === 1;
     },
+    isSelected: false,
   },
   {
     title: PrevidenciasSceneFilterEnum.Taxa,
     filter: (requestData: PrevidenciasRequestData) => {
       return requestData.tax === 0;
     },
+    isSelected: false,
   },
   {
     title: PrevidenciasSceneFilterEnum.ValorMinimo,
     filter: (requestData: PrevidenciasRequestData) => {
       return requestData.minimumValue < 100;
     },
+    isSelected: false,
   },
 ];
+
+const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) => {
+  const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
+
+  return (
+    <PrevidenciasCard
+      id={id}
+      name={name}
+      type={type}
+      minimumValue={minimumValue}
+      tax={tax}
+      redemptionTerm={redemptionTerm}
+      profitability={profitability}
+    />
+  );
+};
+
+const setSelectedFilter = ({
+  option: { title },
+  setFilter,
+  setOptions,
+}: {
+  option: FilterOption;
+  setOptions: (newOptions: FilterOption[]) => void;
+  setFilter: (filterArray: Array<FilterFunction>) => void;
+}) => {
+  let newOptions = defaultOptions;
+
+  const selectedFilter = _.findIndex(newOptions, { title });
+
+  if (selectedFilter !== -1) {
+    const { isSelected } = newOptions[selectedFilter];
+    newOptions[selectedFilter].isSelected = !isSelected;
+  }
+
+  setOptions(newOptions);
+
+  const filterArray = buildFilters({ currentOptions: newOptions });
+
+  setFilter(filterArray);
+};
+
+const buildFilters = ({ currentOptions }: { currentOptions: FilterOption[] }): Array<FilterFunction> => {
+  const arrayFilters: Array<FilterFunction> = [];
+  _.forEach(currentOptions, (option: FilterOption) => {
+    if (option.isSelected) {
+      arrayFilters.push(option.filter);
+    }
+  });
+
+  return arrayFilters;
+};
+
+const applyFilters = ({
+  currentFilters,
+  requestData,
+  setFilteredData,
+}: {
+  currentFilters: Array<FilterFunction>;
+  requestData: PrevidenciasRequestData[];
+  setFilteredData: (filteredData: PrevidenciasRequestData[]) => void;
+}) => {
+  let filteredData = requestData;
+
+  if (currentFilters.length > 0) {
+    filteredData = _.filter(requestData, (item) => {
+      for (let filter of currentFilters) {
+        if (!filter(item)) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  setFilteredData(filteredData);
+};
 
 const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
   try {
@@ -69,15 +153,15 @@ const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
       return data;
     }
   } catch (error) {
-    console.log(error);
-
-    return null;
+    throw new Error(error);
   }
 };
 
 export const PrevidenciasScene = () => {
   const [loading, setLoading] = useState(true);
-  const [requestData, setRequestData] = useState<PrevidenciasRequest | null>(null);
+  const [requestData, setRequestData] = useState<PrevidenciasRequestData[]>([]);
+  const [options, setOptions] = useState<FilterOption[]>(defaultOptions);
+  const [currentFilters, setCurrentFilters] = useState([]);
   const [filteredData, setFilteredData] = useState<PrevidenciasRequestData[] | null>(null);
   const [connected, setConnected] = useState(true);
 
@@ -85,7 +169,12 @@ export const PrevidenciasScene = () => {
     (async () => {
       try {
         const requestData = await getPrevidencias();
-        setRequestData(requestData);
+        const { data } = requestData || { data: [] };
+
+        setRequestData(data);
+        if (requestData) {
+          setFilteredData(data);
+        }
       } catch (error) {
         console.error(error);
         setConnected(false);
@@ -94,24 +183,32 @@ export const PrevidenciasScene = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    if (requestData) applyFilters({ currentFilters, requestData, setFilteredData });
+  }, [currentFilters]);
+
   const { bgContainer, divisorStyle, listContainerStyle } = styles;
 
   if (loading) return <Spinner />;
   else {
-    if (connected) {
+    if (connected && filteredData !== null) {
       return (
         <View style={bgContainer}>
           <View style={{ flex: 3 }}>
-            <PrevidenciasFilter requestData={requestData} options={options} callback={setFilteredData} />
+            <PrevidenciasFilter
+              options={options}
+              setOptions={setOptions}
+              setFilter={setCurrentFilters}
+              filterFn={setSelectedFilter}
+            />
             <View style={divisorStyle} />
-            {/* <FlatList
-              renderItem={this.renderItem}
-              data={this.state.filteredData}
-              extraData={[this.state.activeFilter]}
+            <FlatList
+              renderItem={renderItem}
+              data={filteredData}
               ListEmptyComponent={PrevidenciasEmptyListComponent}
               contentContainerStyle={listContainerStyle}
               keyExtractor={(_, index: number) => index.toString()}
-            /> */}
+            />
           </View>
         </View>
       );
