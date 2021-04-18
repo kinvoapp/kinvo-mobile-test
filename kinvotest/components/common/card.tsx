@@ -13,7 +13,7 @@ const Card = ({ path, children }: { path?: string; children: ReactNode }) => {
 
 const styles = StyleSheet.create({
   container: {
-    minHeight: 120,
+    minHeight: 218,
     backgroundColor: '#FFFFFF',
     marginVertical: 10,
     marginHorizontal: 10,

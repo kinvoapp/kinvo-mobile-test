@@ -91,12 +91,7 @@ export class PrevidenciasScene extends Component<{}, {}> {
     return (
       <View style={bgContainer}>
         <View style={{ flex: 3 }}>
-          <FlatList
-            renderItem={this.renderItem}
-            data={data}
-            keyExtractor={(_, index: number) => index.toString()}
-            scrollEnabled={false}
-          />
+          <FlatList renderItem={this.renderItem} data={data} keyExtractor={(_, index: number) => index.toString()} />
         </View>
       </View>
     );

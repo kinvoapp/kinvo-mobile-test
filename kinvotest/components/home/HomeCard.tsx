@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
   },
   cardSubtitleStyle: {
     color: DEFAULT_BORDER_COLOR,
-    fontFamily: 'ms-regular',
+    fontFamily: 'ms-semibold',
     fontSize: 10,
   },
   badgeContainerStyle: {
     flex: 0,
-    minHeight: 20,
-    minWidth: 56,
+    height: 20,
+    width: 56,
     backgroundColor: DEFAULT_BLUE,
     justifyContent: 'center',
     borderRadius: 30,
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
   },
   iconContainerStyle: {
     flex: 0,
-    minWidth: 56,
-    minHeight: 56,
+    width: 56,
+    height: 56,
     backgroundColor: DEFAULT_GREY,
     justifyContent: 'center',
     alignContent: 'center',

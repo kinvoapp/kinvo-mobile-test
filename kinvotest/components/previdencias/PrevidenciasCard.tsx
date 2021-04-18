@@ -22,13 +22,20 @@ export const PrevidenciasCard = ({
   redemptionTerm,
   profitability,
 }: PrevidenciasCardProps) => {
-  const { cardTitleStyle, cardSubtitleStyle, middleContainerStyle } = styles;
+  const { cardTitleStyle, cardSubtitleStyle, containerStyle } = styles;
 
   return (
     <Card>
-      <View style={middleContainerStyle}>
-        <Text style={cardTitleStyle}>{name}</Text>
+      <View style={containerStyle}>
+        <View>
+          <Text style={cardTitleStyle}>{name}</Text>
+          <Text></Text>
+        </View>
         <Text style={cardSubtitleStyle}>{type}</Text>
+        <Text style={cardSubtitleStyle}>{minimumValue}</Text>
+        <Text style={cardSubtitleStyle}>{tax}</Text>
+        <Text style={cardSubtitleStyle}>{redemptionTerm}</Text>
+        <Text style={cardSubtitleStyle}>{profitability}</Text>
       </View>
     </Card>
   );
@@ -36,17 +43,16 @@ export const PrevidenciasCard = ({
 
 const styles = StyleSheet.create({
   iconImageStyle: { alignSelf: 'center' },
-
   cardTitleStyle: {
     color: DEFAULT_PURPLE,
     fontFamily: 'ms-bold',
     fontSize: 16,
-    marginBottom: 5,
   },
   cardSubtitleStyle: {
     color: DEFAULT_BORDER_COLOR,
     fontFamily: 'ms-regular',
     fontSize: 10,
+    padding: 15,
   },
-  middleContainerStyle: { flex: 3, justifyContent: 'center' },
+  containerStyle: { flex: 3, justifyContent: 'center' },
 });
