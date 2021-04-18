@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import { HomeCardsArray } from './constants';
-import { DEFAULT_BORDER_COLOR, DEFAULT_PURPLE } from '../../assets/constants/colors';
+import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE } from '../../assets/constants/colors';
 import { HomeCard, HomeCardProps } from './HomeCard';
 import React, { Component } from 'react';
 
@@ -32,7 +32,7 @@ export class HomeScene extends Component<{}, {}> {
 const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
-    backgroundColor: '#ECF0F2',
+    backgroundColor: DEFAULT_GREY,
   },
   cardTitleStyle: {
     color: DEFAULT_PURPLE,

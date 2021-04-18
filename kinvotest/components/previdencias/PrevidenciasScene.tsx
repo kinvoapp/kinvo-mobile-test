@@ -1,6 +1,6 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { Button, FlatList, StyleSheet, View } from 'react-native';
 // import { HomeCardsArray } from './constants';
-import { DEFAULT_BORDER_COLOR, DEFAULT_PURPLE } from '../../assets/constants/colors';
+import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 
 import React, { Component } from 'react';
 import { PrevidenciasCard, PrevidenciasCardProps } from './PrevidenciasCard';
@@ -68,6 +68,7 @@ const PrevidenciasRequest: { success: Boolean; data: PrevidenciasRequestData[] }
 };
 
 export class PrevidenciasScene extends Component<{}, {}> {
+  async componentDidMount() {}
   renderItem = ({ item }: { item: PrevidenciasCardProps; index: number }) => {
     const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
 
@@ -85,12 +86,18 @@ export class PrevidenciasScene extends Component<{}, {}> {
   };
 
   render = () => {
-    const { bgContainer } = styles;
+    const { bgContainer, divisorStyle } = styles;
     const { success, data } = PrevidenciasRequest;
 
     return (
       <View style={bgContainer}>
         <View style={{ flex: 3 }}>
+          <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <Button title={'SEM TAXA'} onPress={() => null} />
+            <Button title={'R$100,00'} onPress={() => null} />
+            <Button title={'D+1'} onPress={() => null} />
+          </View>
+          <View style={divisorStyle} />
           <FlatList renderItem={this.renderItem} data={data} keyExtractor={(_, index: number) => index.toString()} />
         </View>
       </View>
@@ -101,13 +108,19 @@ export class PrevidenciasScene extends Component<{}, {}> {
 const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
-    backgroundColor: '#ECF0F2',
+    backgroundColor: DEFAULT_GREY,
   },
   cardTitleStyle: {
     color: DEFAULT_PURPLE,
     fontFamily: 'ms-bold',
     fontSize: 16,
     marginBottom: 5,
+  },
+  divisorStyle: {
+    marginHorizontal: 10,
+    marginVertical: 10,
+    borderBottomColor: NAV_BORDER_COLOR,
+    borderBottomWidth: 1,
   },
   cardSubtitleStyle: {
     color: DEFAULT_BORDER_COLOR,

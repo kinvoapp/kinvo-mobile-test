@@ -32,3 +32,18 @@ export const getPath = (titulo: string) => {
       return null;
   }
 };
+
+export const getFormattedValue = ({ format, value }: { format: string; value: number }) => {
+  switch (format) {
+    case 'BRL':
+      return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });
+    case 'D':
+      return `D+${value}`;
+    case '%':
+      return `${value}%`;
+    case 'profit':
+      return `${value}%`;
+    default:
+      return value;
+  }
+};

@@ -34,7 +34,7 @@ export const HomeCard = ({ titulo, subtitulo, novoBadge, icon }: HomeCardProps) 
   const path = getPath(titulo);
 
   return (
-    <Card path={path}>
+    <Card path={path} height={120}>
       <View style={leftContainerStyle}>
         <View style={iconContainerStyle}>
           <Image style={iconImageStyle} source={iconImage} />
