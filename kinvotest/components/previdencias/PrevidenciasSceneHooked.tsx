@@ -29,7 +29,7 @@ interface PrevidenciasRequest {
 }
 
 export enum PrevidenciasSceneFilterEnum {
-  Taxa = 'Sem Taxa',
+  Taxa = 'SEM TAXA',
   ValorMinimo = 'R$100,00',
   Resgate = 'D+1',
 }
@@ -42,24 +42,19 @@ export interface FilterOption {
 
 const defaultOptions: FilterOption[] = [
   {
-    title: PrevidenciasSceneFilterEnum.Resgate,
-    filter: (requestData: PrevidenciasRequestData) => {
-      return requestData.redemptionTerm === 1;
-    },
-    isSelected: false,
-  },
-  {
     title: PrevidenciasSceneFilterEnum.Taxa,
-    filter: (requestData: PrevidenciasRequestData) => {
-      return requestData.tax === 0;
-    },
+    filter: (requestData) => requestData.tax === 0,
     isSelected: false,
   },
+
   {
     title: PrevidenciasSceneFilterEnum.ValorMinimo,
-    filter: (requestData: PrevidenciasRequestData) => {
-      return requestData.minimumValue < 100;
-    },
+    filter: (requestData) => requestData.minimumValue < 100,
+    isSelected: false,
+  },
+  {
+    title: PrevidenciasSceneFilterEnum.Resgate,
+    filter: (requestData) => requestData.redemptionTerm === 1,
     isSelected: false,
   },
 ];
@@ -161,7 +156,7 @@ export const PrevidenciasScene = () => {
   const [loading, setLoading] = useState(true);
   const [requestData, setRequestData] = useState<PrevidenciasRequestData[]>([]);
   const [options, setOptions] = useState<FilterOption[]>(defaultOptions);
-  const [currentFilters, setCurrentFilters] = useState([]);
+  const [currentFilters, setCurrentFilters] = useState<FilterFunction[]>([]);
   const [filteredData, setFilteredData] = useState<PrevidenciasRequestData[] | null>(null);
   const [connected, setConnected] = useState(true);
 
@@ -187,7 +182,7 @@ export const PrevidenciasScene = () => {
     if (requestData) applyFilters({ currentFilters, requestData, setFilteredData });
   }, [currentFilters]);
 
-  const { bgContainer, divisorStyle, listContainerStyle } = styles;
+  const { bgContainer, divisorStyle, listContainerStyle, filterListContainerStyle } = styles;
 
   if (loading) return <Spinner />;
   else {
@@ -199,12 +194,14 @@ export const PrevidenciasScene = () => {
               options={options}
               setOptions={setOptions}
               setFilter={setCurrentFilters}
+              contentContainerStyle={filterListContainerStyle}
               onPressFilter={setSelectedFilter}
             />
             <View style={divisorStyle} />
             <FlatList
               renderItem={renderItem}
               data={filteredData}
+              bounces={false}
               ListEmptyComponent={PrevidenciasEmptyListComponent}
               contentContainerStyle={listContainerStyle}
               keyExtractor={(_, index: number) => index.toString()}
@@ -219,6 +216,11 @@ export const PrevidenciasScene = () => {
 };
 
 const styles = StyleSheet.create({
+  filterListContainerStyle: {
+    marginHorizontal: 20,
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+  },
   listContainerStyle: {
     marginHorizontal: 20,
     marginTop: 10,

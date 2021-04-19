@@ -1,6 +1,6 @@
 import React from 'react';
 import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
-import { FlatList, View } from 'react-native';
+import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
 import { FilterOption } from './PrevidenciasSceneHooked';
 import _ from 'lodash';
 import { FilterFunction as Filter } from './PrevidenciasSceneHooked';
@@ -44,11 +44,13 @@ export const PrevidenciasFilter = ({
   setFilter,
   setOptions,
   onPressFilter,
+  contentContainerStyle,
 }: {
   options: FilterOption[];
   setFilter: SetFilterFunction;
   setOptions: SetOptionFunction;
   onPressFilter: onPressFilter;
+  contentContainerStyle: StyleProp<ViewStyle>;
 }) => {
   return (
     <View
@@ -60,6 +62,9 @@ export const PrevidenciasFilter = ({
       <FlatList
         horizontal={true}
         data={options}
+        bounces={false}
+        contentContainerStyle={contentContainerStyle}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => renderFilterItem({ item, onPressFilter, setFilter, setOptions })}
         keyExtractor={(_, index: number) => index.toString()}
       />

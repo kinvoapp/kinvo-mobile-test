@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
   },
   baseButtonContainerStyle: {
     borderRadius: 20,
-    paddingHorizontal: 20,
+    width: 100,
+    marginRight: 20,
     backgroundColor: DEFAULT_WHITE,
   },
   selectedButtonContainerStyle: {

@@ -21,7 +21,7 @@ export const HomeScene = () => {
           data={HomeCardsArray}
           contentContainerStyle={listContainerStyle}
           keyExtractor={(_, index: number) => index.toString()}
-          scrollEnabled={false}
+          bounces={false}
         />
       </View>
     </View>
