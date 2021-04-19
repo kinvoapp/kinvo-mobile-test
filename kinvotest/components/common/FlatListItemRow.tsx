@@ -1,10 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { DEFAULT_TEXT_COLOR, NEGATIVE_COLOR, POSITIVE_COLOR } from '../../../assets/constants/colors';
-import { getFormattedValue } from '../../../assets/utils/utils';
+import { DEFAULT_TEXT_COLOR, NEGATIVE_COLOR, POSITIVE_COLOR } from '../../assets/constants/colors';
+import { getFormattedValue } from '../../assets/utils/utils';
 
-export const PrevidenciasItemRow = ({ label, value, format }: { label: string; value: number; format: string }) => {
+export const FlatListItemRow = ({
+  label,
+  value,
+  format,
+}: {
+  label: string;
+  value: number | string;
+  format: string;
+}) => {
   const {
     labelStyle,
     cardSubtitleStyle,
@@ -22,7 +30,7 @@ export const PrevidenciasItemRow = ({ label, value, format }: { label: string; v
   const showProfit = format === 'profit';
 
   // monta objeto para alterar cores e determinar icone no caso de valor positivo ou negativo
-  if (showProfit)
+  if (showProfit && value !== 0)
     valueColor = value > 0 ? { color: POSITIVE_COLOR, icon: 'arrowup' } : { color: NEGATIVE_COLOR, icon: 'arrowdown' };
 
   return (
@@ -49,6 +57,7 @@ const styles = StyleSheet.create({
   titleContainerStyle: {
     flex: 1,
     justifyContent: 'center',
+    marginBottom: 15,
   },
   cardTitleStyle: {
     color: DEFAULT_TEXT_COLOR,
@@ -80,5 +89,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-end',
+    marginBottom: 15,
   },
 });

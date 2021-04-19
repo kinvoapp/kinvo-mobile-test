@@ -1,18 +1,13 @@
 import React from 'react';
 import { HomeScene } from '../../components/home/HomeScene';
-import { Actions, Router, Scene, Stack } from 'react-native-router-flux';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { DEFAULT_BORDER_COLOR, DEFAULT_PURPLE, DEFAULT_WHITE, NAV_BORDER_COLOR } from '../constants/colors';
-import { ROUTER_HOME, ROUTER_PREVIDENCIAS } from '../constants/router';
+import { Router, Scene, Stack } from 'react-native-router-flux';
+import { StyleSheet } from 'react-native';
+import { DEFAULT_PURPLE, DEFAULT_WHITE, NAV_BORDER_COLOR } from '../constants/colors';
+import { ROUTER_ACOES, ROUTER_FUNDOS, ROUTER_HOME, ROUTER_PREVIDENCIAS } from '../constants/router';
 import { PrevidenciasScene } from '../../components/previdencias/PrevidenciasScene';
-
-const renderBackButton = () => {
-  return (
-    <TouchableOpacity style={{ marginRight: 0, marginLeft: 20 }} onPress={() => Actions.pop()}>
-      <Image source={require('../../assets/icons/backButton/back.png')} style={{ width: 24, height: 24 }} />
-    </TouchableOpacity>
-  );
-};
+import { BackButton } from '../../components/common/BackButton';
+import { AcoesScene } from '../../components/acoes/AcoesScene';
+import { FundosScene } from '../../components/fundos/FundosScene';
 
 const AppRouter = () => {
   const { navbarStyle, navbarTitleStyle } = styles;
@@ -42,7 +37,27 @@ const AppRouter = () => {
             title="Previdências"
             titleStyle={{ ...navbarTitleStyle, marginLeft: -15 }}
             initial={false}
-            renderBackButton={renderBackButton}
+            renderBackButton={() => <BackButton />}
+            hideNavBar={false}
+            back={true}
+          />
+          <Scene
+            key={ROUTER_ACOES}
+            component={AcoesScene}
+            title="Ações"
+            titleStyle={{ ...navbarTitleStyle, marginLeft: -15 }}
+            initial={false}
+            renderBackButton={() => <BackButton />}
+            hideNavBar={false}
+            back={true}
+          />
+          <Scene
+            key={ROUTER_FUNDOS}
+            component={FundosScene}
+            title="Fundos"
+            titleStyle={{ ...navbarTitleStyle, marginLeft: -15 }}
+            initial={false}
+            renderBackButton={() => <BackButton />}
             hideNavBar={false}
             back={true}
           />

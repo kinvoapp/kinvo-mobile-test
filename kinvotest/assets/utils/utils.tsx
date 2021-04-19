@@ -1,5 +1,5 @@
 import { HomeCardIconsEnum } from '../constants/enums';
-import { ROUTER_PREVIDENCIAS } from '../constants/router';
+import { ROUTER_ACOES, ROUTER_FUNDOS, ROUTER_PREVIDENCIAS } from '../constants/router';
 
 const acoes_icon = require('../../assets/icons/acoes/acoes.png');
 const fundos_icon = require('../../assets/icons/fundos/fundos.png');
@@ -24,11 +24,11 @@ export const getIcon = (icon: HomeCardIconsEnum) => {
 export const getPath = (titulo: string) => {
   switch (titulo) {
     case 'Ações':
-      return null;
+      return ROUTER_ACOES;
     case 'Previdências':
       return ROUTER_PREVIDENCIAS;
     case 'Fundos':
-      return null;
+      return ROUTER_FUNDOS;
     default:
       console.warn('Valor fora dos títulos na HomeScene');
       return null;
@@ -36,7 +36,7 @@ export const getPath = (titulo: string) => {
 };
 
 //retorna o formato do valor para tela de previdencias
-export const getFormattedValue = ({ format, value }: { format: string; value: number }) => {
+export const getFormattedValue = ({ format, value }: { format: string; value: number | string }) => {
   switch (format) {
     case 'BRL':
       return value?.toLocaleString('pt-br', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });

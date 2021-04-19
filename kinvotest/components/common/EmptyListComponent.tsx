@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { DEFAULT_TEXT_COLOR } from '../../../assets/constants/colors';
+import { DEFAULT_TEXT_COLOR } from '../../assets/constants/colors';
 
-export const PrevidenciasEmptyListComponent = () => {
+export const EmptyListComponent = ({ text }: { text: string }) => {
   const { textStyle, containerStyle } = emptyListStyles;
   return (
     <View style={containerStyle}>
-      <Text style={textStyle}>Nenhum resultado foi encontrado para os filtros selecionados.</Text>
+      <Text style={textStyle}>{text}</Text>
     </View>
   );
 };

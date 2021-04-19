@@ -4,33 +4,34 @@ import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 import { PREVIDENCIAS_URL } from '../../assets/constants/url';
+import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
+import { FlatListCard } from '../common/FlatListCard';
+import { FlatListItemRow } from '../common/FlatListItemRow';
 import { Spinner } from '../common/Spinner';
 import { Filter } from './components/filter/Filter';
-import { applyFilters, setSelectedFilter } from './components/filter/utils/filter';
-import { PrevidenciasCard } from './components/PrevidenciasCard';
-import { PrevidenciasEmptyListComponent } from './components/PrevidenciasEmptyListComponent';
+import { applyFilters, setSelectedFilter } from './components/filter/utils/filterUtils';
+
 import { defaultOptions } from './constants/contants';
-import { FilterFunction, FilterOption, PrevidenciasRequest, PrevidenciasRequestData } from './constants/types';
+import { FilterFunction, FilterOption, PrevidenciasRequestData, RequestData } from './constants/types';
 
 const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) => {
-  const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
+  const { name: title, type: subtitle, minimumValue, tax, redemptionTerm, profitability } = item;
 
   return (
-    <PrevidenciasCard
-      id={id}
-      name={name}
-      type={type}
-      minimumValue={minimumValue}
-      tax={tax}
-      redemptionTerm={redemptionTerm}
-      profitability={profitability}
-    />
+    <FlatListCard title={title} subtitle={subtitle}>
+      <>
+        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
+        <FlatListItemRow label={'Taxa'} value={tax} format={'%'} />
+        <FlatListItemRow label={'Resgate'} value={redemptionTerm} format={'D'} />
+        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
+      </>
+    </FlatListCard>
   );
 };
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
-const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
+const getPrevidencias = async (): Promise<RequestData<PrevidenciasRequestData> | null> => {
   try {
     const response = await axios.get(PREVIDENCIAS_URL);
 
@@ -98,7 +99,9 @@ export const PrevidenciasScene = () => {
             <FlatList
               renderItem={renderItem}
               data={filteredData}
-              ListEmptyComponent={PrevidenciasEmptyListComponent}
+              ListEmptyComponent={
+                <EmptyListComponent text={'Nenhum resultado foi encontrado para os filtros selecionados.'} />
+              }
               contentContainerStyle={listContainerStyle}
               keyExtractor={(_, index: number) => index.toString()}
             />

@@ -3,21 +3,22 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
-import { ACOES_URL } from '../../assets/constants/url';
+import { FUNDOS_URL } from '../../assets/constants/url';
 import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
 import { FlatListCard } from '../common/FlatListCard';
 import { FlatListItemRow } from '../common/FlatListItemRow';
 import { Spinner } from '../common/Spinner';
 import { RequestData } from '../previdencias/constants/types';
-import { AcoesRequestData } from './constants/types';
+import { FundosRequestData } from './constants/types';
 
-const renderItem = ({ item }: { item: AcoesRequestData; index: number }) => {
-  const { name: title, ticker: subtitle, minimumValue, profitability } = item;
+const renderItem = ({ item }: { item: FundosRequestData; index: number }) => {
+  const { name: title, type: subtitle, minimumValue, profitability, rating } = item;
 
   return (
     <FlatListCard title={title} subtitle={subtitle}>
       <>
+        <FlatListItemRow label={'Classificação'} value={rating} format={''} />
         <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
         <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
       </>
@@ -26,9 +27,9 @@ const renderItem = ({ item }: { item: AcoesRequestData; index: number }) => {
 };
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
-const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
+const getFundos = async (): Promise<RequestData<FundosRequestData> | null> => {
   try {
-    const response = await axios.get(ACOES_URL);
+    const response = await axios.get(FUNDOS_URL);
 
     const { status, data } = response;
 
@@ -42,9 +43,9 @@ const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
   }
 };
 
-export const AcoesScene = () => {
+export const FundosScene = () => {
   const [loading, setLoading] = useState<Boolean>(true);
-  const [requestData, setRequestData] = useState<AcoesRequestData[]>([]);
+  const [requestData, setRequestData] = useState<FundosRequestData[]>([]);
   const [connected, setConnected] = useState<Boolean>(true);
 
   //   Faz o get das previdencias da API, em caso de falha coloca a flag de erro como true. Também tem uma flag de loading. Como só é invocada uma vez, o hook não dá watch em nenhuma variável da aplicação.
@@ -52,7 +53,7 @@ export const AcoesScene = () => {
     //Função invocada imediatamente
     (async () => {
       try {
-        const requestData = await getAcoes();
+        const requestData = await getFundos();
         const { data } = requestData || { data: [] };
         setRequestData(data);
       } catch (error) {
@@ -73,7 +74,7 @@ export const AcoesScene = () => {
           <FlatList
             renderItem={renderItem}
             data={requestData}
-            ListEmptyComponent={<EmptyListComponent text={'Nenhuma ação foi encontrada.'} />}
+            ListEmptyComponent={<EmptyListComponent text={'Nenhum fundo encontrado.'} />}
             contentContainerStyle={listContainerStyle}
             keyExtractor={(_, index: number) => index.toString()}
           />

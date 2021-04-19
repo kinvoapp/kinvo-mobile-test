@@ -12,9 +12,9 @@ export type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
 export type SetFilterFunction = (newFilters: Array<FilterFunction>) => void;
 export type SetOptionFunction = (newOptions: Array<FilterOption>) => void;
 
-export interface PrevidenciasRequest {
+export interface RequestData<T> {
   success: Boolean;
-  data: PrevidenciasRequestData[];
+  data: T[];
   error: Boolean | null;
 }
 
