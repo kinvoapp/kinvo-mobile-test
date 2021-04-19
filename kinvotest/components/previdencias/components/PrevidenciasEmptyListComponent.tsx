@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { DEFAULT_TEXT_COLOR } from '../../assets/constants/colors';
+import { DEFAULT_TEXT_COLOR } from '../../../assets/constants/colors';
 
 export const PrevidenciasEmptyListComponent = () => {
   const { textStyle, containerStyle } = emptyListStyles;

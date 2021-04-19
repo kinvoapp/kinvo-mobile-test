@@ -5,6 +5,7 @@ const acoes_icon = require('../../assets/icons/acoes/acoes.png');
 const fundos_icon = require('../../assets/icons/fundos/fundos.png');
 const previdencias_icon = require('../../assets/icons/previdencias/previdencias.png');
 
+//icones da homescreen (tela de desafios)
 export const getIcon = (icon: HomeCardIconsEnum) => {
   switch (icon) {
     case HomeCardIconsEnum.ACOES:
@@ -19,6 +20,7 @@ export const getIcon = (icon: HomeCardIconsEnum) => {
   }
 };
 
+//retorna os paths do router para cada item na flatlist da homescreen (tela de desafios)
 export const getPath = (titulo: string) => {
   switch (titulo) {
     case 'Ações':
@@ -33,6 +35,7 @@ export const getPath = (titulo: string) => {
   }
 };
 
+//retorna o formato do valor para tela de previdencias
 export const getFormattedValue = ({ format, value }: { format: string; value: number }) => {
   switch (format) {
     case 'BRL':

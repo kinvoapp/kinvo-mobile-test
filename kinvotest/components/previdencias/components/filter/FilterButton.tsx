@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-import { DEFAULT_PURPLE, DEFAULT_TEXT_COLOR, DEFAULT_WHITE } from '../../assets/constants/colors';
+import { DEFAULT_PURPLE, DEFAULT_TEXT_COLOR, DEFAULT_WHITE } from '../../../../assets/constants/colors';
 
-export const PrevidenciasFilterButton = ({
+export const FilterButton = ({
   title,
   isSelected = false,
   onPress,

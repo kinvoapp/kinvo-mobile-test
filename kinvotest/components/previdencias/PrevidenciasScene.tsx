@@ -4,60 +4,13 @@ import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 import { Spinner } from '../common/Spinner';
-import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
-import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
-import { PrevidenciasFilter } from './PrevidenciasFilter';
-import _ from 'lodash';
-import { PrevidenciasCard } from './PrevidenciasCard';
-
-export interface PrevidenciasRequestData {
-  id: number;
-  name: string;
-  type: string;
-  minimumValue: number;
-  tax: number;
-  redemptionTerm: number;
-  profitability: number;
-}
-
-export type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
-
-interface PrevidenciasRequest {
-  success: Boolean;
-  data: PrevidenciasRequestData[];
-  error: Boolean | null;
-}
-
-export enum PrevidenciasSceneFilterEnum {
-  Taxa = 'SEM TAXA',
-  ValorMinimo = 'R$100,00',
-  Resgate = 'D+1',
-}
-
-export interface FilterOption {
-  title: string;
-  filter: FilterFunction;
-  isSelected: Boolean;
-}
-
-const defaultOptions: FilterOption[] = [
-  {
-    title: PrevidenciasSceneFilterEnum.Taxa,
-    filter: (requestData) => requestData.tax === 0,
-    isSelected: false,
-  },
-
-  {
-    title: PrevidenciasSceneFilterEnum.ValorMinimo,
-    filter: (requestData) => requestData.minimumValue < 100,
-    isSelected: false,
-  },
-  {
-    title: PrevidenciasSceneFilterEnum.Resgate,
-    filter: (requestData) => requestData.redemptionTerm === 1,
-    isSelected: false,
-  },
-];
+import { Filter } from './components/filter/Filter';
+import { applyFilters, setSelectedFilter } from './components/filter/utils/filter';
+import { PrevidenciasCard } from './components/PrevidenciasCard';
+import { PrevidenciasEmptyListComponent } from './components/PrevidenciasEmptyListComponent';
+import { PrevidenciasErrorComponent } from './components/PrevidenciasErrorComponent';
+import { defaultOptions } from './constants/contants';
+import { FilterFunction, FilterOption, PrevidenciasRequest, PrevidenciasRequestData } from './constants/types';
 
 const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) => {
   const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
@@ -75,67 +28,7 @@ const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) 
   );
 };
 
-const setSelectedFilter = ({
-  option: { title },
-  setFilter,
-  setOptions,
-}: {
-  option: FilterOption;
-  setOptions: (newOptions: FilterOption[]) => void;
-  setFilter: (filterArray: Array<FilterFunction>) => void;
-}) => {
-  let newOptions = defaultOptions;
-
-  const selectedFilter = _.findIndex(newOptions, { title });
-
-  if (selectedFilter !== -1) {
-    const { isSelected } = newOptions[selectedFilter];
-    newOptions[selectedFilter].isSelected = !isSelected;
-  }
-
-  setOptions(newOptions);
-
-  const filterArray = buildFilters({ currentOptions: newOptions });
-
-  setFilter(filterArray);
-};
-
-const buildFilters = ({ currentOptions }: { currentOptions: FilterOption[] }): Array<FilterFunction> => {
-  const arrayFilters: Array<FilterFunction> = [];
-  _.forEach(currentOptions, (option: FilterOption) => {
-    if (option.isSelected) {
-      arrayFilters.push(option.filter);
-    }
-  });
-
-  return arrayFilters;
-};
-
-const applyFilters = ({
-  currentFilters,
-  requestData,
-  setFilteredData,
-}: {
-  currentFilters: Array<FilterFunction>;
-  requestData: PrevidenciasRequestData[];
-  setFilteredData: (filteredData: PrevidenciasRequestData[]) => void;
-}) => {
-  let filteredData = requestData;
-
-  if (currentFilters.length > 0) {
-    filteredData = _.filter(requestData, (item) => {
-      for (let filter of currentFilters) {
-        if (!filter(item)) {
-          return false;
-        }
-      }
-      return true;
-    });
-  }
-
-  setFilteredData(filteredData);
-};
-
+// função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
   try {
     const response = await axios.get('https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension');
@@ -160,7 +53,9 @@ export const PrevidenciasScene = () => {
   const [filteredData, setFilteredData] = useState<PrevidenciasRequestData[] | null>(null);
   const [connected, setConnected] = useState(true);
 
+  // Faz o get das previdencias da API, em caso de falha coloca a flag de erro como true. Também tem uma flag de loading. Como só é invocada uma vez, o hook não dá watch em nenhuma variável da aplicação.
   useEffect(() => {
+    //Função invocada imediatamente
     (async () => {
       try {
         const requestData = await getPrevidencias();
@@ -178,6 +73,7 @@ export const PrevidenciasScene = () => {
     })();
   }, []);
 
+  //Hook que aplica os filtros toda vez que a variável "currentFilters" é alterada.
   useEffect(() => {
     if (requestData) applyFilters({ currentFilters, requestData, setFilteredData });
   }, [currentFilters]);
@@ -190,7 +86,7 @@ export const PrevidenciasScene = () => {
       return (
         <View style={bgContainer}>
           <View style={{ flex: 3 }}>
-            <PrevidenciasFilter
+            <Filter
               options={options}
               setOptions={setOptions}
               setFilter={setCurrentFilters}
@@ -201,7 +97,6 @@ export const PrevidenciasScene = () => {
             <FlatList
               renderItem={renderItem}
               data={filteredData}
-              bounces={false}
               ListEmptyComponent={PrevidenciasEmptyListComponent}
               contentContainerStyle={listContainerStyle}
               keyExtractor={(_, index: number) => index.toString()}

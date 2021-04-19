@@ -1,10 +1,10 @@
-import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../assets/constants/colors';
-import { Card } from '../../components/common/Card';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { PrevidenciasRequestData } from './PrevidenciasScene';
 import { PrevidenciasItemRow } from './PrevidenciasItemRow';
+import { PrevidenciasRequestData } from '../constants/types';
+import { Card } from '../../common/Card';
+import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../../assets/constants/colors';
 
 export interface PrevidenciasCardProps extends PrevidenciasRequestData {}
 

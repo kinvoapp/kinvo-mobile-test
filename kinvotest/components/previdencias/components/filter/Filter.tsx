@@ -1,12 +1,10 @@
 import React from 'react';
-import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
-import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
-import { FilterOption } from './PrevidenciasScene';
-import _ from 'lodash';
-import { FilterFunction as Filter } from './PrevidenciasScene';
+import { FilterButton } from './FilterButton';
+import { FlatList, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
-type SetFilterFunction = (newFilters: Array<Filter>) => void;
-type SetOptionFunction = (newOptions: Array<FilterOption>) => void;
+import _ from 'lodash';
+import { FilterOption, SetFilterFunction, SetOptionFunction } from '../../constants/types';
+
 type onPressFilter = ({
   option,
   setFilter,
@@ -31,7 +29,7 @@ const renderFilterItem = ({
   const { title, isSelected } = item;
 
   return (
-    <PrevidenciasFilterButton
+    <FilterButton
       title={title}
       onPress={() => onPressFilter({ option: item, setFilter, setOptions })}
       isSelected={isSelected}
@@ -39,7 +37,7 @@ const renderFilterItem = ({
   );
 };
 
-export const PrevidenciasFilter = ({
+export const Filter = ({
   options,
   setFilter,
   setOptions,
@@ -52,13 +50,9 @@ export const PrevidenciasFilter = ({
   onPressFilter: onPressFilter;
   contentContainerStyle: StyleProp<ViewStyle>;
 }) => {
+  const { rowStyle } = styles;
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-      }}
-    >
+    <View style={rowStyle}>
       <FlatList
         horizontal={true}
         data={options}
@@ -71,3 +65,10 @@ export const PrevidenciasFilter = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  rowStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+});
