@@ -1,9 +1,9 @@
 import React from 'react';
 import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
-import { FilterOption } from './PrevidenciasSceneHooked';
+import { FilterOption } from './PrevidenciasScene';
 import _ from 'lodash';
-import { FilterFunction as Filter } from './PrevidenciasSceneHooked';
+import { FilterFunction as Filter } from './PrevidenciasScene';
 
 type SetFilterFunction = (newFilters: Array<Filter>) => void;
 type SetOptionFunction = (newOptions: Array<FilterOption>) => void;

@@ -1,14 +1,14 @@
-import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
-import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
-import React, { Component } from 'react';
-import { PrevidenciasCard, PrevidenciasCardProps } from './PrevidenciasCard';
-import _ from 'lodash';
-import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
-import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
-
-import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 import { Spinner } from '../common/Spinner';
+import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
+import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
+import { PrevidenciasFilter } from './PrevidenciasFilter';
+import _ from 'lodash';
+import { PrevidenciasCard } from './PrevidenciasCard';
 
 export interface PrevidenciasRequestData {
   id: number;
@@ -20,26 +20,121 @@ export interface PrevidenciasRequestData {
   profitability: number;
 }
 
-export enum PrevidenciasSceneFilterEnum {
-  Taxa = 'sem taxa',
-  ValorMinimo = '100',
-  Resgate = 'D+1',
-  Todos = 'todos',
-}
-
-interface PrevidenciasSceneState {
-  loading: Boolean;
-  activeFilter: PrevidenciasSceneFilterEnum;
-  requestData: PrevidenciasRequestData[] | null;
-  filteredData: PrevidenciasRequestData[] | null;
-  connected: Boolean;
-}
+export type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
 
 interface PrevidenciasRequest {
   success: Boolean;
   data: PrevidenciasRequestData[];
   error: Boolean | null;
 }
+
+export enum PrevidenciasSceneFilterEnum {
+  Taxa = 'SEM TAXA',
+  ValorMinimo = 'R$100,00',
+  Resgate = 'D+1',
+}
+
+export interface FilterOption {
+  title: string;
+  filter: FilterFunction;
+  isSelected: Boolean;
+}
+
+const defaultOptions: FilterOption[] = [
+  {
+    title: PrevidenciasSceneFilterEnum.Taxa,
+    filter: (requestData) => requestData.tax === 0,
+    isSelected: false,
+  },
+
+  {
+    title: PrevidenciasSceneFilterEnum.ValorMinimo,
+    filter: (requestData) => requestData.minimumValue < 100,
+    isSelected: false,
+  },
+  {
+    title: PrevidenciasSceneFilterEnum.Resgate,
+    filter: (requestData) => requestData.redemptionTerm === 1,
+    isSelected: false,
+  },
+];
+
+const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) => {
+  const { id, name, type, minimumValue, tax, redemptionTerm, profitability } = item;
+
+  return (
+    <PrevidenciasCard
+      id={id}
+      name={name}
+      type={type}
+      minimumValue={minimumValue}
+      tax={tax}
+      redemptionTerm={redemptionTerm}
+      profitability={profitability}
+    />
+  );
+};
+
+const setSelectedFilter = ({
+  option: { title },
+  setFilter,
+  setOptions,
+}: {
+  option: FilterOption;
+  setOptions: (newOptions: FilterOption[]) => void;
+  setFilter: (filterArray: Array<FilterFunction>) => void;
+}) => {
+  let newOptions = defaultOptions;
+
+  const selectedFilter = _.findIndex(newOptions, { title });
+
+  if (selectedFilter !== -1) {
+    const { isSelected } = newOptions[selectedFilter];
+    newOptions[selectedFilter].isSelected = !isSelected;
+  }
+
+  setOptions(newOptions);
+
+  const filterArray = buildFilters({ currentOptions: newOptions });
+
+  setFilter(filterArray);
+};
+
+const buildFilters = ({ currentOptions }: { currentOptions: FilterOption[] }): Array<FilterFunction> => {
+  const arrayFilters: Array<FilterFunction> = [];
+  _.forEach(currentOptions, (option: FilterOption) => {
+    if (option.isSelected) {
+      arrayFilters.push(option.filter);
+    }
+  });
+
+  return arrayFilters;
+};
+
+const applyFilters = ({
+  currentFilters,
+  requestData,
+  setFilteredData,
+}: {
+  currentFilters: Array<FilterFunction>;
+  requestData: PrevidenciasRequestData[];
+  setFilteredData: (filteredData: PrevidenciasRequestData[]) => void;
+}) => {
+  let filteredData = requestData;
+
+  if (currentFilters.length > 0) {
+    filteredData = _.filter(requestData, (item) => {
+      for (let filter of currentFilters) {
+        if (!filter(item)) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  setFilteredData(filteredData);
+};
 
 const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
   try {
@@ -53,130 +148,79 @@ const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
       return data;
     }
   } catch (error) {
-    console.log(error);
-
-    return null;
+    throw new Error(error);
   }
 };
 
-export class PrevidenciasScene extends Component<{}, PrevidenciasSceneState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      loading: true,
-      activeFilter: PrevidenciasSceneFilterEnum.Todos,
-      requestData: [],
-      filteredData: [],
-      connected: true,
-    };
-  }
+export const PrevidenciasScene = () => {
+  const [loading, setLoading] = useState(true);
+  const [requestData, setRequestData] = useState<PrevidenciasRequestData[]>([]);
+  const [options, setOptions] = useState<FilterOption[]>(defaultOptions);
+  const [currentFilters, setCurrentFilters] = useState<FilterFunction[]>([]);
+  const [filteredData, setFilteredData] = useState<PrevidenciasRequestData[] | null>(null);
+  const [connected, setConnected] = useState(true);
 
-  async componentDidMount() {
-    const data = await getPrevidencias();
-    if (!data) {
-      this.setState({ connected: false, requestData: null });
-    } else {
-      this.setState({ connected: true, requestData: data });
-    }
-    this.filterData();
-    this.setState({ loading: false });
-  }
+  useEffect(() => {
+    (async () => {
+      try {
+        const requestData = await getPrevidencias();
+        const { data } = requestData || { data: [] };
 
-  filterData = async () => {
-    const { data } = this.state.requestData;
-
-    let filterFunction: (requestData: PrevidenciasRequestData) => void;
-
-    if (this.state.activeFilter === PrevidenciasSceneFilterEnum.Resgate) {
-      filterFunction = (requestData) => {
-        return requestData.redemptionTerm === 1;
-      };
-    } else if (this.state.activeFilter === PrevidenciasSceneFilterEnum.ValorMinimo) {
-      filterFunction = (requestData) => {
-        return requestData.minimumValue < 100;
-      };
-    } else if (this.state.activeFilter === PrevidenciasSceneFilterEnum.Taxa) {
-      filterFunction = (requestData) => {
-        return requestData.tax === 0;
-      };
-    } else {
-      filterFunction = () => {
-        return true;
-      };
-    }
-
-    const filteredData = _.filter(data, filterFunction);
-
-    const orderedData = _.orderBy(filteredData, ['name'], ['asc']);
-
-    this.setState({ filteredData: orderedData });
-  };
-
-  changeFilter = async ({ filterValue }: { filterValue: PrevidenciasSceneFilterEnum }) => {
-    //discutir com vitor
-    await this.setState({
-      activeFilter: filterValue,
-      loading: true,
-    });
-
-    this.filterData(this.state.filteredData);
-    this.setState({ loading: false });
-  };
-
-  render = () => {
-    const { bgContainer, divisorStyle, listContainerStyle } = styles;
-
-    if (this.state.loading) return <Spinner />;
-    else {
-      if (this.state.connected) {
-        return (
-          <View style={bgContainer}>
-            <View style={{ flex: 3 }}>
-              <View
-                style={{
-                  flex: 0,
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  marginTop: 20,
-                  marginBottom: 10,
-                }}
-              >
-                <PrevidenciasFilterButton
-                  title={'SEM TAXA'}
-                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.Taxa })}
-                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.Taxa}
-                />
-                <PrevidenciasFilterButton
-                  title={'R$100,00'}
-                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.ValorMinimo}
-                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.ValorMinimo })}
-                />
-                <PrevidenciasFilterButton
-                  title={'D+1'}
-                  isSelected={this.state.activeFilter === PrevidenciasSceneFilterEnum.Resgate}
-                  onPress={() => this.changeFilter({ filterValue: PrevidenciasSceneFilterEnum.Resgate })}
-                />
-              </View>
-              <View style={divisorStyle} />
-              <FlatList
-                renderItem={this.renderItem}
-                data={this.state.filteredData}
-                extraData={[this.state.activeFilter]}
-                ListEmptyComponent={PrevidenciasEmptyListComponent}
-                contentContainerStyle={listContainerStyle}
-                keyExtractor={(_, index: number) => index.toString()}
-              />
-            </View>
-          </View>
-        );
-      } else {
-        return <PrevidenciasErrorComponent />;
+        setRequestData(data);
+        if (requestData) {
+          setFilteredData(data);
+        }
+      } catch (error) {
+        console.error(error);
+        setConnected(false);
       }
+      setLoading(false);
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (requestData) applyFilters({ currentFilters, requestData, setFilteredData });
+  }, [currentFilters]);
+
+  const { bgContainer, dividerStyle: divisorStyle, listContainerStyle, filterListContainerStyle } = styles;
+
+  if (loading) return <Spinner />;
+  else {
+    if (connected && filteredData !== null) {
+      return (
+        <View style={bgContainer}>
+          <View style={{ flex: 3 }}>
+            <PrevidenciasFilter
+              options={options}
+              setOptions={setOptions}
+              setFilter={setCurrentFilters}
+              contentContainerStyle={filterListContainerStyle}
+              onPressFilter={setSelectedFilter}
+            />
+            <View style={divisorStyle} />
+            <FlatList
+              renderItem={renderItem}
+              data={filteredData}
+              bounces={false}
+              ListEmptyComponent={PrevidenciasEmptyListComponent}
+              contentContainerStyle={listContainerStyle}
+              keyExtractor={(_, index: number) => index.toString()}
+            />
+          </View>
+        </View>
+      );
+    } else {
+      return <PrevidenciasErrorComponent />;
     }
-  };
-}
+  }
+};
 
 const styles = StyleSheet.create({
+  filterListContainerStyle: {
+    marginHorizontal: 20,
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+  },
   listContainerStyle: {
     marginHorizontal: 20,
     marginTop: 10,
@@ -191,7 +235,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
   },
-  divisorStyle: {
+  dividerStyle: {
     marginTop: 10,
     marginBottom: 10,
     borderBottomColor: NAV_BORDER_COLOR,
