@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PrevidenciasFilterButton } from './PrevidenciasFilterButton';
 import { FlatList, View } from 'react-native';
-import { FilterOption, PrevidenciasRequestData } from './PrevidenciasSceneHooked';
+import { FilterOption } from './PrevidenciasSceneHooked';
 import _ from 'lodash';
+import { FilterFunction as Filter } from './PrevidenciasSceneHooked';
 
-const renderFilterItem = (
-  { item }: { item: FilterOption; index: number },
-  filterFn: ({ option }: { option: FilterOption }) => void,
-  setFilter: () => void,
-  setOptions: () => void,
-) => {
+type SetFilterFunction = (newFilters: Array<Filter>) => void;
+type SetOptionFunction = (newOptions: Array<FilterOption>) => void;
+type onPressFilter = ({
+  option,
+  setFilter,
+  setOptions,
+}: {
+  option: FilterOption;
+  setFilter: SetFilterFunction;
+  setOptions: SetOptionFunction;
+}) => void;
+
+const renderFilterItem = ({
+  item,
+  onPressFilter,
+  setFilter,
+  setOptions,
+}: {
+  item: FilterOption;
+  onPressFilter: onPressFilter;
+  setFilter: SetFilterFunction;
+  setOptions: SetOptionFunction;
+}) => {
   const { title, isSelected } = item;
 
   return (
     <PrevidenciasFilterButton
       title={title}
-      onPress={() => filterFn({ option: item, setFilter, setOptions })}
+      onPress={() => onPressFilter({ option: item, setFilter, setOptions })}
       isSelected={isSelected}
     />
   );
@@ -25,13 +43,13 @@ export const PrevidenciasFilter = ({
   options,
   setFilter,
   setOptions,
-  filterFn,
+  onPressFilter,
 }: {
-  requestData: PrevidenciasRequestData[];
   options: FilterOption[];
-  callback: () => void;
+  setFilter: SetFilterFunction;
+  setOptions: SetOptionFunction;
+  onPressFilter: onPressFilter;
 }) => {
-  console.log(options);
   return (
     <View
       style={{
@@ -42,7 +60,7 @@ export const PrevidenciasFilter = ({
       <FlatList
         horizontal={true}
         data={options}
-        renderItem={(item, index) => renderFilterItem(item, filterFn, setFilter, setOptions)}
+        renderItem={({ item }) => renderFilterItem({ item, onPressFilter, setFilter, setOptions })}
         keyExtractor={(_, index: number) => index.toString()}
       />
     </View>

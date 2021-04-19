@@ -7,7 +7,7 @@ import { Spinner } from '../common/Spinner';
 import { PrevidenciasEmptyListComponent } from './PrevidenciasEmptyListComponent';
 import { PrevidenciasErrorComponent } from './PrevidenciasErrorComponent';
 import { PrevidenciasFilter } from './PrevidenciasFilter';
-import _, { isEmpty } from 'lodash';
+import _ from 'lodash';
 import { PrevidenciasCard } from './PrevidenciasCard';
 
 export interface PrevidenciasRequestData {
@@ -20,7 +20,7 @@ export interface PrevidenciasRequestData {
   profitability: number;
 }
 
-type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
+export type FilterFunction = (el: PrevidenciasRequestData) => Boolean;
 
 interface PrevidenciasRequest {
   success: Boolean;
@@ -199,7 +199,7 @@ export const PrevidenciasScene = () => {
               options={options}
               setOptions={setOptions}
               setFilter={setCurrentFilters}
-              filterFn={setSelectedFilter}
+              onPressFilter={setSelectedFilter}
             />
             <View style={divisorStyle} />
             <FlatList
