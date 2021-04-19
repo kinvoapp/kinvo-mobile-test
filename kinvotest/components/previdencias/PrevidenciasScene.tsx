@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import { ErrorComponent } from '../common/ErrorComponent';
 import { Spinner } from '../common/Spinner';
 import { Filter } from './components/filter/Filter';
 import { applyFilters, setSelectedFilter } from './components/filter/utils/filter';
 import { PrevidenciasCard } from './components/PrevidenciasCard';
 import { PrevidenciasEmptyListComponent } from './components/PrevidenciasEmptyListComponent';
-import { PrevidenciasErrorComponent } from './components/PrevidenciasErrorComponent';
 import { defaultOptions } from './constants/contants';
 import { FilterFunction, FilterOption, PrevidenciasRequest, PrevidenciasRequestData } from './constants/types';
 
@@ -105,7 +105,7 @@ export const PrevidenciasScene = () => {
         </View>
       );
     } else {
-      return <PrevidenciasErrorComponent />;
+      return <ErrorComponent />;
     }
   }
 };

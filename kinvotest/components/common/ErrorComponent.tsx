@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-import { DEFAULT_PURPLE, DEFAULT_TEXT_COLOR, DEFAULT_WHITE } from '../../../assets/constants/colors';
+import { DEFAULT_PURPLE, DEFAULT_TEXT_COLOR, DEFAULT_WHITE } from '../../assets/constants/colors';
 
 //Pequeno Hack do RNRF (Router), onde se você passar uma key diferente da atual, ele recarrega a tela inteira.
 const refreshCurrentScreen = () => Actions.refresh({ key: Math.random() });
 
-export const PrevidenciasErrorComponent = () => {
+export const ErrorComponent = () => {
   const { containerStyle, titleStyle, subtitleStyle, buttonStyle } = styles;
   return (
     <View style={containerStyle}>
