@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import { PREVIDENCIAS_URL } from '../../assets/constants/url';
 import { ErrorComponent } from '../common/ErrorComponent';
 import { Spinner } from '../common/Spinner';
 import { Filter } from './components/filter/Filter';
@@ -31,7 +32,7 @@ const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getPrevidencias = async (): Promise<PrevidenciasRequest | null> => {
   try {
-    const response = await axios.get('https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension');
+    const response = await axios.get(PREVIDENCIAS_URL);
 
     const { status, data } = response;
 
