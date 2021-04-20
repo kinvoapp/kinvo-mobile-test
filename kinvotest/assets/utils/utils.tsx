@@ -1,9 +1,14 @@
+import { Platform } from 'react-native';
 import { HomeCardIconsEnum } from '../constants/enums';
 import { ROUTER_ACOES, ROUTER_FUNDOS, ROUTER_PREVIDENCIAS } from '../constants/router';
 
 const acoes_icon = require('../../assets/icons/acoes/acoes.png');
 const fundos_icon = require('../../assets/icons/fundos/fundos.png');
 const previdencias_icon = require('../../assets/icons/previdencias/previdencias.png');
+
+export const isAndroid = () => {
+  return Platform.OS === 'android';
+};
 
 //icones da homescreen (tela de desafios)
 export const getIcon = (icon: HomeCardIconsEnum) => {

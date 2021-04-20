@@ -8,6 +8,7 @@ import { PrevidenciasScene } from '../../components/previdencias/PrevidenciasSce
 import { BackButton } from '../../components/common/BackButton';
 import { AcoesScene } from '../../components/acoes/AcoesScene';
 import { FundosScene } from '../../components/fundos/FundosScene';
+import { isAndroid } from '../utils/utils';
 
 const AppRouter = () => {
   const { navbarStyle, navbarTitleStyle } = styles;
@@ -74,11 +75,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   navbarStyle: {
-    borderWidth: 0,
     borderColor: NAV_BORDER_COLOR,
-    elevation: 0,
+    elevation: 1,
     backgroundColor: DEFAULT_WHITE,
-    height: 100,
+    height: isAndroid() ? 150 : 100,
   },
 });
 
