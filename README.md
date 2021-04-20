@@ -1,4 +1,4 @@
-<img src="./kinvotest/assets/kinvo-icon.png" alt="kinvo-logo" width="50" align="right">
+<img src="./kinvotest/assets/kinvo-icon.png" alt="kinvo-logo" width="200" align="right">
 
 # Kinvo Mobile Test - Paulo Xavier
 
