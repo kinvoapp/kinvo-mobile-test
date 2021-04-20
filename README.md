@@ -1,6 +1,6 @@
-<img src="https://imgur.com/a/NSHvsGx" alt="Logo of the project" align="right">
+<img src="./kinvotest/assets/kinvo-icon.png" alt="kinvo-logo" align="right">
 
-# Kinvo Mobile Test - Paulo Xavier &middot;
+# Kinvo Mobile Test - Paulo Xavier
 
 > React Native Code Challenge - Kinvo
 
@@ -15,13 +15,13 @@ cd kinvotest/
 yarn start
 ```
 
-Você verá o progresso de instalação do seu gerenciador de módulos, em seguida, inicie o `expo`.
+Você verá o progresso de instalação do seu gerenciador de módulos, em seguida, inicie o `expo`:
 
 ```shell
 expo start
 ```
 
-Você verá a inicialização do expo, quando ele finalizar, deixe o mesmo rodando no terminal. Com um emulador Android e/ou iOS disponível e funcionando, aperte o `A` para iniciar o aplicativo no Android ou `I` no iOS, e isso iniciará a aplicação. No caso de maiores dúvidas, é só seguir a documentação do expo, que pode ser encontrada aqui[https://docs.expo.io/get-started/].
+Você verá a inicialização do expo, quando ele finalizar, deixe o mesmo rodando no terminal. Com um emulador Android e/ou iOS disponível e funcionando, aperte o `A` para iniciar o aplicativo no Android ou `I` no iOS, e isso iniciará a aplicação. No caso de maiores dúvidas, é só seguir a documentação do expo, que pode ser encontrada [aqui](https://docs.expo.io/get-started/).
 
 ### Frameworks/Libraries
 
