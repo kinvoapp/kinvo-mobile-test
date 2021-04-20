@@ -31,7 +31,7 @@ export const getPath = (titulo: string) => {
       return ROUTER_FUNDOS;
     default:
       console.warn('Valor fora dos títulos na HomeScene');
-      return null;
+      return '';
   }
 };
 

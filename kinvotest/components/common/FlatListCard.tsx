@@ -21,6 +21,7 @@ export const FlatListCard = ({ title, subtitle, badge, children }: FlatListCardP
   const {
     cardTitleStyle,
     divisorStyle,
+    titleContainerStyle,
     cardSubtitleStyle,
     upperContainerStyle,
     containerStyle,
@@ -31,7 +32,7 @@ export const FlatListCard = ({ title, subtitle, badge, children }: FlatListCardP
     <Card>
       <View style={containerStyle}>
         <View style={upperContainerStyle}>
-          <View style={{ flex: 3 }}>
+          <View style={titleContainerStyle}>
             <Text style={cardTitleStyle}>{title}</Text>
             <Text style={cardSubtitleStyle}>{subtitle}</Text>
           </View>
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   badgeContainerStyle: { flex: 1, justifyContent: 'flex-start', alignItems: 'flex-end' },
   iconImageStyle: { alignSelf: 'center' },
   titleContainerStyle: {
+    flex: 3,
     marginBottom: 10,
   },
   cardTitleStyle: {
