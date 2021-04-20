@@ -33,7 +33,7 @@ const RatingList = ({ rating, disabled = false }: { rating: number; disabled?: B
           // caso true, renderiza estrela preenchida
           name={filledStar ? 'star' : 'star-o'}
           color={disabled ? DISABLED_COLOR_TEXT : STAR_COLOR}
-          style={{ marginLeft: 3 }}
+          style={{ marginLeft: 5 }}
         />
       )}
       keyExtractor={(_, index) => index.toString()}

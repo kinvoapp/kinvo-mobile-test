@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     color: DEFAULT_TEXT_COLOR,
     fontFamily: 'ms-bold',
     fontSize: 16,
-    marginBottom: 3,
+    marginBottom: 5,
   },
   divisorStyle: {
     paddingHorizontal: 20,

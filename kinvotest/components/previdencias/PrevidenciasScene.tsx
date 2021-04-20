@@ -103,11 +103,11 @@ const styles = StyleSheet.create({
   filterListContainerStyle: {
     flex: 1,
     justifyContent: 'space-evenly',
-    marginTop: 20,
-    marginBottom: 20,
+    marginVertical: 20,
   },
   listContainerStyle: {
     marginHorizontal: 20,
+    paddingBottom: 20,
     marginTop: 20,
   },
   bgContainer: {

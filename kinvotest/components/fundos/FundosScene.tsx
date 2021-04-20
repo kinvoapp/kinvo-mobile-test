@@ -77,14 +77,10 @@ export const FundosScene = () => {
 };
 
 const styles = StyleSheet.create({
-  filterListContainerStyle: {
-    marginHorizontal: 20,
-    justifyContent: 'space-evenly',
-    marginTop: 10,
-  },
   listContainerStyle: {
     marginHorizontal: 20,
-    marginTop: 10,
+    paddingBottom: 20,
+    marginTop: 20,
   },
   bgContainer: {
     flex: 1,

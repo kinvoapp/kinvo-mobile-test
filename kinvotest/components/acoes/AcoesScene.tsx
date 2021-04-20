@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE } from '../../assets/constants/colors';
 import { ACOES_URL } from '../../assets/constants/url';
 import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
@@ -117,11 +117,11 @@ const styles = StyleSheet.create({
   filterListContainerStyle: {
     marginHorizontal: 20,
     justifyContent: 'space-evenly',
-    marginTop: 10,
   },
   listContainerStyle: {
     marginHorizontal: 20,
-    marginTop: 10,
+    marginTop: 20,
+    paddingBottom: 20,
   },
   bgContainer: {
     flex: 1,
@@ -133,12 +133,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
   },
-  dividerStyle: {
-    marginTop: 10,
-    marginBottom: 10,
-    borderBottomColor: NAV_BORDER_COLOR,
-    borderBottomWidth: 1,
-  },
+
   cardSubtitleStyle: {
     color: DEFAULT_BORDER_COLOR,
     fontFamily: 'ms-regular',
