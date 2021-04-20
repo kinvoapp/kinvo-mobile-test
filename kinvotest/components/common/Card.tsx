@@ -1,11 +1,21 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { DEFAULT_WHITE, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import { DEFAULT_WHITE, FECHADO_COLOR_TEXT, NAV_BORDER_COLOR } from '../../assets/constants/colors';
 
-export const Card = ({ path, children, height }: { path?: string; children: ReactNode; height?: number }) => {
+export const Card = ({
+  path,
+  children,
+  height,
+  disabled = false,
+}: {
+  path?: string;
+  children: ReactNode;
+  height?: number;
+  disabled: Boolean;
+}) => {
   const { container } = styles;
-  let customContainerStyle = { ...container, height };
+  let customContainerStyle = { ...container, height, backgroundColor: disabled ? FECHADO_COLOR_TEXT : DEFAULT_WHITE };
 
   return (
     <TouchableOpacity onPress={() => (path ? Actions[path]() : null)} disabled={!path}>
@@ -17,7 +27,6 @@ export const Card = ({ path, children, height }: { path?: string; children: Reac
 const styles = StyleSheet.create({
   container: {
     height: 120,
-    backgroundColor: DEFAULT_WHITE,
     marginBottom: 20,
     flexDirection: 'row',
     borderColor: NAV_BORDER_COLOR,

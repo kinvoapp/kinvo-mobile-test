@@ -6,24 +6,11 @@ import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } 
 import { ACOES_URL } from '../../assets/constants/url';
 import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
-import { FlatListCard } from '../common/FlatListCard';
-import { FlatListItemRow } from '../common/FlatListItemRow';
 import { Spinner } from '../common/Spinner';
 import { RequestData } from '../previdencias/constants/types';
 import { AcoesRequestData } from './constants/types';
-
-const renderItem = ({ item }: { item: AcoesRequestData; index: number }) => {
-  const { name: title, ticker: subtitle, minimumValue, profitability } = item;
-
-  return (
-    <FlatListCard title={title} subtitle={subtitle}>
-      <>
-        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
-        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
-      </>
-    </FlatListCard>
-  );
-};
+import { AcoesCard } from './components/AcoesCard';
+import _ from 'lodash';
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
@@ -42,9 +29,30 @@ const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
   }
 };
 
+const doFavorite = ({ array, id, setFunction }) => {
+  //Clona o array recebido com todos os itens
+  const modifiedArray = _.clone(array);
+  // busca o elemento a ser modificado, olhando por id
+
+  const findElement = _.findIndex(modifiedArray, (x) => x.id === id);
+  // modificar o valor do elemento
+  modifiedArray[findElement].favorite = !modifiedArray[findElement].favorite;
+
+  // ordena por favoritos
+  const orderedArray = _.orderBy(modifiedArray, ['favorite', 'name'], ['desc', 'asc']);
+
+  //Altera o state da tela que possui os itens a serem exibidos
+  setFunction(orderedArray);
+};
+
+const renderItem = ({ item }, setFunction) => {
+  return <AcoesCard item={item} onPress={setFunction} />;
+};
+
 export const AcoesScene = () => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [requestData, setRequestData] = useState<AcoesRequestData[]>([]);
+  const [showableData, setShowableData] = useState<AcoesRequestData[]>([]);
   const [connected, setConnected] = useState<Boolean>(true);
 
   //   Faz o get das previdencias da API, em caso de falha coloca a flag de erro como true. Também tem uma flag de loading. Como só é invocada uma vez, o hook não dá watch em nenhuma variável da aplicação.
@@ -55,6 +63,14 @@ export const AcoesScene = () => {
         const requestData = await getAcoes();
         const { data } = requestData || { data: [] };
         setRequestData(data);
+
+        const showableData = _.map(data, (i) => {
+          return { ...i, favorite: false };
+        });
+
+        const orderedData = _.orderBy(showableData, ['favorite', 'name'], ['desc', 'asc']);
+
+        setShowableData(orderedData);
       } catch (error) {
         console.error(error);
         setConnected(false);
@@ -67,12 +83,14 @@ export const AcoesScene = () => {
 
   if (loading) return <Spinner />;
   else {
-    if (connected && requestData !== null) {
+    if (connected && showableData !== null) {
       return (
         <View style={bgContainer}>
           <FlatList
-            renderItem={renderItem}
-            data={requestData}
+            renderItem={({ item }) =>
+              renderItem({ item }, () => doFavorite({ array: showableData, id: item.id, setFunction: setShowableData }))
+            }
+            data={showableData}
             ListEmptyComponent={<EmptyListComponent text={'Nenhuma ação foi encontrada.'} />}
             contentContainerStyle={listContainerStyle}
             keyExtractor={(_, index: number) => index.toString()}

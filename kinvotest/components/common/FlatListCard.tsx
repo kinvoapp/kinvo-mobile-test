@@ -1,8 +1,14 @@
 import React, { ReactNode } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card } from './Card';
-import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import {
+  DEFAULT_PURPLE,
+  DEFAULT_TEXT_COLOR,
+  DISABLED_COLOR_TEXT,
+  NAV_BORDER_COLOR,
+} from '../../assets/constants/colors';
 import { Badge } from './Badge';
+import { Icon } from 'react-native-elements';
 
 export interface DisplayElement {
   label: string;
@@ -13,11 +19,24 @@ export interface DisplayElement {
 export interface FlatListCardProps {
   title: string;
   subtitle: string;
+  showFav?: Boolean;
+  favorite?: Boolean;
   badge?: string;
   children: ReactNode;
+  disabled?: Boolean;
+  onPress: () => void;
 }
 
-export const FlatListCard = ({ title, subtitle, badge, children }: FlatListCardProps) => {
+export const FlatListCard = ({
+  title,
+  subtitle,
+  badge,
+  disabled = false,
+  showFav,
+  favorite,
+  children,
+  onPress,
+}: FlatListCardProps) => {
   const {
     cardTitleStyle,
     divisorStyle,
@@ -28,15 +47,28 @@ export const FlatListCard = ({ title, subtitle, badge, children }: FlatListCardP
     badgeContainerStyle,
   } = styles;
 
+  const finalTextColor = disabled ? DISABLED_COLOR_TEXT : DEFAULT_TEXT_COLOR;
+
   return (
-    <Card>
+    <Card disabled={disabled}>
       <View style={containerStyle}>
         <View style={upperContainerStyle}>
           <View style={titleContainerStyle}>
-            <Text style={cardTitleStyle}>{title}</Text>
-            <Text style={cardSubtitleStyle}>{subtitle}</Text>
+            <Text style={[cardTitleStyle, { color: finalTextColor }]}>{title}</Text>
+            <Text style={[cardSubtitleStyle, { color: finalTextColor }]}>{subtitle}</Text>
           </View>
-          <View style={badgeContainerStyle}>{badge ? <Badge type={badge} /> : null}</View>
+          <View style={badgeContainerStyle}>
+            {showFav ? (
+              <Icon
+                type={'font-awesome'}
+                size={24}
+                color={DEFAULT_PURPLE}
+                name={favorite ? 'heart' : 'heart-o'}
+                onPress={onPress}
+              />
+            ) : null}
+            {badge ? <Badge type={badge} /> : null}
+          </View>
         </View>
         <View style={divisorStyle} />
         {children}

@@ -10,7 +10,7 @@ import { Spinner } from '../common/Spinner';
 import { RequestData } from '../previdencias/constants/types';
 import { FundosCard } from './components/FundosCard';
 import { FundosRequestData } from './constants/types';
-
+import _ from 'lodash';
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getFundos = async (): Promise<RequestData<FundosRequestData> | null> => {
   try {
@@ -40,7 +40,8 @@ export const FundosScene = () => {
       try {
         const requestData = await getFundos();
         const { data } = requestData || { data: [] };
-        setRequestData(data);
+        const orderedData = _.orderBy(data, ['name'], ['asc']);
+        setRequestData(orderedData);
       } catch (error) {
         console.error(error);
         setConnected(false);

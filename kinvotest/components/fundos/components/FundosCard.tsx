@@ -17,13 +17,14 @@ const getStatus = (status: number) => {
 export const FundosCard = ({ item }: { item: FundosRequestData; index: number }) => {
   const { name: title, type: subtitle, minimumValue, profitability, rating, status } = item;
   const statusName = getStatus(status);
+  const isDisabled = statusName === 'Fechado';
 
   return (
-    <FlatListCard title={title} subtitle={subtitle} badge={statusName}>
+    <FlatListCard title={title} subtitle={subtitle} badge={statusName} disabled={isDisabled}>
       <>
-        <FlatListItemRow label={'Classificação'} value={rating} format={'rating'} />
-        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
-        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
+        <FlatListItemRow label={'Classificação'} value={rating} format={'rating'} disabled={isDisabled} />
+        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} disabled={isDisabled} />
+        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} disabled={isDisabled} />
       </>
     </FlatListCard>
   );

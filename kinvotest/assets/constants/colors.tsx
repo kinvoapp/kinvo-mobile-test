@@ -11,3 +11,5 @@ export const STAR_COLOR = '#F8C22E';
 
 export const FECHADO_COLOR_BG = '#818181';
 export const FECHADO_COLOR_TEXT = '#F7F8F8';
+
+export const DISABLED_COLOR_TEXT = 'rgba(98,112,120,0.5)';
