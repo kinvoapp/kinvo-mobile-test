@@ -101,13 +101,14 @@ export const PrevidenciasScene = () => {
 
 const styles = StyleSheet.create({
   filterListContainerStyle: {
-    marginHorizontal: 20,
+    flex: 1,
     justifyContent: 'space-evenly',
-    marginTop: 10,
+    marginTop: 20,
+    marginBottom: 20,
   },
   listContainerStyle: {
     marginHorizontal: 20,
-    marginTop: 10,
+    marginTop: 20,
   },
   bgContainer: {
     flex: 1,
@@ -120,8 +121,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   dividerStyle: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginHorizontal: 20,
     borderBottomColor: NAV_BORDER_COLOR,
     borderBottomWidth: 1,
   },
