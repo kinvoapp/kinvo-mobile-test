@@ -7,3 +7,7 @@ export const DEFAULT_WHITE = '#FFFFFF';
 export const DEFAULT_BLUE = '#40C5D6';
 export const NEGATIVE_COLOR = '#E85D1F';
 export const POSITIVE_COLOR = '#B5D54A';
+export const STAR_COLOR = '#F8C22E';
+
+export const FECHADO_COLOR_BG = '#818181';
+export const FECHADO_COLOR_TEXT = '#F7F8F8';

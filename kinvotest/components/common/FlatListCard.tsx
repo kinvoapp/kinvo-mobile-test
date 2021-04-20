@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card } from './Card';
 import { DEFAULT_TEXT_COLOR, NAV_BORDER_COLOR } from '../../assets/constants/colors';
+import { Badge } from './Badge';
 
 export interface DisplayElement {
   label: string;
@@ -12,20 +13,29 @@ export interface DisplayElement {
 export interface FlatListCardProps {
   title: string;
   subtitle: string;
+  badge?: string;
   children: ReactNode;
 }
 
-export const FlatListCard = ({ title, subtitle, children }: FlatListCardProps) => {
-  const { cardTitleStyle, divisorStyle, cardSubtitleStyle, containerStyle, titleContainerStyle } = styles;
+export const FlatListCard = ({ title, subtitle, badge, children }: FlatListCardProps) => {
+  const {
+    cardTitleStyle,
+    divisorStyle,
+    cardSubtitleStyle,
+    upperContainerStyle,
+    containerStyle,
+    badgeContainerStyle,
+  } = styles;
 
   return (
     <Card>
       <View style={containerStyle}>
-        <View>
-          <View style={titleContainerStyle}>
+        <View style={upperContainerStyle}>
+          <View style={{ flex: 3 }}>
             <Text style={cardTitleStyle}>{title}</Text>
             <Text style={cardSubtitleStyle}>{subtitle}</Text>
           </View>
+          <View style={badgeContainerStyle}>{badge ? <Badge type={badge} /> : null}</View>
         </View>
         <View style={divisorStyle} />
         {children}
@@ -35,6 +45,8 @@ export const FlatListCard = ({ title, subtitle, children }: FlatListCardProps) =
 };
 
 const styles = StyleSheet.create({
+  upperContainerStyle: { flex: 1, flexDirection: 'row' },
+  badgeContainerStyle: { flex: 1, justifyContent: 'flex-start', alignItems: 'flex-end' },
   iconImageStyle: { alignSelf: 'center' },
   titleContainerStyle: {
     marginBottom: 10,
@@ -57,5 +69,5 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 12,
   },
-  containerStyle: { flex: 3, justifyContent: 'center', padding: 15 },
+  containerStyle: { flex: 1, justifyContent: 'center', padding: 15 },
 });

@@ -1,8 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { DEFAULT_TEXT_COLOR, NEGATIVE_COLOR, POSITIVE_COLOR } from '../../assets/constants/colors';
+import { DEFAULT_TEXT_COLOR, NEGATIVE_COLOR, POSITIVE_COLOR, STAR_COLOR } from '../../assets/constants/colors';
 import { getFormattedValue } from '../../assets/utils/utils';
+import _ from 'lodash';
+
+const RatingList = ({ rating }: { rating: number }) => {
+  //sanity check dos valores de rating, trava o valor entre 0 e 5
+  let usableRating = _.clamp(rating, 0, 5);
+
+  // cria array com 5 posições de estrelas
+  const totalStars = _.range(0, 5);
+  // transforma em array de true/false baseado na rating, sendo true a estrela "preenchida"
+  const currentRating = _.map(totalStars, (x) => x < usableRating);
+
+  return (
+    <FlatList
+      data={currentRating}
+      contentContainerStyle={{ flex: 1, justifyContent: 'flex-end' }}
+      horizontal
+      bounces={false}
+      renderItem={({ item: filledStar }) => (
+        <Icon
+          type={'antdesign'}
+          size={20}
+          // caso true, renderiza estrela preenchida
+          name={filledStar ? 'star' : 'staro'}
+          color={STAR_COLOR}
+          style={{ marginLeft: 3 }}
+        />
+      )}
+      keyExtractor={(_, index) => index.toString()}
+    />
+  );
+};
 
 export const FlatListItemRow = ({
   label,
@@ -28,6 +59,7 @@ export const FlatListItemRow = ({
   const formattedValue = getFormattedValue({ value, format });
   //Checa a exibição no caso de "profit"
   const showProfit = format === 'profit';
+  const showRating = format === 'rating';
 
   // monta objeto para alterar cores e determinar icone no caso de valor positivo ou negativo
   if (showProfit && value !== 0)
@@ -42,10 +74,11 @@ export const FlatListItemRow = ({
       </View>
       <View style={rightContainerStyle}>
         <View style={profitIconContainerStyle}>
+          {showRating ? <RatingList rating={+value} /> : null}
           {showProfit ? (
             <Icon type={'antdesign'} size={12} color={valueColor.color} name={valueColor.icon} style={iconStyle} />
           ) : null}
-          <Text style={{ ...cardSubtitleStyle, color: valueColor.color }}>{formattedValue}</Text>
+          {showRating ? null : <Text style={{ ...cardSubtitleStyle, color: valueColor.color }}>{formattedValue}</Text>}
         </View>
       </View>
     </View>

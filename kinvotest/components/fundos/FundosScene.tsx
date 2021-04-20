@@ -6,25 +6,10 @@ import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } 
 import { FUNDOS_URL } from '../../assets/constants/url';
 import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
-import { FlatListCard } from '../common/FlatListCard';
-import { FlatListItemRow } from '../common/FlatListItemRow';
 import { Spinner } from '../common/Spinner';
 import { RequestData } from '../previdencias/constants/types';
+import { FundosCard } from './components/FundosCard';
 import { FundosRequestData } from './constants/types';
-
-const renderItem = ({ item }: { item: FundosRequestData; index: number }) => {
-  const { name: title, type: subtitle, minimumValue, profitability, rating } = item;
-
-  return (
-    <FlatListCard title={title} subtitle={subtitle}>
-      <>
-        <FlatListItemRow label={'Classificação'} value={rating} format={''} />
-        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
-        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
-      </>
-    </FlatListCard>
-  );
-};
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getFundos = async (): Promise<RequestData<FundosRequestData> | null> => {
@@ -72,7 +57,7 @@ export const FundosScene = () => {
       return (
         <View style={bgContainer}>
           <FlatList
-            renderItem={renderItem}
+            renderItem={FundosCard}
             data={requestData}
             ListEmptyComponent={<EmptyListComponent text={'Nenhum fundo encontrado.'} />}
             contentContainerStyle={listContainerStyle}

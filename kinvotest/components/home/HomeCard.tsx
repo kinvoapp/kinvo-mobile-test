@@ -1,15 +1,10 @@
-import {
-  DEFAULT_BLUE,
-  DEFAULT_BORDER_COLOR,
-  DEFAULT_GREY,
-  DEFAULT_PURPLE,
-  DEFAULT_WHITE,
-} from '../../assets/constants/colors';
+import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE } from '../../assets/constants/colors';
 import { Card } from '../../components/common/Card';
 import React from 'react';
 import { Image, View, Text, StyleSheet } from 'react-native';
 import { getIcon, getPath } from '../../assets/utils/utils';
 import { HomeCardIconsEnum } from '../../assets/constants/enums';
+import { Badge } from '../common/Badge';
 
 export interface HomeCardProps {
   titulo: string;
@@ -22,10 +17,8 @@ export const HomeCard = ({ titulo, subtitulo, novoBadge, icon }: HomeCardProps) 
   const {
     cardTitleStyle,
     cardSubtitleStyle,
-    badgeContainerStyle,
     leftContainerStyle,
     iconContainerStyle,
-    badgeTextStyle,
     rightContainerStyle,
     middleContainerStyle,
     iconImageStyle,
@@ -44,13 +37,7 @@ export const HomeCard = ({ titulo, subtitulo, novoBadge, icon }: HomeCardProps) 
         <Text style={cardTitleStyle}>{titulo}</Text>
         <Text style={cardSubtitleStyle}>{subtitulo}</Text>
       </View>
-      <View style={rightContainerStyle}>
-        {novoBadge ? (
-          <View style={badgeContainerStyle}>
-            <Text style={badgeTextStyle}>Novo</Text>
-          </View>
-        ) : null}
-      </View>
+      <View style={rightContainerStyle}>{novoBadge ? <Badge type={'Novo'} /> : null}</View>
     </Card>
   );
 };
@@ -68,15 +55,6 @@ const styles = StyleSheet.create({
     fontFamily: 'ms-semibold',
     fontSize: 10,
   },
-  badgeContainerStyle: {
-    flex: 0,
-    height: 20,
-    width: 56,
-    backgroundColor: DEFAULT_BLUE,
-    justifyContent: 'center',
-    borderRadius: 30,
-  },
-  badgeTextStyle: { fontFamily: 'ms-medium', fontSize: 10, color: DEFAULT_WHITE, alignSelf: 'center' },
   leftContainerStyle: {
     flex: 1,
     justifyContent: 'center',
