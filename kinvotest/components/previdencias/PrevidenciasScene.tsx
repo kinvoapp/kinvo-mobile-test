@@ -6,29 +6,13 @@ import { DEFAULT_BORDER_COLOR, DEFAULT_GREY, DEFAULT_PURPLE, NAV_BORDER_COLOR } 
 import { PREVIDENCIAS_URL } from '../../assets/constants/url';
 import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
-import { FlatListCard } from '../common/FlatListCard';
-import { FlatListItemRow } from '../common/FlatListItemRow';
 import { Spinner } from '../common/Spinner';
 import { Filter } from './components/filter/Filter';
 import { applyFilters, setSelectedFilter } from './components/filter/utils/filterUtils';
 
 import { defaultOptions } from './constants/contants';
 import { FilterFunction, FilterOption, PrevidenciasRequestData, RequestData } from './constants/types';
-
-const renderItem = ({ item }: { item: PrevidenciasRequestData; index: number }) => {
-  const { name: title, type: subtitle, minimumValue, tax, redemptionTerm, profitability } = item;
-
-  return (
-    <FlatListCard title={title} subtitle={subtitle}>
-      <>
-        <FlatListItemRow label={'Valor Mínimo'} value={minimumValue} format={'BRL'} />
-        <FlatListItemRow label={'Taxa'} value={tax} format={'%'} />
-        <FlatListItemRow label={'Resgate'} value={redemptionTerm} format={'D'} />
-        <FlatListItemRow label={'Rentabilidade'} value={profitability} format={'profit'} />
-      </>
-    </FlatListCard>
-  );
-};
+import { PrevidenciasCard } from './PrevidenciasCard';
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getPrevidencias = async (): Promise<RequestData<PrevidenciasRequestData> | null> => {
@@ -40,7 +24,7 @@ const getPrevidencias = async (): Promise<RequestData<PrevidenciasRequestData> |
     if (status === 200) {
       return data;
     } else {
-      return data;
+      throw new Error(`Erro no processamento do request. Servidor retornou status ${status}`);
     }
   } catch (error) {
     throw new Error(error);
@@ -62,20 +46,21 @@ export const PrevidenciasScene = () => {
       try {
         const requestData = await getPrevidencias();
         const { data } = requestData || { data: [] };
-
         setRequestData(data);
+
         if (requestData) {
           setFilteredData(data);
         }
       } catch (error) {
         console.error(error);
         setConnected(false);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 
-  //Hook que aplica os filtros toda vez que a variável "currentFilters" é alterada.
+  //Hook que aplica os filtros toda vez que a variável "currentFilters" é alterada, alterando o array a ser exibido
   useEffect(() => {
     if (requestData) applyFilters({ currentFilters, requestData, setFilteredData });
   }, [currentFilters]);
@@ -97,7 +82,7 @@ export const PrevidenciasScene = () => {
             />
             <View style={divisorStyle} />
             <FlatList
-              renderItem={renderItem}
+              renderItem={PrevidenciasCard}
               data={filteredData}
               ListEmptyComponent={
                 <EmptyListComponent text={'Nenhum resultado foi encontrado para os filtros selecionados.'} />

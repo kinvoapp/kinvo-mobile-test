@@ -11,6 +11,7 @@ import { RequestData } from '../previdencias/constants/types';
 import { FundosCard } from './components/FundosCard';
 import { FundosRequestData } from './constants/types';
 import _ from 'lodash';
+
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getFundos = async (): Promise<RequestData<FundosRequestData> | null> => {
   try {
@@ -21,7 +22,7 @@ const getFundos = async (): Promise<RequestData<FundosRequestData> | null> => {
     if (status === 200) {
       return data;
     } else {
-      return data;
+      throw new Error(`Erro no processamento do request. Servidor retornou status ${status}`);
     }
   } catch (error) {
     throw new Error(error);
@@ -40,13 +41,16 @@ export const FundosScene = () => {
       try {
         const requestData = await getFundos();
         const { data } = requestData || { data: [] };
+
         const orderedData = _.orderBy(data, ['name'], ['asc']);
         setRequestData(orderedData);
+        //captura o erro que foi lançado caso não haja internet/problemas de conectividade com a API
       } catch (error) {
         console.error(error);
         setConnected(false);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 

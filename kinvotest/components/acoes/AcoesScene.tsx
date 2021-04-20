@@ -8,9 +8,15 @@ import { EmptyListComponent } from '../common/EmptyListComponent';
 import { ErrorComponent } from '../common/ErrorComponent';
 import { Spinner } from '../common/Spinner';
 import { RequestData } from '../previdencias/constants/types';
-import { AcoesRequestData } from './constants/types';
+import { AcoesData, AcoesRequestData } from './constants/types';
 import { AcoesCard } from './components/AcoesCard';
 import _ from 'lodash';
+
+export interface SetFavoriteFunction {
+  array: AcoesData[];
+  index: number;
+  setFunction: (array: AcoesData[]) => void;
+}
 
 // função que faz o get na API da lista de previdências. Dá throw no error caso exista para ser tratado pela tela.
 const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
@@ -22,37 +28,35 @@ const getAcoes = async (): Promise<RequestData<AcoesRequestData> | null> => {
     if (status === 200) {
       return data;
     } else {
-      return data;
+      throw new Error(`Erro no processamento do request. Servidor retornou status ${status}`);
     }
   } catch (error) {
     throw new Error(error);
   }
 };
 
-const doFavorite = ({ array, id, setFunction }) => {
+const doFavorite = ({ array, index, setFunction }: SetFavoriteFunction) => {
   //Clona o array recebido com todos os itens
   const modifiedArray = _.clone(array);
-  // busca o elemento a ser modificado, olhando por id
 
-  const findElement = _.findIndex(modifiedArray, (x) => x.id === id);
   // modificar o valor do elemento
-  modifiedArray[findElement].favorite = !modifiedArray[findElement].favorite;
+  modifiedArray[index].favorite = !modifiedArray[index].favorite;
 
-  // ordena por favoritos
+  // ordena por favoritos e ordem alfabética
   const orderedArray = _.orderBy(modifiedArray, ['favorite', 'name'], ['desc', 'asc']);
 
   //Altera o state da tela que possui os itens a serem exibidos
   setFunction(orderedArray);
 };
 
-const renderItem = ({ item }, setFunction) => {
+const renderItem = ({ item, setFunction }: { item: AcoesData; setFunction: () => void }) => {
   return <AcoesCard item={item} onPress={setFunction} />;
 };
 
 export const AcoesScene = () => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [requestData, setRequestData] = useState<AcoesRequestData[]>([]);
-  const [showableData, setShowableData] = useState<AcoesRequestData[]>([]);
+  const [showableData, setShowableData] = useState<AcoesData[]>([]);
   const [connected, setConnected] = useState<Boolean>(true);
 
   //   Faz o get das previdencias da API, em caso de falha coloca a flag de erro como true. Também tem uma flag de loading. Como só é invocada uma vez, o hook não dá watch em nenhuma variável da aplicação.
@@ -60,11 +64,13 @@ export const AcoesScene = () => {
     //Função invocada imediatamente
     (async () => {
       try {
-        const requestData = await getAcoes();
-        const { data } = requestData || { data: [] };
+        const apiData = await getAcoes();
+        const { data } = apiData || { data: [] };
+
         setRequestData(data);
 
-        const showableData = _.map(data, (i) => {
+        //adiciona propriedade "favorite" no objeto
+        const showableData: AcoesData[] = _.map(data, (i) => {
           return { ...i, favorite: false };
         });
 
@@ -74,8 +80,9 @@ export const AcoesScene = () => {
       } catch (error) {
         console.error(error);
         setConnected(false);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 
@@ -87,8 +94,11 @@ export const AcoesScene = () => {
       return (
         <View style={bgContainer}>
           <FlatList
-            renderItem={({ item }) =>
-              renderItem({ item }, () => doFavorite({ array: showableData, id: item.id, setFunction: setShowableData }))
+            renderItem={({ item, index }) =>
+              renderItem({
+                item,
+                setFunction: () => doFavorite({ array: showableData, index: index, setFunction: setShowableData }),
+              })
             }
             data={showableData}
             ListEmptyComponent={<EmptyListComponent text={'Nenhuma ação foi encontrada.'} />}

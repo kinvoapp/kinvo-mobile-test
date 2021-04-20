@@ -17,6 +17,7 @@ export interface DisplayElement {
 }
 
 export interface FlatListCardProps {
+  id?: number;
   title: string;
   subtitle: string;
   showFav?: Boolean;
@@ -24,7 +25,7 @@ export interface FlatListCardProps {
   badge?: string;
   children: ReactNode;
   disabled?: Boolean;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 export const FlatListCard = ({

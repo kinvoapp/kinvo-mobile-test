@@ -12,7 +12,7 @@ export const Card = ({
   path?: string;
   children: ReactNode;
   height?: number;
-  disabled: Boolean;
+  disabled?: Boolean;
 }) => {
   const { container } = styles;
   let customContainerStyle = { ...container, height, backgroundColor: disabled ? FECHADO_COLOR_TEXT : DEFAULT_WHITE };

@@ -5,3 +5,7 @@ export interface AcoesRequestData {
   minimumValue: number;
   profitability: number;
 }
+
+export interface AcoesData extends AcoesRequestData {
+  favorite: Boolean;
+}

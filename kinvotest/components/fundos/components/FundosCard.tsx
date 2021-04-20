@@ -5,12 +5,13 @@ import { FundosRequestData } from '../constants/types';
 
 const getStatus = (status: number) => {
   switch (status) {
-    case 0:
-      return 'Comum';
     case 1:
       return 'Novo';
     case 2:
       return 'Fechado';
+    case 0:
+    default:
+      return 'Comum';
   }
 };
 
