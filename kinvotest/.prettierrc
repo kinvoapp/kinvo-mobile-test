@@ -1,0 +1,8 @@
+{
+	"semi": true,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"editor.formatOnSave": true,
+	"proseWrap": "always",
+	"arrowParens": "always"
+}

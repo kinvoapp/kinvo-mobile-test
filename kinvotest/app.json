@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "kinvotest",
+    "slug": "kinvotest",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/kinvo-icon.png",
+    "splash": {
+      "image": "./assets/kinvo-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+    }
+  }
+}
