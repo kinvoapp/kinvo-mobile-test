@@ -1,1 +1,1 @@
-export {default as NavigationCard} from './NavegationCard'
+export { default as NavigationCard } from "./NavegationCard";

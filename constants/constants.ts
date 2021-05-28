@@ -1,21 +1,18 @@
-import colors from "./colors"
+import colors from "./colors";
 
-export const starNumbers = 5
-
-
+export const starNumbers = 5;
 
 export const foundData = {
-    0:{
+    0: {
         color: null,
         text: "Comum",
     },
-    1:{
+    1: {
         color: colors.labelNew,
-        text: "Novo"
+        text: "Novo",
     },
-    2:{
+    2: {
         color: colors.labelClosed,
-        text: "Fechado"
+        text: "Fechado",
     },
-
-}
+};
