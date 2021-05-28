@@ -13,3 +13,7 @@ export function compareStrings( name1 : string, name2 : string ) {
 export function sortAssets(assets : StockProps[]) {
   return assets.sort((asset1, asset2)=>compareStrings(asset1.name, asset2.name))
 }
+
+export function getWordsFromString(word : string, nWords: number){
+  return  word.split(' ').slice(0,nWords).join(' ');
+}

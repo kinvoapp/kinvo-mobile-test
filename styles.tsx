@@ -1,17 +1,15 @@
 import styled from 'styled-components/native'
 import colors from './constants/colors'
 
+
+/** Containers  */
+
 export const Card = styled.View`
-    border: 1px solid #DAE0E3;
+    border: 1px solid ${colors.border};
     width: 320px;
     padding: 10px;
     background-color: #FFFFFF;
     border-radius: 10px;
-`
-
-export const CardTitle = styled.Text`
-    font-size: 16px;
-    font-family: montserrat-bold;
 `
 
 export const Screen = styled.View`
@@ -31,6 +29,16 @@ export const RowSpacedView = styled.View`
     flex-direction: row;
     justify-content: space-between;
 `
+
+
+/** Texts */
+
+
+export const CardTitle = styled.Text`
+    font-size: 16px;
+    font-family: montserrat-bold;
+`
+
 export const GainText = styled.Text`
     color: ${colors.gain};
     font-size: 12px;
@@ -42,3 +50,4 @@ export const LossText = styled.Text`
     font-size: 12px;
     font-family: montserrat-semibold;
 `
+
