@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import colors from './constants/colors'
 
 export const Card = styled.View`
     border: 1px solid #DAE0E3;
@@ -10,7 +11,7 @@ export const Card = styled.View`
 
 export const CardTitle = styled.Text`
     font-size: 16px;
-    font-weight: bold;
+    font-family: montserrat-bold;
 `
 
 export const Screen = styled.View`
@@ -19,4 +20,25 @@ export const Screen = styled.View`
 
 export const RowView = styled.View`
     flex-direction: row;
+`
+
+export const RowAlignCenterView = styled.View`
+    flex-direction: row;
+    align-items: center;
+`
+
+export const RowSpacedView = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`
+export const GainText = styled.Text`
+    color: ${colors.gain};
+    font-size: 12px;
+    font-family: montserrat-semibold;
+`
+
+export const LossText = styled.Text`
+    color: ${colors.loss};
+    font-size: 12px;
+    font-family: montserrat-semibold;
 `
