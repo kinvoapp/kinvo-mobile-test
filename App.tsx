@@ -4,12 +4,23 @@ import * as Font from 'expo-font';
 import AppLoading from "expo-app-loading"
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context'
 
-const fetchFonts = () => {
+const fetchFonts = async () => {
   const [dataLoaded, setDataLoaded] = useState(false)
 
-  return Font.loadAsync({
+  // if(!AppLoading){
+  //   return (
+  //     <AppLoading 
+  //             startAsync={fetchFonts} 
+  //             onFinish={() => setDataLoaded(true)}
+  //             onError={(err : string)=>console.log(err)}
+  //           />
+  //   )
+  // }
+
+  return await Font.loadAsync({
     'montserrat-bold' : require('./assets/fonts/Montserrat-Bold.ttf'),
-    'montserrat-semibold' : require('./assets/fonts/Montserrat-SemiBold.ttf')
+    'montserrat-semibold' : require('./assets/fonts/Montserrat-SemiBold.ttf'),
+    'montserrat-medium' : require('./assets/fonts/Montserrat-Medium.ttf'),
   });
 }
 
