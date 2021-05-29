@@ -13,7 +13,7 @@ export const FundCardContainer = styled(Card)<FundCardContainerProps>`
   padding: 16px 16px 22px 15px;
   margin-top: 20px;
   height: 185px;
-  backgroundcolor: ${(props) =>
+  backgroundColor: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#FFF"};
   opacity: ${(props) => (props.opacity ? props.opacity : 1)};
 `;

@@ -1,7 +1,7 @@
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import Colors from '../constants/colors'
+import colors from '../constants/colors'
 import HomeScreen from '../screens/Home/'
 import FundScreen from '../screens/Fund/'
 import StockScreen from '../screens/Stocks/'
@@ -28,10 +28,10 @@ type RootStackParamList = {
 //                 borderBottomWidth:1,
 //             },
 //             headerTitleStyle: {
-//                 color:Colors.primary,
+//                 color:colors.primary,
 //                 fontWeight: "bold",
 //                 fontSize:20,
-//                 borderColor:Colors.border,
+//                 borderColor:colors.border,
 //             },
 //             headerTitleContainerStyle:{
 //               alignSelf:"center"
@@ -48,13 +48,13 @@ type RootStackParamList = {
                 borderBottomWidth:1,
             },
             headerTitleStyle: {
-                color:Colors.primary,
+                color:colors.primary,
                 fontWeight: "bold",
                 fontSize:20,
-                borderColor:Colors.border,
+                borderColor:colors.border,
             },
             headerTitleContainerStyle:{
-              alignSelf:"center"
+              alignSelf:"center",
             }
           }}/>
           <RootStack.Screen name="Stock" component={StockScreen} options={{
@@ -64,10 +64,10 @@ type RootStackParamList = {
                 borderBottomWidth:1,
             },
             headerTitleStyle: {
-                color:Colors.primary,
+                color:colors.primary,
                 fontWeight: "bold",
                 fontSize:20,
-                borderColor:Colors.border,
+                borderColor:colors.border,
             },
             headerTitleContainerStyle:{
               alignSelf:"center"
@@ -80,10 +80,10 @@ type RootStackParamList = {
                 borderBottomWidth:1,
             },
             headerTitleStyle: {
-                color:Colors.primary,
+                color:colors.primary,
                 fontWeight: "bold",
                 fontSize:20,
-                borderColor:Colors.border,
+                borderColor:colors.border,
             },
             headerTitleContainerStyle:{
               alignSelf:"center"
@@ -96,10 +96,10 @@ type RootStackParamList = {
                 borderBottomWidth:1,
             },
             headerTitleStyle: {
-                color:Colors.primary,
+                color:colors.primary,
                 fontWeight: "bold",
                 fontSize:20,
-                borderColor:Colors.border,
+                borderColor:colors.border,
             },
             headerTitleContainerStyle:{
               alignSelf:"center"

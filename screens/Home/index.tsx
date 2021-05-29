@@ -23,6 +23,7 @@ const Home: FC<Props> = ({ navigation }) => {
         subtitle="Nacionais"
       />
       <NavigationCard
+        newSection={true}
         navigationHandler={changeScreenHandler.bind(null, "Fund")}
         logo={<FundLogo />}
         title="Fundos"
