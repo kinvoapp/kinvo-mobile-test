@@ -5,9 +5,12 @@ import enviroment from "../../constants/enviroment";
 import { StockProps } from "./types";
 import { StockScreen } from "./style";
 import { StockCard } from "./components/";
+import LoadingScreen from '../Loading/'
 
 const Stock: FC = () => {
   const [stocks, setStocks] = useState<StockProps[]>([]);
+  const [isReady, setIsReady] = useState(false)
+
 
   const changeFavoriteHandler = (stockId: number) => {
     const newStocks = stocks.map((stock) => {
@@ -34,9 +37,14 @@ const Stock: FC = () => {
             isFavorite: false,
           }));
           setStocks(data);
+          setIsReady(true)
         }
       });
   }, []);
+
+  if(isReady === false){
+    return <LoadingScreen/>
+  }
 
   return (
     <ScrollView>

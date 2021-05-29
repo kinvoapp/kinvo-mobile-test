@@ -6,13 +6,13 @@ import HomeScreen from '../screens/Home/'
 import FundScreen from '../screens/Fund/'
 import StockScreen from '../screens/Stocks/'
 import PensionScreen from '../screens/Pension'
-import NotFoundScreen from '../screens/NotFound/'
+import LoadingScreen from '../screens/Loading'
 
 import Constants from 'expo-constants'
 
 type RootStackParamList = {
   Home: undefined,
-  NotFound: undefined,
+  Loading: undefined,
   Stock: undefined,
   Fund: undefined,
   Pension: undefined,
@@ -105,7 +105,7 @@ type RootStackParamList = {
               alignSelf:"center"
               }
             }}/>
-          <RootStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+          <RootStack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Oops!' }} />
         </RootStack.Navigator>
       </NavigationContainer>
    );

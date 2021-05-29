@@ -1,8 +1,7 @@
 import React,{FC, ReactElement, useState} from 'react';
 import Navigation from './navigation/'
 import * as Font from 'expo-font';
-import AppLoading from "expo-app-loading"
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context'
+import LoadingScreen from './screens/Loading/'
 
 const fetchFonts = async () => {
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -25,7 +24,13 @@ const fetchFonts = async () => {
 }
 
 const App : FC = () => {
-  fetchFonts()
+  const [isReady, setReady] = useState(false) 
+  fetchFonts().then(()=>setReady(true))
+
+  if(!isReady){
+    return <LoadingScreen/>
+  }
+
   return (
     <Navigation/>
   );

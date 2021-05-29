@@ -5,9 +5,11 @@ import enviroment from "../../constants/enviroment";
 import { FundProps } from "./types";
 import { FundScreen } from "./style";
 import { FundCard } from "./components/";
+import LoadingScreen from '../Loading/'
 
 const Fund: FC = () => {
   const [funds, setFunds] = useState<FundProps[]>([]);
+  const [isReady, setReady] = useState(false)
 
   useEffect(() => {
     fetch(`${enviroment.apiBaseUrl}/funds`)
@@ -15,9 +17,14 @@ const Fund: FC = () => {
       .then((response) => {
         if (response.success) {
           setFunds(response.data);
+          setReady(true)
         }
       });
   }, []);
+
+  if(isReady === false){
+    return <LoadingScreen/>
+  }
 
   return (
     <ScrollView>

@@ -6,6 +6,7 @@ import { PensionProps } from "./types";
 import { FiltersContainer, PensionScreen, Separator } from "./style";
 import { PensionCard } from "./components";
 import Filter from "./components/Filter";
+import LoadingScreen from '../Loading/'
 
 const initialFilters = [
   {
@@ -31,6 +32,7 @@ const initialFilters = [
 const Pension: FC = () => {
   const [pensions, setPensions] = useState<PensionProps[]>([]);
   const [filters, setFilters] = useState(initialFilters);
+  const [isReady, setReady] = useState(false)
 
   const selectFilterHandler = (filterId: number) => {
     const newFilters = filters.map((filter) => {
@@ -42,16 +44,20 @@ const Pension: FC = () => {
     });
     setFilters(newFilters);
   };
-  console.log(filters);
   useEffect(() => {
     fetch(`${enviroment.apiBaseUrl}/pension`)
       .then((response) => response.json())
       .then((response) => {
         if (response.success) {
           setPensions(response.data);
+          setReady(true)
         }
       });
   }, []);
+
+  if(isReady === false){
+    return <LoadingScreen/>
+  }
 
   let pensionsList = pensions;
 

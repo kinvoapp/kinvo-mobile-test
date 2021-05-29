@@ -7,4 +7,5 @@ export default {
     labelClosed: "#818181",
     labelNew: "#36C4D6",
     closedCard: "#F7F8F8",
+    loading:"#ECF0F2",
 };
