@@ -2,7 +2,7 @@ import colors from "./colors";
 
 export const starNumbers = 5;
 
-export const foundData = {
+export const fundData = {
     0: {
         color: null,
         text: "Comum",

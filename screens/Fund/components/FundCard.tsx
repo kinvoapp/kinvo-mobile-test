@@ -14,7 +14,7 @@ import { Profit, Label } from "../../../components";
 import { View } from "react-native";
 import Rating from "../../../components/Rating";
 import { starNumbers } from "../../../constants/constants";
-import { foundData } from "../../../constants/constants";
+import { fundData } from "../../../constants/constants";
 import colors from "../../../constants/colors";
 
 // TODO trocar map por flatlist
@@ -28,9 +28,9 @@ const FundCard: FC<FundProps> = ({
   type,
   status,
 }) => {
-  const found = foundData[status];
+  const fund = fundData[status];
   const label =
-    status !== 0 ? <Label text={found.text} color={found.color} /> : null;
+    status !== 0 ? <Label text={fund.text} color={fund.color} /> : null;
   const backgroundColor = status === 2 ? colors.closedCard : null;
   const opacity = status === 2 ? 0.5 : 1;
 

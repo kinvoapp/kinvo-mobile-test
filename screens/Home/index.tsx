@@ -3,7 +3,7 @@ import { Screen } from "../../styles";
 import { HomeScreen } from "./style";
 import { NavigationCard } from "./components/";
 import FundLogo from "../../assets/icons/fund.svg";
-import ForesightLogo from "../../assets/icons/foresight.svg";
+import PensionLogo from "../../assets/icons/pension.svg";
 import StockLogo from "../../assets/icons/stock.svg";
 interface Props {
   navigation: any; // TODO - refatorar esse any
@@ -30,8 +30,8 @@ const Home: FC<Props> = ({ navigation }) => {
         subtitle="De investimentos"
       />
       <NavigationCard
-        navigationHandler={changeScreenHandler.bind(null, "Foresight")}
-        logo={<ForesightLogo />}
+        navigationHandler={changeScreenHandler.bind(null, "Pension")}
+        logo={<PensionLogo />}
         title="Previdências"
         subtitle="Privadas"
       />

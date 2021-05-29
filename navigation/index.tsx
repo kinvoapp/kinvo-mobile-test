@@ -5,7 +5,7 @@ import colors from '../constants/colors'
 import HomeScreen from '../screens/Home/'
 import FundScreen from '../screens/Fund/'
 import StockScreen from '../screens/Stocks/'
-import ForesightScreen from '../screens/Foresight/'
+import PensionScreen from '../screens/Pension'
 import NotFoundScreen from '../screens/NotFound/'
 
 import Constants from 'expo-constants'
@@ -15,7 +15,7 @@ type RootStackParamList = {
   NotFound: undefined,
   Stock: undefined,
   Fund: undefined,
-  Foresight: undefined,
+  Pension: undefined,
 };
 //TODO estilizar o botão de boltar do header
 
@@ -89,7 +89,7 @@ type RootStackParamList = {
               alignSelf:"center"
               }
             }}/>
-          <RootStack.Screen name="Foresight" component={ForesightScreen} options={{
+          <RootStack.Screen name="Pension" component={PensionScreen} options={{
             title:"Previdência",
             headerStyle:{
                 height: 100 + Constants.statusBarHeight,
