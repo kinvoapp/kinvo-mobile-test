@@ -38,6 +38,11 @@ export const CardTitle = styled.Text`
     font-size: 16px;
     font-family: montserrat-bold;
 `
+export const GreyText = styled.Text`
+color: ${colors.secondary};
+font-size: 12px;
+font-family: montserrat-semibold;
+`
 
 export const GainText = styled.Text`
     color: ${colors.gain};

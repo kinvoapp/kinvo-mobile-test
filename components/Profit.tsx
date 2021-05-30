@@ -5,12 +5,12 @@ import ProfitText from "./ProfitText";
 import ProfitIcon from "./ProfitIcon"; 
 import { ProfitProps } from "./types";
 
-const Profit: FC<ProfitProps> = ({ profitability }) => {
+const Profit: FC<ProfitProps> = ({ profitability, grey }) => {
     return (
         <RowAlignCenterView>
-            <ProfitIcon profitability={profitability} />
+            <ProfitIcon profitability={profitability} grey={grey} />
             <Text> </Text>
-            <ProfitText profitability={profitability} />
+            <ProfitText profitability={profitability} grey={grey} />
         </RowAlignCenterView>
     );
 };

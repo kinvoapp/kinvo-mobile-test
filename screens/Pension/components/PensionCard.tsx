@@ -14,10 +14,6 @@ import { Profit, Label } from "../../../components";
 import { View } from "react-native";
 import colors from "../../../constants/colors";
 
-// TODO ver a falta de : em todos os cards values
-// TODO trocar map por flatlist
-
-//TODO colocar slint
 const PensionCard: FC<PensionProps> = ({
   name,
   tax,

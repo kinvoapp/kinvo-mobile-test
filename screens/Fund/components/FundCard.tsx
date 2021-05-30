@@ -59,7 +59,7 @@ const FundCard: FC<FundProps> = ({
         </ValuesTextContainer>
         <ValuesTextContainer>
           <Text>Rentabilidade:</Text>
-          <Profit profitability={parseInt(profitability)} />
+          <Profit profitability={parseInt(profitability)} grey={status === 2 ? true : false} />
         </ValuesTextContainer>
       </ValuesContainer>
     </FundCardContainer>

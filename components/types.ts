@@ -1,5 +1,6 @@
 export interface ProfitProps {
     profitability: number;
+    grey?: boolean;
 }
 
 export interface RatingProps {
