@@ -17,7 +17,6 @@ import { starNumbers } from "../../../constants/constants";
 import { fundData } from "../../../constants/constants";
 import colors from "../../../constants/colors";
 
-// TODO trocar map por flatlist
 
 const FundCard: FC<FundProps> = ({
   name,
@@ -47,7 +46,7 @@ const FundCard: FC<FundProps> = ({
       </FundTextContainer>
       <ValuesContainer>
         <ValuesTextContainer>
-          <Text>Classificação</Text>
+          <Text>Classificação:</Text>
           <Rating
             quantity={starNumbers}
             rating={rating}
@@ -55,11 +54,11 @@ const FundCard: FC<FundProps> = ({
           />
         </ValuesTextContainer>
         <ValuesTextContainer>
-          <Text>Valor mínimo</Text>
+          <Text>Valor mínimo:</Text>
           <FundCardSubtitle>{minimumValue}</FundCardSubtitle>
         </ValuesTextContainer>
         <ValuesTextContainer>
-          <Text>Rentabilidade</Text>
+          <Text>Rentabilidade:</Text>
           <Profit profitability={parseInt(profitability)} />
         </ValuesTextContainer>
       </ValuesContainer>

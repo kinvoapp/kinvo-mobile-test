@@ -39,11 +39,11 @@ const StockCard: FC<StockProps> = ({
 
       <ValuesTextContainer>
         <RowSpacedView>
-          <Text>Valor mínimo</Text>
+          <Text>Valor mínimo:</Text>
           <StockCardSubtitle>{minimumValue}</StockCardSubtitle>
         </RowSpacedView>
         <ProfitabilityView>
-          <Text>Rentabilidade</Text>
+          <Text>Rentabilidade:</Text>
           <Profit profitability={parseInt(profitability)} />
         </ProfitabilityView>
       </ValuesTextContainer>
