@@ -1,16 +1,16 @@
 import React, { FC } from "react";
-import { Screen } from "../../styles";
 import { HomeScreen } from "./style";
 import { NavigationCard } from "./components/";
 import FundLogo from "../../assets/icons/fund.svg";
 import PensionLogo from "../../assets/icons/pension.svg";
 import StockLogo from "../../assets/icons/stock.svg";
-interface Props {
-  navigation: any; // TODO - refatorar esse any
-}
+import {RootStackParamList} from "../../navigation/index"
+import {HomeProps} from "./types"
 
-const Home: FC<Props> = ({ navigation }) => {
-  const changeScreenHandler = (path: string) => {
+
+
+const Home: FC<HomeProps> = ({ navigation }) => {
+  const changeScreenHandler = (path: keyof RootStackParamList) => {
     navigation.navigate(path);
   };
 

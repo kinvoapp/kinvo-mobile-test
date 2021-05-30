@@ -3,17 +3,15 @@ import { Screen, CardTitle, Card, RowSpacedView } from "../../styles";
 import Colors from "../../constants/colors";
 import { FundCardContainerProps } from "./types";
 
-// TODO organizar ordem dos estilos
-
 export const FundScreen = styled(Screen)`
-align-items: center;
+  align-items: center;
 `;
 
 export const FundCardContainer = styled(Card)<FundCardContainerProps>`
   padding: 16px 16px 22px 15px;
   margin-top: 20px;
   height: 185px;
-  backgroundColor: ${(props) =>
+  background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#FFF"};
   opacity: ${(props) => (props.opacity ? props.opacity : 1)};
 `;

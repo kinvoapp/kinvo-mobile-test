@@ -2,8 +2,6 @@ import styled from "styled-components/native";
 import { Screen, CardTitle, Card, RowSpacedView } from "../../styles";
 import Colors from "../../constants/colors";
 
-// TODO organizar ordem dos estilos
-
 export const StockScreen = styled(Screen)`
   align-items: center;
 `;

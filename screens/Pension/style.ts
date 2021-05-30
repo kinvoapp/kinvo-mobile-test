@@ -3,7 +3,6 @@ import { Screen, CardTitle, Card, RowSpacedView } from "../../styles";
 import colors from "../../constants/colors";
 import { FilterContainerProps, FilterTextProps, PensionCardContainerProps } from "./types";
 
-// TODO organizar ordem dos estilos
 
 export const PensionScreen = styled(Screen)`
   align-items: center;
