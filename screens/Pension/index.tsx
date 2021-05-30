@@ -1,12 +1,14 @@
 import React, { useState, useEffect, FC } from "react";
-import { Dimensions, ScrollView, View } from "react-native";
+import { Dimensions, FlatList, ScrollView, Text, View } from "react-native";
 import { getWordsFromString } from "../../constants/helper";
 import enviroment from "../../constants/enviroment";
 import { PensionProps } from "./types";
 import { FiltersContainer, PensionScreen, Separator } from "./style";
 import { PensionCard } from "./components";
 import Filter from "./components/Filter";
-import LoadingScreen from '../Loading/'
+import LoadingScreen from "../Loading/";
+import EmptyFilter from "./components/EmptyFilter";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const initialFilters = [
   {
@@ -29,10 +31,25 @@ const initialFilters = [
   },
 ];
 
+const renderPensionItem: FC<PensionProps> = (pension : PensionProps) => {
+  return (
+    <PensionCard
+      key={pension.id}
+      id={pension.id}
+      name={getWordsFromString(pension.name, 2)}
+      type={pension.type}
+      minimumValue={"R$ " + pension.minimumValue}
+      profitability={parseInt(pension.profitability) + "%"}
+      tax={pension.tax + "%"}
+      redemptionTerm={"D+ " + pension.redemptionTerm}
+    />
+  );
+};
+
 const Pension: FC = () => {
   const [pensions, setPensions] = useState<PensionProps[]>([]);
   const [filters, setFilters] = useState(initialFilters);
-  const [isReady, setReady] = useState(false)
+  const [isReady, setReady] = useState(false);
 
   const selectFilterHandler = (filterId: number) => {
     const newFilters = filters.map((filter) => {
@@ -50,13 +67,13 @@ const Pension: FC = () => {
       .then((response) => {
         if (response.success) {
           setPensions(response.data);
-          setReady(true)
+          setReady(true);
         }
       });
   }, []);
 
-  if(isReady === false){
-    return <LoadingScreen/>
+  if (isReady === false) {
+    return <LoadingScreen />;
   }
 
   let pensionsList = pensions;
@@ -69,9 +86,10 @@ const Pension: FC = () => {
 
   /** Mudar valores double para money com , */
   return (
-    <ScrollView>
       <PensionScreen>
         <FiltersContainer>
+
+
           {filters.map((filter) => (
             <Filter
               key={filter.key}
@@ -84,21 +102,13 @@ const Pension: FC = () => {
         </FiltersContainer>
 
         <Separator />
+        <FlatList<PensionProps>
+          data={pensionsList}
+          renderItem={itemData=>renderPensionItem(itemData.item)}
+          ListEmptyComponent={<EmptyFilter/>}
+        />
 
-        {pensionsList.map((pension) => (
-          <PensionCard
-            key={pension.id}
-            id={pension.id}
-            name={getWordsFromString(pension.name, 2)}
-            type={pension.type}
-            minimumValue={"R$ " + pension.minimumValue}
-            profitability={parseInt(pension.profitability) + "%"}
-            tax={pension.tax + "%"}
-            redemptionTerm={"D+ " + pension.redemptionTerm}
-          />
-        ))}
       </PensionScreen>
-    </ScrollView>
   );
 };
 

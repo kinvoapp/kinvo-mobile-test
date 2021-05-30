@@ -1,16 +1,31 @@
 import React, { useState, useEffect, FC } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, FlatList } from "react-native";
 import { sortAssets } from "../../constants/helper";
 import enviroment from "../../constants/enviroment";
 import { StockProps } from "./types";
 import { StockScreen } from "./style";
 import { StockCard } from "./components/";
-import LoadingScreen from '../Loading/'
+import LoadingScreen from "../Loading/";
+import EmptyStock from "./components/EmptyStock";
+
+const renderStockItem: FC<StockProps> = (stock, changeFavoriteHandler) => {
+  return (
+    <StockCard
+      key={stock.id}
+      id={stock.id}
+      name={stock.name}
+      ticker={stock.ticker}
+      minimumValue={"R$ " + stock.minimumValue}
+      profitability={parseInt(stock.profitability) + "%"}
+      isFavorite={stock.isFavorite}
+      changeFavorite={() => changeFavoriteHandler(stock.id)}
+    />
+  );
+};
 
 const Stock: FC = () => {
   const [stocks, setStocks] = useState<StockProps[]>([]);
-  const [isReady, setIsReady] = useState(false)
-
+  const [isReady, setIsReady] = useState(false);
 
   const changeFavoriteHandler = (stockId: number) => {
     const newStocks = stocks.map((stock) => {
@@ -37,32 +52,23 @@ const Stock: FC = () => {
             isFavorite: false,
           }));
           setStocks(data);
-          setIsReady(true)
+          setIsReady(true);
         }
       });
   }, []);
 
-  if(isReady === false){
-    return <LoadingScreen/>
+  if (isReady === false) {
+    return <LoadingScreen />;
   }
 
   return (
-    <ScrollView>
       <StockScreen>
-        {stockList.map((stock) => (
-          <StockCard
-            key={stock.id}
-            id={stock.id}
-            name={stock.name}
-            ticker={stock.ticker}
-            minimumValue={"R$ " + stock.minimumValue}
-            profitability={parseInt(stock.profitability) + "%"}
-            isFavorite={stock.isFavorite}
-            changeFavorite={() => changeFavoriteHandler(stock.id)}
-          />
-        ))}
+        <FlatList<StockProps>
+          data={stockList}
+          renderItem={(itemData) => renderStockItem(itemData.item, changeFavoriteHandler)}
+          ListEmptyComponent={<EmptyStock/>}
+        />       
       </StockScreen>
-    </ScrollView>
   );
 };
 

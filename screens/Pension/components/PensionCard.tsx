@@ -12,6 +12,7 @@ import {
 import { PensionProps } from "../types";
 import { Profit, Label } from "../../../components";
 import { View } from "react-native";
+import colors from "../../../constants/colors";
 
 // TODO ver a falta de : em todos os cards values
 // TODO trocar map por flatlist
@@ -37,7 +38,6 @@ const PensionCard: FC<PensionProps> = ({
         </RowSpacedView>
       </PensionTextContainer>
       <ValuesContainer>
-
         <ValuesTextContainer>
           <Text>Valor Mínimo:</Text>
           <PensionCardSubtitle>{minimumValue}</PensionCardSubtitle>
@@ -57,7 +57,6 @@ const PensionCard: FC<PensionProps> = ({
           <Text>Rentabilidade:</Text>
           <Profit profitability={parseInt(profitability)} />
         </ValuesTextContainer>
-
       </ValuesContainer>
     </PensionCardContainer>
   );

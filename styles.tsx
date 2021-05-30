@@ -50,4 +50,13 @@ export const LossText = styled.Text`
     font-size: 12px;
     font-family: montserrat-semibold;
 `
-
+export const EmptyListContainer = styled.View`
+  width: 230px;
+`
+export const EmptyListText = styled.Text`
+  font-family: montserrat-medium;
+  color: ${colors.secondary};
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0;
+`

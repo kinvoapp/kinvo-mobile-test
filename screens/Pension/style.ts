@@ -10,7 +10,7 @@ export const PensionScreen = styled(Screen)`
 
 export const PensionCardContainer = styled(Card)<PensionCardContainerProps>`
   padding: 16px 20px 24px 16px;
-  margin-top: 20px;
+  margin-bottom: 20px;
   height: 218px;
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#FFF"};
@@ -71,3 +71,6 @@ export const Separator = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: ${colors.border};
 `;
+
+
+

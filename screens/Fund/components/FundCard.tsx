@@ -19,7 +19,6 @@ import colors from "../../../constants/colors";
 
 // TODO trocar map por flatlist
 
-//TODO colocar slint
 const FundCard: FC<FundProps> = ({
   name,
   rating,

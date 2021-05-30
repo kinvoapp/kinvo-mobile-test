@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { HomeScreen } from "./style";
 import { NavigationCard } from "./components/";
-import FundLogo from "../../assets/icons/fund.svg";
-import PensionLogo from "../../assets/icons/pension.svg";
-import StockLogo from "../../assets/icons/stock.svg";
+import FundLogo from "../../assets/icons/fundIcon.svg";
+import PensionLogo from "../../assets/icons/pensionIcon.svg";
+import StockLogo from "../../assets/icons/stockIcon.svg";
 import {RootStackParamList} from "../../navigation/index"
 import {HomeProps} from "./types"
 

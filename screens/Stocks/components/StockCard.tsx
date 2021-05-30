@@ -14,7 +14,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Profit, WisheIcon } from "../../../components";
 import { View } from "react-native";
 
-//TODO colocar slint
 const StockCard: FC<StockProps> = ({
   name,
   ticker,
