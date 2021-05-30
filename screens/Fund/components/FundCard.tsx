@@ -33,7 +33,6 @@ const FundCard: FC<FundProps> = ({
   const opacity = status === 2 ? 0.5 : 1;
 
   return (
-    //TODO verificar tamanho do card
     <FundCardContainer backgroundColor={backgroundColor} opacity={opacity}>
       <FundTextContainer>
         <RowSpacedView>

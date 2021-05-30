@@ -13,6 +13,7 @@ import HomeScreen from "../screens/Home/";
 import FundScreen from "../screens/Fund/";
 import StockScreen from "../screens/Stocks/";
 import PensionScreen from "../screens/Pension";
+import BackButton from "../assets/icons/backButtonIcon.svg"
 
 import Constants from "expo-constants";
 
@@ -27,6 +28,7 @@ export type RootStackParamList = {
 
 const options: StackNavigationOptions = {
   title: "Desafio",
+  headerBackImage: ()=> (<BackButton/>),
   headerStyle: {
     height: 100 + Constants.statusBarHeight,
     borderBottomWidth: 1,
