@@ -33,7 +33,7 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
 ### Tela "Ações"
 
 - A lista de "ações" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/stocks
+  - Api: https://6266f62263e0f382568936e4.mockapi.io/stocks
 - A lista de "ações" deve obedecer a seguinte prioridade:
    - Favoritadas deve aparecer primeiro
    - Ordem alfabética
@@ -43,7 +43,7 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
 ### Tela "Fundos"
 
 - A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/funds
+  - Api: https://6266f62263e0f382568936e4.mockapi.io/funds
 - A lista de "fundos" deve estar em ordem alfabética.
 - Os estados do fundo são:
   - 0: Comum
@@ -56,7 +56,7 @@ As telas que contem chamadas a api devem estar preparadas para tratar estados de
 ### Tela "Previdências"
 
 - A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - Api: https://d68b5a2f-8234-4863-9c81-7c8a95dff8eb.mock.pstmn.io/pension
+  - Api: https://6266f62263e0f382568936e4.mockapi.io/pension
 - A lista de "previdências" deve estar em ordem alfabética.
 - A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
    - "SEM TAXA": inclui as previdências com taxa igual a zero.
