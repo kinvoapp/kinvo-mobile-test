@@ -1,5 +1,8 @@
+> ![Logo Kinvo](https://github.com/cbfranca/kinvo-front-end-test/blob/master/logo.svg)
 
-# React Native Code Challenge
+# React Native Code Challenge 
+
+Seja bem-vindo! Este desafio foi projetado para avaliar a capacidade técnica de candidatos à vagas de Desenvolvedor voltadas para o desenvolvimento mobile, independente da senioridade, considerando o framework react-native. O nível de exigência da avaliação se adequa ao nível da vaga.
 
 ## Instruções:
 
@@ -7,6 +10,13 @@
 2. Siga as especificações;
 3. Implemente o layout disponível;
 4. Após terminar seu teste submeta um pull request e aguarde seu feedback.
+
+### Critérios de avaliação:
+
+Nossos critérios de avaliação se baseiam e 3 grandes áreas, sendo elas:
+1. Versionamento
+2. Projeto e estrutura
+3. Qualidade de Código
 
 ## Especificações:
 
