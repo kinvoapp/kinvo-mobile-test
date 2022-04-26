@@ -97,11 +97,11 @@ As telas que contem chamadas a API devem estar preparadas para tratar estados de
 
 ## Notas:
 
-! Importante ! O cumprimento dos requisitos solicitados para uma vaga em determinado nível não é garantia de aprovação. Focamos em avaliar a forma como os requisitos foram cumpridos.
-Apesar da listagem de requisitos mínimos acima, caso não tenha tido tempo suficiente ou tenha se esbarrado em alguma dificuldade, entregue o desafio ainda que incompleto e conte-nos na descrição do pull request quais foram as suas maiores dificuldades. Não se preocupe, avaliaremos ainda assim! :)
-Caso não tenha familiaridade com o Adobe XD, os ativos do protótipo podem ser exportados utilizando o atalho CTRL + E ou CMD + E. Caso o seu sistema operacional não seja compatível com o software, você pode acessar o protótipo também através do link citado no item anterior;
-As bibliotecas e demais recursos sugeridos por nós em todos os níveis de exigência são meras sugestões (com exceção do React Native). Sinta-se a vontade para fazer a escolha que te deixa mais confortável e inclusive para sugerir ;);
-Lembre-se de fazer um fork deste repositório! Apenas cloná-lo vai te impedir de criar o pull request e dificultar a entrega;
+* ! Importante ! O cumprimento dos requisitos solicitados para uma vaga em determinado nível não é garantia de aprovação. Focamos em avaliar a forma como os requisitos foram cumpridos.
+* Apesar da listagem de requisitos mínimos acima, caso não tenha tido tempo suficiente ou tenha se esbarrado em alguma dificuldade, entregue o desafio ainda que incompleto e conte-nos na descrição do pull request quais foram as suas maiores dificuldades. Não se preocupe, avaliaremos ainda assim! :)
+* Caso não tenha familiaridade com o Adobe XD, os ativos do protótipo podem ser exportados utilizando o atalho CTRL + E ou CMD + E. Caso o seu sistema operacional não seja compatível com o software, você pode acessar o protótipo também através do link citado no item anterior;
+* As bibliotecas e demais recursos sugeridos por nós em todos os níveis de exigência são meras sugestões (com exceção do React Native). Sinta-se a vontade para fazer a escolha que te deixa mais confortável e inclusive para sugerir ;);
+* Lembre-se de fazer um fork deste repositório! Apenas cloná-lo vai te impedir de criar o pull request e dificultar a entrega;
 
 Está com alguma dificuldade, encontrou algum problema no desafio ou tem alguma sugestão pra gente? Crie uma issue e descreva o que achar necessário.
 
