@@ -1,6 +1,7 @@
 import FilledHeart from '~/assets/icons/filled_heart.svg';
 import FilledStar from '~/assets/icons/filled_star.svg';
 import Funds from '~/assets/icons/funds.svg';
+import GoBack from '~/assets/icons/go_back.svg';
 import Pension from '~/assets/icons/pension.svg';
 import Stocks from '~/assets/icons/stocks.svg';
 import UnfilledHeart from '~/assets/icons/unfilled_heart.svg';
@@ -14,6 +15,7 @@ const icons = {
   stocks: Stocks,
   unfilledHeart: UnfilledHeart,
   unfilledStar: UnfilledStar,
+  goBack: GoBack,
 };
 
 export default icons;
