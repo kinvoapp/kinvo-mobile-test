@@ -8,7 +8,7 @@ export type IconName = keyof typeof icons;
 
 interface IconProps extends SvgProps {
   name: IconName;
-  color: Color;
+  color?: Color;
   size?: number;
   style?: StyleProp<ViewStyle>;
   height?: number;
