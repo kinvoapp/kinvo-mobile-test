@@ -8,6 +8,7 @@ const colors = {
   error: '#E85D1F',
 
   gray: '#818181',
+  gray2: '#DAE0E3',
   black: '#000000',
   white: '#FFFFFF',
 };
