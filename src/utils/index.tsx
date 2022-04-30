@@ -23,3 +23,7 @@ export const getProfitabilityType = (profitability: number) => {
 
   return 'default';
 };
+
+export const sortListByName = (list: Pension[] | Fund[] | Stock[]) => {
+  return list.sort((a, b) => a.name.localeCompare(b.name));
+};
