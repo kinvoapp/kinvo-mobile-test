@@ -48,7 +48,7 @@ const Filter = ({ filters, onChange }: FilterProps) => {
 
         <FilterChip
           title="D+1"
-          style={{ paddingHorizontal: 20 }}
+          style={{ width: 80 }}
           onPress={handlePress}
           type="d+1"
           value={filters.includes('d+1')}
