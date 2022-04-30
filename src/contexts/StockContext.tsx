@@ -61,7 +61,7 @@ const StockProvider: React.FC<ReactNodeProps> = ({ children }) => {
     setFavoritesStocks(newFavoritesList);
   }, []);
 
-  const orderStocks = useCallback(
+  const sortStocksByName = useCallback(
     (stocksList: Stock[]) => {
       return stocksList.sort((a, b) => {
         const isAFavorite = favoritesStocks.some(
@@ -87,7 +87,7 @@ const StockProvider: React.FC<ReactNodeProps> = ({ children }) => {
     try {
       setIsLoading(true);
 
-      const stocksList = orderStocks(await getStocks());
+      const stocksList = sortStocksByName(await getStocks());
 
       setHasError(false);
       setStocks(stocksList);
@@ -96,7 +96,7 @@ const StockProvider: React.FC<ReactNodeProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [orderStocks]);
+  }, [sortStocksByName]);
 
   useEffect(() => {
     async function loadFavoriteStocks() {
