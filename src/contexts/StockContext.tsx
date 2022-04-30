@@ -1,6 +1,5 @@
 import React, {
   createContext,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -9,10 +8,7 @@ import React, {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import getStocks from '~/useCases/GetStocks';
 import { LocalStorage } from '~/services/storage';
-
-interface StockProviderProps {
-  children: ReactNode;
-}
+import { ReactNodeProps } from '~/types/reactNode';
 
 interface StockProps {
   stocks: Stock[];
@@ -25,7 +21,7 @@ interface StockProps {
 
 export const StockContext = createContext({} as StockProps);
 
-const StockProvider: React.FC<StockProviderProps> = ({ children }) => {
+const StockProvider: React.FC<ReactNodeProps> = ({ children }) => {
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [favoritesStocks, setFavoritesStocks] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(false);
