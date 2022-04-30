@@ -5,7 +5,7 @@ import {
   NativeStackHeaderProps,
 } from '@react-navigation/native-stack';
 import { Header } from '~/components';
-import { Home } from '~/scenes';
+import { Home, Stocks } from '~/scenes';
 
 const { Navigator, Group, Screen } = createNativeStackNavigator();
 
@@ -35,12 +35,28 @@ const AppNavigation = () => {
       >
         <Screen
           name="Stocks"
-          component={BlankPage}
+          component={Stocks}
           options={{
             title: 'Ações',
-            header: (props: NativeStackHeaderProps) => (
-              <Header {...props} hideArrow />
-            ),
+            header: (props: NativeStackHeaderProps) => <Header {...props} />,
+          }}
+        />
+
+        <Screen
+          name="Funds"
+          component={BlankPage}
+          options={{
+            title: 'Fundos',
+            header: (props: NativeStackHeaderProps) => <Header {...props} />,
+          }}
+        />
+
+        <Screen
+          name="Pension"
+          component={BlankPage}
+          options={{
+            title: 'Previdências',
+            header: (props: NativeStackHeaderProps) => <Header {...props} />,
           }}
         />
       </Group>
