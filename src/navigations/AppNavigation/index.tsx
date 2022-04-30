@@ -1,17 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
 import {
   createNativeStackNavigator,
   NativeStackHeaderProps,
 } from '@react-navigation/native-stack';
 import { Header } from '~/components';
-import { Home, Pensions, Stocks } from '~/scenes';
+import { Funds, Home, Pensions, Stocks } from '~/scenes';
 
 const { Navigator, Group, Screen } = createNativeStackNavigator();
-
-function BlankPage() {
-  return <View />;
-}
 
 const AppNavigation = () => {
   return (
@@ -44,7 +39,7 @@ const AppNavigation = () => {
 
         <Screen
           name="Funds"
-          component={BlankPage}
+          component={Funds}
           options={{
             title: 'Fundos',
             header: (props: NativeStackHeaderProps) => <Header {...props} />,
