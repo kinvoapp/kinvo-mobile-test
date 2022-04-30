@@ -14,4 +14,5 @@ export const Title = styled(Heading1)`
 
 export const Tip = styled(Body1)`
   font-family: ${({ theme }) => theme.fonts.MontserratMedium};
+  text-align: center;
 `;
