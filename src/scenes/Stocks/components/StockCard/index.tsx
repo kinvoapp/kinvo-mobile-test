@@ -26,6 +26,18 @@ const StockCard = ({
     return returnPercentageValue(profitability);
   }, [profitability]);
 
+  const profitabilityType = useMemo(() => {
+    if (profitability > 0) {
+      return 'positive';
+    }
+
+    if (profitability < 0) {
+      return 'negative';
+    }
+
+    return 'default';
+  }, [profitability]);
+
   const handleFavoritePress = useCallback(() => {
     setIsFavorite(!isFavorite);
 
@@ -60,7 +72,11 @@ const StockCard = ({
           style={{ marginBottom: 15 }}
         />
 
-        <Info label="Rentabilidade" value={profitabilityFormatted} />
+        <Info
+          label="Rentabilidade"
+          value={profitabilityFormatted}
+          profitabilityType={profitabilityType}
+        />
       </InfoContainer>
     </Container>
   );

@@ -1,3 +1,5 @@
+import ArrowDown from '~/assets/icons/arrow_down.svg';
+import ArrowUp from '~/assets/icons/arrow_up.svg';
 import FilledHeart from '~/assets/icons/filled_heart.svg';
 import FilledStar from '~/assets/icons/filled_star.svg';
 import Funds from '~/assets/icons/funds.svg';
@@ -16,6 +18,8 @@ const icons = {
   unfilledHeart: UnfilledHeart,
   unfilledStar: UnfilledStar,
   goBack: GoBack,
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
 };
 
 export default icons;
