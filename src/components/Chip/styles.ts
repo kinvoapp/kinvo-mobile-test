@@ -11,9 +11,9 @@ export const Container = styled.View<ChipStyleProps>`
   background: ${({ theme, color }) => color || theme.colors.secondary};
   border-radius: 20px;
   justify-content: center;
+  padding: 9px 15px;
 `;
 
 export const Title = styled(Subtitle)<ChipStyleProps>`
   color: ${({ theme, color }) => color || theme.colors.white};
-  padding: 9px 15px;
 `;
