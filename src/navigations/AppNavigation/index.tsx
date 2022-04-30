@@ -5,7 +5,7 @@ import {
   NativeStackHeaderProps,
 } from '@react-navigation/native-stack';
 import { Header } from '~/components';
-import { Home, Stocks } from '~/scenes';
+import { Home, Pensions, Stocks } from '~/scenes';
 
 const { Navigator, Group, Screen } = createNativeStackNavigator();
 
@@ -53,7 +53,7 @@ const AppNavigation = () => {
 
         <Screen
           name="Pension"
-          component={BlankPage}
+          component={Pensions}
           options={{
             title: 'Previdências',
             header: (props: NativeStackHeaderProps) => <Header {...props} />,
