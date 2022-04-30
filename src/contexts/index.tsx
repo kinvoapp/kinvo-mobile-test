@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import theme from '~/styles/themes';
+import FundContext from './FundContext';
 import PensionContext from './PensionContext';
 import StockContext from './StockContext';
 
@@ -15,7 +16,9 @@ const Contexts: React.FC<ContextsProps> = ({ children }) => {
       <StatusBar barStyle="dark-content" backgroundColor={theme.colors.white} />
 
       <PensionContext>
-        <StockContext>{children}</StockContext>
+        <FundContext>
+          <StockContext>{children}</StockContext>
+        </FundContext>
       </PensionContext>
     </ThemeProvider>
   );
