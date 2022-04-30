@@ -26,10 +26,3 @@ export const ButtonContainer = styled(TouchableOpacity)`
 export const TitleContent = styled.View`
   justify-content: center;
 `;
-
-export const Title = styled.Text`
-  color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.MontserratBold};
-  font-size: 20px;
-  text-align: center;
-`;

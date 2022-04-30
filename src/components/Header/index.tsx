@@ -1,12 +1,12 @@
 import React from 'react';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from 'styled-components/native';
+import { Heading1 } from '~/styles/typography';
 import Icon from '../Icon';
 import {
   ButtonContainer,
   Content,
   HeaderContainer,
-  Title,
   TitleContent,
 } from './styles';
 
@@ -34,7 +34,7 @@ const Header = ({ navigation, options, hideArrow = false }: HeaderProps) => {
         )}
 
         <TitleContent>
-          <Title>{title}</Title>
+          <Heading1>{title}</Heading1>
         </TitleContent>
       </Content>
     </HeaderContainer>

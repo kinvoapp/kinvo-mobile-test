@@ -1,5 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { Heading2 } from '~/styles/typography';
 
 export const Container = styled(TouchableOpacity)`
   align-items: center;
@@ -21,16 +22,6 @@ export const InfoContainer = styled.View`
   margin-left: 12px;
 `;
 
-export const Title = styled.Text`
+export const Title = styled(Heading2)`
   color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.MontserratBold};
-  font-size: 16px;
-  line-height: 20px;
-`;
-
-export const SubTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.text};
-  font-family: ${({ theme }) => theme.fonts.MontserratSemiBold};
-  font-size: 10px;
-  line-height: 22px;
 `;
