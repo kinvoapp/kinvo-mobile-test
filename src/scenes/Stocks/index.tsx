@@ -16,7 +16,7 @@ const Stocks = () => {
     if (hasError) {
       return (
         <Error
-          infoText="Não foi possível se conectar ao banco de ações"
+          infoText="Não foi possível se conectar ao banco de ações."
           onPress={loadStocks}
         />
       );

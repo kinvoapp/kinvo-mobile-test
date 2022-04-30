@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import useStock from '~/hooks/useStock';
+import React, { useMemo } from 'react';
 import { Info, Separator } from '~/components';
-import Icon from '~/components/Icon';
 import {
   getProfitabilityType,
   returnCurrencyValue,
@@ -11,17 +8,14 @@ import {
 import { Heading2, Subtitle } from '~/styles/typography';
 import { Container, Header, InfoContainer } from './styles';
 
-const StockCard = ({
-  id,
+const PensionCard = ({
   name,
-  ticker,
+  type,
   minimumValue,
+  tax,
+  redemptionTerm,
   profitability,
-}: Stock) => {
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
-
-  const { favoritesStocks, handleFavoriteStock } = useStock();
-
+}: Pension) => {
   const minimumValueFormatted = useMemo(() => {
     return returnCurrencyValue(minimumValue);
   }, [minimumValue]);
@@ -30,33 +24,23 @@ const StockCard = ({
     return returnPercentageValue(profitability);
   }, [profitability]);
 
+  const taxFormatted = useMemo(() => {
+    return returnPercentageValue(tax);
+  }, [tax]);
+
+  const redemptionTermFormatted = useMemo(() => {
+    return `D+ ${redemptionTerm}`;
+  }, [redemptionTerm]);
+
   const profitabilityType = useMemo(() => {
     return getProfitabilityType(profitability);
   }, [profitability]);
 
-  const handleFavoritePress = useCallback(() => {
-    setIsFavorite(!isFavorite);
-
-    handleFavoriteStock(id);
-  }, [isFavorite, handleFavoriteStock, id]);
-
-  useEffect(() => {
-    setIsFavorite(
-      favoritesStocks.some(favoriteStockId => favoriteStockId === id),
-    );
-  }, []);
-
   return (
     <Container>
       <Header>
-        <View>
-          <Heading2>{name}</Heading2>
-          <Subtitle>{ticker}</Subtitle>
-        </View>
-
-        <TouchableOpacity onPress={handleFavoritePress}>
-          <Icon name={isFavorite ? 'filledHeart' : 'unfilledHeart'} />
-        </TouchableOpacity>
+        <Heading2>{name}</Heading2>
+        <Subtitle>{type}</Subtitle>
       </Header>
 
       <Separator />
@@ -65,6 +49,14 @@ const StockCard = ({
         <Info
           label="Valor mínimo:"
           value={minimumValueFormatted}
+          style={{ marginBottom: 16 }}
+        />
+
+        <Info label="Taxa:" value={taxFormatted} style={{ marginBottom: 16 }} />
+
+        <Info
+          label="Resgate:"
+          value={redemptionTermFormatted}
           style={{ marginBottom: 16 }}
         />
 
@@ -78,4 +70,4 @@ const StockCard = ({
   );
 };
 
-export default StockCard;
+export default PensionCard;
