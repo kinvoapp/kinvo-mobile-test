@@ -1,0 +1,1 @@
+export type RootStackParamList = {Home: undefined;Stocks: undefined;Pension: undefined;Funds: undefined};

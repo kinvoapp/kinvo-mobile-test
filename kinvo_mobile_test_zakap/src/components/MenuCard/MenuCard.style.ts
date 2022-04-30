@@ -28,6 +28,30 @@ export const NavigationLogoContainer = styled.View`
   margin-right: 12px;
 `;
 
-export const NavigationLogo = styled.Image`
-  
-`;
+export const MainText = styled.Text`
+  font-family: 'Montserrat-Bold';
+  font-size: 16px;
+  color: #6F4DBF;
+`
+
+export const SubText = styled.Text`
+  font-family: 'Montserrat-SemiBold';
+  font-size: 10px;
+  color: #627179;
+`
+
+export const NewTagWraper = styled.View`
+  background-color: #40C5D6;
+  width: 56px;
+  height: 20px;
+  border-radius: 15px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+export const NewTagText = styled.Text`
+  font-family: 'Montserrat-Medium';
+  font-size: 10px;
+  color: #FFFFFF;
+`
+

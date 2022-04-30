@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,64 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Montserrat-Italic-VariableFont_wght.ttf</string>
+		<string>Montserrat-VariableFont_wght.ttf</string>
+		<string>Montserrat-Black.ttf</string>
+		<string>Montserrat-BlackItalic.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-BoldItalic.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-ExtraBoldItalic.ttf</string>
+		<string>Montserrat-ExtraLight.ttf</string>
+		<string>Montserrat-ExtraLightItalic.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>Montserrat-Light.ttf</string>
+		<string>Montserrat-LightItalic.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-MediumItalic.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+		<string>Montserrat-SemiBoldItalic.ttf</string>
+		<string>Montserrat-Thin.ttf</string>
+		<string>Montserrat-ThinItalic.ttf</string>
+		<string>MontserratBlack-3zOvZ.ttf</string>
+		<string>MontserratBlack-ZVK6J.otf</string>
+		<string>MontserratBlackItalic-owBnV.ttf</string>
+		<string>MontserratBlackItalic-x3728.otf</string>
+		<string>MontserratBold-DOWZd.ttf</string>
+		<string>MontserratBold-p781R.otf</string>
+		<string>MontserratBoldItalic-4B3w9.ttf</string>
+		<string>MontserratBoldItalic-ALPax.otf</string>
+		<string>MontserratExtrabold-qZ7Rx.otf</string>
+		<string>MontserratExtrabold-VGO60.ttf</string>
+		<string>MontserratExtraboldItalic-0WDM4.ttf</string>
+		<string>MontserratExtraboldItalic-JRmqE.otf</string>
+		<string>MontserratExtralight-GOJpy.otf</string>
+		<string>MontserratExtralight-jEZ6j.ttf</string>
+		<string>MontserratExtralightItalic-eZw6x.ttf</string>
+		<string>MontserratExtralightItalic-z8dwG.otf</string>
+		<string>MontserratItalic-5187x.otf</string>
+		<string>MontserratItalic-WyzEz.ttf</string>
+		<string>MontserratLight-6YemM.otf</string>
+		<string>MontserratLight-ywBvq.ttf</string>
+		<string>MontserratLightItalic-9YEL7.otf</string>
+		<string>MontserratLightItalic-axBzx.ttf</string>
+		<string>MontserratMedium-lgZ6e.otf</string>
+		<string>MontserratMedium-nRxlJ.ttf</string>
+		<string>MontserratMediumItalic-1GPK4.otf</string>
+		<string>MontserratMediumItalic-EaqM4.ttf</string>
+		<string>MontserratRegular-BWBEl.ttf</string>
+		<string>MontserratRegular-RpK6l.otf</string>
+		<string>MontserratSemibold-8M8PB.otf</string>
+		<string>MontserratSemibold-Yz368.ttf</string>
+		<string>MontserratSemiboldItalic-OVZXA.ttf</string>
+		<string>MontserratSemiboldItalic-rg2B9.otf</string>
+		<string>MontserratThin-K7B6D.ttf</string>
+		<string>MontserratThin-MVY6x.otf</string>
+		<string>MontserratThinItalic-2O72w.otf</string>
+		<string>MontserratThinItalic-ZVK3J.ttf</string>
+	</array>
 </dict>
 </plist>

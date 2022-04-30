@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ImageSourcePropType} from 'react-native';
+import {View, Text, ImageSourcePropType, Image} from 'react-native';
 import * as S from './MenuCard.style';
 
 interface MenuCardProps {
@@ -21,19 +21,19 @@ export const MenuCard = ({
     <S.NavigationPressable onPress={onPress}>
       <S.NavigationWraper>
         <S.NavigationLogoContainer>
-          <S.NavigationLogo source={source} />
+          <Image source={source} />
         </S.NavigationLogoContainer>
 
         <View>
-          <Text>{mainText}</Text>
-          <Text>{subText}</Text>
+          <S.MainText>{mainText}</S.MainText>
+          <S.SubText>{subText}</S.SubText>
         </View>
       </S.NavigationWraper>
 
       {isNew && (
-        <View>
-          <Text>Novo</Text>
-        </View>
+        <S.NewTagWraper>
+          <S.NewTagText>Novo</S.NewTagText>
+        </S.NewTagWraper>
       )}
     </S.NavigationPressable>
   );

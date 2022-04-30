@@ -1,1 +1,0 @@
-export type RootStackParamList = {Home: undefined;Shares: undefined;SocialSecurity: undefined};

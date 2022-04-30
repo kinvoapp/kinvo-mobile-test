@@ -12,9 +12,10 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Home} from './src/screens/Home';
-import {Shares} from './src/screens/Shares';
-import {SocialSecurity} from './src/screens/SocialSecurity';
-import {RootStackParamList} from './src/screens/RootStackParams';
+import {Stocks} from './src/screens/Stocks';
+import {Funds} from './src/screens/Funds';
+import {Pension} from './src/screens/Pension';
+import {RootStackParamList} from './src/models/RootStackParams';
 import 'react-native-gesture-handler';
 import {
   SafeAreaView,
@@ -42,8 +43,9 @@ const App = () => {
       <NavigationContainer>
         <Navigator screenOptions={{headerShown: false}}>
           <Screen name="Home" component={Home} />
-          <Screen name="Shares" component={Shares} />
-          <Screen name="SocialSecurity" component={SocialSecurity} />
+          <Screen name="Stocks" component={Stocks} />
+          <Screen name="Funds" component={Funds} />
+          <Screen name="Pension" component={Pension} />
         </Navigator>
       </NavigationContainer>
   );
