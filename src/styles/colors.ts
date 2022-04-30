@@ -7,6 +7,8 @@ const colors = {
   success: '#AED335',
   error: '#E85D1F',
 
+  yellow: '#F8C22E',
+
   gray: '#818181',
   gray2: '#DAE0E3',
   black: '#000000',
