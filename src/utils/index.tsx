@@ -11,3 +11,15 @@ export const returnPercentageValue = (value: number) => {
     minimumFractionDigits: 2,
   });
 };
+
+export const getProfitabilityType = (profitability: number) => {
+  if (profitability > 0) {
+    return 'positive';
+  }
+
+  if (profitability < 0) {
+    return 'negative';
+  }
+
+  return 'default';
+};
