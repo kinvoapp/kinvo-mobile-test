@@ -16,7 +16,7 @@ const getStocks = async (): Promise<Stock[]> => {
     return stocks;
   } catch (e) {
     if (axios.isAxiosError(e)) {
-      throw new Error(e);
+      throw new Error(`${e}`);
     }
 
     throw new Error('Não foi possível buscar as ações');
