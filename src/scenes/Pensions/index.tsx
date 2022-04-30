@@ -85,6 +85,7 @@ const Pensions = () => {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={renderListEmptyComponent}
         ListHeaderComponent={RenderHeader}
+        stickyHeaderIndices={[0]}
       />
     </Container>
   );

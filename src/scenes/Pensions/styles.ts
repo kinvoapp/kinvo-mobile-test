@@ -14,7 +14,7 @@ export const Container = styled.View`
 `;
 
 const ListAttrs = () => ({
-  contentContainerStyle: { flexGrow: 1, padding: 20 },
+  contentContainerStyle: { flexGrow: 1, paddingHorizontal: 20 },
 });
 
 export const PensionList = styled(
