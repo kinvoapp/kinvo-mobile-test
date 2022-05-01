@@ -8,10 +8,11 @@
 
 <ul>
   <li>Clonar o projeto</li>
-  <li>Entrar na raiz do projeto e instalar as depêndencias usando <strong>yarn</strong></li>
+  <li>Entrar pasta na raiz e se estiver na branch <strong>master</strong> entrar na branch <strong>luis-esculapio</strong> com o comando <strong>git checkout luis-esculapio</strong></li>
+  <li>Instalar as depêndencias usando <strong>yarn</strong></li>
   <li><strong>iOS:</strong> instalar pod install, <strong>cd ios && pod install && cd ..</strong></li>
   <li>Executar comando <strong>yarn start</strong> no diretório raiz</li>
-  <li>Em outro terminal, também no diretório raiz, executar <strong>yarn android</strong> ou <strong>yarn ios</strong></li>
+  <li>Em outro terminal, também no diretório raiz, executar <strong>yarn android</strong> ou <strong>yarn ios</strong> dependendo da plataforma</li>
 </ul>
 
 ## :speech_balloon: Funcionalidades
