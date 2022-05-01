@@ -4,7 +4,12 @@ import {
   NativeStackHeaderProps,
 } from '@react-navigation/native-stack';
 import { Header } from '~/components';
-import { Funds, Home, Pensions, Stocks } from '~/scenes';
+import {
+  FundsScreen,
+  HomeScreen,
+  PensionsScreen,
+  StocksScreen,
+} from '~/scenes';
 
 const { Navigator, Group, Screen } = createNativeStackNavigator();
 
@@ -13,7 +18,7 @@ const AppNavigation = () => {
     <Navigator initialRouteName="Home">
       <Screen
         name="Home"
-        component={Home}
+        component={HomeScreen}
         options={{
           title: 'Desafio',
           header: (props: NativeStackHeaderProps) => (
@@ -30,7 +35,7 @@ const AppNavigation = () => {
       >
         <Screen
           name="Stocks"
-          component={Stocks}
+          component={StocksScreen}
           options={{
             title: 'Ações',
             header: (props: NativeStackHeaderProps) => <Header {...props} />,
@@ -39,7 +44,7 @@ const AppNavigation = () => {
 
         <Screen
           name="Funds"
-          component={Funds}
+          component={FundsScreen}
           options={{
             title: 'Fundos',
             header: (props: NativeStackHeaderProps) => <Header {...props} />,
@@ -48,7 +53,7 @@ const AppNavigation = () => {
 
         <Screen
           name="Pension"
-          component={Pensions}
+          component={PensionsScreen}
           options={{
             title: 'Previdências',
             header: (props: NativeStackHeaderProps) => <Header {...props} />,
