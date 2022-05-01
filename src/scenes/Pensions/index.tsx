@@ -74,20 +74,20 @@ const Pensions = () => {
     filterData();
   }, [filterData]);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <Container>
-      <PensionList
-        data={filteredData}
-        renderItem={renderItem}
-        keyExtractor={item => String(item.id)}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={renderListEmptyComponent}
-        ListHeaderComponent={RenderHeader}
-        stickyHeaderIndices={[0]}
-      />
-    </Container>
+  return (
+    <Loading visible={isLoading}>
+      <Container>
+        <PensionList
+          data={filteredData}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderListEmptyComponent}
+          ListHeaderComponent={RenderHeader}
+          stickyHeaderIndices={[0]}
+        />
+      </Container>
+    </Loading>
   );
 };
 

@@ -29,18 +29,18 @@ const Funds = () => {
     loadFunds();
   }, []);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <Container>
-      <FundList
-        data={funds}
-        renderItem={renderItem}
-        keyExtractor={item => String(item.id)}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={renderListEmptyComponent}
-      />
-    </Container>
+  return (
+    <Loading visible={isLoading}>
+      <Container>
+        <FundList
+          data={funds}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderListEmptyComponent}
+        />
+      </Container>
+    </Loading>
   );
 };
 

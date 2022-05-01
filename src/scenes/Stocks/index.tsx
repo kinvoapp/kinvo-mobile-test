@@ -34,18 +34,18 @@ const Stocks = () => {
     loadStocks();
   }, []);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
-    <Container>
-      <StockList
-        data={stocks}
-        renderItem={renderItem}
-        keyExtractor={item => String(item.id)}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={renderListEmptyComponent}
-      />
-    </Container>
+  return (
+    <Loading visible={isLoading}>
+      <Container>
+        <StockList
+          data={stocks}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.id)}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderListEmptyComponent}
+        />
+      </Container>
+    </Loading>
   );
 };
 
