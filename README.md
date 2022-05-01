@@ -8,7 +8,7 @@
 
 <ul>
   <li>Clonar o projeto</li>
-  <li>Instalar as depêndencias usando <strong>yarn</strong></li>
+  <li>Entrar na raiz do projeto e instalar as depêndencias usando <strong>yarn</strong></li>
   <li><strong>iOS:</strong> instalar pod install, <strong>cd ios && pod install && cd ..</strong></li>
   <li>Executar comando <strong>yarn start</strong> no diretório raiz</li>
   <li>Em outro terminal, também no diretório raiz, executar <strong>yarn android</strong> ou <strong>yarn ios</strong></li>
