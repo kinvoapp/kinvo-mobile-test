@@ -1,4 +1,4 @@
-import {View, Text, Image, Pressable} from 'react-native';
+import {Image} from 'react-native';
 import React from 'react';
 import * as S from './Header.style';
 import goBack from '../../assets/icons/icon-go-back.png';

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, Button, Image} from 'react-native';
+import React from 'react';
+import {View, Image} from 'react-native';
 import likeIconTrue from '../../assets/icons/likeIconTrue.png';
 import likeIconFalse from '../../assets/icons/likeIconFalse.png';
 import {StocksForm} from '../../models/StocksForm';
@@ -9,8 +9,6 @@ interface StocksCardProps {
   stocks: StocksForm;
   onPress: () => void;
 }
-
-
 
 export const StocksCard = ({
   stocks: {minimumValue, name, profitability, ticker, isLiked}, onPress,

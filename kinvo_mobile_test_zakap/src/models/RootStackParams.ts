@@ -1,1 +1,1 @@
-export type RootStackParamList = {Home: undefined;Stocks: undefined;Pension: undefined;Funds: undefined};
+export type RootStackParamList = {HomeScreen: undefined;StocksScreen: undefined;PensionScreen: undefined;FundsScreen: undefined};

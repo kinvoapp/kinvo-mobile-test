@@ -4,11 +4,13 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   background-color: #ecf0f2;
+  width: 100%;
 `;
 
 export const InnerContainer = styled.View`
   flex: 1;
   background-color: #ecf0f2;
+  width: 100%;
 `;
 
 export const loadingContainer = styled.View`
@@ -16,6 +18,7 @@ export const loadingContainer = styled.View`
   background-color: #ecf0f2;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 export const CardWraper = styled.View`

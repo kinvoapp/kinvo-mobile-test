@@ -3,12 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../models/RootStackParams';
 import * as S from './Funds.style';
-import {MenuCard} from '../../components/MenuCard';
 import {Header} from '../../components/Header';
-import sharesIcon from '../../assets/icons/icon-acoes.png';
-import fundsIcon from '../../assets/icons/icon-fundos.png';
-import socialSecurityIcon from '../../assets/icons/icon-previdencia.png';
-import {Text} from 'react-native';
 import {ErrorCard} from '../../components/ErrorCard';
 import {getFunds} from '../../services/api';
 import {FundsForm} from '../../models/FundsForm';
@@ -16,31 +11,30 @@ import {Loading} from '../../components/Loading';
 import {FlatList} from 'react-native-gesture-handler';
 import {FundsCard} from '../../components/FundsCard';
 
-type FundsScreenProp = StackNavigationProp<RootStackParamList, 'Funds'>;
+type FundsScreenProp = StackNavigationProp<RootStackParamList, 'FundsScreen'>;
 
-export const Funds = () => {
+export const FundsScreen = () => {
   const [loading, setLoading] = useState(true);
   const [failedRequest, setFailedRequest] = useState(false);
-  const [funds, setFunds] = useState<FundsForm[]>([]);
+  const [fundList, setFundList] = useState<FundsForm[]>([]);
   const navigation = useNavigation<FundsScreenProp>();
 
   const getFundsInfo = useCallback(async () => {
     setLoading(true);
     try {
       const {data} = (await getFunds()).data;
-      setFunds(data);
+      setFundList(data);
       setFailedRequest(false);
     } catch (err) {
       setFailedRequest(true);
-      console.log(err);
     } finally {
       setLoading(false);
     }
-  }, [setFunds, setFailedRequest, setLoading]);
+  }, [setFundList, setFailedRequest, setLoading]);
 
   const renderItem = ({item}: {item: FundsForm}) => <FundsCard funds={item} />;
 
-  const sortedFunds = funds.sort((a, b) => {
+  const sortedFunds = fundList.sort((a, b) => {
     if (a.name.toUpperCase() > b.name.toUpperCase()) {
       return 1;
     }
@@ -56,7 +50,7 @@ export const Funds = () => {
       <Header
         title="Fundos"
         isBackButton={true}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeScreen')}
       />
       <S.CardWraper>
         {loading ? (

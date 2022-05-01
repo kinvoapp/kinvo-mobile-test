@@ -2,7 +2,6 @@ import React from 'react';
 import {Image, View} from 'react-native';
 import starColored from '../../assets/icons/star_colored.png';
 import starEmpty from '../../assets/icons/star_empty.png';
-import closedStar from '../../assets/icons/star_closed.png';
 import {FundsForm} from '../../models/FundsForm';
 import * as S from './FundsCard.style';
 
@@ -36,7 +35,6 @@ export const FundsCard = ({
       starsBar.push(starEmpty);
     }
     return starsBar.map((star, index) => {
-      console.log(status);
       return (
         <View key={index}>
           {status === 2 ? (

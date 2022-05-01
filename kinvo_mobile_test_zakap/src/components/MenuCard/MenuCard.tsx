@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ImageSourcePropType, Image} from 'react-native';
+import {View, ImageSourcePropType, Image} from 'react-native';
 import * as S from './MenuCard.style';
 
 interface MenuCardProps {

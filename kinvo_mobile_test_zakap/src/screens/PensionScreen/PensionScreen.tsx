@@ -4,20 +4,32 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../models/RootStackParams';
 import {Header} from '../../components/Header';
-import * as S from './Pension.style';
+import * as S from './PensionScreen.style';
 import {Loading} from '../../components/Loading';
 import {PensionForm} from '../../models/PensionForm';
 import {getPension} from '../../services/api';
 import {PensionCard} from '../../components/PensionCard';
 import {ErrorCard} from '../../components/ErrorCard';
 
-type PensionScreenProp = StackNavigationProp<RootStackParamList, 'Pension'>;
+type PensionScreenProp = StackNavigationProp<
+  RootStackParamList,
+  'PensionScreen'
+>;
 
-export const Pension = () => {
+enum FilterOptions {
+  minimumValuePension,
+  zeroTaxPensions,
+  redemptiomOfOne,
+  none,
+}
+
+export const PensionScreen = () => {
   const [loading, setLoading] = useState(true);
   const [failedRequest, setFailedRequest] = useState(false);
-  const [pressChecker, setPressChecker] = useState(2);
-  const [pension, setPension] = useState<PensionForm[]>([]);
+  const [filterOption, setFilterOption] = useState<FilterOptions>(
+    FilterOptions.none,
+  );
+  const [pensionList, setPensionList] = useState<PensionForm[]>([]);
   const [filteredPension, setFilteredPension] = useState<PensionForm[]>([]);
   const navigation = useNavigation<PensionScreenProp>();
 
@@ -25,48 +37,55 @@ export const Pension = () => {
     setLoading(true);
     try {
       const {data} = (await getPension()).data;
-      setPension(data);
+      setPensionList(data);
+      setFilteredPension(data)
+      setFailedRequest(false)
     } catch (err) {
-      console.log(err);
       setFailedRequest(true);
     } finally {
       setLoading(false);
     }
-  }, [setPension, setFailedRequest, setLoading]);
+  }, [setPensionList, setFailedRequest, setLoading]);
 
   const renderItem = ({item}: {item: PensionForm}) => (
     <PensionCard pension={item} />
   );
 
-  const handleFilter = (number: number) => {
-    if (number != pressChecker) {
-      setPressChecker(number);
+  const handleFilter = (option: FilterOptions) => {
+
+    if(option === filterOption) {
+      setFilterOption(FilterOptions.none)
+      setFilteredPension(pensionList)
+      return
     }
-    if (number === pressChecker) {
-      setPressChecker(2);
-      return setFilteredPension(pension);
+
+    switch (option) {
+      case FilterOptions.minimumValuePension:
+        const minimumValuePensions = pensionList.filter(
+          pension => pension.minimumValue === 100,
+        );
+        setFilteredPension(minimumValuePensions);
+        break;
+      case FilterOptions.redemptiomOfOne:
+        const redemptiomOfOne = pensionList.filter(
+          pension => pension.redemptionTerm === 1,
+        );
+        setFilteredPension(redemptiomOfOne);
+        break;
+      case FilterOptions.zeroTaxPensions:
+        const zeroTaxPensions = pensionList.filter(
+          pension => pension.tax === 0,
+        );
+        setFilteredPension(zeroTaxPensions);
+        break;
+      case FilterOptions.none:
+        setFilteredPension(pensionList);
+        break;
     }
-    if (number === 0) {
-      const zeroTaxPensions = pension.filter(pension => pension.tax === 0);
-      return setFilteredPension(zeroTaxPensions);
-    }
-    if (number === 100) {
-      const minimumValuePensions = pension.filter(
-        pension => pension.minimumValue === 100,
-      );
-      return setFilteredPension(minimumValuePensions);
-    }
-    if (number === 1) {
-      const redemptiomOfOne = pension.filter(
-        pension => pension.redemptionTerm === 1,
-      );
-      return setFilteredPension(redemptiomOfOne);
-    }
+    setFilterOption(option);
   };
 
-  const pensionList = filteredPension.length >= 1 ? filteredPension : pension;
-
-  const sortedpensionList = pensionList.sort((a, b) => {
+  const sortedpensionList = filteredPension.sort((a, b) => {
     if (a.name.toUpperCase() > b.name.toUpperCase()) {
       return 1;
     }
@@ -82,7 +101,7 @@ export const Pension = () => {
       <Header
         title="Previdências"
         isBackButton={true}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeScreen')}
       />
 
       {loading ? (
@@ -95,25 +114,25 @@ export const Pension = () => {
         <S.InnerContainer>
           <S.FilterWraper>
             <S.PressableFilter
-              isPressed={pressChecker === 0}
-              onPress={() => handleFilter(0)}>
-              <S.FilterText isPressed={pressChecker === 0}>
+              isPressed={filterOption === FilterOptions.zeroTaxPensions}
+              onPress={() => handleFilter(FilterOptions.zeroTaxPensions)}>
+              <S.FilterText isPressed={filterOption === FilterOptions.zeroTaxPensions}>
                 SEM TAXA
               </S.FilterText>
             </S.PressableFilter>
 
             <S.PressableFilter
-              isPressed={pressChecker === 100}
-              onPress={() => handleFilter(100)}>
-              <S.FilterText isPressed={pressChecker === 100}>
+              isPressed={filterOption === FilterOptions.minimumValuePension}
+              onPress={() => handleFilter(FilterOptions.minimumValuePension)}>
+              <S.FilterText isPressed={filterOption === FilterOptions.minimumValuePension}>
                 R$100,00
               </S.FilterText>
             </S.PressableFilter>
 
             <S.PressableFilter
-              isPressed={pressChecker === 1}
-              onPress={() => handleFilter(1)}>
-              <S.FilterText isPressed={pressChecker === 1}>D+1</S.FilterText>
+              isPressed={filterOption === FilterOptions.redemptiomOfOne}
+              onPress={() => handleFilter(FilterOptions.redemptiomOfOne)}>
+              <S.FilterText isPressed={filterOption === FilterOptions.redemptiomOfOne}>D+1</S.FilterText>
             </S.PressableFilter>
           </S.FilterWraper>
 
