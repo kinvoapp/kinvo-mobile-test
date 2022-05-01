@@ -1,10 +1,13 @@
 import React, { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import useFund from '~/hooks/useFund';
 import Card from './components/Card';
 import { Container } from './styles';
 
 const Home = () => {
   const { navigate } = useNavigation();
+
+  const { hasNewFunds } = useFund();
 
   const handleStocksPress = useCallback(() => {
     navigate('Stocks');
@@ -32,6 +35,7 @@ const Home = () => {
         subTitle="De investimentos"
         icon="funds"
         onPress={handleFundsPress}
+        hasChip={hasNewFunds}
       />
 
       <Card

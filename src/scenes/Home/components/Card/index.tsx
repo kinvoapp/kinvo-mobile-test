@@ -1,16 +1,25 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacityProps, View } from 'react-native';
+import { useTheme } from 'styled-components/native';
 import Icon, { IconName } from '~/components/Icon';
 import { Subtitle } from '~/styles/typography';
-import { Container, ImageContainer, InfoContainer, Title } from './styles';
+import {
+  Chip,
+  ChipContainer,
+  Container,
+  ImageContainer,
+  InfoContainer,
+  Title,
+} from './styles';
 
 interface CardProps extends TouchableOpacityProps {
   title: string;
   subTitle: string;
   icon: IconName;
+  hasChip?: boolean;
 }
 
-const Card = ({ title, subTitle, icon, ...rest }: CardProps) => {
+const Card = ({ title, subTitle, icon, hasChip, ...rest }: CardProps) => {
   return (
     <Container
       activeOpacity={0.5}
@@ -22,8 +31,16 @@ const Card = ({ title, subTitle, icon, ...rest }: CardProps) => {
       </ImageContainer>
 
       <InfoContainer>
-        <Title>{title}</Title>
-        <Subtitle>{subTitle}</Subtitle>
+        <View>
+          <Title>{title}</Title>
+          <Subtitle>{subTitle}</Subtitle>
+        </View>
+
+        {hasChip && (
+          <ChipContainer>
+            <Chip title="Novo" />
+          </ChipContainer>
+        )}
       </InfoContainer>
     </Container>
   );
