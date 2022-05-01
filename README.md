@@ -59,7 +59,7 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
   - [X] A lista de "ações" deve obedecer a seguinte prioridade:
      - [ ] Favoritadas deve aparecer primeiro
      - [X] Ordem alfabética
-  - [ ] O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
+  - [X] O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
   - [X] Botão de favorito
   - [X] A lista de "ações" inicia com todos as "ações" desfavoritadas.
   - [ ] Tratar estados de erro (sem internet)
