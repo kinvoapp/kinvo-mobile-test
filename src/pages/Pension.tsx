@@ -49,7 +49,7 @@ export function Pension() {
           <ActivityIndicator />
         ) : (
           <FlatList
-            data={pensions}
+            data={pensions.sort((a, b) => a.name.localeCompare(b.name))}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
               <PensionItem

@@ -44,7 +44,7 @@ export function Stocks() {
           <ActivityIndicator />
         ) : (
           <FlatList
-            data={stocks}
+            data={stocks.sort((a, b) => a.name.localeCompare(b.name))}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
               <StockItem
