@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {View, Text, Button} from 'react-native';
 import {FlatList} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -10,22 +9,26 @@ import {Loading} from '../../components/Loading';
 import {PensionForm} from '../../models/PensionForm';
 import {getPension} from '../../services/api';
 import {PensionCard} from '../../components/PensionCard';
+import {ErrorCard} from '../../components/ErrorCard';
 
 type PensionScreenProp = StackNavigationProp<RootStackParamList, 'Pension'>;
 
 export const Pension = () => {
   const [loading, setLoading] = useState(true);
-  const [pressChecker, setPressChecker] = useState(2)
+  const [failedRequest, setFailedRequest] = useState(false);
+  const [pressChecker, setPressChecker] = useState(2);
   const [pension, setPension] = useState<PensionForm[]>([]);
   const [filteredPension, setFilteredPension] = useState<PensionForm[]>([]);
   const navigation = useNavigation<PensionScreenProp>();
 
   const getPensionInfo = useCallback(async () => {
+    setLoading(true);
     try {
       const {data} = (await getPension()).data;
       setPension(data);
     } catch (err) {
       console.log(err);
+      setFailedRequest(true);
     } finally {
       setLoading(false);
     }
@@ -36,13 +39,12 @@ export const Pension = () => {
   );
 
   const handleFilter = (number: number) => {
-    if(number !== pressChecker) {
-      setPressChecker(number)
-    } else {
-      setPressChecker(2)
+    if (number != pressChecker) {
+      setPressChecker(number);
     }
-    if (filteredPension.length >= 1) {
-      return setFilteredPension([]);
+    if (number === pressChecker) {
+      setPressChecker(2);
+      return setFilteredPension(pension);
     }
     if (number === 0) {
       const zeroTaxPensions = pension.filter(pension => pension.tax === 0);
@@ -60,8 +62,6 @@ export const Pension = () => {
       );
       return setFilteredPension(redemptiomOfOne);
     }
-    
-    setFilteredPension(pension);
   };
 
   const pensionList = filteredPension.length >= 1 ? filteredPension : pension;
@@ -75,7 +75,7 @@ export const Pension = () => {
 
   useEffect(() => {
     getPensionInfo();
-  }, [getPensionInfo, filteredPension]);
+  }, [getPensionInfo]);
 
   return (
     <S.Container>
@@ -89,19 +89,25 @@ export const Pension = () => {
         <S.loadingContainer>
           <Loading />
         </S.loadingContainer>
+      ) : failedRequest ? (
+        <ErrorCard onPress={getPensionInfo} />
       ) : (
         <S.InnerContainer>
           <S.FilterWraper>
             <S.PressableFilter
               isPressed={pressChecker === 0}
               onPress={() => handleFilter(0)}>
-              <S.FilterText isPressed={pressChecker === 0}>SEM TAXA</S.FilterText>
+              <S.FilterText isPressed={pressChecker === 0}>
+                SEM TAXA
+              </S.FilterText>
             </S.PressableFilter>
 
             <S.PressableFilter
               isPressed={pressChecker === 100}
               onPress={() => handleFilter(100)}>
-              <S.FilterText isPressed={pressChecker === 100}>R$100,00</S.FilterText>
+              <S.FilterText isPressed={pressChecker === 100}>
+                R$100,00
+              </S.FilterText>
             </S.PressableFilter>
 
             <S.PressableFilter

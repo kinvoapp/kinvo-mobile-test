@@ -16,7 +16,7 @@ export const NavigationPressable = styled.Pressable`
 
 export const NavigationWraper = styled.View`
   flex-direction: row;
-`
+`;
 
 export const NavigationLogoContainer = styled.View`
   width: 56px;
@@ -31,27 +31,26 @@ export const NavigationLogoContainer = styled.View`
 export const MainText = styled.Text`
   font-family: 'Montserrat-Bold';
   font-size: 16px;
-  color: #6F4DBF;
-`
+  color: #6f4dbf;
+`;
 
 export const SubText = styled.Text`
   font-family: 'Montserrat-SemiBold';
   font-size: 10px;
   color: #627179;
-`
+`;
 
 export const NewTagWraper = styled.View`
-  background-color: #40C5D6;
+  background-color: #40c5d6;
   width: 56px;
   height: 20px;
   border-radius: 15px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+`;
 export const NewTagText = styled.Text`
   font-family: 'Montserrat-Medium';
   font-size: 10px;
-  color: #FFFFFF;
-`
-
+  color: #ffffff;
+`;

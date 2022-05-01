@@ -9,11 +9,13 @@ import {StocksCard} from '../../components/StocksCard';
 import {StocksForm} from '../../models/StocksForm';
 import {getStocks} from '../../services/api';
 import {Loading} from '../../components/Loading';
+import { ErrorCard } from '../../components/ErrorCard';
 
 type StocksScreenProp = StackNavigationProp<RootStackParamList, 'Stocks'>;
 
 export const Stocks = () => {
   const [loading, setLoading] = useState(true);
+  const [ failedRequest, setFailedRequest] = useState(false);
   const [stocks, setStocks] = useState<StocksForm[]>([]);
   const navigation = useNavigation<StocksScreenProp>();
 
@@ -32,8 +34,8 @@ export const Stocks = () => {
   );
 
   const sortedStocks = stocks.sort((a, b) => {
-    if (a.isLiked && !b.isLiked) {
-      return -1;
+    if (a.isLiked !== b.isLiked) {
+      return a.isLiked ? -1 : 1
     }
     if (a.name.toUpperCase() > b.name.toUpperCase()) {
       return 1;
@@ -42,10 +44,13 @@ export const Stocks = () => {
   });
 
   const getStocksInfo = useCallback(async () => {
+    setLoading(true)
     try {
       const {data} = (await getStocks()).data;
       setStocks(data);
+      setFailedRequest(false)
     } catch (err) {
+      setFailedRequest(true)
       console.log(err);
     } finally {
       setLoading(false);
@@ -67,7 +72,7 @@ export const Stocks = () => {
         {loading ? (
           <Loading />
         ) : (
-          <FlatList
+          failedRequest ? <ErrorCard onPress={getStocksInfo}/> : <FlatList
             style={{ width: "100%"}}
             data={sortedStocks}
             renderItem={renderItem}
