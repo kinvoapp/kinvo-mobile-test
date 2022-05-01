@@ -12,12 +12,11 @@
   </a>
 </p>
 
-<div align="center">
-   ![image](https://user-images.githubusercontent.com/79457230/166166242-dc59daef-2103-49a3-ab2d-4159b98316d3.png)
+#### Preview
+<div align="center" max-height:"100px">
 
-   
-   
-   
+   ![image](https://user-images.githubusercontent.com/79457230/166166675-e77a4b85-a15c-4a33-a320-ef093f03869f.png)
+
 </div>
 
 ## Conteúdo
