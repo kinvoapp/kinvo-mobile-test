@@ -2,27 +2,21 @@ import styled from 'styled-components/native';
 import {ArrowIcon as ArrowIconComponent} from '../Icons/ArrowIcon';
 
 export const Container = styled.View`
-  flex: 1;
   width: 100%;
-  height: 145px;
+  height: 218px;
   border-radius: 10px;
   background-color: #ffffff;
   padding: 14px;
   margin-bottom: 20px;
-  align-self: stretch;
 `;
 
 export const CardTitleWraper = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  height: 50%;
+  height: 35%;
 `;
 
 export const NameContainer = styled.View``;
-
-export const LikeIcon = styled.Pressable`
-  width: 24px;
-`;
 
 export const ProfitabilityContainer = styled.View`
   flex-direction: row;
@@ -41,7 +35,7 @@ export const ArrowIcon = styled(ArrowIconComponent)<ArrowIconProps>`
 export const CardInfoWraper = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  height: 50%;
+  height: 65%;
 `;
 
 export const InfoNameContainer = styled.View`
@@ -51,7 +45,8 @@ export const InfoNameContainer = styled.View`
 
 export const ValuesContainer = styled.View`
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  padding-right: 4px;
 `;
 
 export const TitleText = styled.Text`

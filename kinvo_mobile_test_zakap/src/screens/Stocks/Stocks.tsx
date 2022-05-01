@@ -68,6 +68,7 @@ export const Stocks = () => {
           <Loading />
         ) : (
           <FlatList
+            style={{ width: "100%"}}
             data={sortedStocks}
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}

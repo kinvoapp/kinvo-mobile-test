@@ -13,9 +13,9 @@ export const getStocks = () => {
 }
 
 export const getPension = () => {
-    return api.get<PensionForm[]>('pension')
+    return api.get<{data: PensionForm[]}>('pension')
 }
 
 export const getFunds = () => {
-    return api.get<FundsForm[]>('funds')
+    return api.get<{data: FundsForm[]}>('funds')
 }
