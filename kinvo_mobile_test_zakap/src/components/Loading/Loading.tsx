@@ -8,8 +8,8 @@ export const Loading = () => {
   const startImageRotateFunction = useCallback(() => {
     rotateValueHolder.setValue(0);
     Animated.timing(rotateValueHolder, {
-      toValue: 1,
-      duration: 3000,
+      toValue: 8,
+      duration: 10000,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => startImageRotateFunction());

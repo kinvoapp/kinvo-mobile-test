@@ -16,8 +16,6 @@ export const CardTitleWraper = styled.View`
   height: 35%;
 `;
 
-export const NameContainer = styled.View``;
-
 export const ProfitabilityContainer = styled.View`
   flex-direction: row;
   align-items: center;

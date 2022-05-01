@@ -15,7 +15,7 @@ type StocksScreenProp = StackNavigationProp<RootStackParamList, 'Stocks'>;
 
 export const Stocks = () => {
   const [loading, setLoading] = useState(true);
-  const [ failedRequest, setFailedRequest] = useState(false);
+  const [failedRequest, setFailedRequest] = useState(false);
   const [stocks, setStocks] = useState<StocksForm[]>([]);
   const navigation = useNavigation<StocksScreenProp>();
 

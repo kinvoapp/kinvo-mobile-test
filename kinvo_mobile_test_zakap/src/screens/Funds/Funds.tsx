@@ -36,7 +36,7 @@ export const Funds = () => {
     } finally {
       setLoading(false);
     }
-  }, [setFunds]);
+  }, [setFunds, setFailedRequest, setLoading]);
 
   const renderItem = ({item}: {item: FundsForm}) => <FundsCard funds={item} />;
 

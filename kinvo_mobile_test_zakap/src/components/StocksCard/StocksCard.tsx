@@ -23,10 +23,10 @@ export const StocksCard = ({
   return (
     <S.Container>
       <S.CardTitleWraper>
-        <S.NameContainer>
+        <View>
           <S.TitleText>{name}</S.TitleText>
           <S.SubTitleText>{ticker}</S.SubTitleText>
-        </S.NameContainer>
+        </View>
 
         <S.LikeIcon onPress={onPress}>
           <Image source={likeIcon} />

@@ -32,7 +32,7 @@ export const Pension = () => {
     } finally {
       setLoading(false);
     }
-  }, [setPension]);
+  }, [setPension, setFailedRequest, setLoading]);
 
   const renderItem = ({item}: {item: PensionForm}) => (
     <PensionCard pension={item} />

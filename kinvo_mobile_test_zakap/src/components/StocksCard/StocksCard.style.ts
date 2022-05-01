@@ -18,8 +18,6 @@ export const CardTitleWraper = styled.View`
   height: 50%;
 `;
 
-export const NameContainer = styled.View``;
-
 export const LikeIcon = styled.Pressable`
   width: 24px;
 `;
@@ -27,7 +25,7 @@ export const LikeIcon = styled.Pressable`
 export const ProfitabilityContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  padding-bottom: 16px; // Ajustar para valor corretoc
+  padding-bottom: 16px;
 `;
 
 interface ArrowIconProps {

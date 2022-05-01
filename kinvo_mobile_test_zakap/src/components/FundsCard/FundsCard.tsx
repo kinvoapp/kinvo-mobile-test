@@ -35,16 +35,16 @@ export const FundsCard = ({
       counter += 1;
       starsBar.push(starEmpty);
     }
-    return starsBar.map(star => {
+    return starsBar.map((star, index) => {
       console.log(status);
       return (
-        <>
+        <View key={index}>
           {status === 2 ? (
             <Image source={star} style={{tintColor: 'gray'}} />
           ) : (
             <Image source={star} />
           )}
-        </>
+        </View>
       );
     });
   };

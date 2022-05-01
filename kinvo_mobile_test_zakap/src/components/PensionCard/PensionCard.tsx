@@ -16,10 +16,10 @@ export const PensionCard = ({
   return (
     <S.Container>
       <S.CardTitleWraper>
-        <S.NameContainer>
+        <View>
           <S.TitleText>{name}</S.TitleText>
           <S.SubTitleText>{type}</S.SubTitleText>
-        </S.NameContainer>
+        </View>
 
         <View></View>
       </S.CardTitleWraper>
