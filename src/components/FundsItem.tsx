@@ -5,23 +5,24 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import Icon from 'react-native-vector-icons/Feather';
 import FavoriteIcon from '../assets/icons/FavoriteIconNull.svg';
+import {FilterButton} from './FilterButton';
 
 interface FundsItensProps {
   name: string;
   type: string;
   minimumValue: number;
-  tax: number;
-  redemptionTerm: number;
+  rating: number;
   profitability: number;
+  status: number;
 }
 
-export function PensionItem({
+export function FundsItem({
   name,
   type,
   minimumValue,
-  tax,
-  redemptionTerm,
+  rating,
   profitability,
+  status,
   ...res
 }: FundsItensProps) {
   return (
@@ -31,22 +32,21 @@ export function PensionItem({
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.subTitle}>{type}</Text>
         </View>
-        <FavoriteIcon width={20} height={20} />
+        {/* <FavoriteIcon width={20} height={20} /> */}
+        <FilterButton title="D+1" active />
       </View>
 
       <View style={styles.divider} />
 
       <View style={styles.description}>
         <View>
+          <Text style={styles.text}>Classificação:</Text>
           <Text style={styles.text}>Valor mínimo:</Text>
-          <Text style={styles.text}>Taxa:</Text>
-          <Text style={styles.text}>Resgate:</Text>
           <Text style={styles.text}>Rentabilidade:</Text>
         </View>
         <View style={styles.values}>
+          <Text style={styles.value}>{status}</Text>
           <Text style={styles.value}>R$ {minimumValue}</Text>
-          <Text style={styles.value}>{tax}%</Text>
-          <Text style={styles.value}>D+ {redemptionTerm}</Text>
           <Text style={styles.profitability}>
             <Icon name="arrow-down" />
             {profitability}%
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
+    width: 250,
     color: colors.darkGrey,
     fontFamily: fonts.heading,
   },

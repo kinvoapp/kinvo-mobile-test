@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     color: colors.purple,
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: 15,
   },
   title: {
     fontSize: 20,

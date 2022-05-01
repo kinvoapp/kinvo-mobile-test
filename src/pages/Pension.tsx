@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
 
 import colors from '../styles/colors';
 
@@ -7,8 +7,33 @@ import {Header} from '../components/Header';
 import {TitleView} from '../components/TitleView';
 import {PensionItem} from '../components/PensionItem';
 import {FilterButton} from '../components/FilterButton';
+import api from '../services/api';
+interface PensionProps {
+  id: number;
+  name: string;
+  type: string;
+  minimumValue: number;
+  tax: number;
+  redemptionTerm: number;
+  profitability: number;
+}
 
 export function Pension() {
+  const [isLoading, setLoading] = useState(true);
+  const [pensions, setPensions] = useState<PensionProps[]>([]);
+
+  useEffect(() => {
+    async function loadPensions() {
+      const {data} = await api
+        .get('pension')
+        .then(response => response.data)
+        .catch(error => console.error(error))
+        .finally(() => setLoading(false));
+      setPensions(data);
+    }
+    loadPensions();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Header />
@@ -20,14 +45,25 @@ export function Pension() {
           <FilterButton title="D+1" />
         </View>
         <View style={styles.divider} />
-        <PensionItem
-          name="Adam XP Seg Prev I FIC FIM"
-          type="Multimercados"
-          minimumValue={100}
-          tax={0}
-          redemptionTerm={10}
-          profitability={10.59}
-        />
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={pensions}
+            keyExtractor={item => String(item.id)}
+            renderItem={({item}) => (
+              <PensionItem
+                name={item.name}
+                type={item.type}
+                minimumValue={item.minimumValue}
+                tax={item.tax}
+                redemptionTerm={item.redemptionTerm}
+                profitability={item.profitability}
+              />
+            )}
+            contentContainerStyle={styles.pensionsList}
+          />
+        )}
       </View>
     </View>
   );
@@ -53,7 +89,6 @@ const styles = StyleSheet.create({
     marginVertical: 32,
   },
   filter: {
-    marginTop: 15,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -65,5 +100,8 @@ const styles = StyleSheet.create({
     height: 1,
     width: '90%',
     backgroundColor: colors.board,
+  },
+  pensionsList: {
+    justifyContent: 'center',
   },
 });

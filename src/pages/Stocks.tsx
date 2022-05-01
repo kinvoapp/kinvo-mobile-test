@@ -1,25 +1,62 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 
 import {Header} from '../components/Header';
-
-import fonts from '../styles/fonts';
-import colors from '../styles/colors';
 import {StockItem} from '../components/StockItem';
 import {TitleView} from '../components/TitleView';
 
+import api from '../services/api';
+
+import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+
+interface StocksProps {
+  id: number;
+  name: string;
+  ticker: string;
+  minimumValue: number;
+  profitability: number;
+}
+
 export function Stocks() {
+  const [isLoading, setLoading] = useState(true);
+  const [stocks, setStocks] = useState<StocksProps[]>([]);
+
+  useEffect(() => {
+    async function loadStocks() {
+      const {data} = await api
+        .get('stocks')
+        .then(response => response.data)
+        .catch(error => console.error(error))
+        .finally(() => setLoading(false));
+      setStocks(data);
+    }
+    loadStocks();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
         <TitleView title="Ações" />
-        <StockItem
-          name="Magazine Luiza"
-          ticker="MGLU3"
-          minimumValue={24.17}
-          profitability={-27}
-        />
+
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={stocks}
+            keyExtractor={item => String(item.id)}
+            renderItem={({item}) => (
+              <StockItem
+                name={item.name}
+                ticker={item.ticker}
+                minimumValue={item.minimumValue}
+                profitability={item.profitability}
+              />
+            )}
+            contentContainerStyle={styles.stocksList}
+          />
+        )}
       </View>
     </View>
   );
@@ -44,5 +81,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontFamily: fonts.title,
+  },
+  stocksList: {
+    justifyContent: 'center',
   },
 });

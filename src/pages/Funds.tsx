@@ -1,20 +1,64 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
 
 import {Header} from '../components/Header';
 
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
 import {TitleView} from '../components/TitleView';
+import {FundsItem} from '../components/FundsItem';
+import api from '../services/api';
+
+interface FundsProps {
+  id: number;
+  name: string;
+  type: string;
+  minimumValue: number;
+  rating: number;
+  profitability: number;
+  status: number;
+}
 
 export function Funds() {
+  const [isLoading, setLoading] = useState(true);
+  const [funds, setFunds] = useState<FundsProps[]>([]);
+
+  useEffect(() => {
+    async function loadStocks() {
+      const {data} = await api
+        .get('funds')
+        .then(response => response.data)
+        .catch(error => console.error(error))
+        .finally(() => setLoading(false));
+      setFunds(data);
+    }
+    loadStocks();
+  }, []);
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
         <TitleView title="Fundos" />
 
-        <Text>Funds</Text>
+        {isLoading ? (
+          <ActivityIndicator />
+        ) : (
+          <FlatList
+            data={funds}
+            keyExtractor={item => String(item.id)}
+            renderItem={({item}) => (
+              <FundsItem
+                name={item.name}
+                type={item.type}
+                minimumValue={item.minimumValue}
+                status={item.status}
+                profitability={item.profitability}
+                rating={item.rating}
+              />
+            )}
+            contentContainerStyle={styles.fundsList}
+          />
+        )}
       </View>
     </View>
   );
@@ -39,5 +83,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontFamily: fonts.title,
+  },
+  fundsList: {
+    justifyContent: 'center',
   },
 });
