@@ -13,17 +13,18 @@
 
 <p align="center">
   <a href="#challenge">Challenge</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#configuração">Configuração</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#objetivos">Objetivos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_with_curl-licencia">Licença</a>
 </p>
 
-## 🚀 Challenge
+## Challenge
 
 Este desafio foi projetado para avaliar a capacidade técnica de candidatos à vagas de Desenvolvedor voltadas para o desenvolvimento mobile, independente da senioridade, considerando o framework `React Native`. O nível de exigência da avaliação se adequa ao nível da vaga.
 
 
-## ⚙️ Instalação
+## Configuração
   ```bash
   # Clone do Repositorio
   $ git clone https://github.com/WesleyReboucas/kinvo-mobile-test.git
@@ -37,8 +38,21 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
   # Iniciando aplicação
   $ npx react-native start
   ```
+### Api Reference
+ - Stocks: https://6266f62263e0f382568936e4.mockapi.io/stocks
+ - Funds: https://6266f62263e0f382568936e4.mockapi.io/funds
+ - Pensions: https://6266f62263e0f382568936e4.mockapi.io/pension
 
-## 🎯 Objetivos
+## Tecnologias
+
+- [Typescript](https://reactjs.org)
+- [React Native](https://facebook.github.io/react-native/)
+- [Axios](https://github.com/axios/axios)
+- [Styled-Components](https://styled-components.com/)
+
+
+
+## Objetivos
 
   ### :page_with_curl: Pré-requisitos:
    - [X] Criar um passo a passo de como rodar o app ;
@@ -47,7 +61,7 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
 
    - [X] Utilizar `TypeScript`;
    - [x] Arquitetura limpa e princípios de `SOLID`;
-   - [ ] Utilizar `Styled Components`;
+   - [X] Utilizar `Styled Components`;
 
 ### 📺 Tela "Desafio" (Tela inicial) (Obrigatória)
 
