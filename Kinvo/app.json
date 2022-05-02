@@ -1,0 +1,11 @@
+{
+  "colors":{
+    "white": "#FFFFFF",
+    "purple": "#6F4DBF",
+    "lightGreyColor": "#ECF0F2",
+    "mediumGreyColor": "#DAE0E3",
+    "darkGreyColor": "#627179"
+  },
+  "name": "Kinvo",
+  "displayName": "Kinvo"
+}
