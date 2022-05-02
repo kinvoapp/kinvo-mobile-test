@@ -2,15 +2,15 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Header} from '../components/Header';
-import {MenuItem} from '../components/MenuItem';
+import {Header} from '../../components/Header';
+import {MenuItem} from '../../components/MenuItem';
 
-import StocksIcon from '../assets/icons/icon-acoes.svg';
-import PensionIcon from '../assets/icons/icon-previdencia.svg';
-import FundsIcon from '../assets/icons/icon-fundos.svg';
+import StocksIcon from '../../assets/icons/icon-acoes.svg';
+import PensionIcon from '../../assets/icons/icon-previdencia.svg';
+import FundsIcon from '../../assets/icons/icon-fundos.svg';
 
-import fonts from '../styles/fonts';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
+import {Container} from './styles';
 
 export function Home() {
   const navigation = useNavigation<any>();
@@ -25,7 +25,7 @@ export function Home() {
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Header />
       <View style={styles.content}>
         <MenuItem
@@ -47,28 +47,15 @@ export function Home() {
           onPress={navigateToPensions}
         />
       </View>
-    </View>
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
   content: {
     backgroundColor: colors.lightGrey,
-    height: '100%',
     width: '100%',
     paddingVertical: 15,
     paddingHorizontal: 15,
-  },
-  icon: {
-    paddingVertical: 30,
-    padding: 10,
-  },
-  text: {
-    fontSize: 20,
-    fontFamily: fonts.title,
   },
 });

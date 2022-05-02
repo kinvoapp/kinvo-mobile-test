@@ -12,9 +12,9 @@ import {useNavigation} from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/Feather';
 
-import welcome from '../assets/images/KinvoWelcome.png';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import welcome from '../../assets/images/KinvoWelcome.png';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 export function Welcome() {
   const navigation = useNavigation<any>();
