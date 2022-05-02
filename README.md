@@ -62,7 +62,7 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
   - [X] O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
   - [X] Botão de favorito
   - [X] A lista de "ações" inicia com todos as "ações" desfavoritadas.
-  - [ ] Tratar estados de erro (sem internet)
+  - [X] Tratar estados de erro (sem internet)
   - [X] Carregamento (chamada a API em andamento)
   - [ ] Lista vazia (quando o resultado de um filtro não contem itens ou o retorno da API foi vazio)
 
@@ -74,7 +74,7 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
      - [X] "SEM TAXA": inclui as previdências com taxa igual a zero.
      - [X] "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
      - [X] "D+1": inclui as previdências com resgate igual a um.
-  - [ ] Tratar estados de erro (sem internet)
+  - [X] Tratar estados de erro (sem internet)
   - [X] Carregamento (chamada a API em andamento)
   - [ ] Lista vazia (quando o resultado de um filtro não contem itens ou o retorno da API foi vazio)
 
