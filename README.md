@@ -25,6 +25,8 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
 
 
 ## Configuração
+
+### Instalação
   ```bash
   # Clone do Repositorio
   $ git clone https://github.com/WesleyReboucas/kinvo-mobile-test.git
@@ -38,6 +40,8 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
   # Iniciando aplicação
   $ npx react-native start
   ```
+[+ Mais detalhes](https://reactnative.dev/docs/running-on-device)
+
 ### Api Reference
  - Stocks: https://6266f62263e0f382568936e4.mockapi.io/stocks
  - Funds: https://6266f62263e0f382568936e4.mockapi.io/funds
@@ -50,63 +54,6 @@ Este desafio foi projetado para avaliar a capacidade técnica de candidatos à v
 - [Axios](https://github.com/axios/axios)
 - [Styled-Components](https://styled-components.com/)
 
-
-
-## Objetivos
-
-  ### :page_with_curl: Pré-requisitos:
-   - [X] Criar um passo a passo de como rodar o app ;
-   - [X] Desenvolver o app utilizando `React Native`;
-   - [X] Criar o projeto utilizando a CLI do `React Native`;
-
-   - [X] Utilizar `TypeScript`;
-   - [x] Arquitetura limpa e princípios de `SOLID`;
-   - [X] Utilizar `Styled Components`;
-
-### 📺 Tela "Desafio" (Tela inicial) (Obrigatória)
-
-  - [X] A tela inicial contem uma lista que permite o usuário navegar para as três telas: Ações, Fundos e Previdências.
-
-### 📺 Tela "Ações" (Obrigatória)
-
-  - [X] A lista de "ações" deve ser carregada através de uma chamada a api.
-  - [X] A lista de "ações" deve obedecer a seguinte prioridade:
-     - [ ] Favoritadas deve aparecer primeiro
-     - [X] Ordem alfabética
-  - [X] O usuário pode favoritar/desfavoritar uma "ação" tocando no ícone do coração(o coração preenchido indica favoritado e o coração vazado indica desfavoritado).
-  - [X] Botão de favorito
-  - [X] A lista de "ações" inicia com todos as "ações" desfavoritadas.
-  - [X] Tratar estados de erro (sem internet)
-  - [X] Carregamento (chamada a API em andamento)
-  - [ ] Lista vazia (quando o resultado de um filtro não contem itens ou o retorno da API foi vazio)
-
-### 📺 Tela "Previdências" (Obrigatória)
-
-  - [X] A lista de "previdências" deve ser carregada através de uma chamada a api.
-  - [X] A lista de "previdências" deve estar em ordem alfabética.
-  - [X] A tela contem um filtro de múltipla escolha que atua sobre a lista de "previdências". Quando selecionado os filtros:
-     - [X] "SEM TAXA": inclui as previdências com taxa igual a zero.
-     - [X] "R$100,00": inclui as previdências com valor mínimo igual a cem reais.
-     - [X] "D+1": inclui as previdências com resgate igual a um.
-  - [X] Tratar estados de erro (sem internet)
-  - [X] Carregamento (chamada a API em andamento)
-  - [ ] Lista vazia (quando o resultado de um filtro não contem itens ou o retorno da API foi vazio)
-
-### 📺 Tela "Fundos" (Opcional)
-
-  - [X] A lista de "fundos" deve ser carregada através de uma chamada a api.
-  - [X] A lista de "fundos" deve estar em ordem alfabética.
-  - [ ] Os estados do fundo são:
-    - [ ] 0: Comum
-    - [ ] 1: Novo
-    - [ ] 2: Fechado
-  - [ ] Classificação em estrelas 
-  - [ ] Um "fundo" com o estado de "comum" deve apresentar o layout básico conforme layout.
-  - [ ] Um "fundo" com o estado de "novo" deve apresentar o layout básico com a adição do label "novo" conforme layout.
-  - [ ] Um "fundo" com o estado de "fechado" tem um layout particular alem do label "fechado" conforme layout.
-  - [ ] Tratar estados de erro (sem internet)
-  - [X] Carregamento (chamada a API em andamento)
-  - [ ] Lista vazia (quando o resultado de um filtro não contem itens ou o retorno da API foi vazio)
 
 ## :page_with_curl: Licencia
 <a href="https://choosealicense.com/licenses/mit/">
