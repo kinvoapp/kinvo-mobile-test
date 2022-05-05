@@ -1,51 +1,49 @@
 import React, { useEffect, useState } from "react"
-import { TouchableOpacity, ScrollView, ActivityIndicator } from "react-native"
+import { TouchableOpacity, ActivityIndicator, FlatList } from "react-native"
 import BoxContainer from "../../components/BoxContainer"
 import BoxHeader from "../../components/BoxHeader"
 import BoxItem from "../../components/BoxItem"
 import ScreenContainer from "../../containers/ScreenContainer"
-import { FavoriteContainer, Message, MessageContainer, MessageContainerCenter } from "./styles"
+import { Container } from "./styles"
 import * as ApiService from '../../services/ApiService';
 import { IStocks } from "./types"
 import HeartFilledIcon from "../../../assets/icons/heart-filled.svg";
 import HeartEmptyIcon from "../../../assets/icons/heart-empty.svg";
-import colors from "../../themes/colors"
+import colors from "../../themes/light"
 import MessageBox from "../../components/MessageBox"
 import MessageButton from "../../components/MessageButton"
+
 
 export default function Stocks() {
     const [data, setData] = useState<IStocks[]>([]);
     const [list, setList] = useState<IStocks[]>([]);
-    const [favorite, setFavorite] = useState(false);
     const [error, setError] = useState("");
-    const [refresh, setRefresh] = useState(false);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getStocksList();
-    }, [refresh])
+        init();
+    }, [])
 
-    const getStocksList = async () => {
-        setRefresh(false);
+    const init = async () => {
         setError("");
-        setLoading(true);
+        await getDbList();
+    }
+
+    const getDbList = async () => {
+        setLoading(true)
         try {
             const response = await ApiService.get("stocks");
-            if (response && !response?.error) {
-                const data = response.data;
-                setData(data);
-
-                let newList = [...data];
-                newList.sort((currentItem, nextItem) => (currentItem.name > nextItem.name) ? 1 : (nextItem.name > currentItem.name) ? -1 : 0)
-                setList(newList);
+            if (response && !response.error) {
+                setData(response.data)
+                setList(response.data)
             }
             else {
-                setError(response.error)
+                setError(response.error ? response.error : "Erro")
             }
-            setLoading(false);
         } catch (error) {
             console.log(error)
         }
+        setLoading(false)
     }
 
     const handleFavorite = async (id: number) => {
@@ -60,68 +58,64 @@ export default function Stocks() {
 
     return (
         <ScreenContainer>
-            <ScrollView>
-                {
-                    loading ?
-                        <MessageContainerCenter>
-                            <ActivityIndicator size="large" color={colors.colors.purple} />
-                        </MessageContainerCenter> :
-                        (error) ?
-                            <MessageContainerCenter>
-                                <MessageBox
-                                    type="error"
-                                    message={error}
-                                />
-                                <TouchableOpacity onPress={() => { setRefresh(true) }}>
-                                    <MessageButton
-                                        title="TENTAR NOVAMENTE"
-                                    />
-                                </TouchableOpacity>
-                            </MessageContainerCenter>
-                            :
-
-
-                            (!loading && !error && list && list.length) > 0 ?
-                                list.map(list =>
-                                    <BoxContainer key={list.id}>
-
+            {
+                loading ?
+                    <Container verticalAlign="center">
+                        <ActivityIndicator size="large" color={colors.colors.purple} />
+                    </Container>
+                    :
+                    (error) ?
+                        <Container verticalAlign="center">
+                            <MessageBox
+                                type="error"
+                                message={error}
+                            />
+                            <MessageButton
+                                type="tryAgain"
+                                onPress={() => init()}
+                            />
+                        </Container>
+                        :
+                        (!loading && !error && list && list.length) > 0 ?
+                            <FlatList
+                                data={list}
+                                keyExtractor={item => String(item.id)}
+                                renderItem={({ item }) => (
+                                    <BoxContainer key={item.id}>
                                         <BoxHeader
-                                            title={list.name}
-                                            subtitle={list.ticker}
-                                            favorite={list.favorite ?
-                                                <FavoriteContainer onPress={() => handleFavorite(list.id)}>
-                                                    <HeartFilledIcon onPress={() => handleFavorite(list.id)} />
-                                                </FavoriteContainer>
+                                            title={item.name}
+                                            subtitle={item.ticker}
+                                            favorite={item.favorite ?
+                                                <TouchableOpacity onPress={() => handleFavorite(item.id)}>
+                                                    <HeartFilledIcon />
+                                                </TouchableOpacity>
                                                 :
-                                                <FavoriteContainer onPress={() => handleFavorite(list.id)}>
-                                                    <HeartEmptyIcon onPress={() => handleFavorite(list.id)} />
-                                                </FavoriteContainer>
+                                                <TouchableOpacity onPress={() => handleFavorite(item.id)}>
+                                                    <HeartEmptyIcon />
+                                                </TouchableOpacity>
                                             }
                                         />
                                         <BoxItem
                                             title="Valor Mínimo:"
                                             type="minimumValue"
-                                            value={list.minimumValue!}
+                                            value={item.minimumValue!}
                                         />
                                         <BoxItem
                                             title="Rentabilidade:"
                                             type="profitability"
-                                            value={list.profitability!}
+                                            value={item.profitability!}
                                         />
                                     </BoxContainer>
-                                )
+                                )}
+                            />
+                            :
+                            (!loading && !error) ?
+                                <MessageBox
+                                    message="No momento não há Ações."
+                                />
                                 :
-
-
-                                (!loading && !error) ?
-                                    <MessageContainer>
-                                        <Message>No momento não há Ações.</Message>
-                                    </MessageContainer> :
-                                    null
-                }
-            </ScrollView>
+                                null
+            }
         </ScreenContainer>
     )
-
-
 }

@@ -6,3 +6,7 @@ export interface IStocks {
     profitability: number,
     favorite?: boolean
 }
+
+export type StocksStyle = {
+    verticalAlign?: "top" | "center"
+}

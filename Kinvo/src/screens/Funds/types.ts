@@ -10,3 +10,7 @@ export interface IFunds {
     profitability: number,
     status: number
 }
+
+export type FundsStyle = {
+    verticalAlign?: "top" | "center"
+}

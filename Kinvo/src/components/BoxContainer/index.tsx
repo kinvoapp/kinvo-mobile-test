@@ -5,7 +5,7 @@ import { Container } from "./styles"
 
 export default function BoxContainer(props: IBoxContainer) {
     return (
-        <Container type={props.status}>
+        <Container closedType={props.status}>
             {props.children}
         </Container>
     )

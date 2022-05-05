@@ -14,16 +14,24 @@ export const get = async (url: string) => {
         return await api(endpoint);
     }
     else {
-        return { "error": "O endpoint informado não existe." }
+        console.log("O endpoint informado não existe")
+        return { "error": "Não foi possível se conectar ao banco de dados." }
     }
 }
 
 
 const api = async (endpoint: string) => {
-
-
     const response = await axios.get(endpoint)
-        .then((response) => response.data)
+        .then((response) => {
+            console.log("Conectado ao banco de dados")
+
+            let listInAlphOrder = [...response.data.data];
+            listInAlphOrder.sort((currentItem, nextItem) => (currentItem.name > nextItem.name) ? 1 : (nextItem.name > currentItem.name) ? -1 : 0)
+
+            response.data.data = listInAlphOrder
+
+            return response.data
+        })
         .catch((error) => {
             console.log(error)
             return { error: "Não foi possível se conectar ao banco de dados." }

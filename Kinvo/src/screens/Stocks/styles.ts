@@ -1,28 +1,12 @@
 import styled from 'styled-components/native';
 import { Dimensions } from "react-native";
+import { StocksStyle } from './types';
 
-const { height, width } = Dimensions.get("screen")
+const { height } = Dimensions.get("screen")
 
-export const FavoriteContainer = styled.TouchableOpacity`
-`;
-
-export const MessageContainer = styled.View`
+export const Container = styled.View<StocksStyle>`
     width: 100%;
-    margin-top: 40px;
+    height: ${height * 0.65}px;
     align-items: center;
-`;
-
-export const MessageContainerCenter = styled.View`
-    width: 100%;
-    height: ${height * 0.5}px;
-    margin-top: 40px;
-    align-items: center;
-    justify-content: center;
-`;
-
-export const Message = styled.Text`
-    width: ${width * 0.58}px;
-    font-size: 12px;
-    color: ${({ theme }) => theme.colors.darkGreyColor};
-    text-align: center;
+    justify-content: ${({ verticalAlign }) => verticalAlign === "center" ? "center" : "flex-start"};
 `;

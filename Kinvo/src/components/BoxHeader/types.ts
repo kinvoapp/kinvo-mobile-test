@@ -4,3 +4,7 @@ export interface IBoxHeader {
     status?: number,
     favorite?: any,
 }
+
+export type BoxHeaderStyle = {
+    closedType?: number;
+}

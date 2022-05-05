@@ -1,4 +1,7 @@
 import styled from 'styled-components/native';
+import fonts from '../../themes/fonts';
+import { BoxItemStyle } from './types';
+
 
 export const Container = styled.View`
     display: flex;
@@ -9,55 +12,34 @@ export const Container = styled.View`
     align-items: center;
 `;
 
+export const Title = styled.Text<BoxItemStyle>`
+    font-size: 10px;
+    font-family: ${fonts.montserratMedium};
+    color: ${({ theme, closedType }) => closedType === 2 ? theme.colors.closedText : theme.colors.darkGrey};
+`;
+
+export const Item = styled.Text<BoxItemStyle>`
+    font-size: 12px;
+    font-family: ${fonts.montserratSemiBold};  
+    color: ${({ theme, closedType }) => closedType === 2 ? theme.colors.closedText : theme.colors.darkGrey};
+`;
+
+export const BoxText = styled.Text<BoxItemStyle>`
+    font-size: 12px;
+    font-family: ${fonts.montserratSemiBold}; 
+    color: ${({ theme, closedType }) => closedType === 2 ? theme.colors.closedText : theme.colors.darkGrey};
+`;
+
 export const ProfitabilityContainer = styled.View`
+    padding-top:4px;
     flex-direction:row;
     align-items: center;
     justify-content: flex-end;
 `;
 
-export const ProfitabilityText = styled.View`
+export const ProfitabilityText = styled.Text<BoxItemStyle>`
+    font-size: 12px;
     margin-left: 5px;
-`;
-
-export const ProfitabilityIcon = styled.View`
-    transform: rotate(180deg);
-`;
-
-export const Title = styled.Text`
-    font-size: 10px;
-    color: ${({ theme }) => theme.colors.textNormal};
-`;
-
-export const Item = styled.Text`
-    font-size: 12px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.textNormal};
-`;
-
-export const StatusView = styled.View`
-    background: ${({ theme }) => theme.colors.statusBlue};
-    padding: 4px 15px; 
-    border-radius: 10px;
-`;
-
-export const StatusText = styled.Text`
-    font-size: 10px;
-    color: ${({ theme }) => theme.colors.white};
-`;
-
-export const PositiveNumber = styled.Text`
-    font-size: 12px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.green};
-`;
-export const NegativeNumber = styled.Text`
-    font-size: 12px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.red};
-`;
-
-export const BoxText = styled.Text`
-font-size: 12px;
-font-weight: 500;
-color: ${({ theme }) => theme.colors.textNormal};
+    font-family: ${fonts.montserratSemiBold}; 
+    color: ${({ theme, closedType, signValue }) => (closedType === 2) ? theme.colors.closedText : signValue === "positive" ? theme.colors.green : theme.colors.orange};
 `;

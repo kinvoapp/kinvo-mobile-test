@@ -7,3 +7,7 @@ export interface IPensions {
         redemptionTerm: number,
         profitability: number,
 }
+
+export type PensionsStyle = {
+        verticalAlign?: "top" | "center"
+}

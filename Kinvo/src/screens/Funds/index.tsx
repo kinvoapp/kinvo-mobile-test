@@ -1,109 +1,108 @@
 import React, { useEffect, useState } from "react"
-import { ScrollView, ActivityIndicator, TouchableOpacity } from "react-native"
+import { ActivityIndicator, FlatList } from "react-native"
 import BoxContainer from "../../components/BoxContainer"
 import BoxHeader from "../../components/BoxHeader"
 import BoxItem from "../../components/BoxItem"
 import ScreenContainer from "../../containers/ScreenContainer"
 import { IFunds } from "./types"
 import * as ApiService from '../../services/ApiService';
-import { Message, MessageContainer, MessageContainerCenter } from "./styles"
-import colors from "../../themes/colors"
+import { Container } from "./styles"
+import colors from "../../themes/light"
 import MessageBox from "../../components/MessageBox"
 import MessageButton from "../../components/MessageButton"
 
+
 export default function Funds() {
-    const [data, setData] = useState<IFunds[]>([]);
     const [list, setList] = useState<IFunds[]>([]);
     const [error, setError] = useState("");
-    const [refresh, setRefresh] = useState(false);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getFundsList();
-    }, [refresh])
+        init();
+    }, [])
 
-    const getFundsList = async () => {
-        setRefresh(false);
+    const init = async () => {
         setError("");
-        setLoading(true);
+        await getDbList();
+    }
+
+    const getDbList = async () => {
+        setLoading(true)
         try {
             const response = await ApiService.get("funds");
-            if (response && !response?.error) {
-                const data = response.data;
-                setData(data);
-
-                let newList = [...data];
-                newList.sort((currentItem, nextItem) => (currentItem.name > nextItem.name) ? 1 : (nextItem.name > currentItem.name) ? -1 : 0)
-                setList(newList);
+            if (response && !response.error) {
+                setList(response.data)
             }
             else {
-                setError(response.error)
+                setError(response.error ? response.error : "Erro")
             }
-            setLoading(false);
         } catch (error) {
             console.log(error)
         }
+        setLoading(false)
     }
 
     return (
         <ScreenContainer>
-            <ScrollView>
-                {
-                    loading ?
-                        <MessageContainerCenter>
-                            <ActivityIndicator size="large" color={colors.colors.purple} />
-                        </MessageContainerCenter> :
-                        (error) ?
-                            <MessageContainerCenter>
-                                <MessageBox
-                                    type="error"
-                                    message={error}
-                                />
-                                <TouchableOpacity onPress={() => { setRefresh(true) }}>
-                                    <MessageButton
-                                        title="TENTAR NOVAMENTE"
-                                    />
-                                </TouchableOpacity>
-                            </MessageContainerCenter>
-                            :
-                            (!loading && !error && list && list.length) > 0 ?
-                                list.map(list =>
-                                    <BoxContainer key={list.id} status={list.status}>
-
+            {
+                loading ?
+                    <Container verticalAlign="center">
+                        <ActivityIndicator size="large" color={colors.colors.purple} />
+                    </Container>
+                    :
+                    (error) ?
+                        <Container verticalAlign="center">
+                            <MessageBox
+                                type="error"
+                                message={error}
+                            />
+                            <MessageButton
+                                type="tryAgain"
+                                onPress={() => init()}
+                            />
+                        </Container>
+                        :
+                        (!loading && !error && list && list.length) > 0 ?
+                            <FlatList
+                                data={list}
+                                keyExtractor={item => String(item.id)}
+                                renderItem={({ item }) => (
+                                    <BoxContainer key={item.id} status={item.status}>
                                         <BoxHeader
-                                            key={list.id}
-                                            title={list.name}
-                                            subtitle={list.type}
-                                            status={list.status}
+                                            key={item.id}
+                                            title={item.name}
+                                            subtitle={item.type}
+                                            status={item.status}
                                         />
                                         <BoxItem
                                             title="Classificação:"
                                             type="rating"
-                                            value={list.rating}
-                                            status={list.status}
+                                            value={item.rating}
+                                            status={item.status}
                                         />
                                         <BoxItem
                                             title="Valor Mínimo:"
                                             type="minimumValue"
-                                            value={list.minimumValue!}
-                                            status={list.status}
+                                            value={item.minimumValue!}
+                                            status={item.status}
                                         />
                                         <BoxItem
                                             title="Rentabilidade:"
                                             type="profitability"
-                                            value={list.profitability!}
-                                            status={list.status}
+                                            value={item.profitability!}
+                                            status={item.status}
                                         />
                                     </BoxContainer>
-                                )
+                                )}
+                            />
+                            :
+                            (!loading && !error) ?
+                                <MessageBox
+                                    message="No momento não há Fundos."
+                                />
                                 :
-                                (!loading && !error) ?
-                                    <MessageContainer>
-                                        <Message>No momento não há Fundos.</Message>
-                                    </MessageContainer> :
-                                    null
-                }
-            </ScrollView>
+                                null
+            }
         </ScreenContainer>
     )
 }

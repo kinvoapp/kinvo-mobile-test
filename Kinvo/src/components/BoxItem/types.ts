@@ -5,3 +5,8 @@ export interface IBoxItem {
     closed?: number
     status?: number
 }
+
+export type BoxItemStyle = {
+    closedType?: number;
+    signValue?: "positive" | "negative"
+}

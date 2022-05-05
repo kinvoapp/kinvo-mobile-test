@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import { Dimensions } from "react-native";
+import fonts from '../../themes/fonts';
 
 const { height, width } = Dimensions.get("screen")
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
     width: ${width * 0.88}px;
     height: ${height * 0.1}px;
     padding:32px 20px;
@@ -13,15 +14,15 @@ export const Container = styled.View`
 `;
 
 export const ContainerLeft = styled.View`
-    width: ${width * 0.13}px;
-    height: ${width * 0.13}px;
+    width: 56px;
+    height: 56px;
     margin-right:12px;
     padding-top:5px;
-    padding-left:3px;
+    padding-left:2px;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    background: ${({ theme }) => theme.colors.lightGreyColor};
+    background: ${({ theme }) => theme.colors.lightGrey};
 `;
 
 export const ContainerCenter = styled.View`
@@ -36,23 +37,22 @@ export const ContainerRight = styled.View`
     height: ${height * 0.06}px;  
     justify-content: center;
     align-items: flex-end;
- 
 `;
 
 export const Title = styled.Text`
     font-size: 16px;
-    font-weight: 700;
+    font-family: ${fonts.montserratBold};
     margin-bottom: 5px;
     color: ${({ theme }) => theme.colors.purple};
 `;
 
 export const Subtitle = styled.Text`
     font-size: 10px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.darkGreyColor};
+    font-family: ${fonts.montserratSemiBold};
+    color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-export const NewStatusView = styled.View`
+export const StatusView = styled.View`
     background: ${({ theme }) => theme.colors.statusBlue};
     padding: 4px 15px; 
     border-radius: 10px;
@@ -61,5 +61,6 @@ export const NewStatusView = styled.View`
 
 export const StatusText = styled.Text`
     font-size: 10px;
+    font-family: ${fonts.montserratMedium};
     color: ${({ theme }) => theme.colors.white};
 `;

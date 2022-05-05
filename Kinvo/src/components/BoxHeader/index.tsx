@@ -1,5 +1,5 @@
 import React from "react"
-import { ClosedStatusView, Container, ContainerLeft, ContainerRight, FavoriteContainer, NewStatusView, StatusText, Subtitle, Title } from "./styles"
+import { ClosedStatusView, Container, ContainerLeft, ContainerRight, NewStatusView, StatusText, Subtitle, Title } from "./styles"
 import { IBoxHeader } from "./types"
 
 
@@ -7,14 +7,11 @@ export default function BoxHeader(props: IBoxHeader) {
     return (
         <Container>
             <ContainerLeft>
-                <Title>{props.title}</Title>
-                <Subtitle>{props.subtitle.toUpperCase()}</Subtitle>
+                <Title closedType={props.status}>{props.title}</Title>
+                <Subtitle closedType={props.status}>{props.subtitle.toUpperCase()}</Subtitle>
             </ContainerLeft>
             <ContainerRight>
-
-                <FavoriteContainer>
-                    {props.favorite ? props.favorite : null}
-                </FavoriteContainer>
+                {props.favorite ? props.favorite : null}
 
                 {props.status === 1 ?
                     <NewStatusView>

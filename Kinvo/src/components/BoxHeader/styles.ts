@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
-import { Dimensions, PixelRatio } from "react-native";
-import { IBoxHeader } from './types';
+import { Dimensions } from "react-native";
+import { BoxHeaderStyle } from './types';
+import fonts from '../../themes/fonts';
 
 const { height, width } = Dimensions.get("screen")
 
@@ -12,39 +13,33 @@ export const Container = styled.View`
     padding-bottom: 16px;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     border-bottom-width: 1px;
-    border-color: ${({ theme }) => theme.colors.mediumGreyColor};
+    border-color: ${({ theme }) => theme.colors.mediumGrey};
 `;
 
 export const ContainerLeft = styled.View`
-    max-width: ${width * 0.65}px;   
-    align-items: flex-start;
+    max-width: ${width * 0.6}px;   
 `;
 
 export const ContainerRight = styled.View`
     max-width: ${width * 0.20}px;     
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-bottom: 20px;
 `;
 
-export const FavoriteContainer = styled.TouchableOpacity`
-`;
-
-export const Title = styled.Text`
+export const Title = styled.Text<BoxHeaderStyle>`
     font-size: 16px;
-    font-weight: 700;
+    font-family: ${fonts.montserratBold};
     padding-bottom: 5px;
-    color: ${({ theme }) => theme.colors.darkGreyColor};
+    color: ${({ theme, closedType }) => closedType === 2 ? theme.colors.closedText : theme.colors.darkGrey};
     
 `;
 
-export const Subtitle = styled.Text`
+export const Subtitle = styled.Text<BoxHeaderStyle>`
     font-size: 12px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.darkGreyColor};
-    
+    font-family: ${fonts.montserratSemiBold};
+    color: ${({ theme, closedType }) => closedType === 2 ? theme.colors.closedText : theme.colors.darkGrey};
 `;
 
 export const NewStatusView = styled.View`
@@ -52,6 +47,7 @@ export const NewStatusView = styled.View`
     padding: 4px 15px; 
     border-radius: 10px;
 `;
+
 export const ClosedStatusView = styled.View`
     background: ${({ theme }) => theme.colors.statusGrey};
     padding: 4px 15px; 
@@ -60,5 +56,6 @@ export const ClosedStatusView = styled.View`
 
 export const StatusText = styled.Text`
     font-size: 10px;
+    font-family: ${fonts.montserratMedium};
     color: ${({ theme }) => theme.colors.white};
 `;

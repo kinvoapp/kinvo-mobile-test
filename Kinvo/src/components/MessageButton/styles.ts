@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { Dimensions } from "react-native";
+import fonts from '../../themes/fonts';
 
-export const ButtonContainer = styled.View`
+export const ButtonContainer = styled.TouchableOpacity`
     margin-top: 20px;
     padding: 10px 22px;
     justify-content: flex-start;
@@ -12,7 +12,7 @@ export const ButtonContainer = styled.View`
 
 export const ButtonText = styled.Text`
     font-size: 12px;
-    font-weight: 500;
+    font-family: ${fonts.montserratSemiBold}; 
     color: ${({ theme }) => theme.colors.white};
     text-align: center;
 `;

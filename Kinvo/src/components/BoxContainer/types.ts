@@ -1,5 +1,8 @@
 export interface IBoxContainer {
     children: React.ReactNode,
     status?: number
-    type?: number
+}
+
+export type BoxContainerStyle = {
+    closedType?: number;
 }

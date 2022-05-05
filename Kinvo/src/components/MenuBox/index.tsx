@@ -1,12 +1,12 @@
 import React from "react"
 import { Text } from "react-native"
-import { Container, ContainerCenter, ContainerLeft, ContainerRight, NewStatusView, StatusText, Subtitle, Title } from "./styles"
+import { Container, ContainerCenter, ContainerLeft, ContainerRight, StatusText, StatusView, Subtitle, Title } from "./styles"
 import { IMenuBox } from "./types"
 
 
 export default function MenuBox(props: IMenuBox) {
     return (
-        <Container>
+        <Container onPress={props.onPress}>
             <ContainerLeft>
                 <Text>{props.icon}</Text>
             </ContainerLeft>
@@ -18,9 +18,9 @@ export default function MenuBox(props: IMenuBox) {
 
             <ContainerRight>
                 {props.status === 1 ?
-                    <NewStatusView>
+                    <StatusView>
                         <StatusText>Novo</StatusText>
-                    </NewStatusView> :
+                    </StatusView> :
                     null}
             </ContainerRight>
         </Container>
