@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "challenge",
+    "slug": "challenge",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourcerExts": ["js", "jsx", "ts", "tsx", "svg"]
+    }
+  }
+}

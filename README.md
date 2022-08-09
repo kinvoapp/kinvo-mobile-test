@@ -26,8 +26,8 @@ Instalação do Expo CLI
 
 | Gerenciador | Comando     | 
 | :-------- | :------- | 
-| "npm" | `npm install -g expo-cli` | 
-| "yarn" | `yarn global add expo-cli` | 
+| npm | `npm install -g expo-cli` | 
+| yarn | `yarn global add expo-cli` | 
 
 Instalação de dependências
 
@@ -40,8 +40,6 @@ Start no server
 ```bash
   expo start
 ```
-
-
 ## Referencias de API
 
 #### API endpoint
@@ -54,7 +52,7 @@ Start no server
 | :-------- | :------- | :------------------------- |
 | `SECRET` | `string` | **Required**. 6266f62263e0f382568936e4 |
 
-#### Get pages
+#### Parâmetros da rota
 
 
 | Parameter | Type     | Description                       |
@@ -71,11 +69,11 @@ Start no server
 
 ## Tech Stack
 
- `Expo`  
- `Axios`  
- `Typescript`  
- `React Native`  
- `Styled-Components`  
+ ####  [`Axios`](https://axios-http.com/ptbr/) 
+ ####  [`Typescript`](https://www.typescriptlang.org/)
+ ####  [`React Native`](https://reactnative.dev/)
+ ####  [`Styled-Components`](https://styled-components.com/)  
+####  [`Expo * Bare Workflow`](https://expo.dev/)
 
 
 
