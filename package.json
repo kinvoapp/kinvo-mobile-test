@@ -12,8 +12,13 @@
     "gradlew:clearAll": "cd android && ./gradlew --stacktrace && ./gradlew --warning-mode all && ./gradlew --S && ./gradlew --scan && ./gradlew --status && ./gradlew --info && cd .. && yarn android"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/native-stack": "^6.7.0",
     "react": "18.0.0",
     "react-native": "0.69.3",
+    "react-native-responsive-fontsize": "^0.5.1",
+    "react-native-safe-area-context": "^4.3.1",
+    "react-native-screens": "^3.15.0",
     "react-native-svg": "^12.4.4",
     "styled-components": "^5.3.5"
   },
@@ -30,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.21.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.70.3",
