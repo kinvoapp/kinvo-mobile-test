@@ -10,19 +10,23 @@ export const theme = {
       background: {
         default: 'rgba(112, 123, 129, 0.1)',
         secondary: 'rgba(218, 224, 227, 1)',
+        primary: 'rgba(236, 240, 242, 1)',
       },
     },
     card: {
       background: {
         default: 'rgba(255, 255, 255, 1)',
         grayLight: 'rgba(236, 240, 242, 1)',
+        secondary: 'rgba(64, 197, 214, 1)',
       },
       border: {
-        default: 'rgba(255, 255, 255, 1)',
+        default: 'rgba(218, 224, 227, 1)',
       },
     },
     text: {
-      title: 'rgba(98, 113, 121, 1)',
+      primary: 'rgba(111, 77, 191, 1)',
+      secondary: 'rgba(98, 113, 121, 1)',
+      default: 'rgba(255, 255, 255, 1)',
     },
     primary: {
       success: 'rgba(94, 221, 95, 1)',
@@ -39,15 +43,11 @@ export const theme = {
   },
   size: {
     padding: {
-      small: 8,
-      default: 16,
-      large: 24,
+      default: 20,
       zero: 0,
     },
     margin: {
-      small: 8,
-      default: 16,
-      large: 24,
+      default: 20,
       zero: 0,
     },
     scaleFont: {
@@ -58,9 +58,8 @@ export const theme = {
       largeSuper: 48,
     },
     borderRadius: {
-      small: 8,
-      default: 16,
-      large: 24,
+      default: 10,
+      zero: 0,
     },
     button: {
       small: 57,
@@ -77,11 +76,13 @@ export const theme = {
       Light: 'Montserrat-Light',
       Medium: 'Montserrat-Medium',
       Bold: 'Montserrat-Bold',
+      SemiBold: 'Montserrat-SemiBold',
     },
     weight: {
       Light: '400',
       Medium: '600',
       Bold: '700',
+      SemiBold: '600',
     },
   },
 };
