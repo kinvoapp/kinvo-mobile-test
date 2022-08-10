@@ -4,5 +4,5 @@ import styled from 'styled-components/native';
 
 export const Main = styled(ThemeProvider)`
   background-color: ${({theme}) => theme.colors.background};
-  font-family:  ${({theme}) => theme.font};
+  font-family: 'Montserrat_400Regular';
 `;

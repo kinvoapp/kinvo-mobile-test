@@ -3,9 +3,9 @@ import { FlatList, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import { NavButton } from '../../components/NavButton';
 
-import FundsIcon from '../../assets/icons/fundsIcon.svg';
-import PensionsIcon from '../../assets/icons/pensionsIcon.svg';
-import StocksIcon from '../../assets/icons/stocksIcon.svg';
+import FundsIcon from '../../../assets/icons/fundsIcon.svg';
+import PensionsIcon from '../../../assets/icons/pensionsIcon.svg';
+import StocksIcon from '../../../assets/icons/stocksIcon.svg';
 
 
 const navData = [

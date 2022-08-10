@@ -32,6 +32,10 @@ Instalação do Expo CLI
 Instalação de dependências
 
 ```bash
+  yarn install
+```
+
+```bash
   expo install
 ```
 

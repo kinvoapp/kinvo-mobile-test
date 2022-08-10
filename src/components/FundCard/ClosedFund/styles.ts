@@ -45,7 +45,7 @@ border-color: ${({theme})=>theme.colors.border};
 export const Name = styled.Text`
   font-size: ${({theme})=>theme.fontSizes.large};
   color: #627179;
-  font-weight: bold;
+  font-family: 'Montserrat_700Bold';
   `
 
 export const InfoAside = styled.View`

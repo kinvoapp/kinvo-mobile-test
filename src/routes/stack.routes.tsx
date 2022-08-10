@@ -16,7 +16,7 @@ export function StackRoutes() {
           backgroundColor: '#fff',
         },
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontFamily: 'Montserrat_700Bold',
         },
       }}>
       <Screen

@@ -20,18 +20,18 @@ export const Retry = styled.TouchableOpacity`
 export const Title = styled.Text`
   color: ${({theme}) => theme.colors.font};
   font-size: ${({theme}) => theme.fontSizes.large};
-  font-weight: bold;
+  font-family: 'Montserrat_700Bold';
   `;
 export const Describe = styled.Text`
   color: ${({theme}) => theme.colors.font};
   font-size: ${({theme}) => theme.fontSizes.medium};
-  font-weight: 600;
+  font-family: 'Montserrat_600SemiBold';
   text-align: center;
   margin: 20px 0;
 `;
 export const TextButton = styled.Text`
   color: #fff;
   font-size: ${({theme}) => theme.fontSizes.medium};
-  font-weight: 600;
+  font-family: 'Montserrat_600SemiBold';
 
 `;

@@ -13,13 +13,13 @@ export const Container = styled.TouchableOpacity`
 
 export const Title = styled.Text`
   font-size: ${({theme}) => theme.fontSizes.large};
-  font-weight: bold;
+  font-family: 'Montserrat_700Bold';
   color: ${({theme}) => theme.colors.secundary};
 `;
 export const Description = styled.Text`
   font-size: ${({theme}) => theme.fontSizes.small};
   color: ${({theme}) => theme.colors.font};
-  font-weight: 600;
+  font-family: 'Montserrat_600SemiBold';
 `;
 export const Icon = styled.View`
   height:56px;

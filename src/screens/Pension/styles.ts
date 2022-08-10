@@ -11,7 +11,7 @@ export const FilterButton = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   font-size: ${({theme}) => theme.fontSizes.medium};  
-  font-weight: 600;
+  font-family: 'Montserrat_600SemiBold';
   `
 
 export const FilterBox = styled.View` 

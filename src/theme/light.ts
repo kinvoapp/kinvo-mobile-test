@@ -8,7 +8,6 @@ export default {
     border: "#DAE0E3",
     font: "#627179"
   },
-  font: "Montserrat",
   fontSizes: {
     small: "10px",
     medium: "12px",
