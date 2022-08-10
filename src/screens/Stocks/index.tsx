@@ -61,6 +61,7 @@ export function Stocks() {
                       profitability={item.profitability}
                       handleFavoriteButton={() => {
                         item.isFavorite = !item.isFavorite
+                        //ToFix: Nos logs o valor de isFavorite é alterado, mas não reflete na tela.
                         console.log("============")
                         console.log(item)
                       }}
