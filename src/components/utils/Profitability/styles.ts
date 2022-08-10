@@ -1,13 +1,8 @@
 import styled from 'styled-components/native';
 
-
-
-export const Container = styled.View`
-
-`;
-
 export const Up = styled.Text`
   color: #AED335;
+  color: ${props => props.closed ? ({theme})=>theme.colors.closed : '#AED335'};
 
 `;
 

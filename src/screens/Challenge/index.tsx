@@ -1,6 +1,5 @@
 
-import { FlatList } from 'react-native';
-import { Container } from './styles';
+import { FlatList, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import { NavButton } from '../../components/NavButton';
 
@@ -37,14 +36,14 @@ export function Challenge() {
   const navigation = useNavigation();
 
   return (
-    <Container>
+    <View>
 
       {
         <FlatList
           data={navData}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
-              <NavButton title={item.title} text={item.text} icon={item.icon} handleRedirect={() => {
+              <NavButton key={index} title={item.title} text={item.text} icon={item.icon} handleRedirect={() => {
                 navigation.navigate(item.slug);
               }} />
 
@@ -55,6 +54,6 @@ export function Challenge() {
 
 
 
-    </Container>
+    </View>
   );
 }

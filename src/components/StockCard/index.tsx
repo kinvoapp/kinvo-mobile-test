@@ -2,6 +2,18 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+import { Ticker } from '../utils/Ticker';
+import { CurrencyMask } from '../utils/CurrencyMask';
+import { Profitability } from '../utils/Profitability';
+
+import { Content } from './styles';
+import {
+  Data,
+  DataAside,
+  Info,
+  Name,
+} from '../../styles/card.styles';
+
 interface StockItensProps {
   name: string;
   ticker: string;
@@ -10,16 +22,7 @@ interface StockItensProps {
   isFavorite: boolean;
   handleFavoriteButton(): any;
 }
-import {
-  Container,
-  Data,
-  DataAside,
-  Info,
-  Name,
-  Ticker,
-} from './styles';
-import { Profitability } from '../Profitability';
-import { CurrencyMask } from '../CurrencyMask';
+
 export function StockCard({
   name,
   ticker,
@@ -28,17 +31,14 @@ export function StockCard({
   isFavorite,
   handleFavoriteButton,
 }: StockItensProps) {
-
   return (
-    <Container>
+    <Content>
       <Info>
         <View>
           <Name>
             {name}
           </Name>
-          <Ticker>
-            {ticker}
-          </Ticker>
+          <Ticker ticker={ticker} />
         </View>
         <View>
           <TouchableOpacity onPress={handleFavoriteButton}>
@@ -61,6 +61,6 @@ export function StockCard({
           <View><Profitability value={profitability} /></View>
         </DataAside>
       </Data>
-    </Container>
+    </Content>
   );
 }

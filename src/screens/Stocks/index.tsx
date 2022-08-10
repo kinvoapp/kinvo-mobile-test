@@ -1,11 +1,10 @@
-
-
-
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, FlatList } from 'react-native';
-import Constants from 'expo-constants';
-import axios from 'axios';
+import { View, FlatList } from 'react-native';
+import api from '../../service/api'
 
+import NetInfo from "@react-native-community/netinfo";
+import { Loading } from '../../components/Loading';
+import { Error } from '../../components/Error';
 interface StocksProps {
   name: string;
   ticker: string;
@@ -14,53 +13,68 @@ interface StocksProps {
   isFavorite: boolean;
 }
 import { StockCard } from '../../components/StockCard';
-import { Container } from './styles';
+import { Empty } from '../../components/Empty';
 
 export function Stocks() {
+
   const [stocks, setStocks] = useState<StocksProps[]>([]);
   const [isLoading, setLoading] = useState(true);
-  const [loadFail, setLoadFail] = useState(false);
+  const [Conn, setConn] = useState(true);
 
   useEffect(() => {
-    async function loadStocks() {
-      const { data } = await axios
-        .create({
-          baseURL: 'https://6266f62263e0f382568936e4.mockapi.io/',
-        })
+    async function getStocks() {
+      const { data } = await api
         .get('stocks')
         .then((response) => response.data)
         .catch((error) => console.log(error))
         .finally(() => setLoading(false));
       setStocks(data);
     }
-    loadStocks();
+    getStocks();
 
   }, []);
 
+  NetInfo.fetch().then(state => {
+    setConn(state.isConnected);
+  });
+
   return (
     <View>
-      {
-        <FlatList
-          data={stocks.sort(
-            (a, b) =>
-              -a.isFavorite - -b.isFavorite || a.name.localeCompare(b.name)
-          )}
-          renderItem={({ item }) => {
-            item.isFavorite;
-            return (
-              <StockCard
-                name={item.name}
-                ticker={item.ticker}
-                minimumValue={item.minimumValue}
-                profitability={item.profitability}
-                handleFavoriteButton={() => {
-                  item.isFavorite = !item.isFavorite;
+      {isLoading === true && <Loading />}
+
+      {Conn === false ? (<Error local='Pension' />)
+        : (<View style={isLoading ? { display: 'none' } : { display: 'flex' }}>
+          {
+            stocks.length > 0 ?
+              <FlatList
+                data={stocks.sort(
+                  (a, b) =>
+                    +a.isFavorite - +b.isFavorite || a.name.localeCompare(b.name)
+                )}
+                renderItem={({ item, index }) => {
+                  return (
+                    <StockCard
+                      key={index}
+                      name={item.name}
+                      ticker={item.ticker}
+                      minimumValue={item.minimumValue}
+                      profitability={item.profitability}
+                      handleFavoriteButton={() => {
+                        item.isFavorite = !item.isFavorite
+                        console.log("============")
+                        console.log(item)
+                      }}
+                      isFavorite={item.isFavorite}
+                    />
+                  );
                 }}
-                isFavorite={item.isFavorite}
               />
-            );
-          }}
-        />
+              :
+              (
+                <Empty />
+              )
+          }
+        </View>)
       }
     </View>
   );

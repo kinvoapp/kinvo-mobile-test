@@ -1,18 +1,15 @@
 
 import { View } from 'react-native';
-import { Container, Up, Down } from './styles';
+import { Up, Down } from './styles';
 import { AntDesign } from '@expo/vector-icons';
-
-
 
 interface ProfitabilityProps {
   value: number;
 }
 
-
 export function Profitability({ value }: ProfitabilityProps) {
   return (
-    <Container>
+    <>
       {value >= 0
         ?
         <Up>
@@ -27,8 +24,6 @@ export function Profitability({ value }: ProfitabilityProps) {
           %
         </Down>
       }
-
-
-    </Container>
+    </>
   );
 }

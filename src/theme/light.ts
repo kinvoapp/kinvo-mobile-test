@@ -3,7 +3,7 @@ export default {
     background:"#ECF0F2",
     primary: "#fff",
     secundary:"#6F4DBF",
-    new:"#40C5D6",
+    badge:"#40C5D6",
     closed:"#707070",
     border: "#DAE0E3",
     font: "#627179"

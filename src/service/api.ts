@@ -1,28 +1,11 @@
-const basicFecth = async (endpoint) => {
-  const req = await fetch(`${process.env.NEXT_PUBLIC_TMDB_API_BASE}${endpoint}`);
-  const json = await req.json();
+import axios from 'axios';
 
-  return json;
-}
+const BASE_URL = '6266f62263e0f382568936e4'
 
-export default {
-  getHomeList: async () => {
-      return [
-          {
-              slug: 'stocks',
-              isFavorite: false,
-              items: await basicFecth(`/discover/tv?with_networks=213&language=${process.env.NEXT_PUBLIC_TMDB_API_LANGUAGE}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
-          },
-          {
-              slug: 'funds',
-              isFavorite: false,
-              items: await basicFecth(`/discover/tv?with_networks=213&language=${process.env.NEXT_PUBLIC_TMDB_API_LANGUAGE}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
-          },
-          {
-              slug: 'pensions',
-              isFavorite: false,
-              items: await basicFecth(`/discover/tv?with_networks=213&language=${process.env.NEXT_PUBLIC_TMDB_API_LANGUAGE}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
-          },
-      ]
-  },
-}
+const api = axios.create({
+  baseURL: `https://${BASE_URL}.mockapi.io/`,
+});
+
+
+
+export default api;
