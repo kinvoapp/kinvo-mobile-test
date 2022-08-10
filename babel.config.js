@@ -15,7 +15,7 @@ module.exports = {
           '~config': './src/config',
           '~hooks': './src/hooks',
           '~routes': './src/routes',
-          '~screens/public': './src/screens/public',
+          '~screens': './src/screens',
           '~types': './src/types',
           '~services': './src/services',
           '~utils': './src/utils',
