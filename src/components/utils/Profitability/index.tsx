@@ -1,5 +1,4 @@
 
-import { View } from 'react-native';
 import { Up, Down } from './styles';
 import { AntDesign } from '@expo/vector-icons';
 

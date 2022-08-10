@@ -7,15 +7,21 @@ export const FilterButton = styled.TouchableOpacity`
   border-radius: 100px;
   justify-content: center;
   align-items: center;
-  color: ${({theme}) => theme.colors.font};
   `;
 
 export const TextButton = styled.Text`
   font-size: ${({theme}) => theme.fontSizes.medium};  
   font-weight: 600;
-`
+  `
 
-export const FilterList = styled.FlatList` 
+export const FilterBox = styled.View` 
   width: 320px;
   margin: 0 auto;
+  padding: 20px 0;
+  flex-direction: row;
+  justify-content: space-between;
+  color: ${({theme}) => theme.colors.font};
+
+  border-bottom-width: 1px;
+  border-color: ${({theme})=>theme.colors.border};
 `;

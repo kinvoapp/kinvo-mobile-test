@@ -11,12 +11,18 @@ export function StackRoutes() {
   return (
     <Navigator
       screenOptions={{
-        headerTintColor: '#6F4DBF'
+        headerTintColor: '#6F4DBF',
+        headerStyle: {
+          backgroundColor: '#fff',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
       }}>
       <Screen
         name="Challenge"
         options={{
-          title: "Desafio"
+          title: "Desafio",
         }}
         component={Challenge}
       />
@@ -24,7 +30,8 @@ export function StackRoutes() {
       <Screen
         name="Funds"
         options={{
-          title: "Fundos"
+          title: "Fundos",
+
         }}
         component={Funds}
       />

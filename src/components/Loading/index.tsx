@@ -2,7 +2,7 @@
 import { Container } from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { useEffect } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Animated } from 'react-native';
 
 const spinValue = new Animated.Value(0);
 

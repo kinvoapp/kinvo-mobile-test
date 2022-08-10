@@ -31,6 +31,7 @@ export const DataAside = styled.View`
 export const ClosedText = styled.Text`
   flex-direction: column; 
   color: #627179;
+  text-align: right;
 `
 
 export const Info = styled.View`

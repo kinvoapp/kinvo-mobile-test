@@ -12,6 +12,7 @@ import {
   DataAside,
   Info,
   Name,
+  TextData
 } from '../../styles/card.styles';
 
 interface StockItensProps {
@@ -57,8 +58,8 @@ export function StockCard({
           <Text>Rentabilidade:</Text>
         </DataAside>
         <DataAside>
-          <View><CurrencyMask value={minimumValue} /></View>
-          <View><Profitability value={profitability} /></View>
+          <TextData><CurrencyMask value={minimumValue} /></TextData>
+          <TextData><Profitability value={profitability} /></TextData>
         </DataAside>
       </Data>
     </Content>

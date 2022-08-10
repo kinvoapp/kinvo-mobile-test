@@ -1,6 +1,4 @@
-
-import { Text } from 'react-native';
-import { Container, Description, Title, Infos } from './styles';
+import { Container, Description, Title, Infos, Icon } from './styles';
 
 
 
@@ -19,7 +17,9 @@ export function NavButton({
 }: NavButtonProps) {
   return (
     <Container onPress={handleRedirect}>
-      {icon}
+      <Icon>
+        {icon}
+      </Icon>
       <Infos>
         <Title>{title}</Title>
         <Description>{text}</Description>

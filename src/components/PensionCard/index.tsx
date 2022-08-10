@@ -10,7 +10,9 @@ import {
   DataAside,
   Info,
   Name,
+  TextData
 } from '../../styles/card.styles';
+import { Taxes } from '../utils/Taxes';
 
 interface PensionsProps {
   name: string;
@@ -44,9 +46,9 @@ export function PensionCard({ name, type, minimumValue, tax, redemptionTerm, pro
           <Text>Rentabilidade:</Text>
         </DataAside>
         <DataAside>
-          <View><CurrencyMask value={minimumValue} /></View>
-          <Text>{tax} </Text>
-          <Text>{profitability} </Text>
+          <TextData><CurrencyMask value={minimumValue} /></TextData>
+          <TextData><Taxes value={tax} /></TextData>
+          <TextData>D+ {redemptionTerm} </TextData>
           <View><Profitability value={profitability} /></View>
         </DataAside>
       </Data>

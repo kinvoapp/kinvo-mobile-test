@@ -12,7 +12,8 @@ import {
   DataAside,
   Info,
   Name,
-  InfoAside
+  InfoAside,
+  TextData
 } from '../../styles/card.styles';
 
 interface FundProps {
@@ -56,7 +57,7 @@ export function FundCard({
           <Text>Rentabilidade:</Text>
         </DataAside>
         <DataAside>
-          <Text>
+          <TextData>
             {Array.from({ length: rating }).map((_, index) => (
               <FontAwesome name="star" size={16} color="#F8C22E" key={index} />
             ))}
@@ -64,9 +65,13 @@ export function FundCard({
               <FontAwesome name="star-o" size={16} color="#F8C22E" key={index} />
             ))}
 
-          </Text>
-          <View><CurrencyMask value={minimumValue} /></View>
-          <View><Profitability value={profitability} /></View>
+          </TextData>
+          <TextData>
+            <CurrencyMask value={minimumValue} />
+          </TextData>
+          <TextData>
+            <Profitability value={profitability} />
+          </TextData>
         </DataAside>
       </Data>
     </Content>

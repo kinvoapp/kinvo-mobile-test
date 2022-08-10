@@ -20,7 +20,10 @@ export const Data = styled.View`
   justify-content:space-between;
   `
 export const DataAside = styled.View`
-  flex-direction: column; 
+  flex-direction: column;
+`
+export const TextData = styled.Text`
+  text-align: right;
 `
 export const Info = styled.View`
 width: 100%;  

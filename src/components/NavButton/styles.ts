@@ -12,12 +12,23 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Title = styled.Text`
-  font-size: 16px;
+  font-size: ${({theme}) => theme.fontSizes.large};
   font-weight: bold;
   color: ${({theme}) => theme.colors.secundary};
 `;
 export const Description = styled.Text`
-
+  font-size: ${({theme}) => theme.fontSizes.small};
+  color: ${({theme}) => theme.colors.font};
+  font-weight: 600;
+`;
+export const Icon = styled.View`
+  height:56px;
+  width:56px;
+  justify-content:center;
+  align-items:center;
+  background-color: ${({theme}) => theme.colors.background};
+  
+  border-radius: 100px;
 `;
 export const Infos = styled.View`
 margin-left: 20px;

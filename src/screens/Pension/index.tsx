@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import api from '../../service/api';
 
 import { PensionCard } from '../../components/PensionCard';
-import { FilterButton, FilterList, TextButton } from './styles';
+import { FilterButton, FilterBox, TextButton } from './styles';
 
 import NetInfo from "@react-native-community/netinfo";
 import { Error } from '../../components/Error';
@@ -19,27 +19,16 @@ interface PensionsProps {
   profitability: number;
 }
 
-const options = [
-  {
-    slug: 'taxfree',
-    title: 'SEM TAXAS',
-  },
-  {
-    slug: 'minvalue',
-    title: 'R$ 100,00',
-  },
-  {
-    slug: 'redemption',
-    title: 'D+1',
-  },
-]
-
 export function Pension() {
   const [pensions, setPensios] = useState<PensionsProps[]>([]);
   const [filterdPensions, setFilteredPensios] = useState<PensionsProps[]>([]);
+
+  const [activeTax, setActiveTax] = useState(false);
+  const [activeValue, setActiveValue] = useState(false);
+  const [activeRedmp, setActiveRedemp] = useState(false);
+
   const [isLoading, setLoading] = useState(true);
   const [Conn, setConn] = useState(true);
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     async function getPensions() {
@@ -54,6 +43,25 @@ export function Pension() {
 
   }, []);
 
+  const handleTax = () => {
+    setActiveTax(!activeTax)
+    setActiveValue(false)
+    setActiveRedemp(false)
+    setFilteredPensios(pensions.filter(item => item.tax === 0))
+  }
+  const handleValue = () => {
+    setActiveValue(!activeValue)
+    setActiveTax(false)
+    setActiveRedemp(false)
+    setFilteredPensios(pensions.filter(item => item.minimumValue === 100))
+  }
+  const handleRedemp = () => {
+    setActiveRedemp(!activeRedmp)
+    setActiveTax(false)
+    setActiveValue(false)
+    setFilteredPensios(pensions.filter(item => item.redemptionTerm === 1))
+  }
+
   NetInfo.fetch().then(state => {
     setConn(state.isConnected);
   });
@@ -66,50 +74,70 @@ export function Pension() {
         : (<View style={
           isLoading ? { display: 'none' } : { display: 'flex', height: "100%" }
         }>
-          <FilterList
-            data={options}
-            horizontal
-            renderItem={({ item, index }) => {
-              return (
-                <FilterButton key={index} onPress={() => {
-                  setActive(!active)
-                }} style={
-                  (index === 1) ? styles.button : {
-                    marginHorizontal: 0,
-                    marginVertical: 20
-                  }}>
-                  <TextButton>
-                    {item.title}
-                  </TextButton>
-                </FilterButton>
-              );
-            }}
-          />
+          <FilterBox>
+            <FilterButton onPress={handleTax} style={activeTax ? styles.activeBg : false}>
+              <TextButton style={activeTax ? styles.activeFont : false}>SEM TAXAS</TextButton>
+            </FilterButton>
+
+            <FilterButton onPress={handleValue} style={activeValue ? styles.activeBg : false}>
+              <TextButton style={activeValue ? styles.activeFont : false}>R$ 100,00</TextButton>
+            </FilterButton>
+
+            <FilterButton onPress={handleRedemp} style={activeRedmp ? styles.activeBg : false}>
+              <TextButton style={activeRedmp ? styles.activeFont : false}>D+1</TextButton>
+            </FilterButton>
+          </FilterBox>
           {
-            pensions.length > 0 ?
-              <FlatList
-                data={pensions.sort(
-                  (a, b) =>
-                    a.name.localeCompare(b.name)
-                )}
-                renderItem={({ item, index }) => {
-                  return (
-                    <PensionCard
-                      key={index}
-                      name={item.name}
-                      type={item.type}
-                      minimumValue={item.minimumValue}
-                      tax={item.tax}
-                      redemptionTerm={item.redemptionTerm}
-                      profitability={item.profitability}
-                    />
-                  );
-                }}
-              />
+            activeRedmp || activeTax || activeValue ?
+              filterdPensions.length > 0 ?
+                <FlatList
+                  data={filterdPensions.sort(
+                    (a, b) =>
+                      a.name.localeCompare(b.name)
+                  )}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <PensionCard
+                        key={index}
+                        name={item.name}
+                        type={item.type}
+                        minimumValue={item.minimumValue}
+                        tax={item.tax}
+                        redemptionTerm={item.redemptionTerm}
+                        profitability={item.profitability}
+                      />
+                    );
+                  }}
+                />
+                :
+                (
+                  <Empty />
+                )
               :
-              (
-                <Empty />
-              )
+              pensions.length > 0 ?
+                <FlatList
+                  data={pensions.sort(
+                    (a, b) =>
+                      a.name.localeCompare(b.name)
+                  )}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <PensionCard
+                        key={index}
+                        name={item.name}
+                        type={item.type}
+                        minimumValue={item.minimumValue}
+                        tax={item.tax}
+                        redemptionTerm={item.redemptionTerm}
+                        profitability={item.profitability}
+                      />
+                    );
+                  }}
+                />
+                :
+                (
+                  <Empty />
+                )
           }
         </View>)
       }
@@ -119,9 +147,10 @@ export function Pension() {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    marginHorizontal: 20,
-    marginVertical: 20,
+  activeBg: {
+    backgroundColor: '#6F4DBF',
   },
-
+  activeFont: {
+    color: '#fff'
+  },
 });

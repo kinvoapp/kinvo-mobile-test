@@ -66,8 +66,8 @@ export function ClosedFund({
             ))}
 
           </ClosedText>
-          <View><CurrencyMask value={minimumValue} /></View>
-          <View><Profitability value={profitability} /></View>
+          <ClosedText><CurrencyMask value={minimumValue} /></ClosedText>
+          <ClosedText><Profitability value={profitability} /></ClosedText>
         </DataAside>
       </Data>
     </Container>

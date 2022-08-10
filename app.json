@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "challenge",
-    "slug": "challenge",
+    "name": "kinvo",
+    "slug": "kinvo",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
