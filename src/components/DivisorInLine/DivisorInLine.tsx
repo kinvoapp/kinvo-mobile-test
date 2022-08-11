@@ -4,7 +4,7 @@ import { ViewProps } from 'react-native';
 import * as Component from './DivisorInLine.styles';
 
 export interface DivisorInLineProps extends ViewProps {
-  isPadding: 'default';
+  isPadding: 'default' | 'zero';
 }
 
 export function DivisorInLine({
