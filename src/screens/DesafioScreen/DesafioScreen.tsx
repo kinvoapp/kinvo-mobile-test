@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CardActive, Header, IconName } from '~components';
+import { useNetwork } from '~hooks';
+import { getStocks } from '~services/client';
 
 import * as Component from './DesafioScreen.styles';
 
@@ -19,7 +21,7 @@ export const ativos: AtivoProps[] = [
     description: 'Nacionais',
     icon: 'IconAction',
     isNew: false,
-    nameScreen: 'AcoesScreens',
+    nameScreen: 'AcoesScreen',
   },
   {
     id: 2,
@@ -27,7 +29,7 @@ export const ativos: AtivoProps[] = [
     description: 'De investimentos',
     icon: 'IconWalletSmall',
     isNew: true,
-    nameScreen: 'AcoesScreens',
+    nameScreen: 'AcoesScreen',
   },
   {
     id: 3,
@@ -39,20 +41,31 @@ export const ativos: AtivoProps[] = [
   },
 ];
 
-type ScreenType = 'DesafioScreen' | 'AcoesScreens';
+type ScreenType = 'DesafioScreen' | 'AcoesScreen';
 
 export function DesafioScreen({ navigation }) {
+  const { execute } = useNetwork();
+
+  useEffect(() => {
+    execute(async () => {
+      const response = await getStocks();
+
+      console.log({ response });
+    });
+  }, [execute]);
+
   function handleNavigation(screen: ScreenType) {
     navigation.navigate(screen);
   }
 
   return (
     <>
-      <Header>Desafios</Header>
+      <Header title="Desafios" hasArrowLeft={false} />
+
       <Component.Container>
         {ativos.map(({ isNew, id, title, description, icon, nameScreen }) => (
           <CardActive
-            key={id}
+            key={id.toString()}
             title={title}
             description={description}
             icon={icon}
