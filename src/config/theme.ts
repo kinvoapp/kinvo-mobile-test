@@ -42,16 +42,31 @@ export const theme = {
     },
   },
   size: {
+    card: {
+      height: {
+        small: 80,
+        default: 120,
+        large: 145,
+        zero: 0,
+      },
+      width: {
+        default: '100%',
+        medium: '50%',
+        zero: '0',
+      },
+    },
     padding: {
       default: 20,
+      small: 16,
       zero: 0,
     },
     margin: {
       default: 20,
+      small: 16,
       zero: 0,
     },
     scaleFont: {
-      small: 8,
+      small: 12,
       default: 16,
       large: 24,
       largeExtra: 32,
@@ -79,8 +94,8 @@ export const theme = {
       SemiBold: 'Montserrat-SemiBold',
     },
     weight: {
-      Light: '400',
-      Medium: '600',
+      Light: '300',
+      Medium: '500',
       Bold: '700',
       SemiBold: '600',
     },
