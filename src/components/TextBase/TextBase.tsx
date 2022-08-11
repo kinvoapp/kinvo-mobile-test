@@ -20,11 +20,13 @@ export interface TextBaseProps extends TextProps {
 export function TextBase({
   children,
   color = 'primary',
+  font = 'Medium',
   weight = 'Medium',
   ...rest
 }: TextBaseProps) {
+  console.log(font, weight);
   return (
-    <Component.Container weight={weight} color={color} {...rest}>
+    <Component.Container font={font} weight={weight} color={color} {...rest}>
       {children}
     </Component.Container>
   );

@@ -6,8 +6,8 @@ import { RFValue } from 'react-native-responsive-fontsize';
 export const Container = styled(Text) <
   Pick<TextBaseProps, 'font' | 'weight' | 'color' | 'size'>
   >`
-  ${({ theme, color, weight, size }) => css`
-    font-family: ${theme.fonts.primary[weight]};
+  ${({ theme, color, weight, size, font }) => css`
+    font-family: ${theme.fonts.primary[font]};
     font-weight: ${theme.fonts.weight[weight]};
     font-size: ${size
       ? RFValue(theme.size.scaleFont[size])
