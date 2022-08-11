@@ -12,8 +12,11 @@
     "gradlew:clearAll": "cd android && ./gradlew --stacktrace && ./gradlew --warning-mode all && ./gradlew --S && ./gradlew --scan && ./gradlew --status && ./gradlew --info && cd .. && yarn android"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^9.3.0",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
+    "axios": "^0.27.2",
+    "intl": "^1.2.5",
     "react": "18.0.0",
     "react-native": "0.69.3",
     "react-native-responsive-fontsize": "^0.5.1",
