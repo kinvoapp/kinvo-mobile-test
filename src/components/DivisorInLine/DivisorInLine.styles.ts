@@ -4,7 +4,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { DivisorInLineProps } from './DivisorInLine';
 
 export const Container = styled(View) <Pick<DivisorInLineProps, 'isPadding'>>`
-  padding: 0 ${({ theme, isPadding }) => theme.size.padding[isPadding]}px;
+  padding: ${({ theme, isPadding }) => theme.size.padding[isPadding]}px 0;
 
   background-color: transparent;
 `;
