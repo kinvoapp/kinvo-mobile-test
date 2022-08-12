@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { NoNetworkError } from '~config/exceptions';
+import { BASE_URL } from '@env';
 import * as device from '~utils';
 
-const baseURL = '6266f62263e0f382568936e4';
-
+console.log({ BASE_URL });
 const defaultConfig = {
-  baseURL: `https://${baseURL}.mockapi.io/`,
+  baseURL: `https://${BASE_URL}.mockapi.io/`,
   headers: {
     'Content-Type': 'application/json',
   },

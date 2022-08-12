@@ -19,6 +19,7 @@
     "intl": "^1.2.5",
     "react": "18.0.0",
     "react-native": "0.69.3",
+    "react-native-dotenv": "^3.3.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.15.0",
