@@ -1,11 +1,4 @@
-const options = {
-  style: 'currency',
-  currency: 'BRL',
-};
+type style = 'percent' | 'currency';
 
-export const currencyBRL = (value: number) =>
-  value.toLocaleString('pt-BR', options);
-
-export function formattedMoneyBRL(value: number) {
-  return Intl.NumberFormat('pt-BR', options).format(value);
-}
+export const currencyBRL = (value: number, style: style) =>
+  value.toLocaleString('pt-BR', { currency: 'BRL', style });
