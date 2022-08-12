@@ -1,9 +1,9 @@
 export const theme = {
   colors: {
     app: {
-      black: '#000000',
-      white: '#FFFFFF',
-      primary: '#6F4DBF',
+      black: 'rgba(0, 0, 0, 1)',
+      white: 'rgba(255, 255, 255, 1)',
+      primary: 'rgba(111, 77, 191, 1)',
       secondary: 'rgba(232, 93, 31, 1)',
     },
     screens: {
@@ -23,10 +23,15 @@ export const theme = {
         default: 'rgba(218, 224, 227, 1)',
       },
     },
+    button: {
+      primary: 'rgba(111, 77, 191, 1)',
+      secondary: 'rgba(255, 255, 255, 1)',
+    },
     text: {
       primary: 'rgba(111, 77, 191, 1)',
-      secondary: 'rgba(98, 113, 121, 1)',
-      default: 'rgba(255, 255, 255, 1)',
+      default: 'rgba(98, 113, 121, 1)',
+      secondary: 'rgba(232, 93, 31, 1)',
+      white: 'rgba(255, 255, 255, 1)',
     },
     primary: {
       success: 'rgba(94, 221, 95, 1)',
@@ -50,7 +55,7 @@ export const theme = {
         zero: 0,
       },
       width: {
-        default: '100%',
+        default: 100,
         medium: '50%',
         zero: '0',
       },
@@ -74,12 +79,13 @@ export const theme = {
     },
     borderRadius: {
       default: 10,
+      medium: 2,
       zero: 0,
     },
     button: {
-      small: 57,
-      default: 110,
-      smallLarge: 150,
+      small: 60,
+      smallLarge: 100,
+      default: 180,
     },
     styles: {
       letterSpacing: 2,

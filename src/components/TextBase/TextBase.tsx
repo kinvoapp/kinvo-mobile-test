@@ -3,7 +3,7 @@ import { Text, TextProps } from 'react-native';
 
 import * as Component from './TextBase.styles';
 
-type TextColor = 'primary' | 'secondary' | 'default';
+type TextColor = 'primary' | 'secondary' | 'default' | 'white';
 
 type Size = 'small' | 'default' | 'large' | 'largeExtra' | 'largeSuper';
 
@@ -24,7 +24,6 @@ export function TextBase({
   weight = 'Medium',
   ...rest
 }: TextBaseProps) {
-  console.log(font, weight);
   return (
     <Component.Container font={font} weight={weight} color={color} {...rest}>
       {children}

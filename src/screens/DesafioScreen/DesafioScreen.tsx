@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CardActive, Header, IconName } from '~components';
-import { useNetwork } from '~hooks';
-import { getStocks } from '~services/client';
 
 import * as Component from './DesafioScreen.styles';
 
@@ -11,16 +9,16 @@ type AtivoProps = {
   description: string;
   icon: IconName;
   nameScreen: ScreenType;
-  isNew: boolean;
+  slogan: boolean;
 };
 
-export const ativos: AtivoProps[] = [
+export const actives: AtivoProps[] = [
   {
     id: 1,
     title: 'Ações',
     description: 'Nacionais',
     icon: 'IconAction',
-    isNew: false,
+    slogan: false,
     nameScreen: 'AcoesScreen',
   },
   {
@@ -28,7 +26,7 @@ export const ativos: AtivoProps[] = [
     title: 'Fundos',
     description: 'De investimentos',
     icon: 'IconWalletSmall',
-    isNew: true,
+    slogan: true,
     nameScreen: 'AcoesScreen',
   },
   {
@@ -36,24 +34,14 @@ export const ativos: AtivoProps[] = [
     title: 'Previdências',
     description: 'Privadas',
     icon: 'IconPensionMoney',
-    isNew: false,
-    nameScreen: 'DesafioScreen',
+    slogan: false,
+    nameScreen: 'PensionScreen',
   },
 ];
 
-type ScreenType = 'DesafioScreen' | 'AcoesScreen';
+type ScreenType = 'DesafioScreen' | 'AcoesScreen' | 'PensionScreen';
 
 export function DesafioScreen({ navigation }) {
-  const { execute } = useNetwork();
-
-  useEffect(() => {
-    execute(async () => {
-      const response = await getStocks();
-
-      console.log({ response });
-    });
-  }, [execute]);
-
   function handleNavigation(screen: ScreenType) {
     navigation.navigate(screen);
   }
@@ -63,16 +51,18 @@ export function DesafioScreen({ navigation }) {
       <Header title="Desafios" hasArrowLeft={false} />
 
       <Component.Container>
-        {ativos.map(({ isNew, id, title, description, icon, nameScreen }) => (
-          <CardActive
-            key={id.toString()}
-            title={title}
-            description={description}
-            icon={icon}
-            isNew={isNew}
-            onPress={() => handleNavigation(nameScreen)}
-          />
-        ))}
+        {actives.map(
+          ({ slogan: slogan, id, title, description, icon, nameScreen }) => (
+            <CardActive
+              key={id.toString()}
+              title={title}
+              description={description}
+              icon={icon}
+              slogan={slogan}
+              onPress={() => handleNavigation(nameScreen)}
+            />
+          ),
+        )}
       </Component.Container>
     </>
   );
