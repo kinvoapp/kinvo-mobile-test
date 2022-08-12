@@ -4,6 +4,9 @@ import { SvgProps } from 'react-native-svg';
 
 import { CardBase } from '../CardBase/CardBase';
 import { TextBase } from '../TextBase/TextBase';
+import { RenderCondition } from '../RenderCondition/RenderCondition';
+import { Slogan } from '../Slogan/Slogan';
+
 import { IconAction, IconPensionMoney, IconWalletSmall } from '~assets/icons';
 
 import * as Component from './CardActive.styles';
@@ -28,14 +31,14 @@ export type CardActiveProps = {
   title: string;
   description: string;
   icon: IconType<IconName>;
-  isNew: boolean;
+  slogan: boolean;
 } & TouchableOpacityProps;
 
 export function CardActive({
   title,
   description,
   icon,
-  isNew,
+  slogan,
   ...rest
 }: CardActiveProps) {
   return (
@@ -50,19 +53,15 @@ export function CardActive({
         <TextBase
           font="Bold"
           weight="SemiBold"
-          color="secondary"
+          color="default"
           style={styled.description}>
           {description}
         </TextBase>
       </Component.Content>
 
-      {isNew ? (
-        <Component.New>
-          <TextBase weight="Light" font="Light" color="default">
-            Novo
-          </TextBase>
-        </Component.New>
-      ) : null}
+      <RenderCondition condition={slogan}>
+        <Slogan />
+      </RenderCondition>
     </CardBase>
   );
 }
