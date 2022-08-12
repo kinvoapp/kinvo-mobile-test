@@ -14,7 +14,7 @@ export const Container = styled(TouchableOpacity).attrs({
 
   ${alignContent}
 
-  height: ${({ theme }) => RFValue(theme.size.card.height.large)}px;
+  min-height: ${({ theme }) => RFValue(theme.size.card.height.large)}px;
 
   padding: ${({ theme }) => RFValue(theme.size.padding.small)}px;
   margin-top: ${({ theme }) => RFValue(theme.size.padding.default)}px

@@ -1,72 +1,146 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { IconFavorite, IconFavoriteActive, IconLivreDown } from '~assets/icons';
+
+import {
+  IconArrowUp,
+  IconFavorite,
+  IconFavoriteActive,
+  IconLivreDown,
+} from '~assets/icons';
+
+import { Stock } from '~services/client';
 import { currencyBRL } from '~utils';
 import { DivisorInLine } from '../DivisorInLine/DivisorInLine';
 import { TextBase } from '../TextBase/TextBase';
+import { RenderCondition } from '../RenderCondition/RenderCondition';
 
 import * as Component from './CardAction.styles';
 
-export type CardActionProps = { title: string; code: string };
+export type CardActionProps = {
+  stock: Stock;
+  onFavorite: () => void;
+  type: 'pension' | 'stocks';
+};
 
-export function CardAction({ title, code }: CardActionProps) {
-  const [favorite, setFavorite] = useState<boolean>(false);
-  const minimumValue = useMemo(() => currencyBRL(100), []);
+export function CardAction({ stock, onFavorite, type }: CardActionProps) {
+  const { name, ticker, id, minimumValue, profitability } = stock;
 
-  function handlerFavorite() {
-    setFavorite(props => !props);
+  const isMinimumValue = useMemo(
+    () => currencyBRL(minimumValue, 'currency'),
+    [minimumValue],
+  );
+
+  const isProfitability = useMemo(
+    () => currencyBRL(profitability, 'percent'),
+    [profitability],
+  );
+
+  function convertNumber(value: string) {
+    return Number(value.split('%')[0]);
   }
 
   return (
-    <Component.Container>
+    <Component.Container key={id}>
       <Component.Content>
         <View>
           <TextBase
             weight="Bold"
             font="Medium"
             size="default"
-            color="secondary"
+            color="default"
             style={styles.tile}>
-            {title}
+            {name}
           </TextBase>
 
           <TextBase
             weight="Light"
             font="Bold"
             size="small"
-            color="secondary"
+            color="default"
             style={styles.codeText}>
-            {code}
+            {ticker}
           </TextBase>
         </View>
-        <Component.ButtonFavorite onPress={handlerFavorite}>
-          {favorite ? <IconFavoriteActive /> : <IconFavorite />}
+        <Component.ButtonFavorite onPress={onFavorite}>
+          {stock.favorite ? <IconFavoriteActive /> : <IconFavorite />}
         </Component.ButtonFavorite>
       </Component.Content>
 
-      <DivisorInLine isPadding="zero" />
+      <DivisorInLine isPadding="default" />
 
       <Component.Footer>
         <Component.Row style={styles.minimumValue}>
-          <TextBase weight="Light" font="Light" size="small" color="secondary">
+          <TextBase weight="Light" font="Light" size="small" color="default">
             Valor mínimo:
           </TextBase>
 
-          <TextBase weight="Bold" font="Bold" size="small" color="secondary">
-            {minimumValue}
+          <TextBase weight="Bold" font="Bold" size="small" color="default">
+            {isMinimumValue}
           </TextBase>
         </Component.Row>
 
+        <RenderCondition condition={type === 'pension'}>
+          <>
+            <Component.Row style={styles.minimumValue}>
+              <TextBase
+                weight="Light"
+                font="Light"
+                size="small"
+                color="default">
+                Taxa:
+              </TextBase>
+
+              <TextBase
+                weight="Light"
+                font="Light"
+                size="small"
+                color="default">
+                {isProfitability}
+              </TextBase>
+            </Component.Row>
+
+            <Component.Row style={styles.minimumValue}>
+              <TextBase
+                weight="Light"
+                font="Light"
+                size="small"
+                color="default">
+                Taxa:
+              </TextBase>
+
+              <TextBase
+                weight="Light"
+                font="Light"
+                size="small"
+                color="default">
+                {isProfitability}
+              </TextBase>
+            </Component.Row>
+          </>
+        </RenderCondition>
+
         <Component.Row>
-          <TextBase weight="Light" font="Light" size="small" color="secondary">
+          <TextBase weight="Light" font="Light" size="small" color="default">
             Rentabilidade:
           </TextBase>
 
           <View style={styles.profitability}>
-            <IconLivreDown />
+            <RenderCondition condition={convertNumber(isProfitability) >= 0}>
+              <IconArrowUp style={styles.iconArrowUp} />
+            </RenderCondition>
 
-            <TextBase weight="Bold" font="Bold" size="small" color="secondary">
-              {minimumValue}
+            <RenderCondition condition={convertNumber(isProfitability) < 0}>
+              <IconLivreDown />
+            </RenderCondition>
+
+            <TextBase
+              weight="Bold"
+              font="Bold"
+              size="small"
+              color={
+                convertNumber(isProfitability) >= 0 ? 'default' : 'secondary'
+              }>
+              {isProfitability}
             </TextBase>
           </View>
         </Component.Row>
@@ -83,4 +157,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  iconArrowUp: { marginRight: 5 },
 });
