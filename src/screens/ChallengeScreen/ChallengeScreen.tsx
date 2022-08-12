@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardActive, Header, IconName } from '~components';
 
-import * as Component from './DesafioScreen.styles';
+import * as Component from './ChallengeScreen.styles';
 
 type AtivoProps = {
   id: number;
@@ -19,7 +19,7 @@ export const actives: AtivoProps[] = [
     description: 'Nacionais',
     icon: 'IconAction',
     slogan: false,
-    nameScreen: 'AcoesScreen',
+    nameScreen: 'StocksScreen',
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const actives: AtivoProps[] = [
     description: 'De investimentos',
     icon: 'IconWalletSmall',
     slogan: true,
-    nameScreen: 'AcoesScreen',
+    nameScreen: 'StocksScreen',
   },
   {
     id: 3,
@@ -39,9 +39,9 @@ export const actives: AtivoProps[] = [
   },
 ];
 
-type ScreenType = 'DesafioScreen' | 'AcoesScreen' | 'PensionScreen';
+type ScreenType = 'ChallengeScreen' | 'StocksScreen' | 'PensionScreen';
 
-export function DesafioScreen({ navigation }) {
+export function ChallengeScreen({ navigation }) {
   function handleNavigation(screen: ScreenType) {
     navigation.navigate(screen);
   }
