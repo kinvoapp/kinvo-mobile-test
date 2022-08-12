@@ -27,7 +27,7 @@ export const actives: AtivoProps[] = [
     description: 'De investimentos',
     icon: 'IconWalletSmall',
     slogan: true,
-    nameScreen: 'StocksScreen',
+    nameScreen: 'FundsScreen',
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const actives: AtivoProps[] = [
   },
 ];
 
-type ScreenType = 'ChallengeScreen' | 'StocksScreen' | 'PensionScreen';
+type ScreenType = 'FundsScreen' | 'StocksScreen' | 'PensionScreen';
 
 export function ChallengeScreen({ navigation }) {
   function handleNavigation(screen: ScreenType) {
