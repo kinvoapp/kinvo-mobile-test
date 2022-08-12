@@ -9,3 +9,4 @@ export * from './RenderCondition/RenderCondition';
 export * from './ButtonSimple/ButtonSimple';
 export * from './CardPension/CardPension';
 export * from './Slogan/Slogan';
+export * from './CardFunds/CardFunds';

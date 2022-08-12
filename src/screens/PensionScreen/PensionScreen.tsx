@@ -198,7 +198,7 @@ export function PensionScreen() {
 
         <RenderCondition condition={!loading && isErrorNetwork.current}>
           <View style={styles.iconLoad}>
-            <ErrorNetwork onTryAgain={handleTryAgain} slog="ações" />
+            <ErrorNetwork onTryAgain={handleTryAgain} slog="previdências" />
           </View>
         </RenderCondition>
       </Component.Container>

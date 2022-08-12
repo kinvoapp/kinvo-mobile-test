@@ -4,11 +4,11 @@ import { useNetwork } from '~hooks';
 import { getStocks, Stock } from '~services/client';
 import { CardAction, ErrorNetwork, Header, RenderCondition } from '~components';
 
-import * as Component from './AcoesScreen.styles';
+import * as Component from './StocksScreen.styles';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { IconLoad } from '~assets/icons';
 
-export function AcoesScreen() {
+export function StocksScreen() {
   const { execute, loading, isErrorNetwork } = useNetwork();
   const [stocks, setStocks] = useState<Stock[]>([]);
 

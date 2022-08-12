@@ -4,7 +4,7 @@ export type PensionType = 'Multimercados' | 'Renda Fixa Pós' | 'Renda Fixa Pré
 
 export type FundsType = 'Multimercados' | 'RF' | 'FIA';
 
-enum FundsStatus {
+export enum FundsStatus {
   '0' = 'Comum',
   '1' = 'Novo',
   '2' = 'Fechado',
@@ -36,7 +36,7 @@ export type Funds = {
   minimumValue: number;
   rating: number;
   profitability: number;
-  status: FundsStatus;
+  status: 0 | 1 | 2;
 };
 
 export type GetDataReturn<T> = {
