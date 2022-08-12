@@ -1,8 +1,8 @@
 import { client } from './api';
 
-type PensionType = 'Multimercados' | 'Renda Fixa Pós' | 'Renda Fixa Pré';
+export type PensionType = 'Multimercados' | 'Renda Fixa Pós' | 'Renda Fixa Pré';
 
-type FundsType = 'Multimercados' | 'RF' | 'FIA';
+export type FundsType = 'Multimercados' | 'RF' | 'FIA';
 
 enum FundsStatus {
   '0' = 'Comum',
@@ -10,15 +10,16 @@ enum FundsStatus {
   '2' = 'Fechado',
 }
 
-type Stock = {
+export type Stock = {
   id: number;
   name: string;
   ticker: string;
   minimumValue: 100;
   profitability: 27.05;
+  favorite: boolean;
 };
 
-type Pension = {
+export type Pension = {
   id: number;
   name: string;
   type: PensionType;
@@ -28,7 +29,7 @@ type Pension = {
   profitability: number;
 };
 
-type Funds = {
+export type Funds = {
   id: number;
   name: string;
   type: FundsType;
@@ -38,7 +39,7 @@ type Funds = {
   status: FundsStatus;
 };
 
-type GetDataReturn<T> = {
+export type GetDataReturn<T> = {
   success: boolean;
   data: T[];
   error: null;

@@ -3,7 +3,6 @@ import { NoNetworkError } from '~config/exceptions';
 import { BASE_URL } from '@env';
 import * as device from '~utils';
 
-console.log({ BASE_URL });
 const defaultConfig = {
   baseURL: `https://${BASE_URL}.mockapi.io/`,
   headers: {
