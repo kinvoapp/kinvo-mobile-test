@@ -9,12 +9,16 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "android:clean": "cd android && ./gradlew clean",
+    "ios:pod": "cd ios && pod install",
     "gradlew:clearAll": "cd android && ./gradlew --stacktrace && ./gradlew --warning-mode all && ./gradlew --S && ./gradlew --scan && ./gradlew --status && ./gradlew --info && cd .. && yarn android"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^9.3.0",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@testing-library/jest-native": "^5.3.3",
+    "add": "^2.0.6",
     "axios": "^0.27.2",
     "intl": "^1.2.5",
     "react": "18.0.0",
@@ -24,14 +28,17 @@
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.15.0",
     "react-native-svg": "^12.4.4",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-native": "^11.5.0",
     "@tsconfig/react-native": "^2.0.2",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^29.2.4",
     "@types/react-native": "^0.69.3",
     "@types/react-test-renderer": "^18.0.0",
     "@types/styled-components": "^5.1.25",
@@ -41,21 +48,12 @@
     "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.21.0",
-    "jest": "^26.6.3",
+    "jest": "^29.3.1",
+    "jest-styled-components": "^7.1.1",
     "metro-react-native-babel-preset": "^0.70.3",
     "react-native-svg-transformer": "^1.0.0",
-    "react-test-renderer": "18.0.0",
+    "react-test-renderer": "^18.2.0",
+    "redux-mock-store": "^1.5.4",
     "typescript": "^4.4.4"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   }
 }

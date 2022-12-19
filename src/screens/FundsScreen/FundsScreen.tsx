@@ -1,31 +1,27 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { useAppDispatch } from '../../store/hooks/useAppDispatch';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { fundsAsync } from '../../store/funds/thunks';
 import { IconLoad } from '~assets/icons';
 import { CardFunds, Header, ErrorNetwork, RenderCondition } from '~components';
 import { useNetwork } from '~hooks';
-import { Funds, getFunds } from '~services/client';
+import { Funds } from '~types';
 
 import * as Component from './FundsScreen.styles';
 
-export type FundsScreenProps = { children: string };
-
-export function FundsScreen({ children }: FundsScreenProps) {
-  const { execute, loading, isErrorNetwork } = useNetwork();
-  const [funds, setFunds] = useState<Funds[]>([]);
+export function FundsScreen() {
+  const dispatch = useAppDispatch();
+  const { execute, isErrorNetwork } = useNetwork();
+  const { loading, funds } = useAppSelector(store => store.funds);
 
   const fetchFunds = useCallback(() => {
     execute(async () => {
-      const response = await getFunds();
-
-      if (response.success) {
-        setFunds(response.data);
-      }
+      dispatch(fundsAsync());
     });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => fetchFunds(), [fetchFunds]);
-
-  useEffect(() => console.log(funds), [funds]);
 
   function handleTryAgain() {
     fetchFunds();

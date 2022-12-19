@@ -54,7 +54,7 @@
         "screens"
       ],
       "~types": [
-        "types"
+        "types/*"
       ],
       "~services/*": [
         "services/*"

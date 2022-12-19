@@ -9,8 +9,12 @@ import {
   Header,
   RenderCondition,
 } from '~components';
+
 import { useNetwork } from '~hooks';
-import { getPension, Pension } from '~services/client';
+import { useAppDispatch } from '../../store/hooks/useAppDispatch';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { pensionAsync } from '../../store/pension/thunks';
+import { Pension } from '~types';
 
 import * as Component from './PensionScreen.styles';
 
@@ -62,21 +66,17 @@ const dataPensionFilter: FilterPensions[] = [
 type FilterNames = 'SEM TAXA' | 'R$100,00' | 'D+1';
 
 export function PensionScreen() {
-  const { execute, loading, isErrorNetwork } = useNetwork();
-  const [pensions, setPensions] = useState<Pension[]>([]);
+  const dispatch = useAppDispatch();
+  const { execute, isErrorNetwork } = useNetwork();
+  const { loading, pensions } = useAppSelector(store => store.pensions);
   const [pensionsFilter, setPensionsFilter] = useState<Pension[]>([]);
   const [filtersPension, setFiltersPensions] = useState<FilterPensions[]>([]);
-  const [filterCallBacks, setFilterCallBacks] = useState<[]>([]);
 
   const fetchPension = useCallback(() => {
     execute(async () => {
-      const response = await getPension();
-
-      if (response.success) {
-        setPensions(response.data);
-      }
+      dispatch(pensionAsync());
     });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     setFiltersPensions(dataPensionFilter);
