@@ -1,16 +1,15 @@
 import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 export const CircleIcon = styled.View`
   justify-content: center;
   align-items: center;
 
-  width: ${RFValue(56)}px;
-  height: ${RFValue(56)}px;
+  width: 56px;
+  height: 56px;
 
-  margin-right: ${RFValue(12)}px;
+  margin-right: 12px;
 
-  border-radius: ${RFValue(28)}px;
+  border-radius: 28px;
 
   background-color: ${({ theme }) => theme.colors.card.background.grayLight};
 `;

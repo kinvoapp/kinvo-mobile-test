@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled(TouchableOpacity).attrs({
   activeOpacity: 0.6,
@@ -10,12 +9,12 @@ export const Container = styled(TouchableOpacity).attrs({
   align-items: center;
   justify-content: flex-start;
 
-  height: ${RFValue(120)}px;
+  height: 120px;
 
-  padding: 0 ${({ theme }) => RFValue(theme.size.padding.default)}px;
-  margin-top: ${({ theme }) => RFValue(theme.size.padding.default)}px
+  padding: 0 ${({ theme }) => theme.size.padding.default}px;
+  margin-top: ${({ theme }) => theme.size.padding.default}px;
 
-  border-radius: ${({ theme }) => RFValue(theme.size.borderRadius.default)}px;
+  border-radius: ${({ theme }) => theme.size.borderRadius.default}px;
   border-color: ${({ theme }) => theme.colors.card.border.default}px;
   border-width: 1px;
 

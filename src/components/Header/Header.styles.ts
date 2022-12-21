@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   flex-direction: row;
@@ -8,9 +7,9 @@ export const Container = styled.View`
   justify-content: flex-start;
 
   width: 100%;
-  height: ${RFValue(100)}px;
+  height: 100px;
 
-  padding: 0 ${({ theme }) => RFValue(theme.size.padding.default)}px;
+  padding: 0 ${({ theme }) => theme.size.padding.default}px;
 
   background-color: ${({ theme }) => theme.colors.app.white};
 `;
@@ -27,12 +26,12 @@ export const ButtonGoBack = styled.TouchableOpacity.attrs({
   align-items: center;
   justify-content: center;
 
-  height: ${RFValue(24)}px;
-  width: ${RFValue(24)}px;
+  height: 24px;
+  width: 24px;
 
-  margin-right: ${RFValue(10)}px;
+  margin-right: 10px;
 
-  border-radius: ${RFValue(22)}px;
+  border-radius: 22px;
 
   background-color: transparent;
 `;

@@ -7,7 +7,7 @@ export const pensionAsyncBuilder = (
 ) => {
   builder
     .addCase(pensionAsync.fulfilled, (state, action) => {
-      console.log(action.payload.data);
+      console.log('Payload :', action.payload.data);
       state.pensions = action.payload.data;
       state.loading = false;
     })

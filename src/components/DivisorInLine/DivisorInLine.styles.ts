@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { View } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { DivisorInLineProps } from './DivisorInLine';
 
 export const Container = styled(View) <Pick<DivisorInLineProps, 'isPadding'>>`
@@ -10,7 +9,7 @@ export const Container = styled(View) <Pick<DivisorInLineProps, 'isPadding'>>`
 `;
 
 export const Line = styled(View)`
-  height: ${RFValue(1)}px;
+  height: 1px;
 
   background-color: ${({ theme }) => theme.colors.card.border.default};
 `;

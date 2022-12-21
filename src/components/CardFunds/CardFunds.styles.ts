@@ -1,5 +1,4 @@
 import { TouchableOpacity } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { css } from 'styled-components';
 import styled from 'styled-components/native';
 
@@ -14,12 +13,12 @@ export const Container = styled(TouchableOpacity).attrs({
 
   ${alignContent}
 
-  min-height: ${({ theme }) => RFValue(theme.size.card.height.large)}px;
+  min-height: ${({ theme }) => theme.size.card.height.large}px;
 
-  padding: ${({ theme }) => RFValue(theme.size.padding.small)}px;
-  margin-top: ${({ theme }) => RFValue(theme.size.padding.default)}px
+  padding: ${({ theme }) => theme.size.padding.small}px;
+  margin-top: ${({ theme }) => theme.size.padding.default}px;
 
-  border-radius: ${({ theme }) => RFValue(theme.size.borderRadius.default)}px;
+  border-radius: ${({ theme }) => theme.size.borderRadius.default}px;
   border-color: ${({ theme }) => theme.colors.card.border.default}px;
   border-width: 1px;
 
@@ -58,10 +57,10 @@ export const ButtonFavorite = styled.TouchableOpacity.attrs({
   align-items: center;
   justify-content: center;
 
-  height: ${RFValue(24)}px;
-  width: ${RFValue(24)}px;
+  height: 24px;
+  width: 24px;
 
-  border-radius: ${RFValue(22)}px;
+  border-radius: 22px;
 
   background-color: transparent;
 `;

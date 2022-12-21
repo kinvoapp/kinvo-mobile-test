@@ -18,7 +18,11 @@ export function ButtonSimple({
   ...rest
 }: ButtonSimpleProps) {
   return (
-    <Component.Container typeButton={typeButton} size={size} {...rest}>
+    <Component.Container
+      accessibilityLabel="button-simple"
+      typeButton={typeButton}
+      size={size}
+      {...rest}>
       <RenderCondition condition={typeButton === 'primary'}>
         <TextBase
           weight="Medium"
