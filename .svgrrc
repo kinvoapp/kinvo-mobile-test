@@ -1,0 +1,6 @@
+{
+  "replaceAttrValues": {
+    "rgba(111, 77, 191, 1)": "{props.fill}",
+    "rgba(232, 93, 31, 1)": "{props.fillSecondary}"
+  }
+}
